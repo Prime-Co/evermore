@@ -1,1 +1,3463 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard | Evermore</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="assets/css/styles.css"></head><body class="bg-background text-foreground"><main style="min-height:100vh;display:grid;place-items:center;padding:24px"><section style="max-width:680px;text-align:center"><h1 style="font-size:2rem;margin-bottom:12px">Evermore Dashboard</h1><p style="opacity:.8;line-height:1.7">The dashboard shell is ready for Firebase authentication and user data integration. No database or live account system is connected in this frontend-only package yet.</p><p style="margin-top:20px"><a href="auth.html?mode=signin">Return to sign in</a></p></section></main></body></html>
+<!DOCTYPE html>
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- ============ PRIMARY SEO ============ -->
+    <title>Dashboard | Evermore AI – Manage Your AI Earning Tasks &amp; Wallet</title>
+    <meta name="description" content="Access your Evermore AI dashboard. Manage AI training tasks, track earnings, view your wallet, and withdraw funds. Your central hub for remote work and online income.">
+    <meta name="keywords" content="Evermore dashboard, Ever AI dashboard, Evermore AI login, manage AI tasks, Evermore wallet, AI earning dashboard, remote work dashboard Nigeria, online income tracker, EverAI tasks, Evermore account, AI platform dashboard, earn money online dashboard">
+    <meta name="robots" content="noindex, follow, max-image-preview:large">
+    <meta name="googlebot" content="noindex, follow">
+    <meta name="author" content="Evermore AI">
+    <meta name="publisher" content="Evermore AI">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="theme-color" content="#12b886">
+    <link rel="canonical" href="dashboard.html">
+
+    <!-- ============ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ============ -->
+    <meta property="og:site_name" content="Evermore AI">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Your Evermore AI Dashboard | Manage Tasks, Wallet &amp; Earnings">
+    <meta property="og:description" content="Your central hub on the Evermore AI Platform. Track your AI training tasks, monitor earnings, manage your wallet, and access remote work opportunities.">
+    <meta property="og:url" content="dashboard.html">
+    <meta property="og:image" content="index.htmlassets/hero-main-DsCX8iSK.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Evermore AI Dashboard — Manage your AI earning tasks and wallet">
+    <meta property="og:locale" content="en_NG">
+
+    <!-- ============ TWITTER / X CARD ============ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@evermoreai">
+    <meta name="twitter:creator" content="@evermoreai">
+    <meta name="twitter:title" content="Your Evermore AI Dashboard | Manage Tasks, Wallet &amp; Earnings">
+    <meta name="twitter:description" content="Your central hub on the Evermore AI Platform. Track tasks, monitor earnings, and manage your wallet.">
+    <meta name="twitter:image" content="index.htmlassets/hero-main-DsCX8iSK.jpg">
+    <meta name="twitter:image:alt" content="Evermore AI Dashboard — Manage your AI earning tasks and wallet">
+
+    <!-- ============ TECHNICAL ============ -->
+    <meta name="google-site-verification" content="1-GcuCbwPJCapBJ5ER0NMkH_CkXHlXKqlWcGN8Out8w">
+    <link rel="icon" type="image/png" href="index.htmlfavicon.png">
+    <link rel="apple-touch-icon" href="assets/images/evermore-mark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
+
+    <!-- Preload the VIP flyer so it appears with the modal -->
+    <link rel="preload" as="image" href="assets/images/IMG-20260904-WA0002.jpg">
+
+    <!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+    <style>
+        :root {
+            --bg: #f4fbfa;
+            --card: #ffffff;
+            --card-hover: #f8fdfc;
+            --border: #e2eeec;
+            --text: #0c1e1c;
+            --muted: #6b8683;
+            --muted-2: #8aa5a1;
+            --emerald: #12b886;
+            --emerald-dark: #0ca678;
+            --emerald-deep: #0a8a63;
+            --mint: #d3f9ec;
+            --mint-icon: #dff7ee;
+            --mint-chip: #e6f7f2;
+            --gold: #b8860b;
+            --gold-text: #a97a15;
+            --gold-icon: #fdf3dd;
+            --navy: #0a1b2e;
+            --navy-2: #071426;
+            --cyan: #22e3e3;
+            --locked-text: #8aa5a1;
+            --red: #e03131;
+            --red-dark: #b02525;
+            --red-bg: #fff5f5;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0; padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+            min-height: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+        /* When unauthenticated, hide the entire page */
+        html.ev-locked body { visibility: hidden; }
+
+        /* Header */
+        .ev-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 50;
+        }
+        .ev-header-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 20px; gap: 16px;
+        }
+        .ev-header-left { display: flex; align-items: center; gap: 12px; }
+        .ev-menu-btn {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text);
+            transition: background .15s, color .15s;
+        }
+        .ev-menu-btn:hover { background: var(--mint); color: var(--emerald-dark); }
+        .ev-logo {
+            display: flex; align-items: center; gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 22px;
+            letter-spacing: -0.02em; color: var(--text);
+        }
+        .ev-logo img { height: 32px; width: auto; }
+        .ev-logo .accent { color: var(--emerald); }
+
+        .ev-header-right { display: flex; align-items: center; gap: 8px; }
+        .ev-icon-btn {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text); position: relative;
+            transition: background .15s, color .15s;
+        }
+        .ev-icon-btn:hover { background: var(--mint); color: var(--emerald-dark); }
+        .ev-icon-btn .dot {
+            position: absolute; top: 8px; right: 9px;
+            width: 8px; height: 8px; background: var(--emerald);
+            border-radius: 50%; border: 2px solid #ffffff;
+        }
+
+        /* Drawer */
+        .ev-drawer-backdrop {
+            position: fixed; inset: 0;
+            background: rgba(12, 30, 28, 0.35);
+            backdrop-filter: blur(2px);
+            opacity: 0; pointer-events: none;
+            transition: opacity .2s; z-index: 100;
+        }
+        .ev-drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+        .ev-drawer {
+            position: fixed; top: 0; left: 0; bottom: 0;
+            width: 280px; background: #ffffff;
+            border-right: 1px solid #e8f1ef;
+            transform: translateX(-100%);
+            transition: transform .28s cubic-bezier(.4,0,.2,1);
+            z-index: 101;
+            display: flex; flex-direction: column;
+            color: #2c4a46; overflow: hidden;
+            box-shadow: 4px 0 24px -8px rgba(12, 30, 28, 0.08);
+        }
+        .ev-drawer.open { transform: translateX(0); }
+
+        .ev-drawer-brand {
+            display: flex; align-items: center; gap: 10px;
+            padding: 20px 22px 22px;
+            border-bottom: 1px solid #e8f1ef;
+        }
+        .ev-drawer-brand img { height: 34px; width: auto; }
+        .ev-drawer-brand span {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 22px;
+            letter-spacing: -0.02em; color: var(--text); line-height: 1;
+        }
+        .ev-drawer-brand span .accent { color: var(--emerald); }
+
+        .ev-drawer-nav {
+            flex: 1; overflow-y: auto;
+            padding: 12px 12px 16px;
+            display: flex; flex-direction: column;
+        }
+        .ev-nav-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 11px 14px; border-radius: 10px;
+            font-size: 14px; font-weight: 500;
+            color: #2c4a46;
+            transition: background .15s, color .15s;
+            position: relative; margin-bottom: 2px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-nav-item:hover { background: var(--mint); color: var(--emerald-dark); }
+        .ev-nav-item svg {
+            width: 19px; height: 19px; flex-shrink: 0;
+            stroke: currentColor; fill: none;
+            stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-nav-item.active {
+            background: var(--mint); color: var(--emerald-dark); font-weight: 600;
+        }
+        .ev-nav-item .badge-dot {
+            position: absolute; right: 16px;
+            width: 9px; height: 9px;
+            background: var(--emerald); border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(18, 184, 134, 0.15);
+        }
+        .ev-nav-divider {
+            height: 1px; background: #e8f1ef; margin: 10px 8px;
+        }
+        .ev-drawer-user {
+            border-top: 1px solid #e8f1ef;
+            padding: 16px 18px;
+            display: flex; align-items: center; gap: 12px;
+            background: #f8fdfc;
+        }
+        .ev-drawer-user .avatar {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: linear-gradient(135deg, #12b886, #38d9a9);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: #ffffff; font-size: 14px;
+            flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(18, 184, 134, 0.4);
+        }
+        .ev-drawer-user .info { flex: 1; min-width: 0; line-height: 1.25; }
+        .ev-drawer-user .info strong {
+            display: block; color: var(--text);
+            font-size: 14px; font-weight: 700;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .ev-drawer-user .info small {
+            color: #8aa5a1; font-size: 12px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            display: block;
+        }
+        .ev-drawer-logout {
+            border-top: 1px solid #e8f1ef;
+            padding: 14px 18px;
+            display: flex; align-items: center; gap: 12px;
+            font-size: 14px; font-weight: 600;
+            color: #c92a2a; width: 100%;
+            transition: background .15s, color .15s;
+        }
+        .ev-drawer-logout:hover { background: #fff5f5; color: #a61e1e; }
+        .ev-drawer-logout svg {
+            width: 19px; height: 19px; flex-shrink: 0;
+            stroke: currentColor; fill: none;
+            stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* Main */
+        .ev-main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 120px; }
+        .ev-panel { display: none; }
+        .ev-panel.active { display: block; }
+
+        /* Home */
+        .ev-greeting h1 {
+            margin: 0 0 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 34px;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+        .ev-greeting h1 .name { color: var(--emerald); }
+        .ev-greeting p {
+            margin: 0 0 24px; color: var(--muted);
+            font-size: 15px; max-width: 640px; line-height: 1.55;
+        }
+
+        /* ---------- Compact status pill (full-width green tag) ---------- */
+        .ev-status-pill {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: 100%;
+            padding: 6px;
+            border-radius: 999px;
+            margin: 4px 0 24px;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 14px 34px -22px rgba(18, 184, 134, 0.55);
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+        .ev-status-pill.hidden { display: none; }
+
+        .ev-status-pill .status-tag {
+            position: absolute;
+            inset: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            padding: 0 18px;
+            border-radius: 999px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+        .ev-status-pill .status-tag svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .ev-status-pill .see-more {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px 8px 18px;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #0c1e1c;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            border: 1px solid rgba(12, 30, 28, 0.08);
+            transition: transform .15s, box-shadow .15s, border-color .15s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .ev-status-pill .see-more:hover {
+            transform: translateY(-1px);
+            border-color: rgba(12, 30, 28, 0.2);
+            box-shadow: 0 6px 16px -8px rgba(12, 30, 28, 0.25);
+        }
+        .ev-status-pill .see-more svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* Active state colors */
+        .ev-status-pill.active {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 100%);
+            border: 1px solid rgba(18, 184, 134, 0.28);
+        }
+        .ev-status-pill.active .status-tag {
+            background: linear-gradient(135deg, #12b886, #0ca678);
+            box-shadow: 0 8px 20px -10px rgba(18, 184, 134, 0.7);
+        }
+
+        /* Rejected state colors */
+        .ev-status-pill.rejected {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
+            border: 1px solid rgba(224, 49, 49, 0.28);
+            box-shadow: 0 14px 34px -22px rgba(224, 49, 49, 0.55);
+        }
+        .ev-status-pill.rejected .status-tag {
+            background: linear-gradient(135deg, #e03131, #b02525);
+            box-shadow: 0 8px 20px -10px rgba(224, 49, 49, 0.7);
+        }
+        .ev-status-pill.rejected .see-more {
+            color: #b02525;
+            border-color: rgba(224, 49, 49, 0.18);
+        }
+        .ev-status-pill.rejected .see-more:hover {
+            border-color: rgba(224, 49, 49, 0.35);
+            box-shadow: 0 6px 16px -8px rgba(224, 49, 49, 0.35);
+        }
+
+        /* Very small screens — tighter pill (still one line) */
+        @media (max-width: 380px) {
+            .ev-status-pill .status-tag { font-size: 10.5px; padding: 0 14px; letter-spacing: 0.12em; }
+            .ev-status-pill .see-more { font-size: 11.5px; padding: 7px 14px 7px 16px; }
+        }
+
+        .ev-grid {
+            display: grid; gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-bottom: 20px;
+        }
+        @media (min-width: 720px) {
+            .ev-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        .ev-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            transition: transform .15s, box-shadow .15s, border-color .15s;
+        }
+        .ev-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(18, 184, 134, 0.35);
+            box-shadow: 0 12px 32px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-card .icon {
+            width: 40px; height: 40px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .ev-card .icon svg { width: 20px; height: 20px; }
+        .ev-card .icon.mint { background: var(--mint-icon); color: var(--emerald-dark); }
+        .ev-card .icon.gold { background: var(--gold-icon); color: var(--gold); }
+        .ev-card .icon.emerald { background: var(--mint-icon); color: var(--emerald); }
+        .ev-card .value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px; font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        .ev-card .value.emerald { color: var(--emerald); }
+        .ev-card .label {
+            color: var(--muted); font-size: 13px; margin-top: 8px; font-weight: 500;
+        }
+
+        /* Subscription banner */
+        .ev-sub-banner {
+            position: relative; overflow: hidden;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+            border-radius: 20px;
+            padding: 26px 28px;
+            color: #e6f5f1;
+            margin-bottom: 28px;
+            display: flex; gap: 20px;
+            align-items: center; justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .ev-sub-banner .rings {
+            position: absolute; right: -80px; top: -80px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 229, 255, 0.18);
+            pointer-events: none;
+        }
+        .ev-sub-banner .rings::after {
+            content: ''; position: absolute; inset: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 229, 255, 0.12);
+        }
+        .ev-sub-banner .sub-inner { position: relative; flex: 1; min-width: 240px; }
+        .ev-sub-banner .kicker {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--cyan); margin: 0 0 10px;
+        }
+        .ev-sub-banner .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px; font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0 0 10px;
+            display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+        }
+        .ev-sub-banner .title .price { color: #ffffff; }
+        .ev-sub-banner .title .term {
+            font-size: 14px; font-weight: 500;
+            color: rgba(230, 245, 241, 0.65);
+        }
+        .ev-sub-banner .desc {
+            font-size: 13.5px; line-height: 1.55;
+            color: rgba(230, 245, 241, 0.7);
+            margin: 0; max-width: 380px;
+        }
+        .ev-activate-btn {
+            position: relative; flex-shrink: 0;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 26px; border-radius: 14px;
+            background: linear-gradient(135deg, #22e3e3, #12b8b8);
+            color: #04121a;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            white-space: nowrap;
+            box-shadow: 0 12px 32px -12px rgba(34, 227, 227, 0.6);
+            transition: transform .15s, box-shadow .15s;
+        }
+        .ev-activate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px -14px rgba(34, 227, 227, 0.75);
+        }
+        .ev-activate-btn svg {
+            width: 16px; height: 16px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* Active-state success accent */
+        .ev-sub-banner.is-active {
+            background: linear-gradient(135deg, #0a8a63 0%, #0a1b2e 100%);
+        }
+        .ev-sub-banner.is-active .kicker { color: #a7f3d0; }
+
+        .ev-activate-btn.is-vip {
+            background: linear-gradient(135deg, #4ade9f, #00e5ff);
+            color: #04121a;
+            box-shadow: 0 12px 32px -12px rgba(74, 222, 159, 0.7);
+        }
+        .ev-activate-btn.is-vip:hover {
+            box-shadow: 0 16px 40px -14px rgba(74, 222, 159, 0.85);
+        }
+
+        /* Rejected-state accent */
+        .ev-sub-banner.is-rejected {
+            background: linear-gradient(135deg, #7a1a1a 0%, #0a1b2e 100%);
+        }
+        .ev-sub-banner.is-rejected .kicker { color: #fecaca; }
+        .ev-sub-banner.is-rejected .title .price { color: #fecaca; }
+
+        .ev-activate-btn.is-retry {
+            background: linear-gradient(135deg, #ff9b9b, #e03131);
+            color: #ffffff;
+            box-shadow: 0 12px 32px -12px rgba(224, 49, 49, 0.75);
+        }
+        .ev-activate-btn.is-retry:hover {
+            box-shadow: 0 16px 40px -14px rgba(224, 49, 49, 0.9);
+        }
+
+        .ev-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px; margin: 0 0 14px;
+            color: var(--text); letter-spacing: -0.01em;
+        }
+        .ev-section { margin-bottom: 32px; }
+
+        /* Quick actions */
+        .ev-quick {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 12px; margin-bottom: 32px;
+        }
+        .ev-quick-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 14px;
+            display: flex; flex-direction: column;
+            align-items: flex-start; gap: 10px;
+            transition: transform .15s, border-color .15s, box-shadow .15s;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-quick-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--emerald);
+            box-shadow: 0 12px 32px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-quick-card .qicon {
+            width: 40px; height: 40px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ev-quick-card .qicon svg { width: 20px; height: 20px; }
+        .ev-quick-card .qicon.mint { background: var(--mint-icon); color: var(--emerald-dark); }
+        .ev-quick-card .qicon.gold { background: var(--gold-icon); color: var(--gold); }
+        .ev-quick-card .qicon.blue { background: #e0f2fe; color: #0284c7; }
+        .ev-quick-card .qicon.violet { background: #ede9fe; color: #7c3aed; }
+        .ev-quick-card .qtitle {
+            font-size: 13.5px; font-weight: 600;
+            color: var(--text); line-height: 1.25;
+        }
+
+        /* Available tasks (Home panel) */
+        .ev-jobs {
+            display: grid; gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .ev-job {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+            transition: transform .15s, border-color .15s, box-shadow .15s;
+            cursor: pointer;
+        }
+        .ev-job:hover {
+            transform: translateY(-2px);
+            border-color: var(--emerald);
+            box-shadow: 0 12px 32px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-job .title {
+            font-weight: 700; font-size: 14px;
+            margin-bottom: 6px; color: var(--text);
+        }
+        .ev-job .desc {
+            color: var(--muted); font-size: 13px;
+            margin-bottom: 12px; line-height: 1.5;
+        }
+        .ev-job-actions {
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+        }
+        .ev-job .pay {
+            display: inline-block; font-size: 12px; font-weight: 700;
+            color: var(--emerald-dark);
+            background: var(--mint);
+            padding: 4px 10px; border-radius: 999px;
+            border: 1px solid rgba(18, 184, 134, 0.20);
+            white-space: nowrap;
+        }
+        .ev-claim-btn {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 12px; font-weight: 700;
+            color: #ffffff; background: var(--emerald-dark);
+            padding: 4px 12px; border-radius: 999px;
+            white-space: nowrap;
+            transition: background .15s, transform .15s, box-shadow .15s;
+            box-shadow: 0 4px 10px -6px rgba(18, 184, 134, 0.6);
+            border: 1px solid rgba(18, 184, 134, 0.25);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-claim-btn:hover {
+            background: var(--emerald-deep); transform: translateY(-1px);
+            box-shadow: 0 8px 18px -8px rgba(18, 184, 134, 0.7);
+        }
+        .ev-claim-btn svg {
+            width: 12px; height: 12px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ================= EARN PANEL ================= */
+        .ev-earn-head { margin-bottom: 20px; }
+        .ev-earn-head h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px; margin: 0 0 8px;
+            color: var(--text); letter-spacing: -0.02em;
+        }
+        .ev-earn-head p {
+            margin: 0; font-size: 14.5px;
+            color: var(--muted); line-height: 1.55;
+            max-width: 640px;
+        }
+        .ev-cat-chips {
+            display: flex; flex-wrap: wrap; gap: 8px;
+            margin-bottom: 22px;
+        }
+        .ev-chip {
+            display: inline-flex; align-items: center;
+            padding: 8px 16px; border-radius: 999px;
+            font-size: 13px; font-weight: 600;
+            color: var(--text); background: #ffffff;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+            transition: background .15s, border-color .15s, color .15s;
+            cursor: pointer;
+        }
+        .ev-chip:hover { border-color: var(--emerald); color: var(--emerald-dark); }
+        .ev-chip.active {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            border-color: transparent; color: #ffffff;
+            box-shadow: 0 8px 20px -10px rgba(18, 184, 134, 0.6);
+        }
+        .ev-jobs-grid {
+            display: grid; gap: 14px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 560px) { .ev-jobs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1000px) { .ev-jobs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+        .ev-job-card {
+            position: relative; background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px; padding: 20px;
+            display: flex; flex-direction: column; gap: 14px;
+            transition: transform .15s, border-color .15s, box-shadow .15s;
+        }
+        .ev-job-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(18, 184, 134, 0.4);
+            box-shadow: 0 12px 32px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-job-head { display: flex; align-items: flex-start; gap: 12px; }
+        .ev-job-head .jicon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: var(--mint-chip); color: var(--emerald-dark);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ev-job-head .jicon svg { width: 22px; height: 22px; }
+        .ev-job-head .jmeta { flex: 1; min-width: 0; }
+        .ev-job-head .jtitle {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15.5px; font-weight: 700;
+            color: var(--text); margin: 0 0 4px;
+            letter-spacing: -0.01em; line-height: 1.25;
+        }
+        .ev-job-head .jcat {
+            font-size: 12.5px; color: var(--muted); font-weight: 500;
+        }
+
+        /* Lock icon (top-right of each card) */
+        .ev-job-lock {
+            flex-shrink: 0;
+            width: 22px; height: 22px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--locked-text);
+        }
+        .ev-job-lock svg {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .ev-job-desc {
+            font-size: 14px; line-height: 1.55;
+            color: var(--muted); margin: 0;
+            padding-bottom: 14px; border-bottom: 1px solid var(--border);
+        }
+        .ev-job-foot {
+            display: flex; align-items: center;
+            justify-content: space-between; gap: 12px;
+        }
+        .ev-job-pay {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px; font-weight: 700;
+            color: var(--gold-text);
+            letter-spacing: -0.02em;
+        }
+        .ev-job-pay span { font-size: 14px; font-weight: 600; }
+
+        /* Claim button (Earn panel) */
+        .ev-job-claim-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 18px; border-radius: 999px;
+            font-size: 13px; font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            border: 1px solid rgba(18, 184, 134, 0.35);
+            white-space: nowrap;
+            box-shadow: 0 6px 16px -8px rgba(18, 184, 134, 0.7);
+            transition: background .15s, transform .15s, box-shadow .15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-job-claim-btn:hover {
+            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-deep));
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px -10px rgba(18, 184, 134, 0.85);
+        }
+        .ev-job-claim-btn svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ================= WALLET ================= */
+        .ev-panel-head { margin-bottom: 20px; }
+        .ev-panel-head h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px; margin: 0 0 8px;
+            color: var(--text); letter-spacing: -0.02em;
+        }
+        .ev-panel-head p {
+            margin: 0; font-size: 14.5px;
+            color: var(--muted); line-height: 1.55;
+            max-width: 640px;
+        }
+        .ev-wallet-tiles {
+            display: grid; gap: 14px;
+            grid-template-columns: 1fr;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 640px) { .ev-wallet-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        .ev-wallet-tile {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            transition: transform .15s, border-color .15s, box-shadow .15s;
+        }
+        .ev-wallet-tile:hover {
+            transform: translateY(-2px);
+            border-color: rgba(18, 184, 134, 0.35);
+            box-shadow: 0 12px 32px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-wallet-tile .icon {
+            width: 40px; height: 40px; border-radius: 12px;
+            background: var(--mint-icon); color: var(--emerald-dark);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .ev-wallet-tile .icon svg { width: 20px; height: 20px; }
+        .ev-wallet-tile .value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px; font-weight: 700;
+            color: var(--text); letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        .ev-wallet-tile .label {
+            color: var(--muted); font-size: 13px;
+            margin-top: 8px; font-weight: 500;
+        }
+        .ev-wallet-actions {
+            display: grid; gap: 14px;
+            grid-template-columns: 1fr;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 640px) { .ev-wallet-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        .ev-wallet-action {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            display: flex; align-items: flex-start; gap: 16px;
+            transition: transform .15s, border-color .15s, box-shadow .15s;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-wallet-action:hover {
+            transform: translateY(-2px);
+            border-color: rgba(18, 184, 134, 0.35);
+            box-shadow: 0 12px 32px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-wallet-action .wa-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: var(--mint-chip); color: var(--emerald-dark);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ev-wallet-action .wa-icon svg { width: 22px; height: 22px; }
+        .ev-wallet-action .wa-title {
+            display: flex; align-items: center; gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15.5px; font-weight: 700;
+            color: var(--text); margin: 0 0 6px;
+            letter-spacing: -0.01em;
+        }
+        .ev-wallet-action .wa-title svg.lock-icon {
+            width: 15px; height: 15px;
+            stroke: var(--locked-text); fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-wallet-action .wa-desc {
+            font-size: 13.5px; line-height: 1.55;
+            color: var(--muted); margin: 0;
+        }
+        .ev-wallet-banner {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 22px;
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: var(--muted);
+        }
+
+        /* ================= NOTIFICATIONS ================= */
+        .ev-notif-list {
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .ev-notif {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px 20px;
+            display: flex; align-items: flex-start; gap: 16px;
+            transition: border-color .15s, box-shadow .15s;
+        }
+        .ev-notif:hover {
+            border-color: rgba(18, 184, 134, 0.35);
+            box-shadow: 0 8px 22px -14px rgba(18, 184, 134, 0.35);
+        }
+        .ev-notif .n-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ev-notif .n-icon.gold { background: var(--gold-icon); color: var(--gold); }
+        .ev-notif .n-icon.mint { background: var(--mint-chip); color: var(--emerald-dark); }
+        .ev-notif .n-icon svg { width: 20px; height: 20px; }
+        .ev-notif .n-body { flex: 1; min-width: 0; }
+        .ev-notif .n-top {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 12px; margin-bottom: 6px; flex-wrap: wrap;
+        }
+        .ev-notif .n-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px; font-weight: 700;
+            color: var(--text); margin: 0;
+            letter-spacing: -0.01em;
+        }
+        .ev-notif .n-date {
+            font-size: 12.5px; color: var(--muted-2);
+            white-space: nowrap;
+        }
+        .ev-notif .n-desc {
+            font-size: 13.5px; line-height: 1.6;
+            color: var(--muted); margin: 0;
+        }
+
+        /* ---------- Notifications: CTA button ---------- */
+        .ev-notif .ev-notif-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 11px 20px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            box-shadow: 0 10px 22px -12px rgba(18, 184, 134, 0.7);
+            transition: transform .15s, box-shadow .15s;
+        }
+        .ev-notif .ev-notif-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px -14px rgba(18, 184, 134, 0.85);
+        }
+        .ev-notif .ev-notif-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        /* Links inside HTML-enabled notifications */
+        .ev-notif .n-desc a {
+            color: var(--emerald-dark);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        .ev-notif .n-desc ul,
+        .ev-notif .n-desc ol {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        .ev-notif .n-desc p {
+            margin: 0 0 10px;
+        }
+        .ev-notif .n-desc p:last-child { margin-bottom: 0; }
+        .ev-notif .n-desc strong { color: var(--text); font-weight: 700; }
+
+        /* ---------- Notifications: empty state ---------- */
+        .ev-notif-empty {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--muted);
+            font-size: 14px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .ev-notif-empty.hidden { display: none; }
+
+        /* ================= PROFILE ================= */
+        .ev-profile-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 22px;
+            flex-wrap: wrap;
+        }
+        .ev-profile-avatar {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .ev-profile-avatar .circle {
+            width: 96px; height: 96px; border-radius: 50%;
+            background: linear-gradient(135deg, #d3f9ec, #b8f0dd);
+            color: #0b6a52;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 30px; font-weight: 700;
+            letter-spacing: 0.02em;
+            border: 1px solid rgba(18, 184, 134, 0.25);
+        }
+        .ev-profile-avatar .edit-badge {
+            position: absolute;
+            right: -2px; bottom: -2px;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: var(--emerald);
+            color: #ffffff;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid #ffffff;
+            cursor: pointer;
+            transition: background .15s, transform .15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-profile-avatar .edit-badge:hover {
+            background: var(--emerald-dark); transform: scale(1.05);
+        }
+        .ev-profile-avatar .edit-badge svg {
+            width: 15px; height: 15px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-profile-id { flex: 1; min-width: 220px; }
+        .ev-profile-id h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px; font-weight: 700;
+            margin: 0 0 4px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        .ev-profile-id .handle {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 0 0 14px;
+        }
+        .ev-add-picture-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            transition: border-color .15s, background .15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-add-picture-btn:hover {
+            border-color: var(--emerald);
+            background: #f8fdfc;
+        }
+        .ev-add-picture-btn svg {
+            width: 15px; height: 15px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-account-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+        }
+        .ev-account-head {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 20px;
+        }
+        .ev-account-head svg {
+            width: 20px; height: 20px;
+            stroke: var(--emerald); fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-account-head h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 17px; font-weight: 700;
+            margin: 0; color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        .ev-account-grid {
+            display: grid; gap: 18px 32px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 640px) {
+            .ev-account-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        .ev-account-row {
+            display: flex; align-items: baseline;
+            justify-content: space-between; gap: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #f0f7f6;
+        }
+        .ev-account-row .k {
+            font-size: 13.5px;
+            color: var(--muted);
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        .ev-account-row .v {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            text-align: right;
+            word-break: break-word;
+            min-width: 0;
+        }
+        .ev-account-row .v.muted { color: var(--muted-2); }
+
+        /* Floating chat */
+        .ev-chat-fab {
+            position: fixed; right: 20px; bottom: 20px;
+            z-index: 80;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 22px; border-radius: 999px;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px; font-weight: 700;
+            letter-spacing: 0.01em;
+            box-shadow: 0 14px 32px -12px rgba(18, 184, 134, 0.7);
+            transition: transform .15s, box-shadow .15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ev-chat-fab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -14px rgba(18, 184, 134, 0.8);
+        }
+        .ev-chat-fab svg {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        @media (max-width: 719px) { .ev-chat-fab { bottom: 88px; } }
+
+        /* Bottom tab bar */
+        .ev-tabbar {
+            display: none;
+            position: fixed; left: 0; right: 0; bottom: 0;
+            z-index: 90; background: #ffffff;
+            border-top: 1px solid var(--border);
+            padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+            box-shadow: 0 -8px 24px -12px rgba(12, 30, 28, 0.15);
+        }
+        .ev-tabbar-inner {
+            display: grid; grid-template-columns: repeat(5, 1fr);
+            max-width: 640px; margin: 0 auto;
+        }
+        .ev-tab {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 4px; padding: 6px 4px; border-radius: 10px;
+            color: var(--muted); font-size: 11px; font-weight: 600;
+            transition: color .15s, background .15s;
+            position: relative; cursor: pointer;
+        }
+        .ev-tab svg {
+            width: 22px; height: 22px;
+            stroke: currentColor; fill: none;
+            stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-tab.active { color: var(--emerald-dark); }
+        .ev-tab.active::before {
+            content: ''; position: absolute; top: -8px; left: 50%;
+            transform: translateX(-50%);
+            width: 32px; height: 2.5px;
+            background: var(--emerald);
+            border-radius: 2px;
+        }
+        .ev-tab .tab-dot {
+            position: absolute;
+            top: 4px; right: calc(50% - 14px);
+            width: 8px; height: 8px;
+            background: var(--emerald);
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }
+
+        @media (max-width: 719px) {
+            .ev-tabbar { display: block; }
+            .ev-main { padding-bottom: 140px; }
+            .ev-greeting h1 { font-size: 28px; }
+            .ev-sub-banner { padding: 22px 22px; }
+            .ev-sub-banner .title { font-size: 24px; }
+        }
+
+        /* ================= GATE MODAL ================= */
+        .ev-gate-modal {
+            position: fixed; inset: 0;
+            z-index: 10000;
+            background: rgba(10, 27, 46, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .ev-gate-modal.open { display: flex; }
+        .ev-gate-inner {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow: 0 24px 60px -24px rgba(10, 27, 46, 0.35);
+            font-family: 'DM Sans', system-ui, sans-serif;
+        }
+        .ev-gate-close {
+            position: absolute;
+            top: 14px; right: 14px;
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background .15s, color .15s;
+        }
+        .ev-gate-close:hover { background: var(--mint); color: var(--emerald-dark); }
+
+        .ev-gate-icon {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(18, 184, 134, 0.12);
+            color: var(--emerald-dark);
+            margin: 0 auto 20px;
+        }
+        .ev-gate-icon svg { width: 26px; height: 26px; }
+
+        .ev-gate-inner h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 10px;
+            letter-spacing: -0.01em;
+        }
+        .ev-gate-inner p {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: var(--muted);
+            margin: 0 0 24px;
+        }
+        .ev-gate-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .ev-gate-btn-primary {
+            display: flex; align-items: center; justify-content: center;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--emerald), #20c997);
+            box-shadow: 0 10px 24px -12px rgba(18, 184, 134, 0.55);
+            transition: transform .15s;
+        }
+        .ev-gate-btn-primary:hover { transform: translateY(-1px); }
+        .ev-gate-btn-secondary {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: color .15s;
+        }
+        .ev-gate-btn-secondary:hover { color: var(--text); }
+
+        /* ================= VIP GROUP MODAL ================= */
+        .ev-vip-modal {
+            position: fixed; inset: 0;
+            z-index: 10001;
+            background: rgba(10, 27, 46, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .ev-vip-modal.open { display: flex; }
+
+        .ev-vip-inner {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            background: #ffffff;
+            border: 1px solid #e2eeec;
+            border-radius: 24px;
+            padding: 28px 26px 28px;
+            text-align: center;
+            box-shadow: 0 24px 60px -24px rgba(10, 27, 46, 0.45);
+            margin: auto;
+            animation: evVipPop .3s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes evVipPop {
+            from { transform: scale(.92); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        /* Close button — repositioned OUTSIDE the flyer, top-right */
+        .ev-vip-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0c1e1c;
+            background: #ffffff;
+            border: 1px solid rgba(12, 30, 28, 0.12);
+            cursor: pointer;
+            transition: background .15s, color .15s, transform .15s, box-shadow .15s;
+            z-index: 10;
+            box-shadow: 0 8px 20px -6px rgba(12, 30, 28, 0.35);
+        }
+        .ev-vip-close:hover {
+            background: #0c1e1c;
+            color: #ffffff;
+            transform: scale(1.08);
+            box-shadow: 0 10px 24px -6px rgba(12, 30, 28, 0.5);
+        }
+        .ev-vip-close svg {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* Flyer image — fade in when loaded to avoid a blank frame */
+        .ev-vip-flyer {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            border: 1px solid rgba(18, 184, 134, 0.2);
+            background: linear-gradient(135deg, #0a1b2e 0%, #071426 100%);
+            box-shadow: 0 12px 30px -18px rgba(18, 184, 134, 0.45);
+            aspect-ratio: 4 / 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ev-vip-flyer img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity .35s ease;
+        }
+        .ev-vip-flyer img.is-loaded {
+            opacity: 1;
+        }
+
+        .ev-vip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(240, 200, 92, 0.18), rgba(240, 200, 92, 0.08));
+            color: #a97a15;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(184, 134, 11, 0.35);
+            margin-bottom: 14px;
+        }
+        .ev-vip-badge svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .ev-vip-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0c1e1c;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
+        .ev-vip-title .accent { color: #12b886; }
+
+        .ev-vip-text {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: #6b8683;
+            margin: 0 0 16px;
+        }
+        .ev-vip-text strong { color: #0c1e1c; font-weight: 700; }
+
+        /* Launch date pill (inside VIP modal) */
+        .ev-vip-launch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(18, 184, 134, 0.12), rgba(34, 227, 227, 0.08));
+            border: 1px dashed rgba(18, 184, 134, 0.55);
+            margin: 0 0 20px;
+            text-align: left;
+        }
+        .ev-vip-launch .icon {
+            flex-shrink: 0;
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #12b886, #0ca678);
+            color: #ffffff;
+            box-shadow: 0 8px 20px -10px rgba(18, 184, 134, 0.75);
+        }
+        .ev-vip-launch .icon svg {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.4;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-vip-launch .text {
+            flex: 1;
+            min-width: 0;
+            line-height: 1.3;
+        }
+        .ev-vip-launch .text .label {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #0a8a63;
+            margin-bottom: 2px;
+        }
+        .ev-vip-launch .text .date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #0c1e1c;
+            letter-spacing: -0.01em;
+        }
+
+        .ev-vip-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #12b886, #0ca678);
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 14px 32px -14px rgba(18, 184, 134, 0.7);
+            transition: transform .15s, box-shadow .15s;
+        }
+        .ev-vip-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -16px rgba(18, 184, 134, 0.85);
+        }
+        .ev-vip-btn svg {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ================= REJECTION MODAL ================= */
+        .ev-reject-modal {
+            position: fixed; inset: 0;
+            z-index: 10002;
+            background: rgba(10, 27, 46, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .ev-reject-modal.open { display: flex; }
+
+        .ev-reject-inner {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            background: #ffffff;
+            border: 1px solid rgba(224, 49, 49, 0.2);
+            border-radius: 24px;
+            padding: 32px 28px 28px;
+            text-align: center;
+            box-shadow: 0 24px 60px -24px rgba(224, 49, 49, 0.4);
+            margin: auto;
+            animation: evVipPop .3s cubic-bezier(.4,0,.2,1);
+        }
+
+        .ev-reject-close {
+            position: absolute;
+            top: 14px; right: 14px;
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: #b02525;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background .15s, color .15s;
+            z-index: 2;
+        }
+        .ev-reject-close:hover { background: #fff5f5; color: #7a1a1a; }
+
+        .ev-reject-icon {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #ffe3e3, #ffd0d0);
+            color: #b02525;
+            margin: 0 auto 18px;
+            box-shadow: 0 14px 32px -14px rgba(224, 49, 49, 0.55);
+        }
+        .ev-reject-icon svg {
+            width: 36px; height: 36px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .ev-reject-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(224, 49, 49, 0.14), rgba(224, 49, 49, 0.06));
+            color: #b02525;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(224, 49, 49, 0.35);
+            margin-bottom: 14px;
+        }
+        .ev-reject-badge svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.4;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .ev-reject-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0c1e1c;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
+        .ev-reject-title .accent { color: #e03131; }
+
+        .ev-reject-text {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: #6b8683;
+            margin: 0 0 20px;
+        }
+        .ev-reject-text strong { color: #0c1e1c; font-weight: 700; }
+
+        .ev-reject-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .ev-reject-btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 22px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #e03131, #b02525);
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 14px 32px -14px rgba(224, 49, 49, 0.75);
+            transition: transform .15s, box-shadow .15s;
+        }
+        .ev-reject-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -16px rgba(224, 49, 49, 0.9);
+        }
+        .ev-reject-btn-primary svg {
+            width: 16px; height: 16px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-reject-btn-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: border-color .15s, background .15s;
+        }
+        .ev-reject-btn-secondary:hover {
+            border-color: #b02525;
+            background: #fff5f5;
+            color: #b02525;
+        }
+        .ev-reject-btn-secondary svg {
+            width: 16px; height: 16px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ================= LOGOUT CONFIRM MODAL ================= */
+        .ev-logout-modal {
+            position: fixed; inset: 0;
+            z-index: 20000;
+            background: rgba(10, 27, 46, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .ev-logout-modal.open { display: flex; }
+        .ev-logout-inner {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px 28px 26px;
+            text-align: center;
+            box-shadow: 0 24px 60px -24px rgba(10, 27, 46, 0.35);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            transform: scale(.92);
+            transition: transform .3s cubic-bezier(.4,0,.2,1);
+        }
+        .ev-logout-modal.open .ev-logout-inner {
+            transform: scale(1);
+        }
+        .ev-logout-icon {
+            width: 68px; height: 68px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--red-bg);
+            color: var(--red);
+            margin: 0 auto 18px;
+        }
+        .ev-logout-icon svg {
+            width: 30px; height: 30px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ev-logout-inner h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 8px;
+            letter-spacing: -0.01em;
+        }
+        .ev-logout-inner p {
+            font-size: 0.9375rem;
+            line-height: 1.55;
+            color: var(--muted);
+            margin: 0 0 24px;
+        }
+        .ev-logout-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .ev-logout-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 13px 18px;
+            border-radius: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            border: none;
+            cursor: pointer;
+            transition: transform .15s, box-shadow .15s;
+            color: #ffffff;
+        }
+        .ev-logout-btn.yes {
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            box-shadow: 0 10px 24px -12px rgba(224, 49, 49, 0.6);
+        }
+        .ev-logout-btn.yes:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 32px -14px rgba(224, 49, 49, 0.75);
+        }
+        .ev-logout-btn.no {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            box-shadow: 0 10px 24px -12px rgba(18, 184, 134, 0.6);
+        }
+        .ev-logout-btn.no:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 32px -14px rgba(18, 184, 134, 0.75);
+        }
+
+        @media (max-width: 480px) {
+            .ev-logout-inner { padding: 28px 22px 22px; }
+            .ev-logout-inner h3 { font-size: 1.1rem; }
+            .ev-logout-icon { width: 60px; height: 60px; margin-bottom: 14px; }
+            .ev-logout-icon svg { width: 26px; height: 26px; }
+
+            .ev-vip-inner { padding: 22px 20px 22px; }
+            .ev-vip-title { font-size: 1.15rem; }
+            .ev-vip-text { font-size: 0.875rem; }
+            .ev-vip-btn { font-size: 14px; padding: 14px 20px; }
+            .ev-vip-close { top: -12px; right: -12px; width: 36px; height: 36px; }
+
+            .ev-reject-inner { padding: 26px 22px 22px; }
+            .ev-reject-title { font-size: 1.15rem; }
+            .ev-reject-text { font-size: 0.875rem; }
+        }
+
+        /* Focus rings — keep for keyboard accessibility */
+        .ev-nav-item:focus-visible,
+        .ev-menu-btn:focus-visible,
+        .ev-icon-btn:focus-visible,
+        .ev-drawer-logout:focus-visible,
+        .ev-activate-btn:focus-visible,
+        .ev-tab:focus-visible,
+        .ev-quick-card:focus-visible,
+        .ev-chat-fab:focus-visible,
+        .ev-chip:focus-visible,
+        .ev-job-card:focus-visible,
+        .ev-job:focus-visible,
+        .ev-claim-btn:focus-visible,
+        .ev-job-claim-btn:focus-visible,
+        .ev-wallet-action:focus-visible,
+        .ev-add-picture-btn:focus-visible,
+        .ev-gate-close:focus-visible,
+        .ev-gate-btn-primary:focus-visible,
+        .ev-gate-btn-secondary:focus-visible,
+        .ev-vip-close:focus-visible,
+        .ev-vip-btn:focus-visible,
+        .ev-reject-close:focus-visible,
+        .ev-reject-btn-primary:focus-visible,
+        .ev-reject-btn-secondary:focus-visible,
+        .ev-status-pill .see-more:focus-visible,
+        .ev-logout-btn:focus-visible {
+            outline: 2px solid var(--emerald);
+            outline-offset: 2px;
+        }
+        .ev-status-pill.rejected .see-more:focus-visible {
+            outline-color: var(--red);
+        }
+
+        /* ============================================================
+           GLOBAL CLICK-HIGHLIGHT DISABLE
+           ============================================================ */
+        html, body, * {
+            -webkit-tap-highlight-color: transparent !important;
+        }
+
+        .ev-menu-btn:hover,
+        .ev-icon-btn:hover,
+        .ev-nav-item:hover,
+        .ev-nav-item.active:hover,
+        .ev-drawer-logout:hover,
+        .ev-quick-card:hover,
+        .ev-claim-btn:hover,
+        .ev-job-claim-btn:hover,
+        .ev-card:hover,
+        .ev-job:hover,
+        .ev-job-card:hover,
+        .ev-wallet-tile:hover,
+        .ev-wallet-action:hover,
+        .ev-notif:hover,
+        .ev-chip:hover,
+        .ev-edit-badge:hover,
+        .edit-badge:hover,
+        .ev-add-picture-btn:hover,
+        .ev-chat-fab:hover,
+        .ev-activate-btn:hover,
+        .ev-gate-close:hover,
+        .ev-gate-btn-primary:hover,
+        .ev-gate-btn-secondary:hover,
+        .ev-vip-close:hover,
+        .ev-vip-btn:hover,
+        .ev-reject-close:hover,
+        .ev-reject-btn-primary:hover,
+        .ev-reject-btn-secondary:hover,
+        .ev-status-pill .see-more:hover {
+            background: inherit !important;
+            color: inherit !important;
+            transform: none !important;
+            border-color: inherit !important;
+            box-shadow: none !important;
+            transition: none !important;
+        }
+
+        .ev-menu-btn:hover,
+        .ev-icon-btn:hover {
+            background: transparent !important;
+            color: var(--text) !important;
+        }
+        .ev-nav-item:hover,
+        .ev-nav-item.active:hover {
+            background: transparent !important;
+            color: #2c4a46 !important;
+        }
+        .ev-nav-item.active:hover {
+            background: var(--mint) !important;
+            color: var(--emerald-dark) !important;
+        }
+        .ev-drawer-logout:hover {
+            background: transparent !important;
+            color: #c92a2a !important;
+        }
+        .ev-quick-card:hover {
+            background: var(--card) !important;
+            transform: none !important;
+            border-color: var(--border) !important;
+            box-shadow: none !important;
+        }
+        .ev-claim-btn:hover {
+            background: var(--emerald-dark) !important;
+            color: #ffffff !important;
+            transform: none !important;
+            box-shadow: 0 4px 10px -6px rgba(18, 184, 134, 0.6) !important;
+            border-color: rgba(18, 184, 134, 0.25) !important;
+        }
+        .ev-job-claim-btn:hover {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark)) !important;
+            color: #ffffff !important;
+            transform: none !important;
+            box-shadow: 0 6px 16px -8px rgba(18, 184, 134, 0.7) !important;
+            border-color: rgba(18, 184, 134, 0.35) !important;
+        }
+        .ev-card:hover,
+        .ev-job:hover,
+        .ev-job-card:hover,
+        .ev-wallet-tile:hover,
+        .ev-wallet-action:hover {
+            background: var(--card) !important;
+            transform: none !important;
+            border-color: var(--border) !important;
+            box-shadow: none !important;
+        }
+        .ev-job-card:hover {
+            border-color: var(--border) !important;
+        }
+        .ev-chip:hover {
+            background: #ffffff !important;
+            color: var(--text) !important;
+            border-color: var(--border) !important;
+        }
+        .ev-chip.active:hover {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark)) !important;
+            color: #ffffff !important;
+            border-color: transparent !important;
+        }
+        .edit-badge:hover,
+        .ev-edit-badge:hover {
+            background: var(--emerald) !important;
+            transform: none !important;
+        }
+        .ev-add-picture-btn:hover {
+            background: #ffffff !important;
+            border-color: var(--border) !important;
+            color: var(--text) !important;
+        }
+        .ev-chat-fab:hover {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark)) !important;
+            color: #ffffff !important;
+            transform: none !important;
+            box-shadow: 0 14px 32px -12px rgba(18, 184, 134, 0.7) !important;
+        }
+        .ev-activate-btn:hover {
+            background: linear-gradient(135deg, #22e3e3, #12b8b8) !important;
+            color: #04121a !important;
+            transform: none !important;
+            box-shadow: 0 12px 32px -12px rgba(34, 227, 227, 0.6) !important;
+        }
+        .ev-activate-btn.is-vip:hover {
+            background: linear-gradient(135deg, #4ade9f, #00e5ff) !important;
+            color: #04121a !important;
+            box-shadow: 0 12px 32px -12px rgba(74, 222, 159, 0.7) !important;
+        }
+        .ev-activate-btn.is-retry:hover {
+            background: linear-gradient(135deg, #ff9b9b, #e03131) !important;
+            color: #ffffff !important;
+            box-shadow: 0 12px 32px -12px rgba(224, 49, 49, 0.75) !important;
+        }
+        .ev-gate-close:hover {
+            background: transparent !important;
+            color: var(--muted) !important;
+        }
+        .ev-gate-btn-primary:hover {
+            transform: none !important;
+        }
+        .ev-gate-btn-secondary:hover {
+            color: var(--muted) !important;
+        }
+        .ev-vip-close:hover {
+            background: #0c1e1c !important;
+            color: #ffffff !important;
+            transform: none !important;
+            box-shadow: 0 8px 20px -6px rgba(12, 30, 28, 0.35) !important;
+        }
+        .ev-vip-btn:hover {
+            background: linear-gradient(135deg, #12b886, #0ca678) !important;
+            color: #ffffff !important;
+            transform: none !important;
+            box-shadow: 0 14px 32px -14px rgba(18, 184, 134, 0.7) !important;
+        }
+        .ev-reject-close:hover {
+            background: transparent !important;
+            color: #b02525 !important;
+        }
+        .ev-reject-btn-primary:hover {
+            background: linear-gradient(135deg, #e03131, #b02525) !important;
+            color: #ffffff !important;
+            transform: none !important;
+            box-shadow: 0 14px 32px -14px rgba(224, 49, 49, 0.75) !important;
+        }
+        .ev-reject-btn-secondary:hover {
+            background: #ffffff !important;
+            border-color: var(--border) !important;
+            color: var(--text) !important;
+        }
+        .ev-status-pill .see-more:hover {
+            background: #ffffff !important;
+            color: #0c1e1c !important;
+            transform: none !important;
+            border-color: rgba(12, 30, 28, 0.08) !important;
+            box-shadow: none !important;
+        }
+        .ev-status-pill.rejected .see-more:hover {
+            color: #b02525 !important;
+            border-color: rgba(224, 49, 49, 0.18) !important;
+        }
+
+        .ev-menu-btn:active,
+        .ev-icon-btn:active,
+        .ev-nav-item:active,
+        .ev-drawer-logout:active,
+        .ev-quick-card:active,
+        .ev-claim-btn:active,
+        .ev-job-claim-btn:active,
+        .ev-card:active,
+        .ev-job:active,
+        .ev-job-card:active,
+        .ev-wallet-tile:active,
+        .ev-wallet-action:active,
+        .ev-chip:active,
+        .edit-badge:active,
+        .ev-add-picture-btn:active,
+        .ev-chat-fab:active,
+        .ev-activate-btn:active,
+        .ev-tab:active,
+        .ev-status-pill .see-more:active {
+            transform: none !important;
+        }
+
+        *:focus:not(:focus-visible) {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body style="">
+
+<!-- Drawer backdrop -->
+<div class="ev-drawer-backdrop" id="ev-drawer-backdrop"></div>
+
+<!-- Drawer -->
+<aside class="ev-drawer" id="ev-drawer" aria-hidden="true" role="navigation" aria-label="Main navigation">
+    <div class="ev-drawer-brand">
+        <img src="assets/images/evermore-mark.png" alt="Evermore">
+        <span>ever<span class="accent">more</span></span>
+    </div>
+
+    <nav class="ev-drawer-nav">
+        <a href="dashboard.html#" class="ev-nav-item active" data-tab="home" data-nav="dashboard">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            <span>Dashboard</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="earn" data-nav="tasks">
+            <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path></svg>
+            <span>Tasks</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-nav="earnings" data-no-nav="true">
+            <svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="15 7 21 7 21 13"></polyline></svg>
+            <span>Earnings</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="wallet" data-nav="wallet">
+            <svg viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>
+            <span>Wallet</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-nav="withdraw" data-no-nav="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2v14"></path><polyline points="6 10 12 16 18 10"></polyline><path d="M3 20h18"></path></svg>
+            <span>Withdraw</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-nav="subscription" data-no-nav="true">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18l-2-8-4 4-3-6-3 6-4-4-2 8z"></path><circle cx="12" cy="4" r="1.5"></circle></svg>
+            <span>Subscription</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-nav="referrals" data-no-nav="true">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"></path><circle cx="18" cy="8" r="2.5"></circle><path d="M22 21v-1.5a4 4 0 0 0-3-3.87"></path></svg>
+            <span>Referrals</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="alerts" data-nav="notifications">
+            <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+            <span>Notifications</span>
+            <span class="badge-dot" aria-label="Unread"></span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-nav="messages" data-no-nav="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="14" y2="13"></line></svg>
+            <span>Messages</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="profile" data-nav="profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"></path></svg>
+            <span>Profile</span>
+        </a>
+
+        <div class="ev-nav-divider"></div>
+
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="transactions" data-nav="transactions">
+            <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><polyline points="3 3 3 8 8 8"></polyline><polyline points="12 7 12 12 15 14"></polyline></svg>
+            <span>Transactions</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="settings" data-nav="settings">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+            <span>Settings</span>
+        </a>
+        <a href="dashboard.html#" class="ev-nav-item" data-tab="help" data-nav="help">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4"></path><line x1="12" y1="17" x2="12" y2="17.01"></line></svg>
+            <span>Help &amp; Support</span>
+        </a>
+    </nav>
+
+    <div class="ev-drawer-user">
+        <div class="avatar" id="ev-drawer-avatar">JK</div>
+        <div class="info">
+            <strong id="ev-drawer-name">Jay Kay</strong>
+            <small id="ev-drawer-handle">@JayKay</small>
+        </div>
+    </div>
+
+    <button class="ev-drawer-logout" id="ev-drawer-logout" type="button">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+    </button>
+</aside>
+
+<!-- Header -->
+<header class="ev-header">
+    <div class="ev-header-inner">
+        <div class="ev-header-left">
+            <button class="ev-menu-btn" id="ev-menu-btn" aria-label="Open menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <a class="ev-logo" href="index.html">
+                <img src="assets/images/evermore-mark.png" alt="Evermore">
+                <span>ever<span class="accent">more</span></span>
+            </a>
+        </div>
+        <div class="ev-header-right">
+            <button class="ev-icon-btn" id="ev-notif-btn" type="button" aria-label="Open notifications">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                <span class="dot"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main class="ev-main">
+
+    <!-- ================= HOME ================= -->
+    <section class="ev-panel active" id="panel-home">
+        <div class="ev-greeting">
+            <h1>Welcome back, <span class="name" id="ev-firstname">Jay</span></h1>
+
+            <!-- Pending-state paragraph (default) -->
+            <p id="ev-greeting-pending">Your account is registered. One more step — activate your subscription to move toward full access.</p>
+
+            <!-- Compact status pill — Active state -->
+            <div class="ev-status-pill active hidden" id="ev-status-active">
+                <span class="status-tag">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                    Account Activated
+                </span>
+                <button type="button" class="see-more" onclick="openSuccessModal()" aria-label="See more about your activation">
+                    See More
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Compact status pill — Rejected state -->
+            <div class="ev-status-pill rejected hidden" id="ev-status-rejected">
+                <span class="status-tag">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    Payment Rejected
+                </span>
+                <button type="button" class="see-more" onclick="openRejectModal()" aria-label="See more about your payment status">
+                    See More
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <section class="ev-grid">
+            <div class="ev-card">
+                <div class="icon mint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path><path d="M6 14h4"></path></svg>
+                </div>
+                <div class="value emerald">₦23,650</div>
+                <div class="label">Welcome Bonus</div>
+            </div>
+            <div class="ev-card">
+                <div class="icon gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="15 7 21 7 21 13"></polyline></svg>
+                </div>
+                <div class="value">₦11,260</div>
+                <div class="label">AI Earnings</div>
+            </div>
+            <div class="ev-card">
+                <div class="icon gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="value">₦34,910</div>
+                <div class="label">Total Pending</div>
+            </div>
+            <div class="ev-card">
+                <div class="icon emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div class="value">6</div>
+                <div class="label">Pending Tasks</div>
+            </div>
+        </section>
+
+        <!-- Subscription banner — content is dynamically swapped for Active / Rejected users -->
+        <section class="ev-sub-banner" id="ev-sub-banner" aria-label="Subscription">
+            <div class="rings" aria-hidden="true"></div>
+            <div class="sub-inner">
+                <p class="kicker" id="ev-sub-kicker">EVER AI PREMIUM SUBSCRIPTION</p>
+                <h2 class="title" id="ev-sub-title"><span class="price">₦14,850</span><span class="term">1 year (12 months)</span></h2>
+                <p class="desc" id="ev-sub-desc">Activation is reviewed and approved by our team right after your payment is verified.</p>
+            </div>
+            <a class="ev-activate-btn" id="ev-sub-cta" href="payment.html">
+                <span id="ev-sub-cta-label">ACTIVATE ACCOUNT</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+        </section>
+
+        <section aria-labelledby="quick-actions-title">
+            <h2 class="ev-section-title" id="quick-actions-title">Quick actions</h2>
+            <div class="ev-quick">
+                <a class="ev-quick-card" data-tab-link="earn" href="dashboard.html#">
+                    <div class="qicon mint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path></svg>
+                    </div>
+                    <div class="qtitle">Find tasks</div>
+                </a>
+                <a class="ev-quick-card" data-tab-link="wallet" href="dashboard.html#">
+                    <div class="qicon blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v14"></path><polyline points="6 10 12 16 18 10"></polyline><path d="M3 20h18"></path></svg>
+                    </div>
+                    <div class="qtitle">Withdraw funds</div>
+                </a>
+                <a class="ev-quick-card" data-gate="true" href="dashboard.html#">
+                    <div class="qicon gold">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"></path><circle cx="18" cy="8" r="2.5"></circle><path d="M22 21v-1.5a4 4 0 0 0-3-3.87"></path></svg>
+                    </div>
+                    <div class="qtitle">Refer a friend</div>
+                </a>
+                <a class="ev-quick-card" data-gate="true" href="dashboard.html#">
+                    <div class="qicon violet">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4"></path><line x1="12" y1="17" x2="12" y2="17.01"></line></svg>
+                    </div>
+                    <div class="qtitle">Get help</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="ev-section" aria-labelledby="available-tasks-title">
+            <h2 class="ev-section-title" id="available-tasks-title">Available tasks</h2>
+            <div class="ev-jobs">
+                <div class="ev-job">
+                    <div class="title">Rate EverAI Responses</div>
+                    <div class="desc">Review EverAI's responses and rate them good or bad.</div>
+                    <div class="ev-job-actions">
+                        <span class="pay">Up to $16.2/hr</span>
+                        <button type="button" class="ev-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+                <div class="ev-job">
+                    <div class="title">Correct EverAI Memory</div>
+                    <div class="desc">Answer simple questions that improve EverAI's memory.</div>
+                    <div class="ev-job-actions">
+                        <span class="pay">Up to $18.6/hr</span>
+                        <button type="button" class="ev-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+                <div class="ev-job">
+                    <div class="title">Opinion &amp; Survey Tasks</div>
+                    <div class="desc">Share your honest opinion on products and content.</div>
+                    <div class="ev-job-actions">
+                        <span class="pay">Up to $17.2/hr</span>
+                        <button type="button" class="ev-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+                <div class="ev-job">
+                    <div class="title">Audio Transcription</div>
+                    <div class="desc">Type out short audio recordings.</div>
+                    <div class="ev-job-actions">
+                        <span class="pay">Up to $12/hr</span>
+                        <button type="button" class="ev-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+                <div class="ev-job">
+                    <div class="title">AI Content Rating</div>
+                    <div class="desc">Rate AI-generated content for quality.</div>
+                    <div class="ev-job-actions">
+                        <span class="pay">Up to $14.6/hr</span>
+                        <button type="button" class="ev-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+                <div class="ev-job">
+                    <div class="title">Click n Earn</div>
+                    <div class="desc">Complete simple online activities.</div>
+                    <div class="ev-job-actions">
+                        <span class="pay">Up to $12.3/hr</span>
+                        <button type="button" class="ev-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ================= EARN ================= -->
+    <section class="ev-panel" id="panel-earn">
+        <div class="ev-earn-head">
+            <h2>AI Remote Jobs</h2>
+            <p>Remote job categories are locked until your activation is approved and the waiting period completes. Earning potential up to $19.20/hr.</p>
+        </div>
+
+        <div class="ev-cat-chips" role="tablist" aria-label="Job categories">
+            <button type="button" class="ev-chip active" data-cat="all">All categories</button>
+            <button type="button" class="ev-chip" data-cat="rate">Rate EverAI Responses</button>
+            <button type="button" class="ev-chip" data-cat="correct">Correct EverAI Memory</button>
+            <button type="button" class="ev-chip" data-cat="opinion">Opinion &amp; Survey Tasks</button>
+            <button type="button" class="ev-chip" data-cat="audio">Audio Transcription</button>
+            <button type="button" class="ev-chip" data-cat="content">AI Content Rating</button>
+            <button type="button" class="ev-chip" data-cat="click">Click n Earn</button>
+            <button type="button" class="ev-chip" data-cat="survey">Survey &amp; Opinion Tasks</button>
+        </div>
+
+        <div class="ev-jobs-grid">
+
+            <article class="ev-job-card" data-cat="rate">
+                <div class="ev-job-head">
+                    <div class="jicon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m10 9 4 3-4 3z" fill="currentColor" stroke="none"></path></svg>
+                    </div>
+                    <div class="jmeta">
+                        <h3 class="jtitle">Rate EverAI Responses</h3>
+                        <div class="jcat">EverAI Tasks</div>
+                    </div>
+                    <div class="ev-job-lock" aria-label="Locked">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                </div>
+                <p class="ev-job-desc">Review EverAI's responses and rate whether the response is good or bad.</p>
+                <div class="ev-job-foot">
+                    <div class="ev-job-pay">$16.20<span>/hr</span></div>
+                    <button type="button" class="ev-job-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </article>
+
+            <article class="ev-job-card" data-cat="correct">
+                <div class="ev-job-head">
+                    <div class="jicon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                    </div>
+                    <div class="jmeta">
+                        <h3 class="jtitle">Correct EverAI Memory</h3>
+                        <div class="jcat">EverAI Tasks</div>
+                    </div>
+                    <div class="ev-job-lock" aria-label="Locked">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                </div>
+                <p class="ev-job-desc">Answer simple questions that help correct and improve EverAI's memory.</p>
+                <div class="ev-job-foot">
+                    <div class="ev-job-pay">$18.60<span>/hr</span></div>
+                    <button type="button" class="ev-job-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </article>
+
+            <article class="ev-job-card" data-cat="opinion">
+                <div class="ev-job-head">
+                    <div class="jicon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg>
+                    </div>
+                    <div class="jmeta">
+                        <h3 class="jtitle">Opinion &amp; Survey Tasks</h3>
+                        <div class="jcat">EverAI Tasks</div>
+                    </div>
+                    <div class="ev-job-lock" aria-label="Locked">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                </div>
+                <p class="ev-job-desc">Share your honest opinion by completing simple survey and opinion tasks.</p>
+                <div class="ev-job-foot">
+                    <div class="ev-job-pay">$17.20<span>/hr</span></div>
+                    <button type="button" class="ev-job-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </article>
+
+            <article class="ev-job-card" data-cat="audio">
+                <div class="ev-job-head">
+                    <div class="jicon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg>
+                    </div>
+                    <div class="jmeta">
+                        <h3 class="jtitle">Audio Transcription</h3>
+                        <div class="jcat">Remote Opportunities</div>
+                    </div>
+                    <div class="ev-job-lock" aria-label="Locked">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                </div>
+                <p class="ev-job-desc">Type out short recordings.</p>
+                <div class="ev-job-foot">
+                    <div class="ev-job-pay">$12<span>/hr</span></div>
+                    <button type="button" class="ev-job-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </article>
+
+            <article class="ev-job-card" data-cat="content">
+                <div class="ev-job-head">
+                    <div class="jicon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <div class="jmeta">
+                        <h3 class="jtitle">AI Content Rating</h3>
+                        <div class="jcat">Remote Opportunities</div>
+                    </div>
+                    <div class="ev-job-lock" aria-label="Locked">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                </div>
+                <p class="ev-job-desc">Rate AI-generated content.</p>
+                <div class="ev-job-foot">
+                    <div class="ev-job-pay">$14.60<span>/hr</span></div>
+                    <button type="button" class="ev-job-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </article>
+
+            <article class="ev-job-card" data-cat="click">
+                <div class="ev-job-head">
+                    <div class="jicon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.1 12 6"></path><path d="m5.1 8-2.9-.8"></path><path d="m6 12-1.9 2"></path><path d="M7.2 2.2 8 5.1"></path><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"></path></svg>
+                    </div>
+                    <div class="jmeta">
+                        <h3 class="jtitle">Click n Earn</h3>
+                        <div class="jcat">Remote Opportunities</div>
+                    </div>
+                    <div class="ev-job-lock" aria-label="Locked">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                </div>
+                <p class="ev-job-desc">Complete simple online activities.</p>
+                <div class="ev-job-foot">
+                    <div class="ev-job-pay">$12.30<span>/hr</span></div>
+                    <button type="button" class="ev-job-claim-btn" data-gate="true">Claim <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ================= WALLET ================= -->
+    <section class="ev-panel" id="panel-wallet">
+        <div class="ev-panel-head">
+            <h2>Wallet</h2>
+            <p>Your wallet is prepared. Balances activate once your earning access unlocks.</p>
+        </div>
+
+        <div class="ev-wallet-tiles">
+            <div class="ev-wallet-tile">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path><path d="M6 14h4"></path></svg>
+                </div>
+                <div class="value">₦23,650</div>
+                <div class="label">Welcome Bonus</div>
+            </div>
+
+
+            <div class="ev-wallet-tile">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="15 7 21 7 21 13"></polyline></svg>
+                </div>
+                <div class="value">₦11,260</div>
+                <div class="label">AI Earnings</div>
+            </div>
+
+
+            <div class="ev-wallet-tile">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="value">₦34,910</div>
+                <div class="label">Total Pending</div>
+            </div>
+
+        </div>
+
+        <div class="ev-wallet-actions">
+            <div class="ev-wallet-action" data-gate="true" role="button" tabindex="0">
+                <div class="wa-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v14"></path><polyline points="6 10 12 16 18 10"></polyline><path d="M3 20h18"></path></svg>
+                </div>
+                <div>
+                    <h3 class="wa-title">
+                        Withdraw funds
+                        <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </h3>
+                    <p class="wa-desc">Withdrawals open when your account is fully unlocked.</p>
+                </div>
+            </div>
+
+            <div class="ev-wallet-action" data-gate="true" role="button" tabindex="0">
+                <div class="wa-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><polyline points="3 3 3 8 8 8"></polyline><polyline points="12 7 12 12 15 14"></polyline></svg>
+                </div>
+                <div>
+                    <h3 class="wa-title">Transaction history</h3>
+                    <p class="wa-desc">Review your subscription payments and payouts.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ev-wallet-banner">
+            Payouts are processed by the EVERMORE finance team after work is verified through your personal agent. Withdrawal requests open automatically once your earning access is live.
+        </div>
+    </section>
+
+    <!-- ================= ALERTS / NOTIFICATIONS ================= -->
+    <section class="ev-panel" id="panel-alerts">
+        <div class="ev-panel-head">
+            <h2>Notifications</h2>
+            <p>Account updates, payment confirmations and platform announcements.</p>
+        </div>
+
+        <!-- The list is intentionally empty — every notification is injected
+             by renderNotifications() from Firebase notifications. -->
+        <div class="ev-notif-list" id="ev-notif-list"><article class="ev-notif"><div class="n-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></div><div class="n-body"><div class="n-top"><h3 class="n-title">Welcome to EVERMORE</h3><span class="n-date">Sept 25, 2026</span></div><div class="n-desc">Hi Jay, your Evermore account is ready. One last step, activate your Premium Subscription to unlock your dashboard, access AI earning tasks, and start cashing out.<br><br>Don't wait: activation takes less than a minute.</div><a class="ev-notif-btn" href="payment.html">Activate My Account<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></div></article></div>
+
+        <div class="ev-notif-empty hidden" id="ev-notif-empty">
+            You have no new notifications.
+        </div>
+    </section>
+
+    <!-- ================= PROFILE ================= -->
+    <section class="ev-panel" id="panel-profile">
+        <div class="ev-panel-head">
+            <h2>Profile</h2>
+            <p>Your identity on EVERMORE — keep it updated.</p>
+        </div>
+
+        <div class="ev-profile-card">
+            <div class="ev-profile-avatar">
+                <div class="circle" id="ev-profile-initials">JK</div>
+                <button class="edit-badge" type="button" aria-label="Edit profile picture" data-gate="true">
+                    <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                </button>
+            </div>
+            <div class="ev-profile-id">
+                <h3 id="ev-profile-fullname">Jay Kay</h3>
+                <p class="handle" id="ev-profile-handle">@JayKay</p>
+                <button type="button" class="ev-add-picture-btn" data-gate="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                        <circle cx="12" cy="13" r="3"></circle>
+                    </svg>
+                    Add profile picture
+                </button>
+            </div>
+        </div>
+
+        <div class="ev-account-card">
+            <div class="ev-account-head">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <h3>Account details</h3>
+            </div>
+
+            <div class="ev-account-grid">
+                <div class="ev-account-row">
+                    <span class="k">Full name</span>
+                    <span class="v" id="ev-p-fullname">Jay Kay</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Username</span>
+                    <span class="v" id="ev-p-username">@JayKay</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Email</span>
+                    <span class="v" id="ev-p-email">sbshitt99@gmail.com</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Phone</span>
+                    <span class="v" id="ev-p-phone">09166785144</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Subscription</span>
+                    <span class="v">Premium</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Account status</span>
+                    <span class="v" id="ev-p-account-status" data-account-status="Payment Pending">Payment Pending</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Referral ID</span>
+                    <span class="v muted" id="ev-p-referral">—</span>
+                </div>
+                <div class="ev-account-row">
+                    <span class="k">Member since</span>
+                    <span class="v" id="ev-p-member-since">25 Sept 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TRANSACTIONS (fallback) ================= -->
+    <section class="ev-panel" id="panel-transactions">
+        <div class="ev-panel-head">
+            <h2>Transactions</h2>
+            <p>Your transaction history will show up here once you start earning and withdrawing.</p>
+        </div>
+    </section>
+
+    <!-- ================= SETTINGS (fallback) ================= -->
+    <section class="ev-panel" id="panel-settings">
+        <div class="ev-panel-head">
+            <h2>Settings</h2>
+            <p>Account preferences, security and notification options will be available here.</p>
+        </div>
+    </section>
+
+    <!-- ================= HELP (fallback) ================= -->
+    <section class="ev-panel" id="panel-help">
+        <div class="ev-panel-head">
+            <h2>Help &amp; Support</h2>
+            <p>Reach our team anytime through the Chat Support button in the corner, or message your agent on Telegram.</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- Floating chat -->
+<button class="ev-chat-fab" type="button" aria-label="Chat support" data-gate="true">
+    <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+    Chat Support
+</button>
+
+<!-- Bottom tab bar -->
+<nav class="ev-tabbar" aria-label="Primary navigation">
+    <div class="ev-tabbar-inner">
+        <button type="button" class="ev-tab active" data-tab="home">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            <span>Home</span>
+        </button>
+        <button type="button" class="ev-tab" data-tab="earn">
+            <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path></svg>
+            <span>Earn</span>
+        </button>
+        <button type="button" class="ev-tab" data-tab="wallet">
+            <svg viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>
+            <span>Wallet</span>
+        </button>
+        <button type="button" class="ev-tab" data-tab="alerts">
+            <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+            <span>Alerts</span>
+            <span class="tab-dot" aria-label="Unread"></span>
+        </button>
+        <button type="button" class="ev-tab" data-tab="profile">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"></path></svg>
+            <span>Profile</span>
+        </button>
+    </div>
+</nav>
+
+<!-- ================= GATE MODAL ================= -->
+<div id="gateModal" class="ev-gate-modal" role="dialog" aria-modal="true" aria-labelledby="gateModalTitle">
+    <div class="ev-gate-inner">
+        <button type="button" onclick="closeGate()" class="ev-gate-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="ev-gate-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+        </div>
+        <h3 id="gateModalTitle">Access restricted</h3>
+        <p>Please activate your Evermore Premium Subscription to access this section as a registered member.</p>
+        <div class="ev-gate-actions">
+            <a href="payment.html" class="ev-gate-btn-primary">Activate now</a>
+            <button type="button" onclick="closeGate()" class="ev-gate-btn-secondary">Back to dashboard</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= VIP GROUP MODAL (shown when account is Active) ================= -->
+<div id="vipModal" class="ev-vip-modal" role="dialog" aria-modal="true" aria-labelledby="vipModalTitle">
+    <div class="ev-vip-inner">
+        <button type="button" onclick="closeVip()" class="ev-vip-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Flyer -->
+        <div class="ev-vip-flyer">
+            <img src="assets/images/IMG-20260904-WA0002.jpg" alt="EVERMORE VIP Group — Join the exclusive members community" onload="this.classList.add('is-loaded')" class="is-loaded">
+        </div>
+
+        <!-- Badge -->
+        <div class="ev-vip-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2 3 7v6c0 5 3.5 8.5 9 9 5.5-.5 9-4 9-9V7l-9-5z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            Verified Member
+        </div>
+
+        <!-- Title -->
+        <h3 id="vipModalTitle" class="ev-vip-title">
+            Your account is <span class="accent">Active!</span>
+        </h3>
+
+        <!-- Text -->
+        <p class="ev-vip-text">
+            Congratulations — your activation has been approved. Join the exclusive <strong>EVERMORE VIP Group</strong> on Telegram to stay updated with launch-day info and priority payouts.
+        </p>
+
+        <!-- Official launch date -->
+        <div class="ev-vip-launch" role="note" aria-label="Official launch date">
+            <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+            </div>
+            <div class="text">
+                <span class="label">Official Launch</span>
+                <span class="date">28th September 2026</span>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <a href="https://t.me/evermoreai_platform" target="_blank" rel="noopener" class="ev-vip-btn">
+            Join VIP Group
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<!-- ================= REJECTION MODAL (shown when payment was rejected) ================= -->
+<div id="rejectModal" class="ev-reject-modal" role="dialog" aria-modal="true" aria-labelledby="rejectModalTitle">
+    <div class="ev-reject-inner">
+        <button type="button" onclick="closeRejectModal()" class="ev-reject-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="ev-reject-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+        </div>
+
+        <div class="ev-reject-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            Payment Not Verified
+        </div>
+
+        <h3 id="rejectModalTitle" class="ev-reject-title">
+            Your payment was <span class="accent">rejected</span>
+        </h3>
+
+        <p class="ev-reject-text">
+            Unfortunately, we couldn't verify the payment receipt you submitted. This usually happens due to:
+        </p>
+
+        <ul style="text-align: left; font-size: 0.875rem; color: #6b8683; line-height: 1.7; margin: 0 0 20px; padding-left: 20px;">
+            <li>Blurry or incomplete receipt image</li>
+            <li>Wrong amount transferred</li>
+            <li>Payment sent to an incorrect account</li>
+            <li>Mismatched account name</li>
+        </ul>
+
+        <p class="ev-reject-text">
+            Please <strong>retry the payment</strong> and upload a clear receipt. For help, reach out to our support team via email.
+        </p>
+
+        <div class="ev-reject-actions">
+            <a href="payment.html" class="ev-reject-btn-primary">
+                Retry Payment
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                </svg>
+            </a>
+            <a href="" class="ev-reject-btn-secondary">
+                Contact Support
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ================= LOGOUT CONFIRM MODAL ================= -->
+<div class="ev-logout-modal" id="logoutModal" role="dialog" aria-modal="true" aria-labelledby="logoutModalTitle">
+    <div class="ev-logout-inner">
+        <div class="ev-logout-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+        </div>
+        <h3 id="logoutModalTitle">Confirm logout</h3>
+        <p>Are you sure you want to log out? You'll need to sign in again to access your dashboard.</p>
+        <div class="ev-logout-actions">
+            <button type="button" class="ev-logout-btn no" id="logoutNoBtn">No, stay</button>
+            <button type="button" class="ev-logout-btn yes" id="logoutYesBtn">Yes, log out</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    /* =========================================================
+       CONFIG
+       ========================================================= */
+    var PROFILE_KEY = 'evermore_profile';
+    var AUTH_KEY = 'evermore_is_authenticated';
+    var AUTH_URL = '/auth.html?mode=signin';
+    var REDIRECT_GUARD_KEY = 'evermore_redirect_guard';
+
+    var VIP_GROUP_URL = 'https://t.me/evermoreai_platform';
+
+    /* Endpoint that returns the current user (uses PHP session) */
+    var GET_USER_URL = null; // TODO: Firebase Auth/Firestore integration
+
+    /* =========================================================
+       STORAGE HELPERS
+       ========================================================= */
+    function readStoredProfile() {
+        var raw = null;
+        try { raw = localStorage.getItem(PROFILE_KEY); } catch (e) {}
+        if (!raw) { try { raw = sessionStorage.getItem(PROFILE_KEY); } catch (e) {} }
+        if (!raw) return null;
+        try { return JSON.parse(raw); } catch (e) { return null; }
+    }
+
+    function writeStoredProfile(profile) {
+        try {
+            localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+            localStorage.setItem(AUTH_KEY, 'true');
+            sessionStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+        } catch (e) {}
+    }
+
+    function clearStoredProfile() {
+        try {
+            localStorage.removeItem(PROFILE_KEY);
+            localStorage.removeItem(AUTH_KEY);
+            sessionStorage.removeItem(PROFILE_KEY);
+            sessionStorage.removeItem(AUTH_KEY);
+            sessionStorage.removeItem(REDIRECT_GUARD_KEY);
+        } catch (e) {}
+    }
+
+    function redirectToAuthOnce() {
+        try { window.stop(); } catch (e) {}
+        clearStoredProfile();
+        var bust = '_=' + Date.now();
+        var url = AUTH_URL + (AUTH_URL.indexOf('?') === -1 ? '?' : '&') + bust;
+        window.location.replace(url);
+    }
+
+    /* =========================================================
+       AUTH GUARD — server-authoritative
+       ========================================================= */
+    document.documentElement.classList.add('ev-locked');
+
+    // Backend integration is intentionally disabled in this frontend package.
+    // Firebase Authentication/Firestore will replace this guard in Google AI Studio.
+    if (!GET_USER_URL) {
+        document.documentElement.classList.remove('ev-locked');
+        window.__evermore_server_user = readStoredProfile() || {
+            fullName: 'Evermore User',
+            username: 'user',
+            accountStatus: 'Payment Pending'
+        };
+        try { boot(); } catch (e) { console.warn('Frontend preview boot:', e); }
+    } else {
+    fetch(GET_USER_URL, {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: { 'Accept': 'application/json' },
+        cache: 'no-store'
+    })
+    .then(function (r) {
+        return r.text().then(function (text) {
+            var data;
+            try { data = JSON.parse(text); }
+            catch (e) { return { ok: false }; }
+            return data;
+        });
+    })
+    .then(function (data) {
+        if (!data || data.ok !== true || !data.user) {
+            redirectToAuthOnce();
+            return;
+        }
+
+        writeStoredProfile(data.user);
+
+        window.__evermore_server_user = data.user;
+        document.documentElement.classList.remove('ev-locked');
+        boot();
+    })
+    .catch(function () {
+        redirectToAuthOnce();
+    });
+    }
+
+    /* =========================================================
+       ACCOUNT STATUS HELPERS
+       ========================================================= */
+    function getActiveUser() {
+        if (window.__evermore_server_user) return window.__evermore_server_user;
+        return readStoredProfile() || {};
+    }
+
+    function getAccountStatus() {
+        var u = getActiveUser();
+        var s = u.accountStatus || u.status || u.account_status || '';
+        s = String(s).trim();
+        return s || 'Payment Pending';
+    }
+
+    function isAccountActive() {
+        var s = getAccountStatus().toLowerCase();
+        return s === 'active' || s === 'activated' || s === 'verified' || s === 'approved';
+    }
+
+    function isAccountRejected() {
+        var s = getAccountStatus().toLowerCase();
+        return (
+            s === 'rejected' ||
+            s === 'declined' ||
+            s === 'failed' ||
+            s === 'not approved' ||
+            s === 'verification failed' ||
+            s === 'payment rejected'
+        );
+    }
+
+    /* =========================================================
+       UI SWAP — STATUS PILL
+       ========================================================= */
+    function applyStatusPill() {
+        var pending = document.getElementById('ev-greeting-pending');
+        var pillActive = document.getElementById('ev-status-active');
+        var pillRejected = document.getElementById('ev-status-rejected');
+
+        if (!pending || !pillActive || !pillRejected) return;
+
+        pending.classList.remove('hidden');
+        pillActive.classList.add('hidden');
+        pillRejected.classList.add('hidden');
+        pending.style.display = '';
+
+        if (isAccountActive()) {
+            pending.style.display = 'none';
+            pillActive.classList.remove('hidden');
+        } else if (isAccountRejected()) {
+            pending.style.display = 'none';
+            pillRejected.classList.remove('hidden');
+        }
+    }
+
+    /* =========================================================
+       UI SWAP — SUBSCRIPTION BANNER
+       ========================================================= */
+    function applyBannerState() {
+        var banner = document.getElementById('ev-sub-banner');
+        if (!banner) return;
+
+        var kicker = document.getElementById('ev-sub-kicker');
+        var title = document.getElementById('ev-sub-title');
+        var desc = document.getElementById('ev-sub-desc');
+        var cta = document.getElementById('ev-sub-cta');
+        var ctaLabel = document.getElementById('ev-sub-cta-label');
+
+        banner.classList.remove('is-active', 'is-rejected');
+        if (cta) cta.classList.remove('is-vip', 'is-retry');
+
+        if (isAccountActive()) {
+            banner.classList.add('is-active');
+            if (kicker) kicker.textContent = 'PREMIUM MEMBER';
+            if (title) title.innerHTML = 'Congratulations <span class="price">🎉</span>';
+            if (desc) desc.textContent = 'Your account has been verified and activated. Welcome to the Evermore inner circle — jump into the VIP group to start earning today.';
+            if (cta) {
+                cta.classList.add('is-vip');
+                cta.setAttribute('href', VIP_GROUP_URL);
+                cta.setAttribute('target', '_blank');
+                cta.setAttribute('rel', 'noopener');
+            }
+            if (ctaLabel) ctaLabel.textContent = 'JOIN VIP GROUP';
+            return;
+        }
+
+        if (isAccountRejected()) {
+            banner.classList.add('is-rejected');
+            if (kicker) kicker.textContent = 'PAYMENT NOT VERIFIED';
+            if (title) title.innerHTML = 'Retry your <span class="price">Payment</span>';
+            if (desc) desc.textContent = 'We couldn\'t verify your last payment receipt. Please retry the payment and upload a clear screenshot so our team can activate your account.';
+            if (cta) {
+                cta.classList.add('is-retry');
+                cta.setAttribute('href', '/payment.html');
+                cta.removeAttribute('target');
+                cta.removeAttribute('rel');
+            }
+            if (ctaLabel) ctaLabel.textContent = 'RETRY PAYMENT';
+            return;
+        }
+
+        if (kicker) kicker.textContent = 'EVER AI PREMIUM SUBSCRIPTION';
+        if (title) title.innerHTML = '<span class="price">₦14,850</span><span class="term">1 year (12 months)</span>';
+        if (desc) desc.textContent = 'Activation is reviewed and approved by our team right after your payment is verified.';
+        if (cta) {
+            cta.setAttribute('href', '/payment.html');
+            cta.removeAttribute('target');
+            cta.removeAttribute('rel');
+        }
+        if (ctaLabel) ctaLabel.textContent = 'ACTIVATE ACCOUNT';
+    }
+
+    /* =========================================================
+       GATE MODAL ROUTING
+       ========================================================= */
+    window.triggerGate = function (event) {
+        if (event) event.preventDefault();
+
+        if (isAccountActive()) {
+            window.openVip(event);
+            return;
+        }
+        if (isAccountRejected()) {
+            window.openRejectModal(event);
+            return;
+        }
+
+        var modal = document.getElementById('gateModal');
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeGate = function () {
+        var modal = document.getElementById('gateModal');
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    /* =========================================================
+       VIP GROUP MODAL
+       ========================================================= */
+    window.openVip = function (event) {
+        if (event) event.preventDefault();
+        var modal = document.getElementById('vipModal');
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeVip = function () {
+        var modal = document.getElementById('vipModal');
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    window.openSuccessModal = function (event) {
+        window.openVip(event);
+    };
+
+    /* =========================================================
+       REJECTION MODAL
+       ========================================================= */
+    window.openRejectModal = function (event) {
+        if (event) event.preventDefault();
+        var modal = document.getElementById('rejectModal');
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeRejectModal = function () {
+        var modal = document.getElementById('rejectModal');
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    /* =========================================================
+       AUTO-OPEN on login / refresh
+       ========================================================= */
+    function autoOpenStatusModal() {
+        setTimeout(function () {
+            if (isAccountActive()) {
+                window.openVip();
+            } else if (isAccountRejected()) {
+                window.openRejectModal();
+            } else {
+                var modal = document.getElementById('gateModal');
+                if (!modal) return;
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }, 400);
+    }
+
+    document.addEventListener('click', function (e) {
+        var modal = document.getElementById('gateModal');
+        if (modal && e.target === modal) window.closeGate();
+
+        var vip = document.getElementById('vipModal');
+        if (vip && e.target === vip) window.closeVip();
+
+        var reject = document.getElementById('rejectModal');
+        if (reject && e.target === reject) window.closeRejectModal();
+    });
+
+    /* =========================================================
+       LOGOUT MODAL
+       ========================================================= */
+    var logoutModal = document.getElementById('logoutModal');
+    var logoutYesBtn = document.getElementById('logoutYesBtn');
+    var logoutNoBtn = document.getElementById('logoutNoBtn');
+
+    function openLogoutModal() {
+        if (!logoutModal) return;
+        logoutModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () {
+            if (logoutNoBtn) logoutNoBtn.focus();
+        }, 50);
+    }
+
+    function closeLogoutModal() {
+        if (!logoutModal) return;
+        logoutModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function performLogout() {
+        try { window.stop(); } catch (e) {}
+        clearStoredProfile();
+        try { localStorage.clear(); sessionStorage.clear(); } catch (e) {}
+        window.location.href = 'auth.html?mode=signin';
+    }
+
+    if (logoutYesBtn) logoutYesBtn.addEventListener('click', performLogout);
+    if (logoutNoBtn) logoutNoBtn.addEventListener('click', closeLogoutModal);
+    if (logoutModal) {
+        logoutModal.addEventListener('click', function (e) {
+            if (e.target === logoutModal) closeLogoutModal();
+        });
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            window.closeGate();
+            window.closeVip();
+            window.closeRejectModal();
+            closeLogoutModal();
+            if (typeof closeDrawer === 'function') closeDrawer();
+        }
+    });
+
+    /* =========================================================
+       TABS
+       ========================================================= */
+    function showTab(name) {
+        document.querySelectorAll('.ev-panel').forEach(function (p) { p.classList.remove('active'); });
+        var target = document.getElementById('panel-' + name);
+        if (target) target.classList.add('active');
+
+        document.querySelectorAll('.ev-tab').forEach(function (t) {
+            t.classList.toggle('active', t.dataset.tab === name);
+        });
+        document.querySelectorAll('.ev-nav-item').forEach(function (i) {
+            i.classList.toggle('active', i.dataset.tab === name);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function wireTabs() {
+        document.querySelectorAll('.ev-tab').forEach(function (tab) {
+            tab.addEventListener('click', function (e) {
+                e.preventDefault();
+                showTab(tab.dataset.tab);
+            });
+        });
+
+        document.querySelectorAll('.ev-nav-item').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                closeDrawer();
+                window.triggerGate(e);
+            });
+        });
+
+        document.querySelectorAll('[data-tab-link]').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                showTab(el.dataset.tabLink);
+            });
+        });
+    }
+
+    function wireGateTriggers() {
+        document.querySelectorAll('[data-gate="true"]').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.triggerGate(e);
+            });
+            if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
+                el.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        window.triggerGate(e);
+                    }
+                });
+            }
+        });
+    }
+
+    function wireHeaderNotif() {
+        var btn = document.getElementById('ev-notif-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            showTab('alerts');
+        });
+    }
+
+    function wireChips() {
+        var chips = document.querySelectorAll('.ev-chip');
+        var cards = document.querySelectorAll('.ev-job-card');
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                chips.forEach(function (c) { c.classList.remove('active'); });
+                chip.classList.add('active');
+                var cat = chip.dataset.cat;
+                cards.forEach(function (card) {
+                    if (cat === 'all' || card.dataset.cat === cat) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    /* ---------- Drawer ---------- */
+    var drawer, backdrop;
+
+    function openDrawer() {
+        if (!drawer || !backdrop) return;
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        if (!drawer || !backdrop) return;
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    window.closeDrawer = closeDrawer;
+
+    function wireDrawer() {
+        var btn = document.getElementById('ev-menu-btn');
+        drawer = document.getElementById('ev-drawer');
+        backdrop = document.getElementById('ev-drawer-backdrop');
+        if (!btn || !drawer || !backdrop) return;
+        btn.addEventListener('click', openDrawer);
+        backdrop.addEventListener('click', closeDrawer);
+    }
+
+    /* ---------- Profile Rendering ---------- */
+    function readProfile() {
+        return getActiveUser() || {};
+    }
+
+    function initials(name) {
+        if (!name) return '?';
+        var parts = String(name).trim().split(/\s+/);
+        var a = (parts[0] || '')[0] || '';
+        var b = (parts[1] || '')[0] || '';
+        return (a + b).toUpperCase() || '?';
+    }
+
+    var MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
+
+    function formatDate(iso) {
+        var dt;
+        if (!iso) dt = new Date();
+        else {
+            dt = new Date(iso);
+            if (isNaN(dt)) return '—';
+        }
+        return dt.getDate() + ' ' + MONTH_NAMES[dt.getMonth()] + ' ' + dt.getFullYear();
+    }
+
+    function render() {
+        var p = readProfile();
+
+        var firstName = (p.fullName || p.username || 'Member').split(' ')[0];
+        var fn = document.getElementById('ev-firstname');
+        if (fn) fn.textContent = firstName;
+
+        var drawerName = document.getElementById('ev-drawer-name');
+        var drawerHandle = document.getElementById('ev-drawer-handle');
+        var drawerAvatar = document.getElementById('ev-drawer-avatar');
+        if (drawerName) drawerName.textContent = p.fullName || p.username || 'Member';
+        if (drawerHandle) {
+            var handle = p.username
+                ? (p.username.charAt(0) === '@' ? p.username : '@' + p.username)
+                : (p.email ? '@' + p.email.split('@')[0] : '@member');
+            drawerHandle.textContent = handle;
+        }
+        if (drawerAvatar) drawerAvatar.textContent = initials(p.fullName || p.username);
+
+        var profileName = document.getElementById('ev-profile-fullname');
+        var profileHandle = document.getElementById('ev-profile-handle');
+        var profileInitials = document.getElementById('ev-profile-initials');
+        if (profileName) profileName.textContent = p.fullName || p.username || 'Member';
+        if (profileHandle) {
+            var h2 = p.username
+                ? (p.username.charAt(0) === '@' ? p.username : '@' + p.username)
+                : (p.email ? '@' + p.email.split('@')[0] : '@member');
+            profileHandle.textContent = h2;
+        }
+        if (profileInitials) profileInitials.textContent = initials(p.fullName || p.username);
+
+        var map = {
+            'ev-p-fullname': p.fullName,
+            'ev-p-username': p.username ? (p.username.charAt(0) === '@' ? p.username : '@' + p.username) : '—',
+            'ev-p-email': p.email,
+            'ev-p-phone': p.phone,
+            'ev-p-country': p.country,
+            'ev-p-referral': p.referral || '—'
+        };
+        Object.keys(map).forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.textContent = map[id] || '—';
+        });
+
+        var accountStatusEl = document.getElementById('ev-p-account-status');
+        if (accountStatusEl) {
+            var statusText = getAccountStatus();
+            accountStatusEl.textContent = statusText;
+            accountStatusEl.setAttribute('data-account-status', statusText);
+        }
+
+        var memberSince = document.getElementById('ev-p-member-since');
+        if (memberSince) memberSince.textContent = formatDate(p.createdAt);
+
+        // NOTE: the static welcome notification was removed from the markup.
+        // The auto-welcome notification now arrives from Firebase notifications
+        // and is rendered by renderNotifications().
+    }
+
+    function wireLogout() {
+        var a = document.getElementById('ev-drawer-logout');
+        if (a) {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                closeDrawer();
+                openLogoutModal();
+            });
+        }
+    }
+
+    /* =========================================================
+       NOTIFICATIONS — load from Firebase notifications
+       ========================================================= */
+    function escapeHtml(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function formatDateShort(iso) {
+        if (!iso) return '';
+        var dt = new Date(iso.replace ? iso.replace(' ', 'T') : iso);
+        if (isNaN(dt)) return '';
+        return MONTH_NAMES[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear();
+    }
+
+    function renderNotifications(list) {
+        var container = document.getElementById('ev-notif-list');
+        var emptyEl = document.getElementById('ev-notif-empty');
+        if (!container) return;
+
+        // Clear previously injected notifications
+        container.innerHTML = '';
+
+        if (!list || !list.length) {
+            if (emptyEl) emptyEl.classList.remove('hidden');
+            return;
+        }
+        if (emptyEl) emptyEl.classList.add('hidden');
+
+        list.forEach(function (n) {
+            var art = document.createElement('article');
+            art.className = 'ev-notif';
+
+            // Body rendering:
+            //  - allowHtml = true  → render raw HTML (admin-authored, trusted)
+            //  - allowHtml = false → escape and convert both real newlines and
+            //    literal \n sequences to <br>
+            var bodyHtml;
+            if (n.allowHtml) {
+                bodyHtml = String(n.body || '');
+            } else {
+                bodyHtml = escapeHtml(n.body)
+                    .replace(/\\n/g, '<br>')
+                    .replace(/\n/g, '<br>');
+            }
+
+            // Optional CTA button
+            var buttonHtml = '';
+            if (n.buttonText && n.buttonUrl) {
+                buttonHtml =
+                    '<a class="ev-notif-btn" href="' + escapeHtml(n.buttonUrl) + '">' +
+                        escapeHtml(n.buttonText) +
+                        '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+                            '<path d="M5 12h14"/>' +
+                            '<path d="m12 5 7 7-7 7"/>' +
+                        '</svg>' +
+                    '</a>';
+            }
+
+            art.innerHTML =
+                '<div class="n-icon gold">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                        '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>' +
+                        '<path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>' +
+                    '</svg>' +
+                '</div>' +
+                '<div class="n-body">' +
+                    '<div class="n-top">' +
+                        '<h3 class="n-title">' + escapeHtml(n.title) + '</h3>' +
+                        '<span class="n-date">' + escapeHtml(formatDateShort(n.createdAt)) + '</span>' +
+                    '</div>' +
+                    '<div class="n-desc">' + bodyHtml + '</div>' +
+                    buttonHtml +
+                '</div>';
+
+            container.appendChild(art);
+        });
+    }
+
+    function loadNotifications() {
+        // Backend notifications will be connected through Firebase later.
+        renderNotifications([]);
+    }
+
+    /* =========================================================
+       BOOT
+       ========================================================= */
+    function boot() {
+        render();
+        applyStatusPill();
+        applyBannerState();
+
+        wireDrawer();
+        wireTabs();
+        wireGateTriggers();
+        wireHeaderNotif();
+        wireChips();
+        wireLogout();
+
+        loadNotifications();
+
+        autoOpenStatusModal();
+    }
+})();
+</script>
+
+</body></html>
