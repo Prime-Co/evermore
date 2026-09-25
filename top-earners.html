@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preload" as="image" href="assets/images/evermore-mark.png">
+		<link rel="preload" as="image" href="assets/images/hero-main.jpg">
+		<link rel="stylesheet" href="assets/css/styles.css" data-precedence="default">
+		<link rel="stylesheet" href="assets/css/fonts.css" data-precedence="default">
+
+		<!-- ============ PRIMARY SEO ============ -->
+		<title>Top Earners | Evermore AI Platform – Live Multi-Currency Leaderboard</title>
+		<meta name="description" content="See the Evermore AI top earners live leaderboard. Real members earning steady income across six task categories in NGN, USD, GHS, KES, XAF and EUR — paid 3x weekly on the Ever AI Platform.">
+		<meta name="keywords" content="Evermore top earners, Ever AI leaderboard, Evermore AI earnings, Ever AI top earners, Evermore live earnings, Evermore multi-currency, Evermore Nigeria earners, AI earning leaderboard Africa, Evermore NGN, Evermore USD, Evermore GHS, Evermore KES, Evermore XAF, Evermore EUR, Evermore $19.2/hr, Ever AI payouts, Evermore real earnings">
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<meta name="googlebot" content="index, follow">
+		<meta name="author" content="Evermore AI">
+		<meta name="publisher" content="Evermore AI">
+		<meta name="language" content="English">
+		<meta name="revisit-after" content="3 days">
+		<meta name="rating" content="general">
+		<meta name="theme-color" content="#12b886">
+
+		<!-- ============ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ============ -->
+		<meta property="og:site_name" content="Evermore AI">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Top Earners | Evermore AI Platform – Live Multi-Currency Leaderboard">
+		<meta property="og:description" content="Real members earning real income on the Evermore AI Platform — up to $19.2/hr across six task categories, paid 3x weekly in NGN, USD, GHS, KES, XAF or EUR.">
+		<meta property="og:url" content="top-earners.html">
+		<meta property="og:image" content="assets/images/hero-main.jpg">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:image:alt" content="Evermore AI Top Earners — live multi-currency leaderboard">
+		<meta property="og:locale" content="en_NG">
+
+		<!-- ============ TWITTER / X CARD ============ -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@evermoreai">
+		<meta name="twitter:creator" content="@evermoreai">
+		<meta name="twitter:title" content="Top Earners | Evermore AI Platform – Live Leaderboard">
+		<meta name="twitter:description" content="Real members earning real income on the Evermore AI Platform — up to $19.2/hr across six task categories.">
+		<meta name="twitter:image" content="assets/images/hero-main.jpg">
+		<meta name="twitter:image:alt" content="Evermore AI Top Earners — live multi-currency leaderboard">
+
+		<!-- ============ TECHNICAL ============ -->
+		<meta name="google-site-verification" content="1-GcuCbwPJCapBJ5ER0NMkH_CkXHlXKqlWcGN8Out8w">
+		<link rel="icon" type="image/png" href="favicon.svg">
+		<link rel="apple-touch-icon" href="assets/images/evermore-mark.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com/">
+		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+
+		<!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+
+		<style>
+			/* ---------- Drawer (public menu) ---------- */
+			.ev-drawer-backdrop {
+				position: fixed; inset: 0;
+				background: rgba(12, 30, 28, 0.35);
+				backdrop-filter: blur(2px);
+				-webkit-backdrop-filter: blur(2px);
+				opacity: 0; pointer-events: none;
+				transition: opacity .25s;
+				z-index: 100;
+			}
+			.ev-drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+			.ev-drawer {
+				position: fixed; top: 0; right: 0; bottom: 0;
+				width: 300px;
+				max-width: 88vw;
+				background: linear-gradient(180deg, #ffffff 0%, #fbfefd 100%);
+				border-left: 1px solid #e8f1ef;
+				transform: translateX(100%);
+				transition: transform .28s cubic-bezier(.4,0,.2,1);
+				z-index: 101;
+				display: flex; flex-direction: column;
+				color: #2c4a46;
+				overflow: hidden;
+				box-shadow: -8px 0 32px -12px rgba(12, 30, 28, 0.18);
+			}
+			.ev-drawer.open { transform: translateX(0); }
+
+			.ev-drawer-header {
+				display: flex; align-items: center; justify-content: space-between;
+				padding: 18px 20px;
+				border-bottom: 1px solid #e8f1ef;
+			}
+			.ev-drawer-brand {
+				display: flex; align-items: center; gap: 10px;
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700; font-size: 20px;
+				letter-spacing: -0.02em;
+				color: #0c1e1c;
+				line-height: 1;
+			}
+			.ev-drawer-brand img { height: 30px; width: auto; }
+			.ev-drawer-brand .accent { color: #12b886; }
+
+			.ev-drawer-close {
+				width: 36px; height: 36px;
+				border-radius: 10px;
+				display: flex; align-items: center; justify-content: center;
+				color: #6b8683;
+				transition: background .15s, color .15s;
+			}
+			.ev-drawer-close:hover { background: #d3f9ec; color: #0ca678; }
+
+			.ev-drawer-nav {
+				flex: 1;
+				overflow-y: auto;
+				padding: 14px 12px 16px;
+				display: flex; flex-direction: column;
+			}
+			.ev-drawer-nav::-webkit-scrollbar { width: 6px; }
+			.ev-drawer-nav::-webkit-scrollbar-thumb { background: #d5e6e3; border-radius: 3px; }
+
+			.ev-nav-item {
+				display: flex; align-items: center; gap: 14px;
+				padding: 12px 14px;
+				border-radius: 10px;
+				font-size: 14.5px;
+				font-weight: 500;
+				color: #2c4a46;
+				transition: background .15s, color .15s;
+				position: relative;
+				margin-bottom: 2px;
+			}
+			.ev-nav-item:hover {
+				background: #d3f9ec;
+				color: #0ca678;
+			}
+			.ev-nav-item svg {
+				width: 19px; height: 19px;
+				flex-shrink: 0;
+				stroke: currentColor;
+				fill: none;
+				stroke-width: 1.75;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+			}
+			.ev-nav-item .chev {
+				margin-left: auto;
+				width: 15px; height: 15px;
+				stroke: currentColor;
+				opacity: 0.45;
+			}
+			.ev-nav-divider {
+				height: 1px;
+				background: #e8f1ef;
+				margin: 10px 8px;
+			}
+			.ev-nav-label {
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: .14em;
+				text-transform: uppercase;
+				color: #8aa5a1;
+				padding: 8px 14px 4px;
+			}
+
+			/* Bottom auth area */
+			.ev-drawer-auth {
+				border-top: 1px solid #e8f1ef;
+				padding: 16px 18px;
+				background: #f8fdfc;
+				display: flex; flex-direction: column; gap: 10px;
+			}
+			.ev-btn {
+				display: flex; align-items: center; justify-content: center; gap: 8px;
+				padding: 11px 16px;
+				border-radius: 11px;
+				font-size: 14px;
+				font-weight: 600;
+				transition: background .15s, transform .15s, border-color .15s;
+				text-align: center;
+			}
+			.ev-btn.primary {
+				background: linear-gradient(135deg, #12b886, #20c997);
+				color: #ffffff;
+				box-shadow: 0 6px 16px -6px rgba(18, 184, 134, 0.5);
+			}
+			.ev-btn.primary:hover { transform: translateY(-1px); }
+			.ev-btn.outline {
+				background: #ffffff;
+				color: #0c1e1c;
+				border: 1px solid #e2eeec;
+			}
+			.ev-btn.outline:hover { background: #f8fdfc; border-color: #12b886; }
+
+			/* Hamburger button in nav */
+			.ev-menu-btn {
+				width: 40px; height: 40px;
+				border-radius: 10px;
+				display: inline-flex; align-items: center; justify-content: center;
+				color: currentColor;
+				transition: background .15s, color .15s;
+			}
+			.ev-menu-btn:hover { background: rgba(18, 184, 134, 0.12); color: #12b886; }
+
+			/* ---------- Footer (multi-column menu) ---------- */
+			.ev-footer {
+				background: #0a1b2e;
+				background: linear-gradient(180deg, #0a1b2e 0%, #071426 100%);
+				color: #c7d6e6;
+				border-top: 1px solid rgba(255,255,255,0.06);
+				margin-top: 0;
+			}
+			.ev-footer-inner {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 56px 20px 32px;
+			}
+			.ev-footer-columns {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 40px 48px;
+			}
+			.ev-footer-col h4 {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 15px;
+				font-weight: 700;
+				color: #ffffff;
+				margin: 0 0 18px;
+				letter-spacing: -0.01em;
+			}
+			.ev-footer-col ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+			.ev-footer-col a {
+				font-size: 14.5px;
+				color: #b3c4d6;
+				transition: color .15s;
+				display: inline-block;
+			}
+			.ev-footer-col a:hover { color: #4ade9f; }
+
+			.ev-footer-bottom {
+				margin-top: 48px;
+				padding-top: 24px;
+				border-top: 1px solid rgba(255,255,255,0.06);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				gap: 16px;
+			}
+			.ev-footer-brand {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700;
+				font-size: 20px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+			}
+			.ev-footer-brand img { height: 30px; width: auto; }
+			.ev-footer-brand .accent { color: #19d29c; }
+
+			.ev-footer-copy {
+				font-size: 12.5px;
+				color: #7f96b1;
+				margin: 0;
+				max-width: 620px;
+			}
+
+			/* ---------- Top Earners page (light theme) ---------- */
+			.ev-top {
+				background: #f4fbfa;
+				color: #0c1e1c;
+				font-family: 'DM Sans', system-ui, sans-serif;
+				min-height: 100vh;
+			}
+
+			.ev-top-hero {
+				position: relative;
+				overflow: hidden;
+				padding: 72px 20px 56px;
+				text-align: center;
+			}
+			.ev-top-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+			.ev-top-hero-bg .grad {
+				position: absolute; inset: 0;
+				background: linear-gradient(180deg, rgba(0,229,255,0.10), transparent 60%);
+			}
+			.ev-top-hero-bg .orb-1 {
+				position: absolute; left: 50%; top: -20%;
+				width: 40rem; height: 40rem;
+				transform: translateX(-50%);
+				background: rgba(18, 184, 134, 0.10);
+				border-radius: 50%;
+				filter: blur(120px);
+			}
+			.ev-top-hero-bg .orb-2 {
+				position: absolute; right: -8%; top: 20%;
+				width: 22rem; height: 22rem;
+				background: rgba(240, 200, 92, 0.15);
+				border-radius: 50%;
+				filter: blur(100px);
+			}
+			.ev-top-hero-inner {
+				position: relative;
+				max-width: 820px;
+				margin: 0 auto;
+			}
+
+			/* Focus heading */
+			.ev-top h1.ev-top-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(3rem, 8vw, 5.5rem);
+				font-weight: 700;
+				letter-spacing: -0.04em;
+				line-height: 1;
+				color: #0c1e1c;
+				margin: 0 0 20px;
+			}
+			.ev-top h1.ev-top-title .accent { color: #12b886; }
+
+			/* Subheading */
+			.ev-top-subhead {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+				font-weight: 500;
+				letter-spacing: -0.01em;
+				line-height: 1.25;
+				color: #0c1e1c;
+				max-width: 620px;
+				margin: 0 auto 22px;
+			}
+			.ev-top-subhead .accent { color: #0ca678; }
+
+			.ev-top-lede {
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				color: #6b8683;
+				max-width: 640px;
+				margin: 0 auto 28px;
+			}
+
+			.ev-top-cta {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				padding: 15px 30px;
+				border-radius: 14px;
+				font-size: 0.875rem;
+				font-weight: 700;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+				color: #04121a;
+				background: linear-gradient(135deg, #12b886, #20c997);
+				box-shadow: 0 12px 28px -12px rgba(18, 184, 134, 0.55);
+				transition: transform .15s;
+			}
+			.ev-top-cta:hover { transform: translateY(-2px); }
+			.ev-top-cta svg { width: 16px; height: 16px; }
+
+			/* Leaderboard section */
+			.ev-top-board {
+				max-width: 900px;
+				margin: 0 auto;
+				padding: 0 20px 60px;
+			}
+
+			/* Currency tabs */
+			.ev-currency-tabs {
+				display: flex;
+				gap: 6px;
+				padding: 6px;
+				background: #ffffff;
+				border: 1px solid #e2eeec;
+				border-radius: 16px;
+				overflow-x: auto;
+				margin-bottom: 24px;
+			}
+			.ev-currency-tabs::-webkit-scrollbar { display: none; }
+			.ev-currency-tabs { -ms-overflow-style: none; scrollbar-width: none; }
+
+			.ev-cur-tab {
+				flex: 1;
+				min-width: 84px;
+				padding: 12px 10px;
+				border-radius: 11px;
+				font-size: 13px;
+				font-weight: 700;
+				color: #6b8683;
+				text-align: center;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				white-space: nowrap;
+				font-family: inherit;
+				transition: background .15s, color .15s;
+			}
+			.ev-cur-tab:hover { color: #0c1e1c; }
+			.ev-cur-tab.active {
+				background: linear-gradient(135deg, #12b886, #20c997);
+				color: #ffffff;
+				box-shadow: 0 8px 20px -8px rgba(18, 184, 134, 0.55);
+			}
+
+			/* Leaderboard table */
+			.ev-board-table {
+				background: #ffffff;
+				border: 1px solid #e2eeec;
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 12px 40px -24px rgba(12, 30, 28, 0.18);
+			}
+			.ev-board-header {
+				display: grid;
+				grid-template-columns: 70px 1fr 160px;
+				gap: 12px;
+				padding: 16px 22px;
+				background: #f8fdfc;
+				border-bottom: 1px solid #e2eeec;
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: #8aa5a1;
+			}
+			.ev-board-header .center { text-align: center; }
+			.ev-board-header .right { text-align: right; }
+
+			.ev-board-rows {
+				max-height: 620px;
+				overflow-y: auto;
+			}
+			.ev-board-rows::-webkit-scrollbar { width: 8px; }
+			.ev-board-rows::-webkit-scrollbar-thumb { background: #cfe4e1; border-radius: 4px; }
+			.ev-board-rows::-webkit-scrollbar-thumb:hover { background: #a9d0ca; }
+
+			.ev-board-row {
+				display: grid;
+				grid-template-columns: 70px 1fr 160px;
+				gap: 12px;
+				padding: 14px 22px;
+				align-items: center;
+				border-bottom: 1px solid #f0f7f6;
+				transition: background .15s;
+			}
+			.ev-board-row:last-child { border-bottom: none; }
+			.ev-board-row:hover { background: #fbfefd; }
+
+			.ev-rank {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.ev-rank-badge {
+				width: 30px; height: 30px;
+				border-radius: 50%;
+				display: flex; align-items: center; justify-content: center;
+				font-size: 13px;
+				font-weight: 800;
+				font-family: 'Space Grotesk', sans-serif;
+			}
+			.ev-rank-plain {
+				color: #8aa5a1;
+				font-weight: 700;
+				font-size: 14px;
+			}
+			.ev-rank-1 { background: rgba(240, 200, 92, 0.18); color: #b8860b; border: 1px solid rgba(240, 200, 92, 0.4); }
+			.ev-rank-2 { background: rgba(148, 163, 184, 0.18); color: #64748b; border: 1px solid rgba(148, 163, 184, 0.35); }
+			.ev-rank-3 { background: rgba(180, 83, 9, 0.15); color: #b45309; border: 1px solid rgba(180, 83, 9, 0.3); }
+
+			.ev-member-name {
+				font-size: 14.5px;
+				font-weight: 700;
+				color: #0c1e1c;
+				line-height: 1.25;
+			}
+			.ev-member-loc {
+				font-size: 12.5px;
+				color: #6b8683;
+				margin-top: 2px;
+			}
+			.ev-member-earnings {
+				text-align: right;
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 15px;
+				font-weight: 700;
+				letter-spacing: -0.01em;
+				color: #12b886;
+			}
+
+			/* SEO note block */
+			.ev-top-note {
+				max-width: 900px;
+				margin: 40px auto 0;
+				padding: 28px 30px;
+				background: #ffffff;
+				border: 1px solid #e2eeec;
+				border-radius: 20px;
+			}
+			.ev-top-note h2 {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: #0c1e1c;
+				margin: 0 0 14px;
+				letter-spacing: -0.01em;
+			}
+			.ev-top-note p {
+				font-size: 0.95rem;
+				line-height: 1.7;
+				color: #3a5450;
+				margin: 0 0 12px;
+			}
+			.ev-top-note p:last-child { margin-bottom: 0; }
+			.ev-top-note a { color: #0ca678; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+			.ev-top-note a:hover { color: #0a1b2e; }
+
+			/* Final CTA */
+			.ev-top-final-cta {
+				max-width: 1080px;
+				margin: 0 auto 80px;
+				padding: 0 20px;
+			}
+			.ev-top-final-cta-box {
+				position: relative;
+				overflow: hidden;
+				border-radius: 28px;
+				padding: 60px 28px;
+				text-align: center;
+				background: linear-gradient(135deg, #0a1b2e 0%, #071426 100%);
+				color: #e6f5f1;
+			}
+			.ev-top-final-cta-box .grid-bg {
+				position: absolute; inset: 0; pointer-events: none;
+				background-image:
+					linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+				background-size: 40px 40px;
+				mask-image: radial-gradient(70% 70% at 50% 50%, black, transparent);
+				-webkit-mask-image: radial-gradient(70% 70% at 50% 50%, black, transparent);
+			}
+			.ev-top-final-cta-box .neon {
+				position: absolute; left: -128px; top: -128px;
+				width: 24rem; height: 24rem;
+				border-radius: 50%;
+				border: 1px solid rgba(0, 229, 255, 0.25);
+				opacity: 0.6;
+			}
+			.ev-top-final-cta-box .inner { position: relative; }
+			.ev-top-final-cta-box img { height: 56px; width: auto; margin: 0 auto; }
+			.ev-top-final-cta-box h2 {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+				font-weight: 700;
+				margin: 20px 0 12px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+			}
+			.ev-top-final-cta-box h2 .accent {
+				background: linear-gradient(135deg, #4ade9f, #00e5ff);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				color: transparent;
+			}
+			.ev-top-final-cta-box p {
+				max-width: 460px;
+				margin: 0 auto;
+				color: rgba(230, 245, 241, 0.7);
+				font-size: 0.975rem;
+				line-height: 1.6;
+			}
+			.ev-top-final-cta-btn {
+				display: inline-flex; align-items: center; gap: 8px;
+				margin-top: 28px;
+				padding: 16px 32px;
+				border-radius: 14px;
+				font-size: 0.875rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				color: #04121a;
+				background: linear-gradient(135deg, #4ade9f, #00e5ff);
+				box-shadow: 0 12px 32px -12px rgba(0, 229, 255, 0.6);
+				transition: transform .15s;
+			}
+			.ev-top-final-cta-btn:hover { transform: translateY(-2px); }
+			.ev-top-final-cta-btn svg { width: 16px; height: 16px; }
+
+			@media (max-width: 640px) {
+				.ev-board-header,
+				.ev-board-row {
+					grid-template-columns: 56px 1fr 120px;
+					padding: 12px 16px;
+					gap: 8px;
+				}
+				.ev-member-earnings { font-size: 13.5px; }
+			}
+
+			@media (max-width: 720px) {
+				.ev-footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+			}
+			@media (max-width: 480px) {
+				.ev-footer-columns { grid-template-columns: 1fr; }
+				.ev-drawer { width: 82vw; }
+			}
+		</style>
+	</head>
+	<body>
+		<!--$-->
+		<div class="relative min-h-screen overflow-x-clip bg-background">
+
+			<!-- ===== Drawer (public menu) ===== -->
+			<div class="ev-drawer-backdrop" id="ev-drawer-backdrop"></div>
+			<aside class="ev-drawer" id="ev-drawer" aria-hidden="true" role="navigation" aria-label="Site navigation">
+				<div class="ev-drawer-header">
+					<a href="index.html" class="ev-drawer-brand">
+						<img src="assets/images/evermore-mark.png" alt="Evermore">
+						<span>ever<span class="accent">more</span></span>
+					</a>
+					<button class="ev-drawer-close" id="ev-drawer-close" type="button" aria-label="Close menu">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+
+				<nav class="ev-drawer-nav">
+					<div class="ev-nav-label">Explore</div>
+
+					<a href="index.html" class="ev-nav-item" data-nav="home">
+						<svg viewBox="0 0 24 24">
+							<path d="M3 12 12 3l9 9"></path>
+							<path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"></path>
+						</svg>
+						<span>Home</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="about.html" class="ev-nav-item" data-nav="about">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="12" y1="16" x2="12" y2="12"></line>
+							<line x1="12" y1="8" x2="12" y2="8.01"></line>
+						</svg>
+						<span>About</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="top-earners.html" class="ev-nav-item" data-nav="top-earners">
+						<svg viewBox="0 0 24 24">
+							<path d="M8 21h8"></path>
+							<path d="M12 17v4"></path>
+							<path d="M7 4h10v4a5 5 0 0 1-10 0z"></path>
+							<path d="M17 5h3a2 2 0 0 1 0 4h-1"></path>
+							<path d="M7 5H4a2 2 0 0 0 0 4h1"></path>
+						</svg>
+						<span>Top Earners</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="blog.html" class="ev-nav-item" data-nav="blog">
+						<svg viewBox="0 0 24 24">
+							<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+							<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+						</svg>
+						<span>Blog</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="faq.html" class="ev-nav-item" data-nav="faq">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+							<line x1="12" y1="17" x2="12.01" y2="17"></line>
+						</svg>
+						<span>FAQ</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="download.html" class="ev-nav-item" data-nav="download">
+						<svg viewBox="0 0 24 24">
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+							<polyline points="7 10 12 15 17 10"></polyline>
+							<line x1="12" y1="15" x2="12" y2="3"></line>
+						</svg>
+						<span>Download App</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<div class="ev-nav-divider"></div>
+					<div class="ev-nav-label">Site</div>
+
+					<a href="index.html#how" class="ev-nav-item" data-nav="how">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4"></path>
+							<line x1="12" y1="17" x2="12" y2="17.01"></line>
+						</svg>
+						<span>How it works</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="index.html#features" class="ev-nav-item" data-nav="features">
+						<svg viewBox="0 0 24 24">
+							<polyline points="3 17 9 11 13 15 21 7"></polyline>
+							<polyline points="15 7 21 7 21 13"></polyline>
+						</svg>
+						<span>Ways to earn</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="index.html#subscriptions" class="ev-nav-item" data-nav="subscriptions">
+						<svg viewBox="0 0 24 24">
+							<path d="M3 18h18l-2-8-4 4-3-6-3 6-4-4-2 8z"></path>
+							<circle cx="12" cy="4" r="1.5"></circle>
+						</svg>
+						<span>Subscriptions</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+				</nav>
+
+				<div class="ev-drawer-auth">
+					<a href="auth.html?mode=signin" class="ev-btn outline">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+							<polyline points="10 17 15 12 10 7"></polyline>
+							<line x1="15" y1="12" x2="3" y2="12"></line>
+						</svg>
+						Sign in
+					</a>
+					<a href="auth.html?mode=create" class="ev-btn primary">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+							<circle cx="9" cy="7" r="4"></circle>
+							<line x1="19" x2="19" y1="8" y2="14"></line>
+							<line x1="22" x2="16" y1="11" y2="11"></line>
+						</svg>
+						Create account
+					</a>
+				</div>
+			</aside>
+
+			<!-- ===== Header ===== -->
+			<header class="glass sticky top-0 z-50 border-x-0 border-t-0">
+				<nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
+					<a aria-label="EVERMORE home" href="index.html">
+						<span class="inline-flex items-center gap-2.5">
+							<img src="assets/images/evermore-mark.png" alt="" aria-hidden="true" class="h-9 w-auto sm:h-11">
+							<span class="font-display font-extrabold lowercase leading-none tracking-tight text-2xl sm:text-3xl text-foreground">ever<span class="text-primary">more</span></span>
+						</span>
+					</a>
+
+					<!-- Desktop inline nav links -->
+					<div class="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
+						<a href="index.html#how" class="transition-colors hover:text-foreground">How it works</a>
+						<a href="index.html#features" class="transition-colors hover:text-foreground">Ways to earn</a>
+						<a href="index.html#subscriptions" class="transition-colors hover:text-foreground">Subscriptions</a>
+						<a href="faq.html" class="transition-colors hover:text-foreground">FAQ</a>
+					</div>
+
+					<button class="ev-menu-btn" id="ev-menu-btn" aria-label="Open menu" aria-controls="ev-drawer" aria-expanded="false">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="3" y1="6" x2="21" y2="6"></line>
+							<line x1="3" y1="12" x2="21" y2="12"></line>
+							<line x1="3" y1="18" x2="21" y2="18"></line>
+						</svg>
+					</button>
+				</nav>
+			</header>
+
+			<!-- ===== TOP EARNERS (light theme) ===== -->
+			<main class="ev-top">
+
+				<!-- Hero -->
+				<section class="ev-top-hero">
+					<div class="ev-top-hero-bg">
+						<div class="grad"></div>
+						<div class="orb-1"></div>
+						<div class="orb-2"></div>
+					</div>
+					<div class="ev-top-hero-inner">
+						<h1 class="ev-top-title">
+							Top <span class="accent">Earners</span>
+						</h1>
+						<p class="ev-top-subhead">
+							Real members. Real income. <span class="accent">Live proof.</span>
+						</p>
+						<p class="ev-top-lede">
+							Verified earnings from members across Nigeria, Africa and beyond — paid three times a week on the Evermore AI Platform.
+						</p>
+						<a href="auth.html?mode=create" class="ev-top-cta">
+							Create Your Account
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</section>
+
+				<!-- Leaderboard -->
+				<section class="ev-top-board">
+
+					<!-- Currency filter tabs -->
+					<div class="ev-currency-tabs" role="tablist" aria-label="Currency filter">
+						<button type="button" onclick="switchCurrency('NGN')" id="tab-NGN" class="ev-cur-tab active">NGN (₦)</button>
+						<button type="button" onclick="switchCurrency('USD')" id="tab-USD" class="ev-cur-tab">USD ($)</button>
+						<button type="button" onclick="switchCurrency('GHS')" id="tab-GHS" class="ev-cur-tab">GHS (₵)</button>
+						<button type="button" onclick="switchCurrency('KES')" id="tab-KES" class="ev-cur-tab">KES (KSh)</button>
+						<button type="button" onclick="switchCurrency('XAF')" id="tab-XAF" class="ev-cur-tab">XAF (FCFA)</button>
+						<button type="button" onclick="switchCurrency('EUR')" id="tab-EUR" class="ev-cur-tab">EUR (€)</button>
+					</div>
+
+					<!-- Leaderboard table -->
+					<div class="ev-board-table">
+						<div class="ev-board-header">
+							<div class="center">Rank</div>
+							<div>Member Details</div>
+							<div class="right">Total Earnings</div>
+						</div>
+						<div id="leaderboard-rows" class="ev-board-rows"><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-badge ev-rank-1">1</span></div><div><div class="ev-member-name">Tunde D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦57,670,800</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-badge ev-rank-2">2</span></div><div><div class="ev-member-name">Chioma K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦57,386,805</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-badge ev-rank-3">3</span></div><div><div class="ev-member-name">Ibrahim O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦57,103,663</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">4</span></div><div><div class="ev-member-name">Grace S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦56,821,375</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">5</span></div><div><div class="ev-member-name">David V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦56,539,939</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">6</span></div><div><div class="ev-member-name">Funke Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦56,259,355</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">7</span></div><div><div class="ev-member-name">Samuel C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦55,979,622</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">8</span></div><div><div class="ev-member-name">Ngozi G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦55,700,738</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">9</span></div><div><div class="ev-member-name">Femi N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦55,422,703</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">10</span></div><div><div class="ev-member-name">Blessing R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦55,145,517</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">11</span></div><div><div class="ev-member-name">Chidi U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦54,869,177</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">12</span></div><div><div class="ev-member-name">Efe Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦54,593,684</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">13</span></div><div><div class="ev-member-name">Yusuf B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦54,319,037</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">14</span></div><div><div class="ev-member-name">Amina E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦54,045,234</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">15</span></div><div><div class="ev-member-name">Oluwaseun M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦53,772,275</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">16</span></div><div><div class="ev-member-name">Kelechi P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦53,500,159</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">17</span></div><div><div class="ev-member-name">Bukola T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦53,228,885</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">18</span></div><div><div class="ev-member-name">Amaka W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦52,958,452</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">19</span></div><div><div class="ev-member-name">Tunde A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦52,688,859</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">20</span></div><div><div class="ev-member-name">Chioma D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦52,420,105</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">21</span></div><div><div class="ev-member-name">Ibrahim K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦52,152,191</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">22</span></div><div><div class="ev-member-name">Grace O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦51,885,114</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">23</span></div><div><div class="ev-member-name">David S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦51,618,873</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">24</span></div><div><div class="ev-member-name">Funke V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦51,353,469</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">25</span></div><div><div class="ev-member-name">Samuel Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦51,088,900</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">26</span></div><div><div class="ev-member-name">Ngozi C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦50,825,164</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">27</span></div><div><div class="ev-member-name">Femi G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦50,562,263</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">28</span></div><div><div class="ev-member-name">Blessing N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦50,300,193</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">29</span></div><div><div class="ev-member-name">Chidi R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦50,038,955</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">30</span></div><div><div class="ev-member-name">Efe U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦49,778,548</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">31</span></div><div><div class="ev-member-name">Yusuf Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦49,518,970</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">32</span></div><div><div class="ev-member-name">Amina B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦49,260,222</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">33</span></div><div><div class="ev-member-name">Oluwaseun E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦49,002,301</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">34</span></div><div><div class="ev-member-name">Kelechi M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦48,745,207</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">35</span></div><div><div class="ev-member-name">Bukola P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦48,488,940</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">36</span></div><div><div class="ev-member-name">Amaka T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦48,233,498</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">37</span></div><div><div class="ev-member-name">Tunde W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦47,978,881</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">38</span></div><div><div class="ev-member-name">Chioma A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦47,725,087</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">39</span></div><div><div class="ev-member-name">Ibrahim D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦47,472,115</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">40</span></div><div><div class="ev-member-name">Grace K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦47,219,966</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">41</span></div><div><div class="ev-member-name">David O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦46,968,637</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">42</span></div><div><div class="ev-member-name">Funke S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦46,718,128</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">43</span></div><div><div class="ev-member-name">Samuel V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦46,468,439</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">44</span></div><div><div class="ev-member-name">Ngozi Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦46,219,568</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">45</span></div><div><div class="ev-member-name">Femi C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦45,971,513</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">46</span></div><div><div class="ev-member-name">Blessing G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦45,724,276</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">47</span></div><div><div class="ev-member-name">Chidi N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦45,477,854</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">48</span></div><div><div class="ev-member-name">Efe R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦45,232,246</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">49</span></div><div><div class="ev-member-name">Yusuf U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦44,987,453</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">50</span></div><div><div class="ev-member-name">Amina Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦44,743,472</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">51</span></div><div><div class="ev-member-name">Oluwaseun B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦44,500,303</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">52</span></div><div><div class="ev-member-name">Kelechi E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦44,257,945</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">53</span></div><div><div class="ev-member-name">Bukola M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦44,016,397</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">54</span></div><div><div class="ev-member-name">Amaka P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦43,775,658</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">55</span></div><div><div class="ev-member-name">Tunde T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦43,535,727</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">56</span></div><div><div class="ev-member-name">Chioma W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦43,296,604</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">57</span></div><div><div class="ev-member-name">Ibrahim A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦43,058,288</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">58</span></div><div><div class="ev-member-name">Grace D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦42,820,777</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">59</span></div><div><div class="ev-member-name">David K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦42,584,071</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">60</span></div><div><div class="ev-member-name">Funke O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦42,348,168</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">61</span></div><div><div class="ev-member-name">Samuel S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦42,113,068</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">62</span></div><div><div class="ev-member-name">Ngozi V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦41,878,771</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">63</span></div><div><div class="ev-member-name">Femi Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦41,645,274</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">64</span></div><div><div class="ev-member-name">Blessing C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦41,412,577</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">65</span></div><div><div class="ev-member-name">Chidi G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦41,180,680</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">66</span></div><div><div class="ev-member-name">Efe N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦40,949,581</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">67</span></div><div><div class="ev-member-name">Yusuf R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦40,719,279</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">68</span></div><div><div class="ev-member-name">Amina U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦40,489,774</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">69</span></div><div><div class="ev-member-name">Oluwaseun Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦40,261,064</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">70</span></div><div><div class="ev-member-name">Kelechi B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦40,033,148</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">71</span></div><div><div class="ev-member-name">Bukola E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦39,806,027</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">72</span></div><div><div class="ev-member-name">Amaka M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦39,579,698</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">73</span></div><div><div class="ev-member-name">Tunde P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦39,354,161</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">74</span></div><div><div class="ev-member-name">Chioma T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦39,129,415</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">75</span></div><div><div class="ev-member-name">Ibrahim W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦38,905,458</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">76</span></div><div><div class="ev-member-name">Grace A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦38,682,291</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">77</span></div><div><div class="ev-member-name">David D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦38,459,912</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">78</span></div><div><div class="ev-member-name">Funke K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦38,238,320</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">79</span></div><div><div class="ev-member-name">Samuel O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦38,017,515</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">80</span></div><div><div class="ev-member-name">Ngozi S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦37,797,494</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">81</span></div><div><div class="ev-member-name">Femi V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦37,578,259</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">82</span></div><div><div class="ev-member-name">Blessing Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦37,359,806</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">83</span></div><div><div class="ev-member-name">Chidi C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦37,142,136</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">84</span></div><div><div class="ev-member-name">Efe G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦36,925,248</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">85</span></div><div><div class="ev-member-name">Yusuf N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦36,709,140</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">86</span></div><div><div class="ev-member-name">Amina R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦36,493,812</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">87</span></div><div><div class="ev-member-name">Oluwaseun U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦36,279,263</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">88</span></div><div><div class="ev-member-name">Kelechi Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦36,065,491</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">89</span></div><div><div class="ev-member-name">Bukola B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦35,852,497</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">90</span></div><div><div class="ev-member-name">Amaka E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦35,640,278</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">91</span></div><div><div class="ev-member-name">Tunde M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦35,428,835</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">92</span></div><div><div class="ev-member-name">Chioma P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦35,218,165</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">93</span></div><div><div class="ev-member-name">Ibrahim T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦35,008,269</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">94</span></div><div><div class="ev-member-name">Grace W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦34,799,144</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">95</span></div><div><div class="ev-member-name">David A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦34,590,791</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">96</span></div><div><div class="ev-member-name">Funke D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦34,383,208</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">97</span></div><div><div class="ev-member-name">Samuel K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦34,176,395</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">98</span></div><div><div class="ev-member-name">Ngozi O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦33,970,349</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">99</span></div><div><div class="ev-member-name">Femi S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦33,765,072</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">100</span></div><div><div class="ev-member-name">Blessing V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦33,560,560</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">101</span></div><div><div class="ev-member-name">Chidi Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦33,356,814</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">102</span></div><div><div class="ev-member-name">Efe C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦33,153,833</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">103</span></div><div><div class="ev-member-name">Yusuf G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦32,951,615</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">104</span></div><div><div class="ev-member-name">Amina N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦32,750,160</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">105</span></div><div><div class="ev-member-name">Oluwaseun R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦32,549,466</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">106</span></div><div><div class="ev-member-name">Kelechi U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦32,349,533</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">107</span></div><div><div class="ev-member-name">Bukola Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦32,150,360</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">108</span></div><div><div class="ev-member-name">Amaka B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦31,951,946</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">109</span></div><div><div class="ev-member-name">Tunde E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦31,754,289</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">110</span></div><div><div class="ev-member-name">Chioma M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦31,557,389</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">111</span></div><div><div class="ev-member-name">Ibrahim P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦31,361,245</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">112</span></div><div><div class="ev-member-name">Grace T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦31,165,856</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">113</span></div><div><div class="ev-member-name">David W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦30,971,221</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">114</span></div><div><div class="ev-member-name">Funke A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦30,777,339</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">115</span></div><div><div class="ev-member-name">Samuel D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦30,584,209</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">116</span></div><div><div class="ev-member-name">Ngozi K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦30,391,829</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">117</span></div><div><div class="ev-member-name">Femi O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦30,200,200</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">118</span></div><div><div class="ev-member-name">Blessing S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦30,009,320</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">119</span></div><div><div class="ev-member-name">Chidi V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦29,819,188</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">120</span></div><div><div class="ev-member-name">Efe Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦29,629,803</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">121</span></div><div><div class="ev-member-name">Yusuf C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦29,441,164</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">122</span></div><div><div class="ev-member-name">Amina G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦29,253,270</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">123</span></div><div><div class="ev-member-name">Oluwaseun N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦29,066,120</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">124</span></div><div><div class="ev-member-name">Kelechi R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦28,879,713</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">125</span></div><div><div class="ev-member-name">Bukola U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦28,694,049</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">126</span></div><div><div class="ev-member-name">Amaka Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦28,509,126</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">127</span></div><div><div class="ev-member-name">Tunde B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦28,324,943</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">128</span></div><div><div class="ev-member-name">Chioma E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦28,141,499</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">129</span></div><div><div class="ev-member-name">Ibrahim M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦27,958,793</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">130</span></div><div><div class="ev-member-name">Grace P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦27,776,825</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">131</span></div><div><div class="ev-member-name">David T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦27,595,593</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">132</span></div><div><div class="ev-member-name">Funke W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦27,415,096</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">133</span></div><div><div class="ev-member-name">Samuel A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦27,235,333</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">134</span></div><div><div class="ev-member-name">Ngozi D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦27,056,303</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">135</span></div><div><div class="ev-member-name">Femi K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦26,878,006</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">136</span></div><div><div class="ev-member-name">Blessing O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦26,700,440</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">137</span></div><div><div class="ev-member-name">Chidi S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦26,523,604</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">138</span></div><div><div class="ev-member-name">Efe V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦26,347,497</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">139</span></div><div><div class="ev-member-name">Yusuf Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦26,172,119</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">140</span></div><div><div class="ev-member-name">Amina C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦25,997,468</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">141</span></div><div><div class="ev-member-name">Oluwaseun G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦25,823,543</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">142</span></div><div><div class="ev-member-name">Kelechi N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦25,650,343</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">143</span></div><div><div class="ev-member-name">Bukola R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦25,477,867</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">144</span></div><div><div class="ev-member-name">Amaka U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦25,306,115</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">145</span></div><div><div class="ev-member-name">Tunde Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦25,135,084</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">146</span></div><div><div class="ev-member-name">Chioma B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦24,964,775</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">147</span></div><div><div class="ev-member-name">Ibrahim E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦24,795,186</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">148</span></div><div><div class="ev-member-name">Grace M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦24,626,316</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">149</span></div><div><div class="ev-member-name">David P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦24,458,164</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">150</span></div><div><div class="ev-member-name">Funke T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦24,290,729</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">151</span></div><div><div class="ev-member-name">Samuel W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦24,124,010</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">152</span></div><div><div class="ev-member-name">Ngozi A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦23,958,007</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">153</span></div><div><div class="ev-member-name">Femi D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦23,792,717</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">154</span></div><div><div class="ev-member-name">Blessing K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦23,628,140</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">155</span></div><div><div class="ev-member-name">Chidi O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦23,464,275</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">156</span></div><div><div class="ev-member-name">Efe S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦23,301,121</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">157</span></div><div><div class="ev-member-name">Yusuf V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦23,138,677</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">158</span></div><div><div class="ev-member-name">Amina Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦22,976,942</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">159</span></div><div><div class="ev-member-name">Oluwaseun C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦22,815,915</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">160</span></div><div><div class="ev-member-name">Kelechi G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦22,655,594</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">161</span></div><div><div class="ev-member-name">Bukola N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦22,495,979</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">162</span></div><div><div class="ev-member-name">Amaka R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦22,337,069</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">163</span></div><div><div class="ev-member-name">Tunde U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦22,178,862</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">164</span></div><div><div class="ev-member-name">Chioma Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦22,021,358</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">165</span></div><div><div class="ev-member-name">Ibrahim B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦21,864,556</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">166</span></div><div><div class="ev-member-name">Grace E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦21,708,454</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">167</span></div><div><div class="ev-member-name">David M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦21,553,052</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">168</span></div><div><div class="ev-member-name">Funke P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦21,398,348</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">169</span></div><div><div class="ev-member-name">Samuel T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦21,244,341</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">170</span></div><div><div class="ev-member-name">Ngozi W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦21,091,031</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">171</span></div><div><div class="ev-member-name">Femi A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦20,938,416</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">172</span></div><div><div class="ev-member-name">Blessing D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦20,786,496</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">173</span></div><div><div class="ev-member-name">Chidi K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦20,635,268</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">174</span></div><div><div class="ev-member-name">Efe O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦20,484,733</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">175</span></div><div><div class="ev-member-name">Yusuf S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦20,334,888</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">176</span></div><div><div class="ev-member-name">Amina V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦20,185,734</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">177</span></div><div><div class="ev-member-name">Oluwaseun Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦20,037,269</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">178</span></div><div><div class="ev-member-name">Kelechi C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦19,889,491</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">179</span></div><div><div class="ev-member-name">Bukola G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦19,742,401</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">180</span></div><div><div class="ev-member-name">Amaka N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦19,595,996</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">181</span></div><div><div class="ev-member-name">Tunde R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦19,450,275</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">182</span></div><div><div class="ev-member-name">Chioma U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦19,305,239</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">183</span></div><div><div class="ev-member-name">Ibrahim Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦19,160,884</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">184</span></div><div><div class="ev-member-name">Grace B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦19,017,212</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">185</span></div><div><div class="ev-member-name">David E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦18,874,219</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">186</span></div><div><div class="ev-member-name">Funke M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦18,731,906</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">187</span></div><div><div class="ev-member-name">Samuel P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦18,590,271</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">188</span></div><div><div class="ev-member-name">Ngozi T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦18,449,314</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">189</span></div><div><div class="ev-member-name">Femi W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦18,309,032</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">190</span></div><div><div class="ev-member-name">Blessing A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦18,169,425</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">191</span></div><div><div class="ev-member-name">Chidi D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦18,030,492</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">192</span></div><div><div class="ev-member-name">Efe K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦17,892,232</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">193</span></div><div><div class="ev-member-name">Yusuf O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦17,754,644</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">194</span></div><div><div class="ev-member-name">Amina S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦17,617,727</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">195</span></div><div><div class="ev-member-name">Oluwaseun V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦17,481,478</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">196</span></div><div><div class="ev-member-name">Kelechi Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦17,345,899</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">197</span></div><div><div class="ev-member-name">Bukola C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦17,210,986</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">198</span></div><div><div class="ev-member-name">Amaka G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦17,076,740</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">199</span></div><div><div class="ev-member-name">Tunde N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦16,943,159</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">200</span></div><div><div class="ev-member-name">Chioma R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦16,810,242</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">201</span></div><div><div class="ev-member-name">Ibrahim U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦16,677,988</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">202</span></div><div><div class="ev-member-name">Grace Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦16,546,396</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">203</span></div><div><div class="ev-member-name">David B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦16,415,464</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">204</span></div><div><div class="ev-member-name">Funke E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦16,285,192</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">205</span></div><div><div class="ev-member-name">Samuel M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦16,155,579</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">206</span></div><div><div class="ev-member-name">Ngozi P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦16,026,623</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">207</span></div><div><div class="ev-member-name">Femi T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦15,898,323</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">208</span></div><div><div class="ev-member-name">Blessing W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦15,770,678</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">209</span></div><div><div class="ev-member-name">Chidi A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦15,643,688</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">210</span></div><div><div class="ev-member-name">Efe D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦15,517,350</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">211</span></div><div><div class="ev-member-name">Yusuf K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦15,391,664</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">212</span></div><div><div class="ev-member-name">Amina O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦15,266,629</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">213</span></div><div><div class="ev-member-name">Oluwaseun S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦15,142,243</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">214</span></div><div><div class="ev-member-name">Kelechi V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦15,018,506</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">215</span></div><div><div class="ev-member-name">Bukola Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦14,895,416</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">216</span></div><div><div class="ev-member-name">Amaka C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦14,772,972</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">217</span></div><div><div class="ev-member-name">Tunde G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦14,651,173</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">218</span></div><div><div class="ev-member-name">Chioma N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦14,530,018</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">219</span></div><div><div class="ev-member-name">Ibrahim R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦14,409,505</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">220</span></div><div><div class="ev-member-name">Grace U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦14,289,635</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">221</span></div><div><div class="ev-member-name">David Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦14,170,404</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">222</span></div><div><div class="ev-member-name">Funke B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦14,051,813</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">223</span></div><div><div class="ev-member-name">Samuel E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦13,933,861</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">224</span></div><div><div class="ev-member-name">Ngozi M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦13,816,545</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">225</span></div><div><div class="ev-member-name">Femi P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦13,699,865</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">226</span></div><div><div class="ev-member-name">Blessing T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦13,583,820</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">227</span></div><div><div class="ev-member-name">Chidi W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦13,468,408</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">228</span></div><div><div class="ev-member-name">Efe A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦13,353,629</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">229</span></div><div><div class="ev-member-name">Yusuf D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦13,239,481</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">230</span></div><div><div class="ev-member-name">Amina K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦13,125,963</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">231</span></div><div><div class="ev-member-name">Oluwaseun O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦13,013,073</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">232</span></div><div><div class="ev-member-name">Kelechi S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦12,900,812</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">233</span></div><div><div class="ev-member-name">Bukola V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦12,789,177</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">234</span></div><div><div class="ev-member-name">Amaka Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦12,678,168</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">235</span></div><div><div class="ev-member-name">Tunde C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦12,567,783</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">236</span></div><div><div class="ev-member-name">Chioma G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦12,458,021</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">237</span></div><div><div class="ev-member-name">Ibrahim N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦12,348,880</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">238</span></div><div><div class="ev-member-name">Grace R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦12,240,361</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">239</span></div><div><div class="ev-member-name">David U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦12,132,461</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">240</span></div><div><div class="ev-member-name">Funke Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦12,025,179</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">241</span></div><div><div class="ev-member-name">Samuel B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦11,918,515</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">242</span></div><div><div class="ev-member-name">Ngozi E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦11,812,466</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">243</span></div><div><div class="ev-member-name">Femi M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦11,707,033</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">244</span></div><div><div class="ev-member-name">Blessing P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦11,602,212</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">245</span></div><div><div class="ev-member-name">Chidi T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦11,498,005</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">246</span></div><div><div class="ev-member-name">Efe W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦11,394,408</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">247</span></div><div><div class="ev-member-name">Yusuf A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦11,291,421</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">248</span></div><div><div class="ev-member-name">Amina D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦11,189,043</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">249</span></div><div><div class="ev-member-name">Oluwaseun K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦11,087,273</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">250</span></div><div><div class="ev-member-name">Kelechi O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦10,986,109</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">251</span></div><div><div class="ev-member-name">Bukola S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦10,885,551</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">252</span></div><div><div class="ev-member-name">Amaka V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦10,785,596</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">253</span></div><div><div class="ev-member-name">Tunde Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦10,686,244</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">254</span></div><div><div class="ev-member-name">Chioma C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦10,587,493</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">255</span></div><div><div class="ev-member-name">Ibrahim G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦10,489,343</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">256</span></div><div><div class="ev-member-name">Grace N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦10,391,792</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">257</span></div><div><div class="ev-member-name">David R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦10,294,839</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">258</span></div><div><div class="ev-member-name">Funke U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦10,198,482</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">259</span></div><div><div class="ev-member-name">Samuel Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦10,102,721</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">260</span></div><div><div class="ev-member-name">Ngozi B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦10,007,554</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">261</span></div><div><div class="ev-member-name">Femi E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦9,912,980</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">262</span></div><div><div class="ev-member-name">Blessing M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦9,818,998</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">263</span></div><div><div class="ev-member-name">Chidi P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦9,725,606</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">264</span></div><div><div class="ev-member-name">Efe T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦9,632,803</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">265</span></div><div><div class="ev-member-name">Yusuf W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦9,540,588</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">266</span></div><div><div class="ev-member-name">Amina A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦9,448,960</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">267</span></div><div><div class="ev-member-name">Oluwaseun D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦9,357,918</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">268</span></div><div><div class="ev-member-name">Kelechi K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦9,267,459</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">269</span></div><div><div class="ev-member-name">Bukola O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦9,177,584</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">270</span></div><div><div class="ev-member-name">Amaka S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦9,088,290</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">271</span></div><div><div class="ev-member-name">Tunde V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦8,999,577</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">272</span></div><div><div class="ev-member-name">Chioma Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦8,911,443</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">273</span></div><div><div class="ev-member-name">Ibrahim C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦8,823,887</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">274</span></div><div><div class="ev-member-name">Grace G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦8,736,908</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">275</span></div><div><div class="ev-member-name">David N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦8,650,504</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">276</span></div><div><div class="ev-member-name">Funke R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦8,564,674</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">277</span></div><div><div class="ev-member-name">Samuel U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦8,479,417</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">278</span></div><div><div class="ev-member-name">Ngozi Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦8,394,732</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">279</span></div><div><div class="ev-member-name">Femi B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦8,310,616</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">280</span></div><div><div class="ev-member-name">Blessing E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦8,227,070</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">281</span></div><div><div class="ev-member-name">Chidi M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦8,144,092</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">282</span></div><div><div class="ev-member-name">Efe P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦8,061,680</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">283</span></div><div><div class="ev-member-name">Yusuf T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,979,833</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">284</span></div><div><div class="ev-member-name">Amina W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦7,898,549</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">285</span></div><div><div class="ev-member-name">Oluwaseun A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,817,829</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">286</span></div><div><div class="ev-member-name">Kelechi D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦7,737,669</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">287</span></div><div><div class="ev-member-name">Bukola K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,658,070</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">288</span></div><div><div class="ev-member-name">Amaka O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦7,579,029</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">289</span></div><div><div class="ev-member-name">Tunde S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,500,545</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">290</span></div><div><div class="ev-member-name">Chioma V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦7,422,617</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">291</span></div><div><div class="ev-member-name">Ibrahim Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,345,244</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">292</span></div><div><div class="ev-member-name">Grace C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦7,268,424</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">293</span></div><div><div class="ev-member-name">David G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,192,156</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">294</span></div><div><div class="ev-member-name">Funke N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦7,116,439</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">295</span></div><div><div class="ev-member-name">Samuel R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦7,041,272</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">296</span></div><div><div class="ev-member-name">Ngozi U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,966,652</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">297</span></div><div><div class="ev-member-name">Femi Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,892,579</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">298</span></div><div><div class="ev-member-name">Blessing B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,819,051</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">299</span></div><div><div class="ev-member-name">Chidi E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,746,067</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">300</span></div><div><div class="ev-member-name">Efe M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,673,626</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">301</span></div><div><div class="ev-member-name">Yusuf P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,601,726</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">302</span></div><div><div class="ev-member-name">Amina T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,530,366</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">303</span></div><div><div class="ev-member-name">Oluwaseun W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,459,545</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">304</span></div><div><div class="ev-member-name">Kelechi A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,389,260</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">305</span></div><div><div class="ev-member-name">Bukola D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,319,512</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">306</span></div><div><div class="ev-member-name">Amaka K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,250,298</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">307</span></div><div><div class="ev-member-name">Tunde O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,181,617</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">308</span></div><div><div class="ev-member-name">Chioma S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦6,113,468</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">309</span></div><div><div class="ev-member-name">Ibrahim V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦6,045,849</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">310</span></div><div><div class="ev-member-name">Grace Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,978,760</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">311</span></div><div><div class="ev-member-name">David C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,912,197</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">312</span></div><div><div class="ev-member-name">Funke G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,846,161</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">313</span></div><div><div class="ev-member-name">Samuel N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,780,650</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">314</span></div><div><div class="ev-member-name">Ngozi R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,715,662</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">315</span></div><div><div class="ev-member-name">Femi U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,651,196</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">316</span></div><div><div class="ev-member-name">Blessing Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,587,251</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">317</span></div><div><div class="ev-member-name">Chidi B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,523,825</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">318</span></div><div><div class="ev-member-name">Efe E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,460,916</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">319</span></div><div><div class="ev-member-name">Yusuf M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,398,524</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">320</span></div><div><div class="ev-member-name">Amina P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,336,647</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">321</span></div><div><div class="ev-member-name">Oluwaseun T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,275,284</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">322</span></div><div><div class="ev-member-name">Kelechi W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,214,432</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">323</span></div><div><div class="ev-member-name">Bukola A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,154,091</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">324</span></div><div><div class="ev-member-name">Amaka D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦5,094,260</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">325</span></div><div><div class="ev-member-name">Tunde K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦5,034,936</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">326</span></div><div><div class="ev-member-name">Chioma O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,976,118</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">327</span></div><div><div class="ev-member-name">Ibrahim S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,917,805</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">328</span></div><div><div class="ev-member-name">Grace V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,859,996</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">329</span></div><div><div class="ev-member-name">David Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,802,689</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">330</span></div><div><div class="ev-member-name">Funke C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,745,882</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">331</span></div><div><div class="ev-member-name">Samuel G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,689,574</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">332</span></div><div><div class="ev-member-name">Ngozi N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,633,764</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">333</span></div><div><div class="ev-member-name">Femi R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,578,450</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">334</span></div><div><div class="ev-member-name">Blessing U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,523,630</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">335</span></div><div><div class="ev-member-name">Chidi Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,469,304</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">336</span></div><div><div class="ev-member-name">Efe B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,415,469</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">337</span></div><div><div class="ev-member-name">Yusuf E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,362,124</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">338</span></div><div><div class="ev-member-name">Amina M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,309,268</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">339</span></div><div><div class="ev-member-name">Oluwaseun P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,256,900</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">340</span></div><div><div class="ev-member-name">Kelechi T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,205,016</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">341</span></div><div><div class="ev-member-name">Bukola W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,153,617</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">342</span></div><div><div class="ev-member-name">Amaka A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,102,701</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">343</span></div><div><div class="ev-member-name">Tunde D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦4,052,265</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">344</span></div><div><div class="ev-member-name">Chioma K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦4,002,310</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">345</span></div><div><div class="ev-member-name">Ibrahim O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,952,832</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">346</span></div><div><div class="ev-member-name">Grace S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,903,831</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">347</span></div><div><div class="ev-member-name">David V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,855,304</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">348</span></div><div><div class="ev-member-name">Funke Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,807,252</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">349</span></div><div><div class="ev-member-name">Samuel C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,759,671</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">350</span></div><div><div class="ev-member-name">Ngozi G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,712,560</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">351</span></div><div><div class="ev-member-name">Femi N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,665,918</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">352</span></div><div><div class="ev-member-name">Blessing R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,619,743</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">353</span></div><div><div class="ev-member-name">Chidi U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,574,034</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">354</span></div><div><div class="ev-member-name">Efe Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,528,789</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">355</span></div><div><div class="ev-member-name">Yusuf B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,484,007</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">356</span></div><div><div class="ev-member-name">Amina E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,439,685</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">357</span></div><div><div class="ev-member-name">Oluwaseun M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,395,823</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">358</span></div><div><div class="ev-member-name">Kelechi P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,352,418</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">359</span></div><div><div class="ev-member-name">Bukola T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,309,469</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">360</span></div><div><div class="ev-member-name">Amaka W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,266,975</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">361</span></div><div><div class="ev-member-name">Tunde A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,224,934</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">362</span></div><div><div class="ev-member-name">Chioma D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,183,344</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">363</span></div><div><div class="ev-member-name">Ibrahim K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,142,204</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">364</span></div><div><div class="ev-member-name">Grace O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,101,511</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">365</span></div><div><div class="ev-member-name">David S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦3,061,265</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">366</span></div><div><div class="ev-member-name">Funke V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦3,021,464</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">367</span></div><div><div class="ev-member-name">Samuel Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,982,106</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">368</span></div><div><div class="ev-member-name">Ngozi C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,943,189</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">369</span></div><div><div class="ev-member-name">Femi G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,904,712</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">370</span></div><div><div class="ev-member-name">Blessing N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,866,672</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">371</span></div><div><div class="ev-member-name">Chidi R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,829,070</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">372</span></div><div><div class="ev-member-name">Efe U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,791,902</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">373</span></div><div><div class="ev-member-name">Yusuf Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,755,167</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">374</span></div><div><div class="ev-member-name">Amina B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,718,863</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">375</span></div><div><div class="ev-member-name">Oluwaseun E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,682,989</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">376</span></div><div><div class="ev-member-name">Kelechi M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,647,543</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">377</span></div><div><div class="ev-member-name">Bukola P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,612,523</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">378</span></div><div><div class="ev-member-name">Amaka T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,577,928</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">379</span></div><div><div class="ev-member-name">Tunde W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,543,755</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">380</span></div><div><div class="ev-member-name">Chioma A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,510,003</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">381</span></div><div><div class="ev-member-name">Ibrahim D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,476,671</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">382</span></div><div><div class="ev-member-name">Grace K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,443,756</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">383</span></div><div><div class="ev-member-name">David O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,411,257</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">384</span></div><div><div class="ev-member-name">Funke S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,379,172</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">385</span></div><div><div class="ev-member-name">Samuel V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,347,499</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">386</span></div><div><div class="ev-member-name">Ngozi Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,316,236</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">387</span></div><div><div class="ev-member-name">Femi C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,285,383</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">388</span></div><div><div class="ev-member-name">Blessing G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,254,936</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">389</span></div><div><div class="ev-member-name">Chidi N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,224,894</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">390</span></div><div><div class="ev-member-name">Efe R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,195,255</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">391</span></div><div><div class="ev-member-name">Yusuf U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,166,018</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">392</span></div><div><div class="ev-member-name">Amina Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,137,180</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">393</span></div><div><div class="ev-member-name">Oluwaseun B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,108,741</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">394</span></div><div><div class="ev-member-name">Kelechi E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,080,697</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">395</span></div><div><div class="ev-member-name">Bukola M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦2,053,047</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">396</span></div><div><div class="ev-member-name">Amaka P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦2,025,789</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">397</span></div><div><div class="ev-member-name">Tunde T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,998,922</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">398</span></div><div><div class="ev-member-name">Chioma W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,972,443</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">399</span></div><div><div class="ev-member-name">Ibrahim A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,946,350</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">400</span></div><div><div class="ev-member-name">Grace D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,920,643</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">401</span></div><div><div class="ev-member-name">David K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,895,317</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">402</span></div><div><div class="ev-member-name">Funke O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,870,373</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">403</span></div><div><div class="ev-member-name">Samuel S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,845,808</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">404</span></div><div><div class="ev-member-name">Ngozi V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,821,620</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">405</span></div><div><div class="ev-member-name">Femi Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,797,806</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">406</span></div><div><div class="ev-member-name">Blessing C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,774,366</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">407</span></div><div><div class="ev-member-name">Chidi G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,751,297</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">408</span></div><div><div class="ev-member-name">Efe N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,728,597</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">409</span></div><div><div class="ev-member-name">Yusuf R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,706,264</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">410</span></div><div><div class="ev-member-name">Amina U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,684,296</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">411</span></div><div><div class="ev-member-name">Oluwaseun Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,662,691</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">412</span></div><div><div class="ev-member-name">Kelechi B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,641,447</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">413</span></div><div><div class="ev-member-name">Bukola E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,620,563</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">414</span></div><div><div class="ev-member-name">Amaka M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,600,035</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">415</span></div><div><div class="ev-member-name">Tunde P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,579,862</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">416</span></div><div><div class="ev-member-name">Chioma T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,560,042</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">417</span></div><div><div class="ev-member-name">Ibrahim W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,540,573</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">418</span></div><div><div class="ev-member-name">Grace A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,521,453</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">419</span></div><div><div class="ev-member-name">David D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,502,679</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">420</span></div><div><div class="ev-member-name">Funke K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,484,250</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">421</span></div><div><div class="ev-member-name">Samuel O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,466,163</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">422</span></div><div><div class="ev-member-name">Ngozi S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,448,416</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">423</span></div><div><div class="ev-member-name">Femi V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,431,007</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">424</span></div><div><div class="ev-member-name">Blessing Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,413,934</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">425</span></div><div><div class="ev-member-name">Chidi C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,397,195</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">426</span></div><div><div class="ev-member-name">Efe G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,380,787</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">427</span></div><div><div class="ev-member-name">Yusuf N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,364,709</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">428</span></div><div><div class="ev-member-name">Amina R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,348,957</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">429</span></div><div><div class="ev-member-name">Oluwaseun U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,333,530</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">430</span></div><div><div class="ev-member-name">Kelechi Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,318,426</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">431</span></div><div><div class="ev-member-name">Bukola B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,303,642</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">432</span></div><div><div class="ev-member-name">Amaka E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,289,176</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">433</span></div><div><div class="ev-member-name">Tunde M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,275,025</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">434</span></div><div><div class="ev-member-name">Chioma P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,261,188</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">435</span></div><div><div class="ev-member-name">Ibrahim T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,247,662</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">436</span></div><div><div class="ev-member-name">Grace W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,234,444</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">437</span></div><div><div class="ev-member-name">David A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,221,533</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">438</span></div><div><div class="ev-member-name">Funke D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,208,925</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">439</span></div><div><div class="ev-member-name">Samuel K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,196,619</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">440</span></div><div><div class="ev-member-name">Ngozi O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,184,611</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">441</span></div><div><div class="ev-member-name">Femi S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,172,900</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">442</span></div><div><div class="ev-member-name">Blessing V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,161,483</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">443</span></div><div><div class="ev-member-name">Chidi Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,150,358</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">444</span></div><div><div class="ev-member-name">Efe C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,139,521</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">445</span></div><div><div class="ev-member-name">Yusuf G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,128,971</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">446</span></div><div><div class="ev-member-name">Amina N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,118,705</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">447</span></div><div><div class="ev-member-name">Oluwaseun R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,108,720</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">448</span></div><div><div class="ev-member-name">Kelechi U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,099,013</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">449</span></div><div><div class="ev-member-name">Bukola Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,089,583</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">450</span></div><div><div class="ev-member-name">Amaka B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,080,426</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">451</span></div><div><div class="ev-member-name">Tunde E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,071,539</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">452</span></div><div><div class="ev-member-name">Chioma M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,062,921</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">453</span></div><div><div class="ev-member-name">Ibrahim P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,054,568</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">454</span></div><div><div class="ev-member-name">Grace T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,046,477</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">455</span></div><div><div class="ev-member-name">David W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,038,645</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">456</span></div><div><div class="ev-member-name">Funke A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,031,071</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">457</span></div><div><div class="ev-member-name">Samuel D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,023,750</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">458</span></div><div><div class="ev-member-name">Ngozi K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,016,680</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">459</span></div><div><div class="ev-member-name">Femi O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦1,009,858</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">460</span></div><div><div class="ev-member-name">Blessing S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦1,003,282</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">461</span></div><div><div class="ev-member-name">Chidi V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦996,947</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">462</span></div><div><div class="ev-member-name">Efe Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦990,852</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">463</span></div><div><div class="ev-member-name">Yusuf C.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦984,992</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">464</span></div><div><div class="ev-member-name">Amina G.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦979,365</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">465</span></div><div><div class="ev-member-name">Oluwaseun N.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦973,968</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">466</span></div><div><div class="ev-member-name">Kelechi R.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦968,797</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">467</span></div><div><div class="ev-member-name">Bukola U.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦963,850</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">468</span></div><div><div class="ev-member-name">Amaka Y.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦959,122</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">469</span></div><div><div class="ev-member-name">Tunde B.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦954,611</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">470</span></div><div><div class="ev-member-name">Chioma E.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦950,313</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">471</span></div><div><div class="ev-member-name">Ibrahim M.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦946,224</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">472</span></div><div><div class="ev-member-name">Grace P.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦942,342</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">473</span></div><div><div class="ev-member-name">David T.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦938,662</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">474</span></div><div><div class="ev-member-name">Funke W.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦935,181</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">475</span></div><div><div class="ev-member-name">Samuel A.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦931,895</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">476</span></div><div><div class="ev-member-name">Ngozi D.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦928,801</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">477</span></div><div><div class="ev-member-name">Femi K.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦925,894</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">478</span></div><div><div class="ev-member-name">Blessing O.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦923,170</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">479</span></div><div><div class="ev-member-name">Chidi S.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦920,626</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">480</span></div><div><div class="ev-member-name">Efe V.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦918,258</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">481</span></div><div><div class="ev-member-name">Yusuf Z.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦916,060</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">482</span></div><div><div class="ev-member-name">Amina C.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦914,030</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">483</span></div><div><div class="ev-member-name">Oluwaseun G.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦912,162</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">484</span></div><div><div class="ev-member-name">Kelechi N.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦910,451</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">485</span></div><div><div class="ev-member-name">Bukola R.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦908,894</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">486</span></div><div><div class="ev-member-name">Amaka U.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦907,485</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">487</span></div><div><div class="ev-member-name">Tunde Y.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦906,219</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">488</span></div><div><div class="ev-member-name">Chioma B.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦905,091</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">489</span></div><div><div class="ev-member-name">Ibrahim E.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦904,096</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">490</span></div><div><div class="ev-member-name">Grace M.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦903,228</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">491</span></div><div><div class="ev-member-name">David P.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦902,480</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">492</span></div><div><div class="ev-member-name">Funke T.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦901,848</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">493</span></div><div><div class="ev-member-name">Samuel W.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦901,323</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">494</span></div><div><div class="ev-member-name">Ngozi A.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦900,900</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">495</span></div><div><div class="ev-member-name">Femi D.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦900,571</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">496</span></div><div><div class="ev-member-name">Blessing K.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦900,327</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">497</span></div><div><div class="ev-member-name">Chidi O.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦900,159</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">498</span></div><div><div class="ev-member-name">Efe S.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦900,058</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">499</span></div><div><div class="ev-member-name">Yusuf V.</div><div class="ev-member-loc">Jos</div></div><div class="ev-member-earnings">₦900,010</div></div><div class="ev-board-row"><div class="ev-rank"><span class="ev-rank-plain">500</span></div><div><div class="ev-member-name">Amina Z.</div><div class="ev-member-loc">Lagos</div></div><div class="ev-member-earnings">₦900,000</div></div></div>
+					</div>
+
+					<!-- SEO note -->
+					<div class="ev-top-note">
+						<h2>How Evermore members build steady income</h2>
+						<p>
+							The statistics on this page reflect real-time distributions assigned to active Evermore members. Earnings depend on the task categories you complete — Rate EverAI Responses, Correct EverAI Memory, Opinion &amp; Survey Tasks, Audio Transcription, AI Content Rating and Click n Earn — with combined earning potential up to <strong>$19.2/hr</strong>. Rewards are paid three times a week.
+						</p>
+						<p>
+							Want to see your name on this live ranking list? <a href="auth.html?mode=create">Create your Evermore account</a>, activate your Evermore Premium Subscription, and start earning from your dashboard — tracked across your regional multi-currency nodes.
+						</p>
+					</div>
+				</section>
+
+				<!-- Final CTA -->
+				<section class="ev-top-final-cta">
+					<div class="ev-top-final-cta-box">
+						<div class="grid-bg"></div>
+						<div class="neon"></div>
+						<div class="inner">
+							<img src="assets/images/evermore-mark.png" alt="Evermore logo mark">
+							<h2>Ready to start <span class="accent">earning?</span></h2>
+							<p>Join thousands of smart individuals already earning on the Evermore AI Platform.</p>
+							<a href="auth.html?mode=create" class="ev-top-final-cta-btn">
+								CREATE YOUR ACCOUNT
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12h14"></path>
+									<path d="m12 5 7 7-7 7"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</section>
+
+			</main>
+
+			<!-- ===== Footer (multi-column menu, centered bottom) ===== -->
+			<footer class="ev-footer">
+				<div class="ev-footer-inner">
+
+					<div class="ev-footer-columns">
+						<div class="ev-footer-col">
+							<h4>Platform</h4>
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="top-earners.html">Top Earners</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="download.html">Download App</a></li>
+							</ul>
+						</div>
+
+						<div class="ev-footer-col">
+							<h4>Support</h4>
+							<ul>
+								<li><a href="faq.html">FAQ</a></li>
+								<li><a href="auth.html">Contact Us</a></li>
+								<li><a href="auth.html?mode=create">Register</a></li>
+								<li><a href="auth.html?mode=signin">Login</a></li>
+							</ul>
+						</div>
+
+						<div class="ev-footer-col">
+							<h4>Legal</h4>
+							<ul>
+								<li><a href="terms.html">Terms &amp; Conditions</a></li>
+								<li><a href="privacy.html">Privacy Policy</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="ev-footer-bottom">
+						<a href="index.html" class="ev-footer-brand">
+							<img src="assets/images/evermore-mark.png" alt="Evermore">
+							<span>ever<span class="accent">more</span></span>
+						</a>
+						<p class="ev-footer-copy">
+							© 2026 EVERMORE — the Evermore AI Platform for AI tools, training tasks and remote work opportunities.
+						</p>
+					</div>
+
+				</div>
+			</footer>
+		</div>
+
+		<!-- Leaderboard engine -->
+		<script>
+			(function () {
+				'use strict';
+
+				var firstNames = {
+					NGN: ["Amaka", "Tunde", "Chioma", "Ibrahim", "Grace", "David", "Funke", "Samuel", "Ngozi", "Femi", "Blessing", "Chidi", "Efe", "Yusuf", "Amina", "Oluwaseun", "Kelechi", "Bukola"],
+					USD: ["John", "Michael", "Sarah", "Robert", "James", "Emily", "William", "Jessica", "David", "Ashley", "Chris", "Amanda", "Brian", "Megan", "Kevin", "Nicole", "Jason"],
+					GHS: ["Kwame", "Kofi", "Ama", "Yaw", "Efua", "Kojo", "Akosua", "Mensah", "Abena", "Ekow", "Gifty", "Osei", "Baah", "Yeboah", "Adom", "Dede", "Anan", "Boateng"],
+					KES: ["John", "Mwangi", "Otieno", "Wanjiku", "Kamau", "Onyango", "Chepngetich", "Kipkorir", "Atieno", "Maina", "Njoroge", "Karanja", "Omwamba", "Moraa"],
+					XAF: ["Jean", "Pierre", "Marie", "Michel", "Samuel", "Dieudonné", "Chantal", "Alain", "Ewondo", "Moussa", "Pascal", "Ngo", "Emilienne", "Fabrice", "Yannick"],
+					EUR: ["Thomas", "Lucas", "Emma", "Léa", "Maximilian", "Anna", "Matteo", "Giulia", "Arthur", "Laura", "Leon", "Sofia", "Lukas", "Mia", "Jonas", "Chloé"]
+				};
+
+				var lastInitials = ["A.", "B.", "C.", "D.", "E.", "G.", "K.", "M.", "N.", "O.", "P.", "R.", "S.", "T.", "U.", "V.", "W.", "Y.", "Z."];
+
+				var regions = {
+					NGN: ["Lagos", "Abuja", "Port Harcourt", "Kano", "Enugu", "Ibadan", "Benin", "Jos", "Asaba", "Calabar", "Uyo", "Kaduna", "Owerri", "Abeokuta"],
+					USD: ["New York", "California", "Texas", "Florida", "London", "Toronto", "Sydney", "Chicago", "Atlanta", "Seattle", "Boston", "Phoenix"],
+					GHS: ["Accra", "Kumasi", "Tamale", "Takoradi", "Cape Coast", "Tema", "Obuasi", "Koforidua", "Sunyani", "Ho"],
+					KES: ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika", "Malindi", "Kitale", "Garissa", "Nyeri"],
+					XAF: ["Douala", "Yaoundé", "Garoua", "Maroua", "Bafoussam", "Bamenda", "Libreville", "Port-Gentil", "Brazzaville"],
+					EUR: ["Paris", "Berlin", "Frankfurt", "Rome", "Milan", "Madrid", "Barcelona", "Amsterdam", "Brussels", "Vienna", "Dublin"]
+				};
+
+				var currencySymbols = { NGN: "₦", USD: "$", GHS: "₵", KES: "KSh ", XAF: "FCFA ", EUR: "€" };
+				var baseRates = { NGN: 1, USD: 1500, GHS: 105, KES: 11.5, XAF: 2.4, EUR: 1620 };
+
+				function generateData(currency) {
+					var records = [];
+					var maxEarningsNGN = 57670800;
+					var minEarningsNGN = 900000;
+
+					for (var i = 1; i <= 500; i++) {
+						var nameArr = firstNames[currency] || firstNames.USD;
+						var regArr = regions[currency] || regions.USD;
+
+						var name = nameArr[i % nameArr.length] + " " + lastInitials[(i * 3) % lastInitials.length];
+						var location = regArr[(i * 7) % regArr.length];
+
+						var currentBaseNGN;
+						if (i === 1) {
+							currentBaseNGN = maxEarningsNGN;
+						} else if (i === 500) {
+							currentBaseNGN = minEarningsNGN;
+						} else {
+							var factor = Math.pow((500 - i) / 499, 2.5);
+							currentBaseNGN = minEarningsNGN + Math.round((maxEarningsNGN - minEarningsNGN) * factor);
+						}
+
+						var convertedValue = Math.round(currentBaseNGN / baseRates[currency]);
+
+						records.push({
+							rank: i,
+							name: name,
+							location: location,
+							earnings: currencySymbols[currency] + convertedValue.toLocaleString()
+						});
+					}
+					return records;
+				}
+
+				window.switchCurrency = function (targetCurrency) {
+					var container = document.getElementById('leaderboard-rows');
+					if (!container) return;
+					container.innerHTML = '';
+
+					['NGN', 'USD', 'GHS', 'KES', 'XAF', 'EUR'].forEach(function (cur) {
+						var btn = document.getElementById('tab-' + cur);
+						if (!btn) return;
+						if (cur === targetCurrency) {
+							btn.classList.add('active');
+						} else {
+							btn.classList.remove('active');
+						}
+					});
+
+					var dataSet = generateData(targetCurrency);
+					var bufferMarkup = '';
+
+					dataSet.forEach(function (item) {
+						var rankBadge;
+						if (item.rank === 1) {
+							rankBadge = '<span class="ev-rank-badge ev-rank-1">1</span>';
+						} else if (item.rank === 2) {
+							rankBadge = '<span class="ev-rank-badge ev-rank-2">2</span>';
+						} else if (item.rank === 3) {
+							rankBadge = '<span class="ev-rank-badge ev-rank-3">3</span>';
+						} else {
+							rankBadge = '<span class="ev-rank-plain">' + item.rank + '</span>';
+						}
+
+						bufferMarkup +=
+							'<div class="ev-board-row">' +
+								'<div class="ev-rank">' + rankBadge + '</div>' +
+								'<div>' +
+									'<div class="ev-member-name">' + item.name + '</div>' +
+									'<div class="ev-member-loc">' + item.location + '</div>' +
+								'</div>' +
+								'<div class="ev-member-earnings">' + item.earnings + '</div>' +
+							'</div>';
+					});
+
+					container.innerHTML = bufferMarkup;
+				};
+
+				function initDrawer() {
+					var btn = document.getElementById('ev-menu-btn');
+					var drawer = document.getElementById('ev-drawer');
+					var backdrop = document.getElementById('ev-drawer-backdrop');
+					var closeBtn = document.getElementById('ev-drawer-close');
+					if (!btn || !drawer || !backdrop) return;
+
+					function open() {
+						drawer.classList.add('open');
+						backdrop.classList.add('open');
+						drawer.setAttribute('aria-hidden', 'false');
+						btn.setAttribute('aria-expanded', 'true');
+						document.body.style.overflow = 'hidden';
+					}
+					function close() {
+						drawer.classList.remove('open');
+						backdrop.classList.remove('open');
+						drawer.setAttribute('aria-hidden', 'true');
+						btn.setAttribute('aria-expanded', 'false');
+						document.body.style.overflow = '';
+					}
+
+					btn.addEventListener('click', open);
+					backdrop.addEventListener('click', close);
+					if (closeBtn) closeBtn.addEventListener('click', close);
+					document.addEventListener('keydown', function (e) {
+						if (e.key === 'Escape') close();
+					});
+
+					drawer.querySelectorAll('.ev-nav-item').forEach(function (item) {
+						item.addEventListener('click', function () {
+							close();
+						});
+					});
+				}
+
+				function boot() {
+					initDrawer();
+					window.switchCurrency('NGN');
+				}
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', boot);
+				} else {
+					boot();
+				}
+			})();
+		</script>
+
+		
+	
+</body></html>

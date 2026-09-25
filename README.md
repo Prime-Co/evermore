@@ -1,11 +1,34 @@
-<div align="center">
+# Evermore — Clean Frontend Package
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+This package is a cleaned and reorganized frontend extracted from the downloaded Evermore website.
 
-  <h1>Built with AI Studio</h2>
+## Current architecture
+- Static multi-page HTML frontend
+- Shared CSS in `assets/css/styles.css`
+- Shared font stylesheet in `assets/css/fonts.css`
+- Shared images in `assets/images/`
+- No database/backend is connected yet
+- No PHP backend is included or required by this package
+- Firebase is the planned backend for the next integration stage
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Pages
+- `index.html` — landing page
+- `auth.html` — sign-in/create-account UI shell
+- `dashboard.html` — frontend dashboard shell pending backend integration
+- `about.html`
+- `top-earners.html`
+- `blog.html`
+- `faq.html`
+- `download.html`
+- `terms.html`
+- `privacy.html`
+- `scam-alert.html`
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Important
+The frontend intentionally does not contain database credentials, Firebase configuration, PHP endpoints, or live authentication. The auth page has been neutralized so it does not attempt to call the old PHP backend. The next build stage should integrate Firebase Authentication, Firestore/Storage as required, and the admin/user workflows.
 
-</div>
+## Deployment
+The package is structured so it can be placed in a GitHub repository and imported into Google AI Studio Build Mode or deployed as a static site.
+
+## Legacy-domain cleanup
+The downloaded site contained hard-coded absolute URLs to its former host. Those old internal URLs have been removed from the HTML source and replaced with local relative routes or omitted where a final production domain is not yet known.

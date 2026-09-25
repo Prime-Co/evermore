@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preload" as="image" href="assets/images/evermore-mark.png">
+		<link rel="stylesheet" href="assets/css/styles.css" data-precedence="default">
+		<link rel="stylesheet" href="assets/css/fonts.css" data-precedence="default">
+
+		<!-- ============ PRIMARY SEO ============ -->
+		<title>Evermore AI Blog | Earn More Online – Tips, Guides &amp; Updates</title>
+		<meta name="description" content="Actionable guides, platform updates and deep strategy breakdowns to scale your income on Evermore AI. Learn how to earn up to $19.2/hr online in Nigeria and Africa.">
+		<meta name="keywords" content="Evermore AI blog, earn online Nigeria, AI earning tips, remote work blog Africa, Ever AI guides, online income strategies, AI training tasks guide, how to earn online Nigeria, work from home tips, AI platform updates, Evermore tutorials, AI content rating guide, remote work tips">
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<meta name="googlebot" content="index, follow">
+		<meta name="author" content="Evermore AI">
+		<meta name="publisher" content="Evermore AI">
+		<meta name="language" content="English">
+		<meta name="revisit-after" content="3 days">
+		<meta name="rating" content="general">
+		<meta name="theme-color" content="#12b886">
+
+		<!-- ============ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ============ -->
+		<meta property="og:site_name" content="Evermore AI">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Evermore AI Blog | Tips, Guides &amp; Updates to Earn More Online">
+		<meta property="og:description" content="Actionable guides, platform updates and deep strategy breakdowns to scale your income on the Evermore AI Platform across Nigeria and Africa.">
+		<meta property="og:url" content="blog.html">
+		<meta property="og:image" content="assets/hero-main-DsCX8iSK.jpg">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:image:alt" content="Evermore AI Blog — Tips and guides to earn more online">
+		<meta property="og:locale" content="en_NG">
+
+		<!-- ============ TWITTER / X CARD ============ -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@evermoreai">
+		<meta name="twitter:creator" content="@evermoreai">
+		<meta name="twitter:title" content="Evermore AI Blog | Tips, Guides &amp; Updates">
+		<meta name="twitter:description" content="Actionable guides and updates to help you earn more on the Evermore AI Platform.">
+		<meta name="twitter:image" content="assets/hero-main-DsCX8iSK.jpg">
+		<meta name="twitter:image:alt" content="Evermore AI Blog — Tips and guides to earn more online">
+
+		<!-- ============ TECHNICAL ============ -->
+		<meta name="google-site-verification" content="1-GcuCbwPJCapBJ5ER0NMkH_CkXHlXKqlWcGN8Out8w">
+		<link rel="icon" type="image/png" href="favicon.svg">
+		<link rel="apple-touch-icon" href="assets/images/evermore-mark.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com/">
+		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+
+		<!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+
+		<style>
+			/* ---------- Drawer (public menu) ---------- */
+			.ev-drawer-backdrop {
+				position: fixed; inset: 0;
+				background: rgba(12, 30, 28, 0.35);
+				backdrop-filter: blur(2px);
+				-webkit-backdrop-filter: blur(2px);
+				opacity: 0; pointer-events: none;
+				transition: opacity .25s;
+				z-index: 100;
+			}
+			.ev-drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+			.ev-drawer {
+				position: fixed; top: 0; right: 0; bottom: 0;
+				width: 300px;
+				max-width: 88vw;
+				background: linear-gradient(180deg, #ffffff 0%, #fbfefd 100%);
+				border-left: 1px solid #e8f1ef;
+				transform: translateX(100%);
+				transition: transform .28s cubic-bezier(.4,0,.2,1);
+				z-index: 101;
+				display: flex; flex-direction: column;
+				color: #2c4a46;
+				overflow: hidden;
+				box-shadow: -8px 0 32px -12px rgba(12, 30, 28, 0.18);
+			}
+			.ev-drawer.open { transform: translateX(0); }
+
+			.ev-drawer-header {
+				display: flex; align-items: center; justify-content: space-between;
+				padding: 18px 20px;
+				border-bottom: 1px solid #e8f1ef;
+			}
+			.ev-drawer-brand {
+				display: flex; align-items: center; gap: 10px;
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700; font-size: 20px;
+				letter-spacing: -0.02em;
+				color: #0c1e1c;
+				line-height: 1;
+			}
+			.ev-drawer-brand img { height: 30px; width: auto; }
+			.ev-drawer-brand .accent { color: #12b886; }
+
+			.ev-drawer-close {
+				width: 36px; height: 36px;
+				border-radius: 10px;
+				display: flex; align-items: center; justify-content: center;
+				color: #6b8683;
+				transition: background .15s, color .15s;
+			}
+			.ev-drawer-close:hover { background: #d3f9ec; color: #0ca678; }
+
+			.ev-drawer-nav {
+				flex: 1;
+				overflow-y: auto;
+				padding: 14px 12px 16px;
+				display: flex; flex-direction: column;
+			}
+			.ev-drawer-nav::-webkit-scrollbar { width: 6px; }
+			.ev-drawer-nav::-webkit-scrollbar-thumb { background: #d5e6e3; border-radius: 3px; }
+
+			.ev-nav-item {
+				display: flex; align-items: center; gap: 14px;
+				padding: 12px 14px;
+				border-radius: 10px;
+				font-size: 14.5px;
+				font-weight: 500;
+				color: #2c4a46;
+				transition: background .15s, color .15s;
+				position: relative;
+				margin-bottom: 2px;
+			}
+			.ev-nav-item:hover {
+				background: #d3f9ec;
+				color: #0ca678;
+			}
+			.ev-nav-item svg {
+				width: 19px; height: 19px;
+				flex-shrink: 0;
+				stroke: currentColor;
+				fill: none;
+				stroke-width: 1.75;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+			}
+			.ev-nav-item .chev {
+				margin-left: auto;
+				width: 15px; height: 15px;
+				stroke: currentColor;
+				opacity: 0.45;
+			}
+			.ev-nav-divider {
+				height: 1px;
+				background: #e8f1ef;
+				margin: 10px 8px;
+			}
+			.ev-nav-label {
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: .14em;
+				text-transform: uppercase;
+				color: #8aa5a1;
+				padding: 8px 14px 4px;
+			}
+
+			/* Bottom auth area */
+			.ev-drawer-auth {
+				border-top: 1px solid #e8f1ef;
+				padding: 16px 18px;
+				background: #f8fdfc;
+				display: flex; flex-direction: column; gap: 10px;
+			}
+			.ev-btn {
+				display: flex; align-items: center; justify-content: center; gap: 8px;
+				padding: 11px 16px;
+				border-radius: 11px;
+				font-size: 14px;
+				font-weight: 600;
+				transition: background .15s, transform .15s, border-color .15s;
+				text-align: center;
+			}
+			.ev-btn.primary {
+				background: linear-gradient(135deg, #12b886, #20c997);
+				color: #ffffff;
+				box-shadow: 0 6px 16px -6px rgba(18, 184, 134, 0.5);
+			}
+			.ev-btn.primary:hover { transform: translateY(-1px); }
+			.ev-btn.outline {
+				background: #ffffff;
+				color: #0c1e1c;
+				border: 1px solid #e2eeec;
+			}
+			.ev-btn.outline:hover { background: #f8fdfc; border-color: #12b886; }
+
+			/* Hamburger button in nav */
+			.ev-menu-btn {
+				width: 40px; height: 40px;
+				border-radius: 10px;
+				display: inline-flex; align-items: center; justify-content: center;
+				color: currentColor;
+				transition: background .15s, color .15s;
+			}
+			.ev-menu-btn:hover { background: rgba(18, 184, 134, 0.12); color: #12b886; }
+
+			/* ---------- Footer (multi-column menu) ---------- */
+			.ev-footer {
+				background: #0a1b2e;
+				background: linear-gradient(180deg, #0a1b2e 0%, #071426 100%);
+				color: #c7d6e6;
+				border-top: 1px solid rgba(255,255,255,0.06);
+				margin-top: 0;
+			}
+			.ev-footer-inner {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 56px 20px 32px;
+			}
+			.ev-footer-columns {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 40px 48px;
+			}
+			.ev-footer-col h4 {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 15px;
+				font-weight: 700;
+				color: #ffffff;
+				margin: 0 0 18px;
+				letter-spacing: -0.01em;
+			}
+			.ev-footer-col ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+			.ev-footer-col a {
+				font-size: 14.5px;
+				color: #b3c4d6;
+				transition: color .15s;
+				display: inline-block;
+			}
+			.ev-footer-col a:hover { color: #4ade9f; }
+
+			.ev-footer-bottom {
+				margin-top: 48px;
+				padding-top: 24px;
+				border-top: 1px solid rgba(255,255,255,0.06);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				gap: 16px;
+			}
+			.ev-footer-brand {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700;
+				font-size: 20px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+			}
+			.ev-footer-brand img { height: 30px; width: auto; }
+			.ev-footer-brand .accent { color: #19d29c; }
+
+			.ev-footer-copy {
+				font-size: 12.5px;
+				color: #7f96b1;
+				margin: 0;
+				max-width: 620px;
+			}
+
+			/* ---------- Blog page (light theme) ---------- */
+			.ev-blog {
+				background: #f4fbfa;
+				color: #0c1e1c;
+				font-family: 'DM Sans', system-ui, sans-serif;
+				min-height: 100vh;
+			}
+
+			.ev-blog-hero {
+				position: relative;
+				overflow: hidden;
+				padding: 72px 20px 56px;
+				text-align: center;
+			}
+			.ev-blog-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+			.ev-blog-hero-bg .grad {
+				position: absolute; inset: 0;
+				background: linear-gradient(180deg, rgba(0,229,255,0.10), transparent 60%);
+			}
+			.ev-blog-hero-bg .orb-1 {
+				position: absolute; left: 50%; top: -20%;
+				width: 40rem; height: 40rem;
+				transform: translateX(-50%);
+				background: rgba(18, 184, 134, 0.10);
+				border-radius: 50%;
+				filter: blur(120px);
+			}
+			.ev-blog-hero-bg .orb-2 {
+				position: absolute; right: -8%; top: 20%;
+				width: 22rem; height: 22rem;
+				background: rgba(240, 200, 92, 0.15);
+				border-radius: 50%;
+				filter: blur(100px);
+			}
+			.ev-blog-hero-inner {
+				position: relative;
+				max-width: 820px;
+				margin: 0 auto;
+			}
+
+			.ev-blog h1.ev-blog-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(3rem, 8vw, 5.5rem);
+				font-weight: 700;
+				letter-spacing: -0.04em;
+				line-height: 1;
+				color: #0c1e1c;
+				margin: 0 0 20px;
+			}
+			.ev-blog h1.ev-blog-title .accent { color: #12b886; }
+
+			.ev-blog-subhead {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+				font-weight: 500;
+				letter-spacing: -0.01em;
+				line-height: 1.25;
+				color: #0c1e1c;
+				max-width: 620px;
+				margin: 0 auto 22px;
+			}
+			.ev-blog-subhead .accent { color: #0ca678; }
+
+			.ev-blog-lede {
+				font-size: 1.0625rem;
+				line-height: 1.65;
+				color: #6b8683;
+				max-width: 640px;
+				margin: 0 auto;
+			}
+
+			/* Grid */
+			.ev-blog-grid-wrap {
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 0 20px 40px;
+			}
+			.ev-blog-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 20px;
+			}
+			.ev-post-card {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				background: #ffffff;
+				border: 1px solid #e2eeec;
+				border-radius: 20px;
+				padding: 24px;
+				cursor: pointer;
+				transition: transform .15s, box-shadow .15s, border-color .15s;
+			}
+			.ev-post-card:hover {
+				transform: translateY(-3px);
+				border-color: rgba(18, 184, 134, 0.4);
+				box-shadow: 0 16px 40px -20px rgba(18, 184, 134, 0.4);
+			}
+			.ev-post-top {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 16px;
+			}
+			.ev-post-tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 4px 11px;
+				border-radius: 999px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+			.ev-tag-guide { background: rgba(99, 102, 241, 0.10); color: #6366f1; }
+			.ev-tag-plans { background: rgba(240, 200, 92, 0.18); color: #b8860b; }
+			.ev-tag-tips { background: rgba(18, 184, 134, 0.12); color: #0ca678; }
+			.ev-tag-education { background: rgba(0, 150, 199, 0.10); color: #0284c7; }
+
+			.ev-post-readtime {
+				font-size: 12px;
+				color: #8aa5a1;
+				font-weight: 500;
+			}
+			.ev-post-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.15rem;
+				font-weight: 700;
+				letter-spacing: -0.01em;
+				line-height: 1.3;
+				color: #0c1e1c;
+				margin: 0 0 10px;
+				transition: color .15s;
+			}
+			.ev-post-card:hover .ev-post-title { color: #0ca678; }
+			.ev-post-desc {
+				font-size: 0.9375rem;
+				line-height: 1.6;
+				color: #6b8683;
+				margin: 0;
+			}
+
+			/* Card footer: date + Read more */
+			.ev-post-footer {
+				margin-top: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 12px;
+			}
+			.ev-post-date {
+				font-size: 12px;
+				font-weight: 600;
+				color: #8aa5a1;
+			}
+			.ev-read-more {
+				display: inline-flex;
+				align-items: center;
+				gap: 5px;
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 12.5px;
+				font-weight: 700;
+				letter-spacing: 0.02em;
+				color: #0ca678;
+				background: transparent;
+				border: 1px solid rgba(18, 184, 134, 0.35);
+				padding: 6px 13px;
+				border-radius: 999px;
+				cursor: pointer;
+				transition: background .15s, color .15s, border-color .15s, transform .15s;
+				white-space: nowrap;
+			}
+			.ev-read-more svg {
+				width: 12px; height: 12px;
+				stroke: currentColor;
+				fill: none;
+				stroke-width: 2.5;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				transition: transform .15s;
+			}
+			.ev-read-more:hover {
+				background: linear-gradient(135deg, #12b886, #0ca678);
+				color: #ffffff;
+				border-color: transparent;
+				transform: translateY(-1px);
+			}
+			.ev-read-more:hover svg { transform: translateX(2px); }
+
+			/* Bottom banner */
+			.ev-blog-banner {
+				max-width: 1080px;
+				margin: 0 auto 60px;
+				padding: 0 20px;
+			}
+			.ev-blog-banner-box {
+				background: linear-gradient(135deg, #0a1b2e 0%, #071426 100%);
+				border-radius: 22px;
+				padding: 36px 28px;
+				text-align: center;
+				color: #ffffff;
+			}
+			.ev-blog-banner-box h3 {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: 1.25rem;
+				font-weight: 700;
+				margin: 0 0 10px;
+				letter-spacing: -0.01em;
+			}
+			.ev-blog-banner-box a {
+				display: inline-flex; align-items: center; gap: 6px;
+				color: #4ade9f;
+				font-weight: 700;
+				text-decoration: underline;
+				text-underline-offset: 4px;
+				transition: color .15s;
+			}
+			.ev-blog-banner-box a:hover { color: #ffffff; }
+
+			/* Article modal */
+			.ev-article-modal {
+				position: fixed; inset: 0;
+				z-index: 10000;
+				background: rgba(10, 27, 46, 0.55);
+				backdrop-filter: blur(6px);
+				-webkit-backdrop-filter: blur(6px);
+				overflow-y: auto;
+				padding: 32px 20px;
+				display: none;
+			}
+			.ev-article-modal.open { display: block; }
+			.ev-article-modal-inner {
+				position: relative;
+				max-width: 780px;
+				margin: 20px auto;
+				background: #ffffff;
+				border: 1px solid #e2eeec;
+				border-radius: 24px;
+				padding: 40px 36px;
+				box-shadow: 0 24px 60px -24px rgba(10, 27, 46, 0.35);
+			}
+			.ev-article-close {
+				position: absolute;
+				top: 16px; right: 16px;
+				width: 40px; height: 40px;
+				border-radius: 10px;
+				display: flex; align-items: center; justify-content: center;
+				color: #6b8683;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				transition: background .15s, color .15s;
+			}
+			.ev-article-close:hover { background: #d3f9ec; color: #0ca678; }
+
+			.ev-article-category {
+				display: inline-block;
+				padding: 4px 11px;
+				border-radius: 999px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				background: rgba(18, 184, 134, 0.12);
+				color: #0ca678;
+				margin-bottom: 14px;
+			}
+			.ev-article-title {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+				font-weight: 700;
+				letter-spacing: -0.02em;
+				line-height: 1.2;
+				color: #0c1e1c;
+				margin: 0 0 12px;
+			}
+			.ev-article-date {
+				font-size: 12.5px;
+				font-weight: 600;
+				color: #8aa5a1;
+				margin-bottom: 24px;
+			}
+			.ev-article-body {
+				font-size: 1rem;
+				line-height: 1.75;
+				color: #3a5450;
+			}
+			.ev-article-body p {
+				margin: 0 0 18px;
+			}
+			.ev-article-body strong { color: #0c1e1c; font-weight: 700; }
+			.ev-article-body em { color: #0c1e1c; }
+			.ev-article-body a { color: #0ca678; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+			.ev-article-body a:hover { color: #0a1b2e; }
+
+			.ev-article-footer {
+				margin-top: 28px;
+				padding-top: 22px;
+				border-top: 1px solid #e2eeec;
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+				align-items: flex-start;
+				justify-content: space-between;
+			}
+			@media (min-width: 640px) {
+				.ev-article-footer { flex-direction: row; align-items: center; }
+			}
+			.ev-article-footer span {
+				font-size: 13.5px;
+				color: #6b8683;
+			}
+			.ev-article-cta {
+				display: inline-flex; align-items: center; gap: 8px;
+				padding: 12px 24px;
+				border-radius: 12px;
+				font-size: 0.875rem;
+				font-weight: 700;
+				letter-spacing: 0.02em;
+				color: #04121a;
+				background: linear-gradient(135deg, #12b886, #20c997);
+				box-shadow: 0 10px 24px -12px rgba(18, 184, 134, 0.55);
+				transition: transform .15s;
+			}
+			.ev-article-cta:hover { transform: translateY(-1px); }
+
+			/* Final CTA */
+			.ev-blog-final-cta {
+				max-width: 1080px;
+				margin: 0 auto 80px;
+				padding: 0 20px;
+			}
+			.ev-blog-final-cta-box {
+				position: relative;
+				overflow: hidden;
+				border-radius: 28px;
+				padding: 60px 28px;
+				text-align: center;
+				background: linear-gradient(135deg, #0a1b2e 0%, #071426 100%);
+				color: #e6f5f1;
+			}
+			.ev-blog-final-cta-box .grid-bg {
+				position: absolute; inset: 0; pointer-events: none;
+				background-image:
+					linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+				background-size: 40px 40px;
+				mask-image: radial-gradient(70% 70% at 50% 50%, black, transparent);
+				-webkit-mask-image: radial-gradient(70% 70% at 50% 50%, black, transparent);
+			}
+			.ev-blog-final-cta-box .neon {
+				position: absolute; left: -128px; top: -128px;
+				width: 24rem; height: 24rem;
+				border-radius: 50%;
+				border: 1px solid rgba(0, 229, 255, 0.25);
+				opacity: 0.6;
+			}
+			.ev-blog-final-cta-box .inner { position: relative; }
+			.ev-blog-final-cta-box img { height: 56px; width: auto; margin: 0 auto; }
+			.ev-blog-final-cta-box h2 {
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+				font-weight: 700;
+				margin: 20px 0 12px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+			}
+			.ev-blog-final-cta-box h2 .accent {
+				background: linear-gradient(135deg, #4ade9f, #00e5ff);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				color: transparent;
+			}
+			.ev-blog-final-cta-box p {
+				max-width: 460px;
+				margin: 0 auto;
+				color: rgba(230, 245, 241, 0.7);
+				font-size: 0.975rem;
+				line-height: 1.6;
+			}
+			.ev-blog-final-cta-btn {
+				display: inline-flex; align-items: center; gap: 8px;
+				margin-top: 28px;
+				padding: 16px 32px;
+				border-radius: 14px;
+				font-size: 0.875rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				color: #04121a;
+				background: linear-gradient(135deg, #4ade9f, #00e5ff);
+				box-shadow: 0 12px 32px -12px rgba(0, 229, 255, 0.6);
+				transition: transform .15s;
+			}
+			.ev-blog-final-cta-btn:hover { transform: translateY(-2px); }
+			.ev-blog-final-cta-btn svg { width: 16px; height: 16px; }
+
+			@media (max-width: 720px) {
+				.ev-footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+			}
+			@media (max-width: 480px) {
+				.ev-footer-columns { grid-template-columns: 1fr; }
+				.ev-drawer { width: 82vw; }
+				.ev-article-modal-inner { padding: 32px 22px; }
+			}
+		</style>
+	</head>
+	<body style="">
+		<!--$-->
+		<div class="relative min-h-screen overflow-x-clip bg-background">
+
+			<!-- ===== Drawer (public menu) ===== -->
+			<div class="ev-drawer-backdrop" id="ev-drawer-backdrop"></div>
+			<aside class="ev-drawer" id="ev-drawer" aria-hidden="true" role="navigation" aria-label="Site navigation">
+				<div class="ev-drawer-header">
+					<a href="index.html" class="ev-drawer-brand">
+						<img src="assets/images/evermore-mark.png" alt="Evermore">
+						<span>ever<span class="accent">more</span></span>
+					</a>
+					<button class="ev-drawer-close" id="ev-drawer-close" type="button" aria-label="Close menu">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+
+				<nav class="ev-drawer-nav">
+					<div class="ev-nav-label">Explore</div>
+
+					<a href="index.html" class="ev-nav-item" data-nav="home">
+						<svg viewBox="0 0 24 24">
+							<path d="M3 12 12 3l9 9"></path>
+							<path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"></path>
+						</svg>
+						<span>Home</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="about.html" class="ev-nav-item" data-nav="about">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="12" y1="16" x2="12" y2="12"></line>
+							<line x1="12" y1="8" x2="12" y2="8.01"></line>
+						</svg>
+						<span>About</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="top-earners.html" class="ev-nav-item" data-nav="top-earners">
+						<svg viewBox="0 0 24 24">
+							<path d="M8 21h8"></path>
+							<path d="M12 17v4"></path>
+							<path d="M7 4h10v4a5 5 0 0 1-10 0z"></path>
+							<path d="M17 5h3a2 2 0 0 1 0 4h-1"></path>
+							<path d="M7 5H4a2 2 0 0 0 0 4h1"></path>
+						</svg>
+						<span>Top Earners</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="blog.html" class="ev-nav-item" data-nav="blog">
+						<svg viewBox="0 0 24 24">
+							<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+							<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+						</svg>
+						<span>Blog</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="faq.html" class="ev-nav-item" data-nav="faq">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+							<line x1="12" y1="17" x2="12.01" y2="17"></line>
+						</svg>
+						<span>FAQ</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="download.html" class="ev-nav-item" data-nav="download">
+						<svg viewBox="0 0 24 24">
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+							<polyline points="7 10 12 15 17 10"></polyline>
+							<line x1="12" y1="15" x2="12" y2="3"></line>
+						</svg>
+						<span>Download App</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<div class="ev-nav-divider"></div>
+					<div class="ev-nav-label">Site</div>
+
+					<a href="index.html#how" class="ev-nav-item" data-nav="how">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4"></path>
+							<line x1="12" y1="17" x2="12" y2="17.01"></line>
+						</svg>
+						<span>How it works</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="index.html#features" class="ev-nav-item" data-nav="features">
+						<svg viewBox="0 0 24 24">
+							<polyline points="3 17 9 11 13 15 21 7"></polyline>
+							<polyline points="15 7 21 7 21 13"></polyline>
+						</svg>
+						<span>Ways to earn</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+
+					<a href="index.html#subscriptions" class="ev-nav-item" data-nav="subscriptions">
+						<svg viewBox="0 0 24 24">
+							<path d="M3 18h18l-2-8-4 4-3-6-3 6-4-4-2 8z"></path>
+							<circle cx="12" cy="4" r="1.5"></circle>
+						</svg>
+						<span>Subscriptions</span>
+						<svg class="chev" viewBox="0 0 24 24">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</a>
+				</nav>
+
+				<div class="ev-drawer-auth">
+					<a href="auth.html?mode=signin" class="ev-btn outline">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+							<polyline points="10 17 15 12 10 7"></polyline>
+							<line x1="15" y1="12" x2="3" y2="12"></line>
+						</svg>
+						Sign in
+					</a>
+					<a href="auth.html?mode=create" class="ev-btn primary">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+							<circle cx="9" cy="7" r="4"></circle>
+							<line x1="19" x2="19" y1="8" y2="14"></line>
+							<line x1="22" x2="16" y1="11" y2="11"></line>
+						</svg>
+						Create account
+					</a>
+				</div>
+			</aside>
+
+			<!-- ===== Header ===== -->
+			<header class="glass sticky top-0 z-50 border-x-0 border-t-0">
+				<nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
+					<a aria-label="EVERMORE home" href="index.html">
+						<span class="inline-flex items-center gap-2.5">
+							<img src="assets/images/evermore-mark.png" alt="Evermore AI logo" class="h-9 w-auto sm:h-11">
+							<span class="font-display font-extrabold lowercase leading-none tracking-tight text-2xl sm:text-3xl text-foreground">ever<span class="text-primary">more</span></span>
+						</span>
+					</a>
+
+					<div class="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
+						<a href="index.html#how" class="transition-colors hover:text-foreground">How it works</a>
+						<a href="index.html#features" class="transition-colors hover:text-foreground">Ways to earn</a>
+						<a href="index.html#subscriptions" class="transition-colors hover:text-foreground">Subscriptions</a>
+						<a href="faq.html" class="transition-colors hover:text-foreground">FAQ</a>
+					</div>
+
+					<button class="ev-menu-btn" id="ev-menu-btn" aria-label="Open menu" aria-controls="ev-drawer" aria-expanded="false">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="3" y1="6" x2="21" y2="6"></line>
+							<line x1="3" y1="12" x2="21" y2="12"></line>
+							<line x1="3" y1="18" x2="21" y2="18"></line>
+						</svg>
+					</button>
+				</nav>
+			</header>
+
+			<!-- ===== BLOG (light theme) ===== -->
+			<main class="ev-blog">
+
+				<!-- Hero -->
+				<section class="ev-blog-hero">
+					<div class="ev-blog-hero-bg">
+						<div class="grad"></div>
+						<div class="orb-1"></div>
+						<div class="orb-2"></div>
+					</div>
+					<div class="ev-blog-hero-inner">
+						<h1 class="ev-blog-title">
+							Evermore <span class="accent">Blog</span>
+						</h1>
+						<p class="ev-blog-subhead">
+							Tips, updates and stories to help you <span class="accent">earn more.</span>
+						</p>
+						<p class="ev-blog-lede">
+							Actionable guides, product updates and deep strategic breakdowns to scale your income on the Evermore AI Platform.
+						</p>
+					</div>
+				</section>
+
+				<!-- Posts grid -->
+				<section class="ev-blog-grid-wrap">
+					<div class="ev-blog-grid">
+
+						<!-- Article 1 -->
+						<div onclick="openArticle(1)" class="ev-post-card">
+							<div>
+								<div class="ev-post-top">
+									<span class="ev-post-tag ev-tag-guide">Guide</span>
+									<span class="ev-post-readtime">6 min read</span>
+								</div>
+								<h2 class="ev-post-title">How to Maximise Your Earnings on Evermore</h2>
+								<p class="ev-post-desc">A complete guide to using every Evermore earning feature — from EverAI tasks to surveys and remote work.</p>
+							</div>
+							<div class="ev-post-footer">
+								<div class="ev-post-date">Sept 18, 2026</div>
+								<button type="button" class="ev-read-more" onclick="event.stopPropagation(); openArticle(1);">
+									Read more
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M5 12h14"></path>
+										<path d="m12 5 7 7-7 7"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<!-- Article 2 -->
+						<div onclick="openArticle(2)" class="ev-post-card">
+							<div>
+								<div class="ev-post-top">
+									<span class="ev-post-tag ev-tag-plans">Plans</span>
+									<span class="ev-post-readtime">5 min read</span>
+								</div>
+								<h2 class="ev-post-title">Evermore Premium: What You Get for ₦14,850</h2>
+								<p class="ev-post-desc">A full breakdown of the Evermore Premium Subscription — six earning categories, personal agent, and priority support.</p>
+							</div>
+							<div class="ev-post-footer">
+								<div class="ev-post-date">Sept 12, 2026</div>
+								<button type="button" class="ev-read-more" onclick="event.stopPropagation(); openArticle(2);">
+									Read more
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M5 12h14"></path>
+										<path d="m12 5 7 7-7 7"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<!-- Article 3 -->
+						<div onclick="openArticle(3)" class="ev-post-card">
+							<div>
+								<div class="ev-post-top">
+									<span class="ev-post-tag ev-tag-tips">Tips</span>
+									<span class="ev-post-readtime">4 min read</span>
+								</div>
+								<h2 class="ev-post-title">5 Smart Ways to Increase Your Hourly Rate</h2>
+								<p class="ev-post-desc">Practical tips to stack task categories, increase task accuracy, and push toward the $19.2/hr ceiling.</p>
+							</div>
+							<div class="ev-post-footer">
+								<div class="ev-post-date">Sept 5, 2026</div>
+								<button type="button" class="ev-read-more" onclick="event.stopPropagation(); openArticle(3);">
+									Read more
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M5 12h14"></path>
+										<path d="m12 5 7 7-7 7"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<!-- Article 4 -->
+						<div onclick="openArticle(4)" class="ev-post-card">
+							<div>
+								<div class="ev-post-top">
+									<span class="ev-post-tag ev-tag-education">Education</span>
+									<span class="ev-post-readtime">7 min read</span>
+								</div>
+								<h2 class="ev-post-title">Understanding the EverAI Training Pipeline</h2>
+								<p class="ev-post-desc">What "training EverAI" actually means, and why human feedback is the engine behind every reward you earn.</p>
+							</div>
+							<div class="ev-post-footer">
+								<div class="ev-post-date">August 28, 2026</div>
+								<button type="button" class="ev-read-more" onclick="event.stopPropagation(); openArticle(4);">
+									Read more
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M5 12h14"></path>
+										<path d="m12 5 7 7-7 7"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Bottom banner -->
+					<div class="ev-blog-banner">
+						<div class="ev-blog-banner-box">
+							<h3>Want to start earning while you read?</h3>
+							<a href="auth.html?mode=create">
+								Join Evermore Now →
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<!-- Final CTA -->
+				<section class="ev-blog-final-cta">
+					<div class="ev-blog-final-cta-box">
+						<div class="grid-bg"></div>
+						<div class="neon"></div>
+						<div class="inner">
+							<img src="assets/images/evermore-mark.png" alt="Evermore logo mark">
+							<h2>Ready to start <span class="accent">earning?</span></h2>
+							<p>Join thousands of smart individuals already earning on the Evermore AI Platform.</p>
+							<a href="auth.html?mode=create" class="ev-blog-final-cta-btn">
+								CREATE YOUR ACCOUNT
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12h14"></path>
+									<path d="m12 5 7 7-7 7"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</section>
+
+			</main>
+
+			<!-- ===== Article modal ===== -->
+			<div id="articleModal" class="ev-article-modal">
+				<div class="ev-article-modal-inner">
+					<button onclick="closeArticle()" class="ev-article-close" aria-label="Close article">
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+					<div id="modalCategory" class="ev-article-category">Plans</div>
+					<h1 id="modalTitle" class="ev-article-title">Evermore Premium: What You Get for ₦14,850</h1>
+					<div id="modalDate" class="ev-article-date">Sept 12, 2026</div>
+					<div id="modalContent" class="ev-article-body"><p>Evermore has exactly one subscription — the <strong>Evermore Premium Subscription</strong> — and it unlocks the full platform for a full year. No tiers, no upsells, no hidden upgrades.</p><p>For a single payment of <strong>₦14,850 (≈ $10) for 12 months</strong>, you get access to all six earning categories: Rate EverAI Responses, Correct EverAI Memory, Opinion &amp; Survey Tasks, Audio Transcription, AI Content Rating and Click n Earn — with combined earning potential up to $19.2/hr.</p><p>You also get a <strong>personal Evermore agent on Telegram</strong>, priority access to new task drops, Evermore Academy courses, and priority support. Activation is admin-verified, and payments go through our secure Squad checkout.</p></div>
+					<div class="ev-article-footer">
+						<span>Ready to maximise your financial growth?</span>
+						<a href="auth.html?mode=create" class="ev-article-cta">
+							Create Your Account
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M5 12h14"></path>
+								<path d="m12 5 7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- ===== Footer (multi-column menu, centered bottom) ===== -->
+			<footer class="ev-footer">
+				<div class="ev-footer-inner">
+
+					<div class="ev-footer-columns">
+						<div class="ev-footer-col">
+							<h4>Platform</h4>
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="top-earners.html">Top Earners</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="download.html">Download App</a></li>
+							</ul>
+						</div>
+
+						<div class="ev-footer-col">
+							<h4>Support</h4>
+							<ul>
+								<li><a href="faq.html">FAQ</a></li>
+								<li><a href="auth.html">Contact Us</a></li>
+								<li><a href="auth.html?mode=create">Register</a></li>
+								<li><a href="auth.html?mode=signin">Login</a></li>
+							</ul>
+						</div>
+
+						<div class="ev-footer-col">
+							<h4>Legal</h4>
+							<ul>
+								<li><a href="terms.html">Terms &amp; Conditions</a></li>
+								<li><a href="privacy.html">Privacy Policy</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="ev-footer-bottom">
+						<a href="index.html" class="ev-footer-brand">
+							<img src="assets/images/evermore-mark.png" alt="Evermore">
+							<span>ever<span class="accent">more</span></span>
+						</a>
+						<p class="ev-footer-copy">
+							© 2026 EVERMORE — the Evermore AI Platform for AI tools, training tasks and remote work opportunities.
+						</p>
+					</div>
+
+				</div>
+			</footer>
+		</div>
+
+		<!-- Interactive logic -->
+		<script>
+			(function () {
+				'use strict';
+
+				var articlesData = {
+					1: {
+						category: 'Guide',
+						title: 'How to Maximise Your Earnings on Evermore',
+						date: 'Sept 18, 2026',
+						content:
+							'<p>Welcome to the operational manual for scaling your revenue on the <strong>Evermore AI Platform</strong>. Evermore is engineered with multiple layered monetization vectors — giving you several ways to build stable daily income streams.</p>' +
+							'<p>To begin, focus on the core tasks: <strong>Rate EverAI Responses</strong> (up to $16.2/hr) and <strong>Correct EverAI Memory</strong> (up to $18.6/hr). Every rating and correction you submit directly improves EverAI, and your payouts are credited when the task is verified.</p>' +
+							'<p>Additionally, don\'t ignore <strong>Opinion &amp; Survey Tasks</strong>, <strong>Audio Transcription</strong>, <strong>AI Content Rating</strong>, and <strong>Click n Earn</strong>. By combining your base task execution with alerts from your personal Telegram agent, scaling your balance toward the $19.2/hr ceiling becomes streamlined and rapid. Rewards are paid three times a week.</p>'
+					},
+					2: {
+						category: 'Plans',
+						title: 'Evermore Premium: What You Get for ₦14,850',
+						date: 'Sept 12, 2026',
+						content:
+							'<p>Evermore has exactly one subscription — the <strong>Evermore Premium Subscription</strong> — and it unlocks the full platform for a full year. No tiers, no upsells, no hidden upgrades.</p>' +
+							'<p>For a single payment of <strong>₦14,850 (≈ $10) for 12 months</strong>, you get access to all six earning categories: Rate EverAI Responses, Correct EverAI Memory, Opinion &amp; Survey Tasks, Audio Transcription, AI Content Rating and Click n Earn — with combined earning potential up to $19.2/hr.</p>' +
+							'<p>You also get a <strong>personal Evermore agent on Telegram</strong>, priority access to new task drops, Evermore Academy courses, and priority support. Activation is admin-verified, and payments go through our secure Squad checkout.</p>'
+					},
+					3: {
+						category: 'Tips',
+						title: '5 Smart Ways to Increase Your Hourly Rate',
+						date: 'Sept 5, 2026',
+						content:
+							'<p>Hitting the $19.2/hr ceiling isn\'t luck — it\'s a stacking strategy. Here are five practical ways to raise your effective hourly rate on the <strong>Evermore AI Platform</strong>.</p>' +
+							'<p><strong>1. Stack categories, don\'t stick to one.</strong> Rotating between Rate EverAI Responses, Correct EverAI Memory and Opinion &amp; Survey Tasks keeps your average up across the whole day.</p>' +
+							'<p><strong>2. Prioritize the highest-paying tasks first.</strong> Correct EverAI Memory pays up to $18.6/hr — do those first while your focus is sharp.</p>' +
+							'<p><strong>3. Keep your Telegram agent alerts on.</strong> New task drops are time-sensitive; the earlier you claim, the more you complete.</p>' +
+							'<p><strong>4. Build accuracy over speed.</strong> Verification failures cost you twice — once on the task, once on the re-do.</p>' +
+							'<p><strong>5. Take Academy courses.</strong> The Evermore Academy is designed to move you from basic tasks into premium remote-work opportunities that pay better.</p>'
+					},
+					4: {
+						category: 'Education',
+						title: 'Understanding the EverAI Training Pipeline',
+						date: 'August 28, 2026',
+						content:
+							'<p>Many new members ask: <em>What does "training EverAI" actually mean, and how does it produce steady income?</em> Let\'s break down the pipeline.</p>' +
+							'<p>EverAI is an AI model that improves continuously through human feedback. When you <strong>Rate EverAI Responses</strong>, you tell the system which answers are good and which are bad — that signal is used to tune the model. When you <strong>Correct EverAI\'s Memory</strong>, you supply ground-truth facts that the model should remember.</p>' +
+							'<p>Every interaction you log is a training data point. This collective volume is what makes EverAI more accurate over time, and it\'s the same volume that funds the payouts on the platform. The more accurate and consistent your feedback, the more trusted your account becomes — and the more task volume you\'re offered.</p>' +
+							'<p>Bottom line: on Evermore, you\'re not just earning — you\'re literally improving the AI you\'re earning from.</p>'
+					}
+				};
+
+				window.openArticle = function (id) {
+					var a = articlesData[id];
+					if (!a) return;
+					document.getElementById('modalCategory').textContent = a.category;
+					document.getElementById('modalTitle').textContent = a.title;
+					document.getElementById('modalDate').textContent = a.date;
+					document.getElementById('modalContent').innerHTML = a.content;
+					document.getElementById('articleModal').classList.add('open');
+					document.body.style.overflow = 'hidden';
+				};
+
+				window.closeArticle = function () {
+					document.getElementById('articleModal').classList.remove('open');
+					document.body.style.overflow = '';
+				};
+
+				// Close modal when clicking the backdrop
+				document.addEventListener('click', function (e) {
+					var modal = document.getElementById('articleModal');
+					if (modal && e.target === modal) {
+						window.closeArticle();
+					}
+				});
+
+				// Close modal on Escape
+				document.addEventListener('keydown', function (e) {
+					if (e.key === 'Escape') window.closeArticle();
+				});
+
+				function initDrawer() {
+					var btn = document.getElementById('ev-menu-btn');
+					var drawer = document.getElementById('ev-drawer');
+					var backdrop = document.getElementById('ev-drawer-backdrop');
+					var closeBtn = document.getElementById('ev-drawer-close');
+					if (!btn || !drawer || !backdrop) return;
+
+					function open() {
+						drawer.classList.add('open');
+						backdrop.classList.add('open');
+						drawer.setAttribute('aria-hidden', 'false');
+						btn.setAttribute('aria-expanded', 'true');
+						document.body.style.overflow = 'hidden';
+					}
+					function close() {
+						drawer.classList.remove('open');
+						backdrop.classList.remove('open');
+						drawer.setAttribute('aria-hidden', 'true');
+						btn.setAttribute('aria-expanded', 'false');
+						document.body.style.overflow = '';
+					}
+
+					btn.addEventListener('click', open);
+					backdrop.addEventListener('click', close);
+					if (closeBtn) closeBtn.addEventListener('click', close);
+					document.addEventListener('keydown', function (e) {
+						if (e.key === 'Escape') close();
+					});
+
+					drawer.querySelectorAll('.ev-nav-item').forEach(function (item) {
+						item.addEventListener('click', function () {
+							close();
+						});
+					});
+				}
+
+				function boot() {
+					initDrawer();
+				}
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', boot);
+				} else {
+					boot();
+				}
+			})();
+		</script>
+
+		
+	
+</body></html>

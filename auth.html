@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preload" as="image" href="assets/images/evermore-mark.png">
+        <link rel="stylesheet" href="assets/css/styles.css" data-precedence="default">
+        <link rel="stylesheet" href="assets/css/fonts.css" data-precedence="default">
+
+        <!-- ============ PRIMARY SEO ============ -->
+        <title>Sign In or Register | Evermore AI – Join the AI Earning Platform</title>
+        <meta name="description" content="Sign in to your Evermore AI account or create a new one in seconds. Access AI tools, remote tasks, surveys and earning opportunities. Join Evermore free today — activation from ₦14,850/year.">
+        <meta name="keywords" content="Evermore AI login, Evermore AI sign up, Evermore AI register, Ever AI login, Ever AI sign in, create Evermore account, Evermore AI Platform, sign up AI platform, AI earning account, login Evermore, register Evermore AI, remote work account Nigeria, AI tasks sign up">
+        <meta name="robots" content="noindex, follow, max-image-preview:large">
+        <meta name="googlebot" content="noindex, follow">
+        <meta name="author" content="Evermore AI">
+        <meta name="publisher" content="Evermore AI">
+        <meta name="language" content="English">
+        <meta name="theme-color" content="#12b886">
+
+        <!-- ============ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ============ -->
+        <meta property="og:site_name" content="Evermore AI">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Sign In or Register | Evermore AI">
+        <meta property="og:description" content="Create your Evermore AI account or sign in to continue your activation journey. Access AI tools, training tasks, remote jobs and more.">
+        <meta property="og:url" content="auth.html">
+        <meta property="og:image" content="assets/hero-main-DsCX8iSK.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Evermore AI — Sign in or register to start earning">
+        <meta property="og:locale" content="en_NG">
+
+        <!-- ============ TWITTER / X CARD ============ -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@evermoreai">
+        <meta name="twitter:creator" content="@evermoreai">
+        <meta name="twitter:title" content="Sign In or Register | Evermore AI">
+        <meta name="twitter:description" content="Create your Evermore AI account or sign in to continue your activation journey.">
+        <meta name="twitter:image" content="assets/hero-main-DsCX8iSK.jpg">
+        <meta name="twitter:image:alt" content="Evermore AI — Sign in or register to start earning">
+
+        <!-- ============ TECHNICAL ============ -->
+        <meta name="google-site-verification" content="1-GcuCbwPJCapBJ5ER0NMkH_CkXHlXKqlWcGN8Out8w">
+        <link rel="icon" type="image/png" href="favicon.svg">
+        <link rel="apple-touch-icon" href="assets/images/evermore-mark.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+
+        <!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+
+
+<style>
+            /* =========================================================
+               LOCK PAGE until auth-check completes
+               Prevents flash of login form when the user is already
+               signed in and about to be redirected to the dashboard.
+               ========================================================= */
+            html.ev-locked body { visibility: hidden; }
+
+            /* =========================================================
+               DEFENSIVE: hide any injected chat/support floating widgets
+               ========================================================= */
+            #tawk-bubble-container,
+            .tawk-min-container,
+            .tawk-button,
+            #crisp-chatbox,
+            .crisp-client,
+            #intercom-container,
+            .intercom-lightweight-app,
+            #launcher,
+            .zEWidget-launcher,
+            .zendesk-widget,
+            #drift-widget-container,
+            .drift-frame-controller,
+            #hubspot-messages-iframe-container,
+            .hubspot-messages-iframe-container,
+            #chat-widget-container,
+            .lc-livechat-launcher,
+            .livechat-button,
+            .support-button,
+            .chat-button,
+            .chat-widget,
+            .help-button,
+            .floating-button,
+            .floating-chat,
+            .whatsapp-float,
+            .whatsapp-button,
+            [class*="chat-launcher"],
+            [class*="support-launcher"],
+            [class*="livechat"],
+            [id*="chat-widget"],
+            [id*="support-widget"],
+            iframe[title*="chat" i],
+            iframe[title*="support" i],
+            iframe[id*="chat" i],
+            iframe[id*="support" i] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                width: 0 !important;
+                height: 0 !important;
+                z-index: -1 !important;
+            }
+
+            /* =========================================================
+               LAYOUT FIX
+               ========================================================= */
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                overflow-x: hidden;
+            }
+            .ev-auth-shell {
+                display: flex;
+                flex-direction: row;
+                min-height: 100vh;
+                width: 100%;
+                overflow-x: hidden;
+            }
+            .ev-auth-brand {
+                flex: 0 0 42%;
+                max-width: 42%;
+                position: relative;
+                overflow: hidden;
+            }
+            .ev-auth-form-column {
+                flex: 1 1 auto;
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 16px 16px 24px;
+                position: relative;
+            }
+            .ev-auth-form-wrapper {
+                width: 100%;
+                max-width: 28rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .ev-auth-form-outer {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0 8px;
+                flex: 1 1 auto;
+                min-height: 0;
+            }
+            @media (max-width: 1023.98px) {
+                .ev-auth-shell { flex-direction: column; }
+                .ev-auth-brand { display: none; }
+                .ev-auth-form-column { padding: 16px 16px 16px; }
+                .ev-auth-form-outer { padding: 12px 0 0; }
+            }
+            @media (max-width: 480px) {
+                .ev-auth-form-column { padding: 12px 12px 12px; }
+                .ev-auth-form-outer { padding: 8px 0 0; }
+            }
+            .ev-auth-card {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* =========================================================
+               PASSWORD FIELD WITH VIEW/HIDE TOGGLE
+               ========================================================= */
+            .ev-pw-wrap {
+                position: relative;
+                display: block;
+            }
+            .ev-pw-wrap input {
+                padding-right: 62px !important;
+            }
+            .ev-pw-toggle {
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                background: transparent;
+                border: none;
+                padding: 4px 6px;
+                margin: 0;
+                font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                color: #0ca678;
+                cursor: pointer;
+                border-radius: 6px;
+                user-select: none;
+                -webkit-tap-highlight-color: transparent;
+                transition: background .15s, color .15s;
+                line-height: 1;
+            }
+            .ev-pw-toggle:hover {
+                background: rgba(18, 184, 134, 0.12);
+            }
+            .ev-pw-toggle:focus-visible {
+                outline: 2px solid #12b886;
+                outline-offset: 2px;
+            }
+            .ev-pw-toggle.is-visible {
+                color: #0a8a63;
+            }
+
+            /* =========================================================
+               ERROR MODAL — white background, red text
+               ========================================================= */
+            .ev-error-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 100001;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background: rgba(10, 30, 28, 0.55);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            .ev-error-overlay.show {
+                display: flex;
+                opacity: 1;
+            }
+            .ev-error-card {
+                position: relative;
+                max-width: 460px;
+                width: 100%;
+                text-align: center;
+                padding: 40px 32px 36px;
+                border-radius: 24px;
+                background: #ffffff;
+                color: #e03131;
+                font-family: 'DM Sans', system-ui, sans-serif;
+                box-shadow: 0 32px 80px -24px rgba(224, 49, 49, 0.45);
+                border: 1px solid rgba(224, 49, 49, 0.15);
+                transform: scale(.92);
+                transition: transform .3s cubic-bezier(.4,0,.2,1);
+            }
+            .ev-error-overlay.show .ev-error-card {
+                transform: scale(1);
+            }
+            .ev-error-icon {
+                width: 76px;
+                height: 76px;
+                margin: 0 auto 20px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff5f5;
+                color: #e03131;
+            }
+            .ev-error-icon svg {
+                width: 38px;
+                height: 38px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2.6;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            .ev-error-card h2 {
+                margin: 0 0 10px;
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 24px;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: #e03131;
+            }
+            .ev-error-card p {
+                margin: 0 0 24px;
+                font-size: 15px;
+                line-height: 1.6;
+                color: #b02525;
+                word-break: break-word;
+            }
+            .ev-error-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #e03131, #b02525);
+                color: #ffffff;
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 13.5px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 10px 24px -12px rgba(224, 49, 49, 0.6);
+                transition: transform .15s, box-shadow .15s;
+            }
+            .ev-error-btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 14px 32px -14px rgba(224, 49, 49, 0.75);
+            }
+
+            /* =========================================================
+               SUCCESS MODAL — white background, green text
+               ========================================================= */
+            .ev-success-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 100002;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background: rgba(10, 30, 28, 0.55);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            .ev-success-overlay.show {
+                display: flex;
+                opacity: 1;
+            }
+            .ev-success-card {
+                position: relative;
+                max-width: 460px;
+                width: 100%;
+                text-align: center;
+                padding: 40px 32px 36px;
+                border-radius: 24px;
+                background: #ffffff;
+                color: #0ca678;
+                font-family: 'DM Sans', system-ui, sans-serif;
+                box-shadow: 0 32px 80px -24px rgba(18, 184, 134, 0.55);
+                border: 1px solid rgba(18, 184, 134, 0.15);
+                transform: scale(.92);
+                transition: transform .3s cubic-bezier(.4,0,.2,1);
+            }
+            .ev-success-overlay.show .ev-success-card {
+                transform: scale(1);
+            }
+            .ev-success-icon {
+                width: 76px;
+                height: 76px;
+                margin: 0 auto 20px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #e6f7f2;
+                color: #12b886;
+            }
+            .ev-success-icon svg {
+                width: 38px;
+                height: 38px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 3;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            .ev-success-card h2 {
+                margin: 0 0 10px;
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 24px;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: #0ca678;
+            }
+            .ev-success-card p {
+                margin: 0 0 24px;
+                font-size: 15px;
+                line-height: 1.6;
+                color: #0a8a63;
+            }
+            /* Bold darker green greeting */
+            .ev-success-card p .hl {
+                font-weight: 700;
+                color: #0a8a63;
+            }
+            .ev-success-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #12b886, #0ca678);
+                color: #ffffff;
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 13.5px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 10px 24px -12px rgba(18, 184, 134, 0.6);
+                transition: transform .15s, box-shadow .15s;
+            }
+            .ev-success-btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 14px 32px -14px rgba(18, 184, 134, 0.75);
+            }
+
+            /* =========================================================
+               PROCESSING MODAL — white card, emerald spinner
+               ========================================================= */
+            .ev-processing-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 100003;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background: rgba(10, 30, 28, 0.55);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+                opacity: 0;
+                transition: opacity .3s ease;
+            }
+            .ev-processing-overlay.show {
+                display: flex;
+                opacity: 1;
+            }
+            .ev-processing-card {
+                position: relative;
+                max-width: 460px;
+                width: 100%;
+                text-align: center;
+                padding: 44px 32px 40px;
+                border-radius: 24px;
+                background: #ffffff;
+                color: #0ca678;
+                font-family: 'DM Sans', system-ui, sans-serif;
+                box-shadow: 0 32px 80px -24px rgba(18, 184, 134, 0.45);
+                border: 1px solid rgba(18, 184, 134, 0.15);
+                transform: scale(.92);
+                transition: transform .3s cubic-bezier(.4,0,.2,1);
+            }
+            .ev-processing-overlay.show .ev-processing-card {
+                transform: scale(1);
+            }
+            .ev-processing-spinner {
+                width: 72px;
+                height: 72px;
+                margin: 0 auto 22px;
+                position: relative;
+            }
+            .ev-processing-spinner::before,
+            .ev-processing-spinner::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                border: 4px solid transparent;
+            }
+            .ev-processing-spinner::before {
+                border-top-color: #12b886;
+                border-right-color: #12b886;
+                animation: evSpin 1s linear infinite;
+            }
+            .ev-processing-spinner::after {
+                border-bottom-color: rgba(18, 184, 134, 0.25);
+                border-left-color: rgba(18, 184, 134, 0.25);
+                animation: evSpin 1.6s linear infinite reverse;
+            }
+            @keyframes evSpin {
+                to { transform: rotate(360deg); }
+            }
+            .ev-processing-card h2 {
+                margin: 0 0 10px;
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 22px;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: #0ca678;
+            }
+            .ev-processing-card p {
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.6;
+                color: #0a8a63;
+            }
+            .ev-processing-dots span {
+                display: inline-block;
+                animation: evDots 1.4s infinite;
+                opacity: 0;
+            }
+            .ev-processing-dots span:nth-child(2) { animation-delay: .2s; }
+            .ev-processing-dots span:nth-child(3) { animation-delay: .4s; }
+            @keyframes evDots {
+                0%, 60%, 100% { opacity: 0; }
+                30%           { opacity: 1; }
+            }
+
+            @media (max-width: 480px) {
+                .ev-error-card,
+                .ev-success-card { padding: 32px 24px 28px; }
+                .ev-error-card h2,
+                .ev-success-card h2 { font-size: 20px; }
+                .ev-error-card p,
+                .ev-success-card p { font-size: 14px; }
+                .ev-error-icon,
+                .ev-success-icon { width: 64px; height: 64px; margin-bottom: 16px; }
+                .ev-error-icon svg,
+                .ev-success-icon svg { width: 32px; height: 32px; }
+
+                .ev-processing-card { padding: 36px 24px 32px; }
+                .ev-processing-card h2 { font-size: 19px; }
+                .ev-processing-card p { font-size: 14px; }
+                .ev-processing-spinner { width: 60px; height: 60px; margin-bottom: 18px; }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="ev-auth-shell">
+
+            <!-- ============ LEFT BRAND COLUMN (desktop only) ============ -->
+            <aside class="surface-navy ev-auth-brand relative flex-col justify-between overflow-hidden p-10 hidden lg:flex">
+                <div class="pointer-events-none absolute inset-0">
+                    <div class="bg-grid absolute inset-0 [mask-image:radial-gradient(75%_65%_at_40%_30%,black,transparent)]"></div>
+                    <div class="neon-rings absolute -bottom-32 -right-32 h-96 w-96 rounded-full opacity-60"></div>
+                    <div class="absolute left-[-10%] top-[30%] h-72 w-72 rounded-full bg-primary/20 blur-[110px]"></div>
+                </div>
+                <a aria-label="Back to home" href="index.html" class="relative">
+                    <span class="inline-flex items-center gap-2.5">
+                        <img src="assets/images/evermore-mark.png" alt="Evermore AI logo" class="h-9 w-auto sm:h-11">
+                        <span class="font-display font-extrabold lowercase leading-none tracking-tight text-2xl sm:text-3xl text-navy-foreground">ever<span class="text-primary">more</span></span>
+                    </span>
+                </a>
+                <div class="relative">
+                    <p class="font-display text-xs font-bold tracking-[0.3em] text-aqua">EVERMORE</p>
+                    <h2 class="font-display mt-4 text-3xl font-bold leading-tight text-navy-foreground xl:text-4xl">Exist beyond <span class="text-aqua-gradient">the moment.</span></h2>
+                    <p class="mt-4 max-w-sm text-sm leading-relaxed text-navy-foreground/65">AI tools, remote jobs, training tasks and a personal agent — one subscription, one account, one future.</p>
+                </div>
+                <p class="relative text-xs text-navy-foreground/40">© 2026 EVERMORE</p>
+            </aside>
+
+            <!-- ============ RIGHT FORM COLUMN ============ -->
+            <div class="ev-auth-form-column">
+
+                <div class="pointer-events-none absolute inset-0 -z-10 lg:hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-aqua/20 via-background to-background"></div>
+                    <div class="absolute left-1/2 top-[-10%] h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-primary/12 blur-[140px]"></div>
+                </div>
+
+                <div class="ev-auth-form-wrapper flex w-full items-center justify-between">
+                    <span class="lg:hidden">
+                        <a aria-label="Back to home" href="index.html">
+                            <span class="inline-flex items-center gap-2.5">
+                                <img src="assets/images/evermore-mark.png" alt="Evermore AI logo" class="h-8 w-auto">
+                                <span class="font-display font-extrabold lowercase leading-none tracking-tight text-xl text-foreground">ever<span class="text-primary">more</span></span>
+                            </span>
+                        </a>
+                    </span>
+                    <span class="hidden lg:block"></span>
+                    <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+                        Home
+                    </a>
+                </div>
+
+                <div class="ev-auth-form-outer">
+                    <div class="ev-auth-form-wrapper">
+                        <div class="glass ev-auth-card mx-auto w-full max-w-md rounded-3xl p-7 sm:p-8">
+
+                            <!-- TABS -->
+                            <div class="grid grid-cols-2 gap-1 rounded-xl bg-muted/50 p-1" role="tablist" aria-label="Account action">
+                                <button type="button" id="tab-create" role="tab" aria-selected="false" aria-controls="panel-create" class="rounded-lg py-2 text-sm font-semibold transition-colors text-muted-foreground">Create account</button>
+                                <button type="button" id="tab-signin" role="tab" aria-selected="true" aria-controls="panel-signin" class="rounded-lg py-2 text-sm font-semibold transition-colors hover:text-foreground btn-cta">Sign in</button>
+                            </div>
+
+                            <!-- CREATE PANEL -->
+                            <div id="panel-create" role="tabpanel" aria-labelledby="tab-create" hidden="">
+                                <form id="evermore-signup-form" class="mt-6 space-y-4" novalidate="" autocomplete="on">
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="fullName">Full name</label>
+                                        <input class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="fullName" name="fullName" placeholder="John Doe" required="" value="">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="space-y-1.5">
+                                            <label class="text-sm font-medium" for="username">Username</label>
+                                            <input class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="username" name="username" placeholder="John026" required="" value="">
+                                        </div>
+                                        <div class="space-y-1.5">
+                                            <label class="text-sm font-medium" for="phone">Phone</label>
+                                            <input class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="phone" name="phone" placeholder="+234…" required="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="country">Country</label>
+                                        <select id="country" name="country" data-evermore-country-select="" required="" class="flex h-10 w-full rounded-md border border-input bg-background/60 px-3 py-2 text-sm text-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"><option value="" disabled="">Select your country…</option><option value="Nigeria">Nigeria</option><option value="Ghana">Ghana</option><option value="Cameroon">Cameroon</option><option value="Uganda">Uganda</option><option value="Kenya">Kenya</option><option value="Benin">Benin</option><option value="South Africa">South Africa</option><option value="Others">Others</option></select>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="email">Email</label>
+                                        <input type="email" class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="email" name="email" placeholder="you@example.com" required="" value="" autocomplete="email">
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="password">Password</label>
+                                        <div class="ev-pw-wrap">
+                                            <input type="password" class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="password" name="password" placeholder="8+ characters" required="" value="" autocomplete="new-password">
+                                            <button type="button" class="ev-pw-toggle" data-pw-target="password" aria-label="Show password" aria-pressed="false">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="referral">Referral ID <span class="text-muted-foreground">(optional)</span></label>
+                                        <input class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="referral" name="referral" placeholder="EVR-XXXX" value="">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-sm font-medium">Your subscription</label>
+                                        <div class="rounded-xl border border-gold/60 bg-gold/10 glow-gold p-3.5">
+                                            <p class="font-display text-xs font-bold tracking-wider text-gold">EVERMORE PREMIUM</p>
+                                            <p class="font-display mt-1 text-sm font-bold text-foreground">₦14,850</p>
+                                            <p class="text-xs text-muted-foreground">1 year (12 months)</p>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="evermore-signup-submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 btn-cta w-full border-0 py-5 text-sm font-bold tracking-wide">CREATE MY ACCOUNT</button>
+                                </form>
+                            </div>
+
+                            <!-- SIGN IN PANEL -->
+                            <div id="panel-signin" role="tabpanel" aria-labelledby="tab-signin">
+                                <form id="evermore-signin-form" class="mt-6 space-y-4" novalidate="" autocomplete="on">
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="signin-identifier">Email or Username</label>
+                                        <input type="text" id="signin-identifier" name="identifier" placeholder="Type your email or username" required="" autocomplete="username" autocapitalize="off" spellcheck="false" class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60">
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-sm font-medium" for="signin-password">Password</label>
+                                        <div class="ev-pw-wrap">
+                                            <input type="password" id="signin-password" name="password" placeholder="Your password" required="" autocomplete="current-password" class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60">
+                                            <button type="button" class="ev-pw-toggle" data-pw-target="signin-password" aria-label="Show password" aria-pressed="false">View</button>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id="evermore-signin-submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 btn-cta w-full border-0 py-5 text-sm font-bold tracking-wide">SIGN IN</button>
+                                    <p class="text-center text-xs text-muted-foreground">
+                                        Don't have an account? <a href="auth.html?mode=signin#" id="goto-create" class="font-semibold text-primary hover:underline">Create one</a>
+                                    </p>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ERROR MODAL -->
+        <div class="ev-error-overlay" id="evermore-error-overlay" role="alertdialog" aria-live="assertive" aria-labelledby="evermore-error-title">
+            <div class="ev-error-card">
+                <div class="ev-error-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <h2 id="evermore-error-title">Something went wrong</h2>
+                <p id="evermore-error-msg">Please try again.</p>
+                <button type="button" class="ev-error-btn" id="evermore-error-close">
+                    Got it
+                </button>
+            </div>
+        </div>
+
+        <!-- SUCCESS MODAL -->
+        <div class="ev-success-overlay" id="evermore-success-overlay" role="alertdialog" aria-live="assertive" aria-labelledby="evermore-success-title">
+            <div class="ev-success-card">
+                <div class="ev-success-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                </div>
+                <h2 id="evermore-success-title">Registration successful</h2>
+                <p id="evermore-success-msg">Your account is ready. Redirecting you to your dashboard…</p>
+                <button type="button" class="ev-success-btn" id="evermore-success-close">
+                    Continue
+                    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- PROCESSING MODAL -->
+        <div class="ev-processing-overlay" id="evermore-processing-overlay" role="alertdialog" aria-live="assertive" aria-labelledby="evermore-processing-title">
+            <div class="ev-processing-card">
+                <div class="ev-processing-spinner" aria-hidden="true"></div>
+                <h2 id="evermore-processing-title">Setting things up<span class="ev-processing-dots"><span>.</span><span>.</span><span>.</span></span></h2>
+                <p id="evermore-processing-msg">This will only take a moment.</p>
+            </div>
+        </div>
+
+        <!-- =========================================================
+             Auth logic — MySQL backend via PHP endpoints
+             ========================================================= -->
+        <script>
+            (function () {
+                'use strict';
+
+                /* =========================================================
+                   Backend placeholders — Firebase integration will replace these
+                   ========================================================= */
+                var REGISTER_URL  = null;
+                var LOGIN_URL     = null;
+                var GET_USER_URL  = null;
+
+                var PROFILE_KEY = 'evermore_profile';
+                var AUTH_KEY    = 'evermore_is_authenticated';
+                var DASHBOARD_URL = 'dashboard.html';
+                var AUTH_URL      = 'auth.html';
+
+                /* =========================================================
+                   ⭐ SUCCESS MODAL DURATION
+                   ========================================================= */
+                var SUCCESS_REDIRECT_MS = 2000;
+
+                var ALLOWED_COUNTRIES = [
+                    'Nigeria',
+                    'Ghana',
+                    'Cameroon',
+                    'Uganda',
+                    'Kenya',
+                    'Benin',
+                    'South Africa',
+                    'Others'
+                ];
+
+                /* =========================================================
+                   ⭐ LOGOUT ESCAPE GUARD
+                   ========================================================= */
+                var __skipSessionCheck = true;
+                try {
+                    var __params = new URLSearchParams(window.location.search);
+                    __skipSessionCheck =
+                        __params.has('_') ||
+                        __params.get('from') === 'logout' ||
+                        __params.get('logout') === '1' ||
+                        __params.get('fresh') === '1';
+                } catch (e) {}
+
+                if (__skipSessionCheck) {
+                    document.documentElement.classList.remove('ev-locked');
+                } else {
+                    (function checkExistingSession() {
+                        document.documentElement.classList.add('ev-locked');
+
+                        fetch(GET_USER_URL, {
+                            method: 'GET',
+                            credentials: 'same-origin',
+                            headers: { 'Accept': 'application/json' },
+                            cache: 'no-store'
+                        })
+                        .then(function (r) {
+                            return r.text().then(function (text) {
+                                var data;
+                                try { data = JSON.parse(text); }
+                                catch (e) { return { ok: false }; }
+                                return data;
+                            });
+                        })
+                        .then(function (data) {
+                            if (data && data.ok === true && data.user) {
+                                window.location.replace(DASHBOARD_URL);
+                                return;
+                            }
+                            document.documentElement.classList.remove('ev-locked');
+                        })
+                        .catch(function () {
+                            document.documentElement.classList.remove('ev-locked');
+                        });
+                    })();
+                }
+
+                /* =========================================================
+                   Save profile to localStorage + sessionStorage
+                   ========================================================= */
+                function saveProfile(profile) {
+                    try {
+                        localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+                        localStorage.setItem(AUTH_KEY, 'true');
+                        sessionStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+                    } catch (e) {}
+                }
+
+                /* =========================================================
+                   POST JSON helper — will be connected to Firebase later
+                   ========================================================= */
+                function postJSON(url, payload) {
+                    return Promise.reject(new Error('The authentication backend is not connected yet. This frontend is prepared for Firebase integration.'));
+                }
+
+                /* ---------- Sign-in ---------- */
+                function initSigninForm() {
+                    var form = document.getElementById('evermore-signin-form');
+                    if (!form) return;
+                    var submitBtn = document.getElementById('evermore-signin-submit');
+
+                    form.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        var identifier = (form.identifier.value || '').trim().replace(/^@/, '');
+                        var password = form.password.value || '';
+
+                        if (!identifier || !password) {
+                            showError('Please enter your email or username, and your password.');
+                            return;
+                        }
+
+                        submitBtn.disabled = true;
+                        var originalLabel = submitBtn.textContent;
+                        submitBtn.textContent = 'Signing in…';
+
+                        showProcessing(
+                            'Signing you in',
+                            'We\u2019re verifying your credentials. This will only take a moment.'
+                        );
+
+                        postJSON(LOGIN_URL, {
+                            action: 'login',
+                            identifier: identifier,
+                            password: password
+                        }).then(function (res) {
+                            saveProfile(res.user);
+
+                            var first = (res.user && res.user.fullName ? res.user.fullName.split(' ')[0] : 'there');
+                            var firstName = escapeHtml(first);
+
+                            showSuccess(
+                                'Welcome back ' + firstName,
+                                'Redirecting you to your dashboard…',
+                                DASHBOARD_URL
+                            );
+                        }).catch(function (err) {
+                            showError(err.message || 'Could not sign in. Try again.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalLabel;
+                        });
+                    });
+                }
+
+                /* ---------- Boot ---------- */
+                function boot() {
+                    initCountries();
+                    initTabs();
+                    initPasswordToggles();
+                    initSignupForm();
+                    initSigninForm();
+                }
+                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+                else boot();
+            })();
+        </script>
+    
+</body></html>

@@ -1,0 +1,8 @@
+{
+  "name": "Evermore AI Platform",
+  "description": "Evermore AI Platform (Ever AI) brings AI tools, AI training tasks, surveys and eligible remote work opportunities together in one place. Join EvermoreAI, choose a subscription and activate your account to start earning up to $19.2/hr — paid 3x weekly.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
