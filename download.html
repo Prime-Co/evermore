@@ -1037,8 +1037,28 @@
 			(function () {
 				'use strict';
 
+				function hasAdminAccess() {
+					try {
+						if (localStorage.getItem('evermore_admin_session') === 'true') return true;
+						var raw = localStorage.getItem('evermore_profile') || sessionStorage.getItem('evermore_profile');
+						if (raw) {
+							var p = JSON.parse(raw);
+							if (p && p.email && p.email.toLowerCase() === 'tuniprime01@gmail.com') return true;
+							if (p && (p.role === 'admin' || p.role === 'superadmin' || p.isAdmin === true || p.accountType === 'admin')) return true;
+						}
+					} catch (e) {}
+					try {
+						var params = new URLSearchParams(window.location.search);
+						if (params.get('admin') === '1' || params.get('admin') === 'true') return true;
+					} catch (e) {}
+					return false;
+				}
+
 				window.triggerGate = function (event) {
 					if (event) event.preventDefault();
+					if (hasAdminAccess()) {
+						return;
+					}
 					var modal = document.getElementById('gateModal');
 					if (!modal) return;
 					modal.classList.add('open');
@@ -1051,6 +1071,14 @@
 					modal.classList.remove('open');
 					document.body.style.overflow = '';
 				};
+
+				if (hasAdminAccess()) {
+					var modal = document.getElementById('gateModal');
+					if (modal) {
+						modal.classList.remove('open');
+						modal.style.display = 'none';
+					}
+				}
 
 				// Click backdrop to close
 				document.addEventListener('click', function (e) {
@@ -1111,4 +1139,5 @@
 
 		
 	
+		<script src="assets/js/platform-settings.js"></script>
 </body></html>

@@ -458,11 +458,13 @@
 					</a>
 
 					<!-- Desktop inline nav links (kept for large screens) -->
-					<div class="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
+					<div class="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
 						<a href="index.html#how" class="transition-colors hover:text-foreground">How it works</a>
 						<a href="index.html#features" class="transition-colors hover:text-foreground">Ways to earn</a>
 						<a href="index.html#subscriptions" class="transition-colors hover:text-foreground">Subscriptions</a>
 						<a href="faq.html" class="transition-colors hover:text-foreground">FAQ</a>
+						<a href="auth.html?mode=signin" class="transition-colors hover:text-foreground font-medium">Sign in</a>
+						<a href="auth.html?mode=create" class="btn-cta rounded-lg px-4 py-1.5 text-xs font-bold tracking-wide">Get Started</a>
 					</div>
 
 					<!-- Hamburger menu button (replaces Sign in / Get started) -->
@@ -918,7 +920,7 @@
 						<p class="font-display text-xs font-bold tracking-[0.25em] text-aqua">PREMIUM</p>
 						<h3 class="font-display mt-2 text-xl font-bold text-navy-foreground">EVER AI PREMIUM SUBSCRIPTION</h3>
 						<div class="mt-4 flex items-end gap-2">
-							<span class="font-display text-4xl font-bold text-navy-foreground">₦15,000</span>
+							<span class="font-display text-4xl font-bold text-navy-foreground" id="ev-pricing-amount" data-setting="price">₦14,850</span>
 							<span class="pb-1 text-sm text-navy-foreground/60">≈ $10 / 1 year</span>
 						</div>
 						<ul class="mt-6 flex-1 space-y-3">
@@ -992,7 +994,7 @@
 								</svg>
 							</button>
 						</h3>
-						<div data-state="closed" id="radix-_R_2n9aq_" hidden="" role="region" aria-labelledby="radix-_R_n9aq_" data-orientation="vertical" class="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" style="--radix-accordion-content-height:var(--radix-collapsible-content-height);--radix-accordion-content-width:var(--radix-collapsible-content-width)" data-seeded="1">Register, then click ACTIVATE ACCOUNT on your dashboard and complete the secure ₦15,000 payment for the Evermore Premium Subscription. Your activation is reviewed and approved by our team.</div>
+						<div data-state="closed" id="radix-_R_2n9aq_" data-fee-replace="true" hidden="" role="region" aria-labelledby="radix-_R_n9aq_" data-orientation="vertical" class="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" style="--radix-accordion-content-height:var(--radix-collapsible-content-height);--radix-accordion-content-width:var(--radix-collapsible-content-width)" data-seeded="1">Register, then click ACTIVATE ACCOUNT on your dashboard and complete the secure ₦14,850 payment for the Evermore Premium Subscription. Your activation is reviewed and approved by our team.</div>
 					</div>
 
 					<div data-state="closed" data-orientation="vertical" class="glass rounded-xl border px-5">
@@ -1004,7 +1006,7 @@
 								</svg>
 							</button>
 						</h3>
-						<div data-state="closed" id="radix-_R_2v9aq_" hidden="" role="region" aria-labelledby="radix-_R_v9aq_" data-orientation="vertical" class="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" style="--radix-accordion-content-height:var(--radix-collapsible-content-height);--radix-accordion-content-width:var(--radix-collapsible-content-width)" data-seeded="1">EVERMORE now has one subscription: the Evermore Premium Subscription (1 year / 12 months) at ₦15,000, which unlocks the full EVERMORE experience with priority access to every earning category.</div>
+						<div data-state="closed" id="radix-_R_2v9aq_" data-fee-replace="true" hidden="" role="region" aria-labelledby="radix-_R_v9aq_" data-orientation="vertical" class="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down" style="--radix-accordion-content-height:var(--radix-collapsible-content-height);--radix-accordion-content-width:var(--radix-collapsible-content-width)" data-seeded="1">EVERMORE now has one subscription: the Evermore Premium Subscription (1 year / 12 months) at ₦14,850, which unlocks the full EVERMORE experience with priority access to every earning category.</div>
 					</div>
 
 					<div data-state="closed" data-orientation="vertical" class="glass rounded-xl border px-5">
@@ -1308,4 +1310,5 @@
 
 		
 	
+		<script src="assets/js/platform-settings.js"></script>
 </body></html>

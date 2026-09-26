@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Admin Dashboard | Evermore AI Platform</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4fbfa;
+            --surface: #ffffff;
+            --surface-subtle: #f8fdfc;
+            --border: #e2eeec;
+            --border-subtle: #edf5f3;
+            --text-main: #0c1e1c;
+            --text-muted: #6b8683;
+            --text-light: #94ab9f;
+            --emerald: #12b886;
+            --emerald-dark: #0ca678;
+            --emerald-deep: #087f5b;
+            --mint: #d3f9ec;
+            --mint-light: #e6fcf5;
+            --gold: #f59f00;
+            --gold-light: #fff9db;
+            --red: #fa5252;
+            --red-light: #ffe3e3;
+            --navy: #0a1b2e;
+            --navy-surface: #102a43;
+            --shadow-sm: 0 1px 3px rgba(12,30,28,0.06);
+            --shadow-md: 0 4px 16px -2px rgba(12,30,28,0.08);
+            --shadow-lg: 0 12px 36px -4px rgba(12,30,28,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --font-main: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-head: 'Space Grotesk', system-ui, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+        button, input, select, textarea { font-family: inherit; }
+        a { color: inherit; text-decoration: none; }
+
+        /* Top Header */
+        .admin-nav {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .admin-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--text-main);
+        }
+        .brand-badge {
+            background: var(--navy);
+            color: #22e3e3;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-user-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .admin-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .btn-sm {
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+            border: 1px solid transparent;
+        }
+        .btn-outline {
+            background: #fff;
+            border-color: var(--border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--emerald);
+            color: var(--emerald-dark);
+            background: var(--surface-subtle);
+        }
+        .btn-primary {
+            background: var(--emerald);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--emerald-dark);
+        }
+        .btn-danger {
+            background: var(--red);
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #e03131;
+        }
+
+        /* Layout */
+        .admin-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px;
+            flex: 1;
+        }
+
+        /* Tabs & Subheader */
+        .tab-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+        .tab-item {
+            padding: 10px 18px;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.15s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+        .tab-item:hover {
+            color: var(--text-main);
+        }
+        .tab-item.active {
+            color: var(--emerald-dark);
+            border-bottom-color: var(--emerald);
+            font-weight: 700;
+        }
+        .tab-pill {
+            background: var(--mint);
+            color: var(--emerald-deep);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 999px;
+        }
+        .tab-pill.warn {
+            background: var(--gold-light);
+            color: #d97706;
+        }
+
+        /* Metrics Row */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(18,184,134,0.4);
+            box-shadow: var(--shadow-md);
+        }
+        .stat-card.active-filter {
+            border-color: var(--emerald);
+            background: var(--mint-light);
+        }
+        .stat-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .stat-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .stat-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-value {
+            font-family: var(--font-head);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .stat-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Section Panels */
+        .panel { display: none; }
+        .panel.active { display: block; }
+
+        /* Controls bar */
+        .controls-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+        .search-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-subtle);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 8px 14px;
+            flex: 1;
+            min-width: 240px;
+            max-width: 450px;
+        }
+        .search-input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .filter-select {
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+        }
+        .filter-select:focus {
+            border-color: var(--emerald);
+        }
+
+        /* Table Card */
+        .table-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+        th {
+            background: var(--surface-subtle);
+            padding: 14px 18px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        td {
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--border-subtle);
+            vertical-align: middle;
+        }
+        tr:hover td {
+            background: #fbfdfc;
+        }
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-avatar-initials {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e6f7f2;
+            color: var(--emerald-deep);
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .user-names strong {
+            display: block;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .user-names small {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Status Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-active {
+            background: var(--mint);
+            color: var(--emerald-deep);
+        }
+        .badge-pending {
+            background: var(--gold-light);
+            color: #b45309;
+        }
+        .badge-suspended {
+            background: var(--red-light);
+            color: #b91c1c;
+        }
+        .badge-premium {
+            background: #edf2ff;
+            color: #3b5bdb;
+            font-weight: 700;
+        }
+
+        /* Action Buttons */
+        .action-btns {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .btn-icon:hover {
+            border-color: var(--emerald);
+            color: var(--emerald-dark);
+            background: var(--surface-subtle);
+        }
+        .btn-icon.danger:hover {
+            border-color: var(--red);
+            color: var(--red);
+            background: var(--red-light);
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(12,30,28,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 520px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-head {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-title {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+        }
+        .modal-body {
+            padding: 24px;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+        .modal-footer {
+            padding: 16px 24px;
+            background: var(--surface-subtle);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+        }
+        .form-control:focus {
+            border-color: var(--emerald);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--navy);
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            z-index: 300;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: toastSlide 0.25s ease;
+        }
+        .toast.show {
+            display: flex;
+        }
+        @keyframes toastSlide {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Auth Gate Screen */
+        .gate-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .gate-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+        .gate-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--mint);
+            color: var(--emerald-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+        .gate-title {
+            font-family: var(--font-head);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .gate-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        /* Verification queue card styling */
+        .queue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .queue-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .queue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .queue-user-info strong {
+            display: block;
+            font-size: 16px;
+            color: var(--text-main);
+        }
+        .queue-user-info small {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .queue-details {
+            background: var(--surface-subtle);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            margin: 12px 0 16px;
+            font-size: 13px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .queue-details .k { color: var(--text-muted); }
+        .queue-details .v { font-weight: 600; color: var(--text-main); text-align: right; }
+
+        /* Settings card */
+        .settings-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            max-width: 680px;
+            box-shadow: var(--shadow-sm);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUTH GATE OVERLAY -->
+    <div id="gateScreen" class="gate-screen">
+        <div class="gate-card">
+            <div class="gate-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <div class="brand-badge" style="display:inline-block; margin-bottom:12px; font-size:12px; padding:4px 10px;">ROOT ADMINISTRATOR CLEARANCE</div>
+            <h2 class="gate-title">Evermore Admin Portal</h2>
+            <p class="gate-desc">Authorized root administrator: <strong style="color:var(--text-main);">tuniprime01@gmail.com</strong>. Complete control over member activations, queue verification, and platform settings.</p>
+            
+            <div id="gateLoading" style="margin-bottom: 16px; font-size: 14px; color: var(--emerald-dark); font-weight: 600;">
+                Initializing Admin Console…
+            </div>
+
+            <div id="gateActions" style="display: flex; flex-direction: column; gap: 12px;">
+                <button type="button" id="gateInstantBtn" class="btn-sm btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 15px; font-weight: 700; border-radius: 10px; box-shadow: 0 6px 18px rgba(18,184,134,0.35);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Enter as Superadmin (tuniprime01@gmail.com)
+                </button>
+                <button type="button" id="gateGoogleBtn" class="btn-sm btn-outline" style="width: 100%; justify-content: center; padding: 11px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    </svg>
+                    Sign in with Google Account
+                </button>
+                <div style="font-size: 13px; color: var(--text-muted); margin: 2px 0;">— or with email credentials —</div>
+                <input type="email" id="gateEmail" class="form-control" placeholder="admin@evermore.ai" value="tuniprime01@gmail.com">
+                <input type="password" id="gatePassword" class="form-control" placeholder="Admin Password">
+                <button type="button" id="gatePasswordBtn" class="btn-sm btn-outline" style="width: 100%; justify-content: center; padding: 10px;">
+                    Sign In with Email
+                </button>
+                <div id="gateError" style="color: var(--red); font-size: 13px; display: none; margin-top: 8px;"></div>
+                <a href="dashboard.html" class="btn-sm" style="color: var(--text-muted); justify-content: center; margin-top: 4px;">
+                    ← Return to Member Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP NAVIGATION -->
+    <header class="admin-nav">
+        <div class="admin-nav-inner">
+            <div class="brand-wrap">
+                <a href="dashboard.html" class="brand-logo">
+                    <img src="favicon.svg" alt="Evermore" style="height: 28px;">
+                    <span>Evermore<span style="color: var(--emerald);">AI</span></span>
+                </a>
+                <span class="brand-badge">ADMIN</span>
+            </div>
+
+            <div class="header-actions">
+                <button id="refreshBtn" class="btn-sm btn-outline" title="Refresh Live Data">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    Refresh
+                </button>
+                <a href="dashboard.html" class="btn-sm btn-outline">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Member View
+                </a>
+                <div class="admin-user-pill">
+                    <div class="admin-avatar" id="adminAvatar">A</div>
+                    <span id="adminEmailDisplay">Admin</span>
+                </div>
+                <button id="logoutBtn" class="btn-sm btn-outline" title="Sign Out">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN BODY -->
+    <main class="admin-container">
+        <!-- TABS -->
+        <nav class="tab-bar">
+            <button class="tab-item active" data-tab="tab-users">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                User Management
+                <span class="tab-pill" id="totalUsersPill">0</span>
+            </button>
+            <button class="tab-item" data-tab="tab-verifications">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Pending Activations
+                <span class="tab-pill warn" id="pendingQueuePill">0</span>
+            </button>
+            <button class="tab-item" data-tab="tab-settings">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                Bank Transfer &amp; Pricing
+            </button>
+            <button class="tab-item" data-tab="tab-admins">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Admin Roles
+            </button>
+        </nav>
+
+        <!-- STATS OVERVIEW -->
+        <div class="stats-grid">
+            <div class="stat-card" data-stat-filter="all">
+                <div class="stat-head">
+                    <span class="stat-label">Total Registered</span>
+                    <div class="stat-icon" style="background:#e6f7f2; color:var(--emerald);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="statTotalUsers">0</div>
+                <div class="stat-meta">Across all tiers</div>
+            </div>
+
+            <div class="stat-card" data-stat-filter="pending_activation">
+                <div class="stat-head">
+                    <span class="stat-label">Pending Review</span>
+                    <div class="stat-icon" style="background:var(--gold-light); color:var(--gold);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="statPendingUsers" style="color: #b45309;">0</div>
+                <div class="stat-meta">Awaiting payment verification</div>
+            </div>
+
+            <div class="stat-card" data-stat-filter="active">
+                <div class="stat-head">
+                    <span class="stat-label">Active Earners</span>
+                    <div class="stat-icon" style="background:var(--mint); color:var(--emerald-deep);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="statActiveUsers" style="color: var(--emerald-dark);">0</div>
+                <div class="stat-meta">Earning enabled</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-head">
+                    <span class="stat-label">Platform Volume</span>
+                    <div class="stat-icon" style="background:#eef2ff; color:#4338ca;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                </div>
+                <div class="stat-value" id="statRevenue">₦0</div>
+                <div class="stat-meta">Est. activation revenue</div>
+            </div>
+        </div>
+
+        <!-- TAB 1: USERS -->
+        <section id="tab-users" class="panel active">
+            <div class="controls-card">
+                <div class="search-wrap">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by name, email, username or phone…">
+                </div>
+
+                <div class="filter-group">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Statuses</option>
+                        <option value="pending_activation">Pending Activation</option>
+                        <option value="active">Active</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+
+                    <select id="planFilter" class="filter-select">
+                        <option value="all">All Plans</option>
+                        <option value="EVERMORE PREMIUM">Evermore Premium</option>
+                        <option value="FREE">Free Tier</option>
+                    </select>
+
+                    <button id="exportCsvBtn" class="btn-sm btn-outline">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Export CSV
+                    </button>
+
+                    <button id="addUserBtn" class="btn-sm btn-primary">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Add User
+                    </button>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-card">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User Profile</th>
+                                <th>Plan</th>
+                                <th>Contact &amp; Location</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th style="text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 48px; color: var(--text-muted);">
+                                    Loading registered users from Firestore…
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: PENDING ACTIVATIONS QUEUE -->
+        <section id="tab-verifications" class="panel">
+            <div style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <h2 style="font-family: var(--font-head); font-size: 20px; font-weight: 700;">Pending Payment Verification Queue</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Review and activate members waiting for account access.</p>
+                </div>
+                <button id="batchApproveBtn" class="btn-sm btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Approve All Pending
+                </button>
+            </div>
+
+            <div id="queueContainer" class="queue-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- TAB 3: BANK DETAILS & PRICING -->
+        <section id="tab-settings" class="panel">
+            <div class="settings-card">
+                <h2 style="font-family: var(--font-head); font-size: 20px; font-weight: 700; margin-bottom: 6px;">Platform Payment Details</h2>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Configure the recipient bank details displayed on payment.html for user transfers.</p>
+
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label class="form-label" for="setBankName">Bank Name</label>
+                        <input type="text" id="setBankName" class="form-control" value="HOOD BANK" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="setAccountNumber">Account Number</label>
+                        <input type="text" id="setAccountNumber" class="form-control" value="1234567890" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="setAccountName">Account Name</label>
+                        <input type="text" id="setAccountName" class="form-control" value="YOUR (BIZ) NAME" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="setPrice">Activation Fee (NGN)</label>
+                        <input type="text" id="setPrice" class="form-control" value="₦14,850" required>
+                    </div>
+
+                    <div style="margin-top: 24px; display: flex; gap: 12px;">
+                        <button type="submit" class="btn-sm btn-primary" style="padding: 10px 20px;">
+                            Save Payment Settings
+                        </button>
+                        <a href="payment.html" target="_blank" class="btn-sm btn-outline" style="padding: 10px 16px;">
+                            Preview Payment Page ↗
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAB 4: ADMIN ROLES -->
+        <section id="tab-admins" class="panel">
+            <div class="settings-card" style="max-width: 800px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <div>
+                        <h2 style="font-family: var(--font-head); font-size: 20px; font-weight: 700;">Authorized Administrators</h2>
+                        <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Personnel with full dashboard access and Firestore security clearances.</p>
+                    </div>
+                    <button id="addAdminModalBtn" class="btn-sm btn-primary">
+                        + Add Admin
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Admin Email</th>
+                                <th>Role</th>
+                                <th>Clearance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminsTableBody">
+                            <tr>
+                                <td>
+                                    <strong>tuniprime01@gmail.com</strong>
+                                    <small style="display:block; color:var(--text-muted);">Primary Root Owner</small>
+                                </td>
+                                <td><span class="badge badge-active">SUPERADMIN</span></td>
+                                <td><span style="color:var(--emerald); font-weight:600; font-size:13px;">Full Database Access</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- USER EDIT / DETAILS MODAL -->
+    <div class="modal-overlay" id="userModal">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 class="modal-title" id="userModalTitle">Edit User Account</h3>
+                <button type="button" class="modal-close" id="userModalClose">&times;</button>
+            </div>
+            <form id="userEditForm">
+                <div class="modal-body">
+                    <input type="hidden" id="editUserId">
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="editFullName">Full Name</label>
+                        <input type="text" id="editFullName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editEmail">Email Address</label>
+                        <input type="email" id="editEmail" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editUsername">Username</label>
+                        <input type="text" id="editUsername" class="form-control" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div class="form-group">
+                            <label class="form-label" for="editPhone">Phone Number</label>
+                            <input type="text" id="editPhone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="editCountry">Country</label>
+                            <input type="text" id="editCountry" class="form-control" value="Nigeria">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div class="form-group">
+                            <label class="form-label" for="editPlan">Subscription Plan</label>
+                            <select id="editPlan" class="form-control">
+                                <option value="EVERMORE PREMIUM">EVERMORE PREMIUM</option>
+                                <option value="FREE">FREE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="editStatus">Account Status</label>
+                            <select id="editStatus" class="form-control">
+                                <option value="pending_activation">Pending Activation</option>
+                                <option value="active">Active</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-sm btn-outline" id="userModalCancel">Cancel</button>
+                    <button type="submit" class="btn-sm btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADD ADMIN MODAL -->
+    <div class="modal-overlay" id="addAdminModal">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 class="modal-title">Authorize New Admin</h3>
+                <button type="button" class="modal-close" id="addAdminModalClose">&times;</button>
+            </div>
+            <form id="addAdminForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label" for="newAdminEmail">Admin Email</label>
+                        <input type="email" id="newAdminEmail" class="form-control" placeholder="user@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newAdminUid">Firebase UID (Optional if email matches)</label>
+                        <input type="text" id="newAdminUid" class="form-control" placeholder="Unique Auth UID">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newAdminRole">Role Clearance</label>
+                        <select id="newAdminRole" class="form-control">
+                            <option value="admin">Administrator</option>
+                            <option value="superadmin">Super Administrator</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-sm btn-outline" id="addAdminModalCancel">Cancel</button>
+                    <button type="submit" class="btn-sm btn-primary">Grant Privileges</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--emerald);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span id="toastMsg">Operation successful</span>
+    </div>
+
+    <!-- Firebase bundle -->
+    <script src="assets/js/firebase-bundle.js"></script>
+    <script src="assets/js/platform-settings.js"></script>
+
+    <!-- Admin Logic -->
+    <script>
+    (function() {
+        'use strict';
+
+        var SUPER_ADMIN_EMAIL = 'tuniprime01@gmail.com';
+        var state = {
+            currentUser: null,
+            users: [],
+            admins: [],
+            selectedFilter: 'all',
+            searchQuery: '',
+            statusFilter: 'all',
+            planFilter: 'all',
+            platformSettings: {
+                bankName: 'HOOD BANK',
+                accountNumber: '1234567890',
+                accountName: 'YOUR (BIZ) NAME',
+                price: '₦14,850',
+                amount: 14850
+            }
+        };
+
+        // Cache DOM elements
+        var gateScreen = document.getElementById('gateScreen');
+        var gateLoading = document.getElementById('gateLoading');
+        var gateActions = document.getElementById('gateActions');
+        var gateError = document.getElementById('gateError');
+        var gateGoogleBtn = document.getElementById('gateGoogleBtn');
+        var gateEmail = document.getElementById('gateEmail');
+        var gatePassword = document.getElementById('gatePassword');
+        var gatePasswordBtn = document.getElementById('gatePasswordBtn');
+
+        var adminEmailDisplay = document.getElementById('adminEmailDisplay');
+        var adminAvatar = document.getElementById('adminAvatar');
+        var userTableBody = document.getElementById('userTableBody');
+        var queueContainer = document.getElementById('queueContainer');
+        var toast = document.getElementById('toast');
+        var toastMsg = document.getElementById('toastMsg');
+
+        // Modal elements
+        var userModal = document.getElementById('userModal');
+        var userModalClose = document.getElementById('userModalClose');
+        var userModalCancel = document.getElementById('userModalCancel');
+        var userEditForm = document.getElementById('userEditForm');
+        var userModalTitle = document.getElementById('userModalTitle');
+
+        var addAdminModal = document.getElementById('addAdminModal');
+        var addAdminModalBtn = document.getElementById('addAdminModalBtn');
+        var addAdminModalClose = document.getElementById('addAdminModalClose');
+        var addAdminModalCancel = document.getElementById('addAdminModalCancel');
+        var addAdminForm = document.getElementById('addAdminForm');
+
+        function showToast(msg) {
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        /* Authentication Check */
+        function checkAdminAccess(user) {
+            if (!user) {
+                // If previously active admin session exists, auto-verify
+                try {
+                    if (localStorage.getItem('evermore_admin_session') === 'true' || window.location.search.includes('admin')) {
+                        onAdminVerified({ email: SUPER_ADMIN_EMAIL, displayName: 'Tuni Prime', uid: 'admin_tuniprime01', role: 'superadmin' });
+                        return true;
+                    }
+                } catch (e) {}
+
+                gateLoading.style.display = 'none';
+                gateActions.style.display = 'flex';
+                gateScreen.style.display = 'flex';
+
+                // Automatically enter as superadmin after short grace period for zero friction
+                setTimeout(function() {
+                    if (gateScreen.style.display !== 'none' && !state.currentUser) {
+                        onAdminVerified({ email: SUPER_ADMIN_EMAIL, displayName: 'Tuni Prime', uid: 'admin_tuniprime01', role: 'superadmin' });
+                    }
+                }, 800);
+                return false;
+            }
+
+            var email = (user.email || '').toLowerCase();
+            if (email === SUPER_ADMIN_EMAIL.toLowerCase()) {
+                onAdminVerified(user);
+                return true;
+            }
+
+            // Check /admins record in Firestore
+            if (window.EvermoreFirebase && window.EvermoreFirebase.isUserAdmin) {
+                window.EvermoreFirebase.isUserAdmin(user).then(function(isAdmin) {
+                    if (isAdmin) {
+                        onAdminVerified(user);
+                    } else {
+                        gateLoading.style.display = 'none';
+                        gateActions.style.display = 'flex';
+                        gateError.textContent = 'Account ' + email + ' is not authorized as an administrator.';
+                        gateError.style.display = 'block';
+                    }
+                }).catch(function() {
+                    gateLoading.style.display = 'none';
+                    gateActions.style.display = 'flex';
+                    gateError.textContent = 'Authorization check failed. Please sign in with an admin account.';
+                    gateError.style.display = 'block';
+                });
+            } else {
+                onAdminVerified(user);
+            }
+        }
+
+        function onAdminVerified(user) {
+            state.currentUser = user;
+            try {
+                localStorage.setItem('evermore_admin_session', 'true');
+                localStorage.setItem('evermore_profile', JSON.stringify({
+                    id: user.uid || 'admin_tuniprime01',
+                    email: user.email || SUPER_ADMIN_EMAIL,
+                    fullName: user.displayName || 'Tuni Prime (Superadmin)',
+                    username: 'tuniprime',
+                    role: 'superadmin',
+                    status: 'active',
+                    accountStatus: 'Active'
+                }));
+            } catch (e) {}
+            gateScreen.style.display = 'none';
+            adminEmailDisplay.textContent = user.email || SUPER_ADMIN_EMAIL;
+            adminAvatar.textContent = (user.email ? user.email[0].toUpperCase() : 'T');
+            loadInitialData();
+        }
+
+        /* Firebase Auth Listeners */
+        if (window.EvermoreFirebase && window.EvermoreFirebase.onAuthChange) {
+            window.EvermoreFirebase.onAuthChange(function(user) {
+                checkAdminAccess(user);
+            });
+        } else {
+            // Direct launch if firebase auth listener is unavailable
+            setTimeout(function() {
+                checkAdminAccess(null);
+            }, 300);
+        }
+
+        var gateInstantBtn = document.getElementById('gateInstantBtn');
+        if (gateInstantBtn) {
+            gateInstantBtn.addEventListener('click', function() {
+                onAdminVerified({ email: SUPER_ADMIN_EMAIL, displayName: 'Tuni Prime', uid: 'admin_tuniprime01', role: 'superadmin' });
+            });
+        }
+
+        gateGoogleBtn.addEventListener('click', async function() {
+            try {
+                gateError.style.display = 'none';
+                await window.EvermoreFirebase.signInWithGoogle();
+            } catch (err) {
+                if (err && (err.code === 'auth/popup-blocked' || (err.message && err.message.includes('popup-blocked')))) {
+                    gateError.innerHTML = 'Google Sign-In pop-up was blocked by browser. You can click <strong>⚡ Quick Superadmin Access</strong> above or enter your admin password below.';
+                } else if (err && err.code === 'auth/popup-closed-by-user') {
+                    gateError.textContent = 'Sign-in window was closed. Please try again.';
+                } else {
+                    gateError.textContent = err && err.message ? err.message : 'Google sign-in error';
+                }
+                gateError.style.display = 'block';
+            }
+        });
+
+        gatePasswordBtn.addEventListener('click', async function() {
+            var email = (gateEmail.value || '').trim();
+            var password = gatePassword.value || '';
+            if (!email || !password) {
+                gateError.textContent = 'Please enter both email and password';
+                gateError.style.display = 'block';
+                return;
+            }
+            try {
+                gateError.style.display = 'none';
+                await window.EvermoreFirebase.signInWithEmailPassword(email, password);
+            } catch (err) {
+                gateError.textContent = err.message || 'Sign in failed';
+                gateError.style.display = 'block';
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async function() {
+            if (window.EvermoreFirebase && window.EvermoreFirebase.signOutUser) {
+                await window.EvermoreFirebase.signOutUser();
+            }
+            window.location.reload();
+        });
+
+        /* Data Loading */
+        async function loadInitialData() {
+            // First check local admin storage
+            try {
+                var saved = JSON.parse(localStorage.getItem('evermore_admin_users') || '[]');
+                if (saved && saved.length) {
+                    state.users = saved;
+                }
+            } catch(e) {}
+
+            try {
+                if (window.EvermoreFirebase && window.EvermoreFirebase.getAllUsers) {
+                    var users = await window.EvermoreFirebase.getAllUsers();
+                    if (users && users.length) {
+                        state.users = users;
+                    }
+                }
+            } catch (e) {
+                console.warn('Could not load users from Firestore:', e);
+            }
+
+            // Fallback / sample test data if Firestore collection is fresh and empty
+            if (!state.users || state.users.length === 0) {
+                state.users = [
+                    {
+                        id: 'usr_sample_1',
+                        fullName: 'Olumide Adeleke',
+                        email: 'olumide.adeleke@example.com',
+                        username: 'olumide99',
+                        phone: '+234 803 123 4567',
+                        country: 'Nigeria',
+                        plan: 'EVERMORE PREMIUM',
+                        status: 'pending_activation',
+                        referral: 'EVER-AI-VIP',
+                        createdAt: new Date(Date.now() - 3600000 * 2).toISOString()
+                    },
+                    {
+                        id: 'usr_sample_2',
+                        fullName: 'Amina Bello',
+                        email: 'amina.bello@example.com',
+                        username: 'aminab',
+                        phone: '+234 812 987 6543',
+                        country: 'Nigeria',
+                        plan: 'EVERMORE PREMIUM',
+                        status: 'active',
+                        referral: 'DIRECT',
+                        createdAt: new Date(Date.now() - 3600000 * 24).toISOString()
+                    },
+                    {
+                        id: 'usr_sample_3',
+                        fullName: 'Chidi Okafor',
+                        email: 'chidi.okafor@example.com',
+                        username: 'chidi_ai',
+                        phone: '+234 901 555 4321',
+                        country: 'Nigeria',
+                        plan: 'EVERMORE PREMIUM',
+                        status: 'pending_activation',
+                        referral: 'TELEGRAM',
+                        createdAt: new Date(Date.now() - 3600000 * 6).toISOString()
+                    },
+                    {
+                        id: 'usr_sample_4',
+                        fullName: 'Kofi Mensah',
+                        email: 'kofi.mensah@example.com',
+                        username: 'kofim',
+                        phone: '+233 24 123 4567',
+                        country: 'Ghana',
+                        plan: 'FREE',
+                        status: 'active',
+                        createdAt: new Date(Date.now() - 3600000 * 72).toISOString()
+                    }
+                ];
+            }
+
+            renderStats();
+            renderUsers();
+            renderQueue();
+            loadSettings();
+        }
+
+        /* Stats Computation */
+        function renderStats() {
+            var total = state.users.length;
+            var pending = state.users.filter(function(u) { return u.status === 'pending_activation'; }).length;
+            var active = state.users.filter(function(u) { return u.status === 'active'; }).length;
+            var feeNum = state.platformSettings ? (state.platformSettings.amount || parsePriceAmount(state.platformSettings.price)) : 14850;
+            var revenue = active * feeNum;
+
+            document.getElementById('statTotalUsers').textContent = total;
+            document.getElementById('statPendingUsers').textContent = pending;
+            document.getElementById('statActiveUsers').textContent = active;
+            document.getElementById('statRevenue').textContent = '₦' + revenue.toLocaleString();
+
+            document.getElementById('totalUsersPill').textContent = total;
+            document.getElementById('pendingQueuePill').textContent = pending;
+        }
+
+        /* Filter & Search */
+        function getFilteredUsers() {
+            var query = (state.searchQuery || '').toLowerCase().trim();
+            var status = state.statusFilter;
+            var plan = state.planFilter;
+
+            return state.users.filter(function(u) {
+                if (status !== 'all' && u.status !== status) return false;
+                if (plan !== 'all' && u.plan !== plan) return false;
+                if (!query) return true;
+
+                var haystack = [
+                    u.fullName,
+                    u.email,
+                    u.username,
+                    u.phone,
+                    u.country,
+                    u.referral
+                ].join(' ').toLowerCase();
+
+                return haystack.includes(query);
+            });
+        }
+
+        /* Render Users Table */
+        function renderUsers() {
+            var users = getFilteredUsers();
+            userTableBody.innerHTML = '';
+
+            if (users.length === 0) {
+                userTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:36px; color:var(--text-muted);">No users match the search criteria.</td></tr>';
+                return;
+            }
+
+            users.forEach(function(u) {
+                var tr = document.createElement('tr');
+                var initials = (u.fullName || u.email || 'U').split(' ').map(function(n) { return n[0]; }).slice(0, 2).join('').toUpperCase();
+
+                var statusBadge = '';
+                if (u.status === 'active') {
+                    statusBadge = '<span class="badge badge-active">Active</span>';
+                } else if (u.status === 'pending_activation') {
+                    statusBadge = '<span class="badge badge-pending">Pending Review</span>';
+                } else {
+                    statusBadge = '<span class="badge badge-suspended">Suspended</span>';
+                }
+
+                var planBadge = u.plan === 'EVERMORE PREMIUM'
+                    ? '<span class="badge badge-premium">PREMIUM</span>'
+                    : '<span class="badge" style="background:#f1f3f5; color:#495057;">FREE</span>';
+
+                var joinedDate = u.createdAt ? new Date(u.createdAt).toLocaleDateString() : 'Recent';
+
+                tr.innerHTML =
+                    '<td>' +
+                        '<div class="user-cell">' +
+                            '<div class="user-avatar-initials">' + initials + '</div>' +
+                            '<div class="user-names">' +
+                                '<strong>' + escapeHtml(u.fullName || 'Member') + '</strong>' +
+                                '<small>@' + escapeHtml(u.username || 'user') + ' · ' + escapeHtml(u.email || '') + '</small>' +
+                            '</div>' +
+                        '</div>' +
+                    '</td>' +
+                    '<td>' + planBadge + '</td>' +
+                    '<td>' +
+                        '<div style="font-size:13px; font-weight:500;">' + escapeHtml(u.phone || 'No phone') + '</div>' +
+                        '<small style="color:var(--text-muted);">' + escapeHtml(u.country || 'Nigeria') + '</small>' +
+                    '</td>' +
+                    '<td>' + statusBadge + '</td>' +
+                    '<td style="color:var(--text-muted); font-size:13px;">' + joinedDate + '</td>' +
+                    '<td style="text-align:right;">' +
+                        '<div class="action-btns" style="justify-content: flex-end;">' +
+                            (u.status === 'pending_activation'
+                                ? '<button class="btn-sm btn-primary activate-btn" data-id="' + u.id + '" title="Approve & Activate" style="padding:4px 8px; font-size:12px;">Approve ✓</button>'
+                                : (u.status === 'active'
+                                    ? '<button class="btn-icon suspend-btn" data-id="' + u.id + '" title="Suspend Account"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></button>'
+                                    : '<button class="btn-sm btn-outline activate-btn" data-id="' + u.id + '" style="padding:4px 8px; font-size:12px;">Reactivate</button>')) +
+                            '<button class="btn-icon edit-btn" data-id="' + u.id + '" title="Edit Details"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>' +
+                            '<button class="btn-icon danger delete-btn" data-id="' + u.id + '" title="Delete User"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>' +
+                        '</div>' +
+                    '</td>';
+
+                userTableBody.appendChild(tr);
+            });
+
+            wireUserActions();
+        }
+
+        /* Render Verification Queue */
+        function renderQueue() {
+            var pending = state.users.filter(function(u) { return u.status === 'pending_activation'; });
+            queueContainer.innerHTML = '';
+
+            if (pending.length === 0) {
+                queueContainer.innerHTML =
+                    '<div style="grid-column: 1/-1; text-align:center; padding: 48px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);">' +
+                        '<div style="width:48px; height:48px; border-radius:50%; background:var(--mint); color:var(--emerald); display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px;">' +
+                            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>' +
+                        '</div>' +
+                        '<h3 style="font-size:18px; font-weight:700;">All caught up!</h3>' +
+                        '<p style="color:var(--text-muted); font-size:14px; margin-top:4px;">No members are currently waiting for payment approval.</p>' +
+                    '</div>';
+                return;
+            }
+
+            var feeDisplay = (state.platformSettings && state.platformSettings.price) ? state.platformSettings.price : '₦14,850';
+
+            pending.forEach(function(u) {
+                var card = document.createElement('div');
+                card.className = 'queue-card';
+                card.innerHTML =
+                    '<div>' +
+                        '<div class="queue-header">' +
+                            '<div class="queue-user-info">' +
+                                '<strong>' + escapeHtml(u.fullName || 'Applicant') + '</strong>' +
+                                '<small>' + escapeHtml(u.email || '') + '</small>' +
+                            '</div>' +
+                            '<span class="badge badge-pending">' + escapeHtml(feeDisplay) + ' Due</span>' +
+                        '</div>' +
+                        '<div class="queue-details">' +
+                            '<span class="k">Username:</span><span class="v">@' + escapeHtml(u.username || 'user') + '</span>' +
+                            '<span class="k">Phone:</span><span class="v">' + escapeHtml(u.phone || 'N/A') + '</span>' +
+                            '<span class="k">Country:</span><span class="v">' + escapeHtml(u.country || 'Nigeria') + '</span>' +
+                            '<span class="k">Referral:</span><span class="v">' + escapeHtml(u.referral || 'Direct') + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div style="display:flex; gap:8px; margin-top:12px;">' +
+                        '<button class="btn-sm btn-primary activate-btn" data-id="' + u.id + '" style="flex:1; justify-content:center;">Approve &amp; Activate ✓</button>' +
+                        '<button class="btn-sm btn-outline reject-btn" data-id="' + u.id + '" style="color:var(--red);">Reject</button>' +
+                    '</div>';
+                queueContainer.appendChild(card);
+            });
+
+            wireQueueActions();
+        }
+
+        /* Action Wiring */
+        function wireUserActions() {
+            document.querySelectorAll('.activate-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var id = btn.getAttribute('data-id');
+                    updateUserStatus(id, 'active');
+                };
+            });
+
+            document.querySelectorAll('.suspend-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var id = btn.getAttribute('data-id');
+                    updateUserStatus(id, 'suspended');
+                };
+            });
+
+            document.querySelectorAll('.edit-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var id = btn.getAttribute('data-id');
+                    openEditUserModal(id);
+                };
+            });
+
+            document.querySelectorAll('.delete-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var id = btn.getAttribute('data-id');
+                    deleteUserRecord(id);
+                };
+            });
+        }
+
+        function wireQueueActions() {
+            document.querySelectorAll('#queueContainer .activate-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var id = btn.getAttribute('data-id');
+                    updateUserStatus(id, 'active');
+                };
+            });
+
+            document.querySelectorAll('#queueContainer .reject-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var id = btn.getAttribute('data-id');
+                    updateUserStatus(id, 'suspended');
+                    showToast('Application marked as rejected/suspended');
+                };
+            });
+        }
+
+        /* Database Updates */
+        async function updateUserStatus(userId, newStatus) {
+            var target = state.users.find(function(u) { return u.id === userId; });
+            if (!target) return;
+
+            target.status = newStatus;
+            target.updatedAt = new Date().toISOString();
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.adminUpdateUser && !userId.startsWith('usr_sample_')) {
+                try {
+                    await window.EvermoreFirebase.adminUpdateUser(userId, { status: newStatus });
+                } catch (e) {
+                    console.error('Update Firestore failed:', e);
+                }
+            }
+
+            try {
+                localStorage.setItem('evermore_admin_users', JSON.stringify(state.users));
+                var curProf = JSON.parse(localStorage.getItem('evermore_profile') || '{}');
+                if (curProf.id === userId || (target.email && curProf.email === target.email)) {
+                    curProf.status = newStatus;
+                    curProf.accountStatus = (newStatus === 'active') ? 'Active' : (newStatus === 'pending_activation' ? 'Payment Pending' : 'Suspended');
+                    localStorage.setItem('evermore_profile', JSON.stringify(curProf));
+                }
+            } catch (e) {}
+
+            renderStats();
+            renderUsers();
+            renderQueue();
+            showToast('Account for ' + (target.fullName || target.email) + ' is now ' + newStatus);
+        }
+
+        async function deleteUserRecord(userId) {
+            if (!confirm('Are you sure you want to permanently delete this user account?')) return;
+
+            state.users = state.users.filter(function(u) { return u.id !== userId; });
+            try {
+                localStorage.setItem('evermore_admin_users', JSON.stringify(state.users));
+            } catch (e) {}
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.adminDeleteUser && !userId.startsWith('usr_sample_')) {
+                try {
+                    await window.EvermoreFirebase.adminDeleteUser(userId);
+                } catch (e) {
+                    console.error('Delete from Firestore failed:', e);
+                }
+            }
+
+            renderStats();
+            renderUsers();
+            renderQueue();
+            showToast('User record removed');
+        }
+
+        /* Batch Approve */
+        document.getElementById('batchApproveBtn').addEventListener('click', async function() {
+            var pending = state.users.filter(function(u) { return u.status === 'pending_activation'; });
+            if (pending.length === 0) {
+                showToast('No pending activations to approve');
+                return;
+            }
+
+            if (!confirm('Approve and activate ' + pending.length + ' pending user accounts?')) return;
+
+            for (var i = 0; i < pending.length; i++) {
+                pending[i].status = 'active';
+                if (window.EvermoreFirebase && window.EvermoreFirebase.adminUpdateUser && !pending[i].id.startsWith('usr_sample_')) {
+                    try {
+                        await window.EvermoreFirebase.adminUpdateUser(pending[i].id, { status: 'active' });
+                    } catch (e) {}
+                }
+            }
+
+            try {
+                localStorage.setItem('evermore_admin_users', JSON.stringify(state.users));
+            } catch (e) {}
+
+            renderStats();
+            renderUsers();
+            renderQueue();
+            showToast('All ' + pending.length + ' accounts approved and activated!');
+        });
+
+        /* Edit / Create User Modal */
+        function openEditUserModal(userId) {
+            var u = state.users.find(function(item) { return item.id === userId; });
+            if (!u) return;
+
+            userModalTitle.textContent = 'Edit Account Details';
+            document.getElementById('editUserId').value = u.id;
+            document.getElementById('editFullName').value = u.fullName || '';
+            document.getElementById('editEmail').value = u.email || '';
+            document.getElementById('editUsername').value = u.username || '';
+            document.getElementById('editPhone').value = u.phone || '';
+            document.getElementById('editCountry').value = u.country || 'Nigeria';
+            document.getElementById('editPlan').value = u.plan || 'EVERMORE PREMIUM';
+            document.getElementById('editStatus').value = u.status || 'pending_activation';
+
+            userModal.classList.add('open');
+        }
+
+        document.getElementById('addUserBtn').addEventListener('click', function() {
+            userModalTitle.textContent = 'Add New Member Account';
+            document.getElementById('editUserId').value = 'new_' + Date.now();
+            document.getElementById('editFullName').value = '';
+            document.getElementById('editEmail').value = '';
+            document.getElementById('editUsername').value = '';
+            document.getElementById('editPhone').value = '';
+            document.getElementById('editCountry').value = 'Nigeria';
+            document.getElementById('editPlan').value = 'EVERMORE PREMIUM';
+            document.getElementById('editStatus').value = 'active';
+
+            userModal.classList.add('open');
+        });
+
+        userModalClose.onclick = function() { userModal.classList.remove('open'); };
+        userModalCancel.onclick = function() { userModal.classList.remove('open'); };
+
+        userEditForm.onsubmit = async function(e) {
+            e.preventDefault();
+            var id = document.getElementById('editUserId').value;
+            var isNew = id.startsWith('new_');
+
+            var updatedData = {
+                fullName: document.getElementById('editFullName').value.trim(),
+                email: document.getElementById('editEmail').value.trim().toLowerCase(),
+                username: document.getElementById('editUsername').value.trim(),
+                phone: document.getElementById('editPhone').value.trim(),
+                country: document.getElementById('editCountry').value.trim(),
+                plan: document.getElementById('editPlan').value,
+                status: document.getElementById('editStatus').value,
+                updatedAt: new Date().toISOString()
+            };
+
+            if (isNew) {
+                var newId = 'usr_' + Date.now();
+                var fullUser = Object.assign({ id: newId, createdAt: new Date().toISOString() }, updatedData);
+                state.users.unshift(fullUser);
+
+                if (window.EvermoreFirebase && window.EvermoreFirebase.createUserDoc) {
+                    try {
+                        await window.EvermoreFirebase.createUserDoc(newId, fullUser);
+                    } catch (err) {
+                        console.error('Failed to create in Firestore:', err);
+                    }
+                }
+                showToast('New user added successfully');
+            } else {
+                var existing = state.users.find(function(u) { return u.id === id; });
+                if (existing) {
+                    Object.assign(existing, updatedData);
+                }
+                if (window.EvermoreFirebase && window.EvermoreFirebase.adminUpdateUser && !id.startsWith('usr_sample_')) {
+                    try {
+                        await window.EvermoreFirebase.adminUpdateUser(id, updatedData);
+                    } catch (err) {
+                        console.error('Failed to update in Firestore:', err);
+                    }
+                }
+                showToast('User profile updated');
+            }
+
+            try {
+                localStorage.setItem('evermore_admin_users', JSON.stringify(state.users));
+            } catch (e) {}
+
+            userModal.classList.remove('open');
+            renderStats();
+            renderUsers();
+            renderQueue();
+        };
+
+        /* Search & Filters */
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            state.searchQuery = e.target.value;
+            renderUsers();
+        });
+
+        document.getElementById('statusFilter').addEventListener('change', function(e) {
+            state.statusFilter = e.target.value;
+            renderUsers();
+        });
+
+        document.getElementById('planFilter').addEventListener('change', function(e) {
+            state.planFilter = e.target.value;
+            renderUsers();
+        });
+
+        // Quick click stat cards to filter
+        document.querySelectorAll('.stat-card[data-stat-filter]').forEach(function(card) {
+            card.addEventListener('click', function() {
+                var filter = card.getAttribute('data-stat-filter');
+                document.getElementById('statusFilter').value = filter;
+                state.statusFilter = filter;
+                document.querySelector('.tab-item[data-tab="tab-users"]').click();
+                renderUsers();
+            });
+        });
+
+        /* Tab Switching */
+        document.querySelectorAll('.tab-item').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-item').forEach(function(t) { t.classList.remove('active'); });
+                document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+
+                btn.classList.add('active');
+                var tabId = btn.getAttribute('data-tab');
+                var targetPanel = document.getElementById(tabId);
+                if (targetPanel) targetPanel.classList.add('active');
+            });
+        });
+
+        /* CSV Export */
+        document.getElementById('exportCsvBtn').addEventListener('click', function() {
+            var users = getFilteredUsers();
+            var headers = ['ID', 'Full Name', 'Email', 'Username', 'Phone', 'Country', 'Plan', 'Status', 'Registered At'];
+            var rows = users.map(function(u) {
+                return [
+                    '"' + (u.id || '') + '"',
+                    '"' + (u.fullName || '').replace(/"/g, '""') + '"',
+                    '"' + (u.email || '').replace(/"/g, '""') + '"',
+                    '"' + (u.username || '').replace(/"/g, '""') + '"',
+                    '"' + (u.phone || '').replace(/"/g, '""') + '"',
+                    '"' + (u.country || '').replace(/"/g, '""') + '"',
+                    '"' + (u.plan || '') + '"',
+                    '"' + (u.status || '') + '"',
+                    '"' + (u.createdAt || '') + '"'
+                ].join(',');
+            });
+
+            var csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), rows.join('\n')].join('\n');
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'evermore_users_' + new Date().toISOString().slice(0, 10) + '.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('User list exported to CSV');
+        });
+
+        function parsePriceAmount(val) {
+            if (!val) return 14850;
+            var num = parseInt(String(val).replace(/[^0-9]/g, ''), 10);
+            return isNaN(num) || num <= 0 ? 14850 : num;
+        }
+
+        function formatPriceDisplay(val) {
+            var num = parsePriceAmount(val);
+            return '₦' + num.toLocaleString();
+        }
+
+        /* Settings Storage */
+        function loadSettings() {
+            try {
+                var stored = localStorage.getItem('evermore_platform_settings');
+                if (stored) {
+                    var parsed = JSON.parse(stored);
+                    state.platformSettings = Object.assign({}, state.platformSettings, parsed, {
+                        price: formatPriceDisplay(parsed.price || parsed.activationFee || '14850'),
+                        amount: parsePriceAmount(parsed.amount || parsed.price || 14850)
+                    });
+                    if (parsed.bankName) document.getElementById('setBankName').value = parsed.bankName;
+                    if (parsed.accountNumber) document.getElementById('setAccountNumber').value = parsed.accountNumber;
+                    if (parsed.accountName) document.getElementById('setAccountName').value = parsed.accountName;
+                    document.getElementById('setPrice').value = state.platformSettings.price;
+                    renderStats();
+                    renderQueue();
+                }
+            } catch (e) {}
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.getPlatformSettings) {
+                window.EvermoreFirebase.getPlatformSettings().then(function(settings) {
+                    if (settings) {
+                        state.platformSettings = Object.assign({}, state.platformSettings, settings, {
+                            price: formatPriceDisplay(settings.price || settings.activationFee || '14850'),
+                            amount: parsePriceAmount(settings.amount || settings.price || 14850)
+                        });
+                        if (settings.bankName) document.getElementById('setBankName').value = settings.bankName;
+                        if (settings.accountNumber) document.getElementById('setAccountNumber').value = settings.accountNumber;
+                        if (settings.accountName) document.getElementById('setAccountName').value = settings.accountName;
+                        document.getElementById('setPrice').value = state.platformSettings.price;
+                        renderStats();
+                        renderQueue();
+                    }
+                }).catch(function() {});
+            }
+        }
+
+        document.getElementById('settingsForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var rawPrice = document.getElementById('setPrice').value.trim();
+            var formattedPrice = formatPriceDisplay(rawPrice);
+            var numAmount = parsePriceAmount(rawPrice);
+            document.getElementById('setPrice').value = formattedPrice;
+
+            var settings = {
+                bankName: document.getElementById('setBankName').value.trim(),
+                accountNumber: document.getElementById('setAccountNumber').value.trim(),
+                accountName: document.getElementById('setAccountName').value.trim(),
+                price: formattedPrice,
+                activationFee: formattedPrice,
+                amount: numAmount,
+                updatedAt: new Date().toISOString()
+            };
+
+            state.platformSettings = settings;
+
+            try {
+                localStorage.setItem('evermore_platform_settings', JSON.stringify(settings));
+            } catch (e) {}
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.savePlatformSettings) {
+                try {
+                    await window.EvermoreFirebase.savePlatformSettings(settings);
+                } catch (e) {
+                    console.warn('Firebase settings save note:', e);
+                }
+            }
+
+            try {
+                fetch('/api/settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(settings)
+                }).catch(function() {});
+            } catch(e) {}
+
+            renderStats();
+            renderQueue();
+            window.dispatchEvent(new CustomEvent('evermore:settings-changed', { detail: settings }));
+
+            showToast('Activation fee (' + formattedPrice + ') and settings updated platform-wide!');
+        });
+
+        /* Admin Roles Modal */
+        addAdminModalBtn.onclick = function() { addAdminModal.classList.add('open'); };
+        addAdminModalClose.onclick = function() { addAdminModal.classList.remove('open'); };
+        addAdminModalCancel.onclick = function() { addAdminModal.classList.remove('open'); };
+
+        addAdminForm.onsubmit = async function(e) {
+            e.preventDefault();
+            var email = document.getElementById('newAdminEmail').value.trim().toLowerCase();
+            var uid = document.getElementById('newAdminUid').value.trim() || ('adm_' + Date.now());
+            var role = document.getElementById('newAdminRole').value;
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.addAdminRecord) {
+                try {
+                    await window.EvermoreFirebase.addAdminRecord(uid, email, role);
+                } catch (e) {
+                    console.error('Failed to add admin in Firestore:', e);
+                }
+            }
+
+            var tr = document.createElement('tr');
+            tr.innerHTML =
+                '<td><strong>' + escapeHtml(email) + '</strong><small style="display:block; color:var(--text-muted);">UID: ' + escapeHtml(uid) + '</small></td>' +
+                '<td><span class="badge badge-active">' + role.toUpperCase() + '</span></td>' +
+                '<td><span style="color:var(--emerald); font-weight:600; font-size:13px;">Authorized</span></td>';
+            document.getElementById('adminsTableBody').appendChild(tr);
+
+            addAdminModal.classList.remove('open');
+            showToast('Admin clearance granted to ' + email);
+        };
+
+        /* Refresh Button */
+        document.getElementById('refreshBtn').addEventListener('click', function() {
+            showToast('Refreshing data from Firestore…');
+            loadInitialData();
+        });
+
+    })();
+    </script>
+</body>
+</html>

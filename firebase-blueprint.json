@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and account information",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The user's unique identifier matching Firebase Auth UID",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's primary email address",
+          "format": "email",
+          "maxLength": 254
+        },
+        "fullName": {
+          "type": "string",
+          "description": "The user's full name",
+          "maxLength": 100
+        },
+        "username": {
+          "type": "string",
+          "description": "The user's unique chosen handle",
+          "maxLength": 50
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact phone number with international code",
+          "maxLength": 30
+        },
+        "country": {
+          "type": "string",
+          "description": "Country of residence",
+          "maxLength": 60
+        },
+        "referral": {
+          "type": "string",
+          "description": "Referral code used during onboarding",
+          "maxLength": 50
+        },
+        "plan": {
+          "type": "string",
+          "description": "Subscription tier selected by user",
+          "enum": ["EVERMORE PREMIUM", "FREE"],
+          "maxLength": 30
+        },
+        "status": {
+          "type": "string",
+          "description": "Account activation status",
+          "enum": ["pending_activation", "active", "suspended"],
+          "maxLength": 30
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of account creation",
+          "maxLength": 50
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last account update",
+          "maxLength": 50
+        }
+      },
+      "required": ["id", "email", "fullName", "username", "status"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Admin authorization entry",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "User ID of the administrator",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the administrator",
+          "format": "email",
+          "maxLength": 254
+        },
+        "role": {
+          "type": "string",
+          "description": "Assigned administrative role",
+          "enum": ["superadmin", "admin"],
+          "maxLength": 30
+        }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "PlatformSettings": {
+      "title": "PlatformSettings",
+      "description": "Global platform configurations including activation fee and payment bank details",
+      "type": "object",
+      "properties": {
+        "bankName": { "type": "string", "maxLength": 100 },
+        "accountNumber": { "type": "string", "maxLength": 50 },
+        "accountName": { "type": "string", "maxLength": 100 },
+        "price": { "type": "string", "maxLength": 50 },
+        "amount": { "type": "number" },
+        "updatedAt": { "type": "string", "maxLength": 50 }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of user account profiles keyed by Auth UID"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Collection of administrators keyed by Auth UID"
+    },
+    "/settings/{settingId}": {
+      "schema": "PlatformSettings",
+      "description": "Platform global configuration documents including platform_settings"
+    }
+  }
+}

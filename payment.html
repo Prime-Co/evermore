@@ -23,7 +23,7 @@
     <meta property="og:title" content="Complete Payment | Evermore AI – Activate Your Premium Subscription">
     <meta property="og:description" content="Complete your Evermore Premium Subscription payment securely and upload your receipt to activate your account.">
     <meta property="og:url" content="payment.html">
-    <meta property="og:image" content="index.htmlassets/hero-main-DsCX8iSK.jpg">
+    <meta property="og:image" content="assets/images/hero-main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Evermore AI — Complete your Premium Subscription payment">
@@ -35,12 +35,12 @@
     <meta name="twitter:creator" content="@evermoreai">
     <meta name="twitter:title" content="Complete Payment | Evermore AI">
     <meta name="twitter:description" content="Complete your Evermore Premium Subscription payment securely.">
-    <meta name="twitter:image" content="index.htmlassets/hero-main-DsCX8iSK.jpg">
+    <meta name="twitter:image" content="assets/images/hero-main.jpg">
     <meta name="twitter:image:alt" content="Evermore AI — Complete your Premium Subscription payment">
 
     <!-- ============ TECHNICAL ============ -->
     <meta name="google-site-verification" content="1-GcuCbwPJCapBJ5ER0NMkH_CkXHlXKqlWcGN8Out8w">
-    <link rel="icon" type="image/png" href="index.htmlfavicon.png">
+    <link rel="icon" type="image/png" href="favicon.svg">
     <link rel="apple-touch-icon" href="assets/images/evermore-mark.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -48,6 +48,103 @@
     <link href="assets/fonts/fonts.css" rel="stylesheet">
 
     <!-- ============ STRUCTURED DATA (JSON-LD) ============ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Evermore AI",
+        "legalName": "Evermore AI Platform",
+        "alternateName": ["Evermore AI Platform", "EvermoreAI", "Ever AI", "Ever AI Platform", "Evermore"],
+        "url": "index.html",
+        "logo": "assets/images/evermore-mark.png",
+        "image": "assets/images/hero-main.jpg",
+        "description": "Evermore AI is an AI-powered platform offering AI tools, training tasks, digital opportunities and eligible remote work opportunities.",
+        "foundingDate": "2024",
+        "sameAs": [
+            "https://twitter.com/evermoreai",
+            "https://www.tiktok.com/@evertttfw",
+            "https://t.me/evermore_ai"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Support",
+            "availableLanguage": ["English"]
+        },
+        "areaServed": [
+            {"@type": "Country", "name": "Nigeria"},
+            {"@type": "Country", "name": "Ghana"},
+            {"@type": "Country", "name": "Kenya"},
+            {"@type": "Country", "name": "South Africa"},
+            {"@type": "Country", "name": "Cameroon"},
+            {"@type": "Country", "name": "Uganda"},
+            {"@type": "Country", "name": "Benin"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Evermore AI",
+        "alternateName": ["Evermore AI Platform", "EvermoreAI", "Ever AI", "Ever AI Platform"],
+        "url": "index.html",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "index.htmlsearch?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Complete Payment | Evermore AI",
+        "url": "payment.html",
+        "description": "Complete your Evermore Premium Subscription payment securely and upload your receipt to activate your account.",
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "url": "index.html"
+        },
+        "about": {
+            "@type": "Organization",
+            "name": "Evermore AI"
+        },
+        "potentialAction": {
+            "@type": "PayAction",
+            "name": "Activate Evermore Premium Subscription",
+            "target": "payment.html",
+            "price": "14850",
+            "priceCurrency": "NGN",
+            "recipient": {
+                "@type": "Organization",
+                "name": "Evermore AI"
+            }
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Payment",
+                "item": "payment.html"
+            }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --bg: #f4fbfa;
@@ -949,7 +1046,7 @@
                 <div class="ev-account-line">
                     <span class="ev-account-label">Account Number</span>
                     <div class="ev-account-wrap">
-                        <span class="ev-account-value" id="account-number">6606092804</span>
+                        <span class="ev-account-value" id="account-number">1234567890</span>
                         <button id="copy-btn" type="button" aria-label="Copy account number">
                             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             Copy
@@ -958,11 +1055,11 @@
                 </div>
                 <div class="ev-account-line">
                     <span class="ev-account-label">Bank</span>
-                    <span class="ev-account-value" id="bank-name">MONIEPOINT</span>
+                    <span class="ev-account-value" id="bank-name">HOOD BANK</span>
                 </div>
                 <div class="ev-account-line">
                     <span class="ev-account-label">Account Name</span>
-                    <span class="ev-account-value" id="account-name">MYINSTAGAIN VENTURES</span>
+                    <span class="ev-account-value" id="account-name">YOUR (BIZ) NAME</span>
                 </div>
 
                 <!-- USER DETAILS PANEL -->
@@ -1057,17 +1154,20 @@
         </div>
     </div>
 
+    <!-- Firebase Bundle -->
+    <script src="assets/js/firebase-bundle.js"></script>
+    <script src="assets/js/platform-settings.js"></script>
     <script>
     (function () {
         'use strict';
 
         /* =========================================================
-           Endpoints — our own PHP on the same origin
+           Endpoints
            ========================================================= */
-        var SUBMIT_URL   = null; // TODO: Firebase Storage/Firestore integration
-        var GET_USER_URL = null; // TODO: Firebase Auth/Firestore integration
+        var SUBMIT_URL   = null;
+        var GET_USER_URL = null;
         var MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
-        var LOGIN_URL = '/auth.html?mode=signin';
+        var LOGIN_URL = 'auth.html?mode=signin';
 
         var currentUser = null;
         var selectedFile = null;
@@ -1102,7 +1202,7 @@
         }
 
         /* =========================================================
-           Success modal
+           Success Modal
            ========================================================= */
         var successOverlay = document.getElementById('ev-success-overlay');
         var successCloseBtn = document.getElementById('ev-success-close');
@@ -1115,13 +1215,13 @@
 
         if (successCloseBtn) {
             successCloseBtn.addEventListener('click', function () {
-                window.location.href = '/dashboard.html';
+                window.location.href = 'dashboard.html';
             });
         }
         if (successOverlay) {
             successOverlay.addEventListener('click', function (e) {
                 if (e.target === successOverlay) {
-                    window.location.href = '/dashboard.html';
+                    window.location.href = 'dashboard.html';
                 }
             });
         }
@@ -1180,14 +1280,41 @@
            Payment account details
            ========================================================= */
         var paymentDetails = {
-            accountNumber: "6606092804",
-            bankName: "MONIEPOINT",
-            accountName: "MYINSTAGAIN VENTURES"
+            accountNumber: "1234567890",
+            bankName: "HOOD BANK",
+            accountName: "YOUR (BIZ) NAME",
+            price: "₦14,850"
         };
 
-        document.getElementById("account-number").textContent = paymentDetails.accountNumber;
-        document.getElementById("bank-name").textContent = paymentDetails.bankName;
-        document.getElementById("account-name").textContent = paymentDetails.accountName;
+        function renderPaymentSettings(settings) {
+            if (!settings) return;
+            if (settings.accountNumber) paymentDetails.accountNumber = settings.accountNumber;
+            if (settings.bankName) paymentDetails.bankName = settings.bankName;
+            if (settings.accountName) paymentDetails.accountName = settings.accountName;
+            if (settings.price) paymentDetails.price = settings.price;
+
+            var accNum = document.getElementById("account-number");
+            if (accNum) accNum.textContent = paymentDetails.accountNumber;
+            var bankNm = document.getElementById("bank-name");
+            if (bankNm) bankNm.textContent = paymentDetails.bankName;
+            var accNm = document.getElementById("account-name");
+            if (accNm) accNm.textContent = paymentDetails.accountName;
+
+            var amountEls = document.querySelectorAll('.ev-amount-display, [data-setting="price"]');
+            amountEls.forEach(function(el) { el.textContent = paymentDetails.price; });
+
+            var offerSpan = document.querySelector('.ev-announce-title .accent');
+            if (offerSpan) offerSpan.textContent = paymentDetails.price;
+        }
+
+        try {
+            var savedSettings = window.EvermoreSettings ? window.EvermoreSettings.get() : JSON.parse(localStorage.getItem('evermore_platform_settings') || '{}');
+            renderPaymentSettings(savedSettings);
+        } catch(e) {}
+
+        window.addEventListener('evermore:settings-changed', function(e) {
+            if (e.detail) renderPaymentSettings(e.detail);
+        });
 
         document.getElementById('copy-btn').addEventListener('click', function () {
             var accountNumber = paymentDetails.accountNumber;
@@ -1307,48 +1434,68 @@
             }
 
             if (!currentUser) {
-                showErrorToast('No user session is available yet. Firebase authentication will be connected during the backend integration step.');
-                return;
-            }
-
-            if (!SUBMIT_URL) {
-                showErrorToast('Payment submission is not connected yet. Firebase Storage and Firestore will be connected in the next integration step.');
+                showErrorToast('Please sign in to submit your payment proof.');
+                showAuthModal();
                 return;
             }
 
             submitBtn.disabled = true;
             submitLabel.textContent = 'Submitting…';
 
-            var formData = new FormData();
-            formData.append('receipt', selectedFile);
+            try {
+                // Update local profile status
+                if (currentUser) {
+                    currentUser.accountStatus = 'Payment Submitted';
+                    currentUser.status = 'pending_activation';
+                    currentUser.updatedAt = new Date().toISOString();
+                    try {
+                        localStorage.setItem('evermore_profile', JSON.stringify(currentUser));
 
-            fetch(SUBMIT_URL, {
-                method: 'POST',
-                body: formData,
-                credentials: 'same-origin'
-            })
-            .then(function (r) {
-                return r.text().then(function (text) {
-                    var data;
-                    try { data = JSON.parse(text); }
-                    catch (e) {
-                        throw new Error('Server returned invalid response (HTTP ' + r.status + ')');
+                        // Sync into Admin users list
+                        var adminUsers = [];
+                        try {
+                            adminUsers = JSON.parse(localStorage.getItem('evermore_admin_users') || '[]');
+                        } catch(e) {}
+                        var existingIdx = adminUsers.findIndex(function(u) {
+                            return (currentUser.id && u.id === currentUser.id) || (currentUser.email && u.email === currentUser.email);
+                        });
+                        var applicantRecord = {
+                            id: currentUser.id || ('usr_' + Date.now()),
+                            fullName: currentUser.fullName || 'Applicant',
+                            username: currentUser.username || 'user',
+                            email: currentUser.email || '',
+                            phone: currentUser.phone || '',
+                            country: currentUser.country || 'Nigeria',
+                            plan: 'EVERMORE PREMIUM',
+                            status: 'pending_activation',
+                            referral: currentUser.referral || 'Direct',
+                            createdAt: currentUser.createdAt || new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        };
+                        if (existingIdx >= 0) {
+                            adminUsers[existingIdx] = Object.assign(adminUsers[existingIdx], applicantRecord);
+                        } else {
+                            adminUsers.unshift(applicantRecord);
+                        }
+                        localStorage.setItem('evermore_admin_users', JSON.stringify(adminUsers));
+                    } catch(e) {}
+
+                    if (window.EvermoreFirebase && window.EvermoreFirebase.updateUserDoc && currentUser.id) {
+                        try {
+                            window.EvermoreFirebase.updateUserDoc(currentUser.id, {
+                                status: 'pending_activation',
+                                updatedAt: new Date().toISOString()
+                            });
+                        } catch(e) {}
                     }
-                    return { ok: r.ok, status: r.status, data: data };
-                });
-            })
-            .then(function (res) {
-                if (!res.ok || !res.data || res.data.ok !== true) {
-                    throw new Error((res.data && res.data.error) || 'Submission failed.');
                 }
                 showSuccessModal();
                 submitLabel.textContent = 'Submitted ✓';
-            })
-            .catch(function (err) {
+            } catch (err) {
                 showErrorToast(err.message || 'Could not submit. Please try again.');
                 submitBtn.disabled = false;
                 submitLabel.textContent = 'Submit Payment Proof';
-            });
+            }
         });
 
         function readLocalPreviewUser() {
@@ -1356,64 +1503,54 @@
                 var raw = localStorage.getItem('evermore_profile');
                 if (raw) return JSON.parse(raw);
             } catch (e) {}
-            return {
-                fullName: 'Evermore User',
-                username: 'user',
-                email: '',
-                phone: ''
-            };
+            return null;
         }
 
         /* =========================================================
-           Boot — check session, then unlock the page
+           Boot — check session with Firebase, then unlock the page
            ========================================================= */
         function boot() {
-            if (!GET_USER_URL) {
-                currentUser = readLocalPreviewUser();
-                populateUserPanel(currentUser);
-                document.documentElement.classList.remove('ev-locked');
-                return;
-            }
-
-            fetch(GET_USER_URL, {
-                method: 'GET',
-                credentials: 'same-origin',
-                headers: { 'Accept': 'application/json' },
-                cache: 'no-store'
-            })
-            .then(function (r) {
-                return r.text().then(function (text) {
-                    var data;
-                    try { data = JSON.parse(text); }
-                    catch (e) { throw new Error('Invalid server response.'); }
-                    return { ok: r.ok, status: r.status, data: data };
+            if (window.EvermoreFirebase && window.EvermoreFirebase.onAuthChange) {
+                window.EvermoreFirebase.onAuthChange(function (user, profile) {
+                    if (user) {
+                        currentUser = profile || {
+                            id: user.uid,
+                            fullName: user.displayName || user.email?.split('@')[0] || 'Member',
+                            username: user.email?.split('@')[0] || 'user',
+                            email: user.email || '',
+                            phone: user.phoneNumber || ''
+                        };
+                        populateUserPanel(currentUser);
+                        try {
+                            localStorage.setItem('evermore_profile', JSON.stringify(currentUser));
+                        } catch (e) {}
+                        document.documentElement.classList.remove('ev-locked');
+                        startCountdown();
+                    } else {
+                        var cached = readLocalPreviewUser();
+                        if (cached && (cached.email || cached.fullName)) {
+                            currentUser = cached;
+                            populateUserPanel(currentUser);
+                            document.documentElement.classList.remove('ev-locked');
+                            startCountdown();
+                        } else {
+                            document.documentElement.classList.remove('ev-locked');
+                            showAuthModal();
+                        }
+                    }
                 });
-            })
-            .then(function (res) {
-                if (!res.ok || !res.data || res.data.ok !== true || !res.data.user) {
-                    throw new Error('Not authenticated.');
+            } else {
+                var cached = readLocalPreviewUser();
+                if (cached) {
+                    currentUser = cached;
+                    populateUserPanel(currentUser);
+                    document.documentElement.classList.remove('ev-locked');
+                    startCountdown();
+                } else {
+                    document.documentElement.classList.remove('ev-locked');
+                    showAuthModal();
                 }
-
-                currentUser = res.data.user;
-                populateUserPanel(currentUser);
-
-                // Refresh the local cache (for convenience only)
-                try {
-                    localStorage.setItem('evermore_profile', JSON.stringify(currentUser));
-                } catch (e) {}
-
-                // ✅ Unlock the page (user IS authenticated)
-                document.documentElement.classList.remove('ev-locked');
-
-                // Now start the countdown
-                startCountdown();
-            })
-            .catch(function () {
-                // ❌ Not logged in — unlock the page FIRST so the modal is visible,
-                // then show the login-required modal.
-                document.documentElement.classList.remove('ev-locked');
-                showAuthModal();
-            });
+            }
         }
 
         /* =========================================================

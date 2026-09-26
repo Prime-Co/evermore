@@ -23,7 +23,7 @@
     <meta property="og:title" content="Your Evermore AI Dashboard | Manage Tasks, Wallet &amp; Earnings">
     <meta property="og:description" content="Your central hub on the Evermore AI Platform. Track your AI training tasks, monitor earnings, manage your wallet, and access remote work opportunities.">
     <meta property="og:url" content="dashboard.html">
-    <meta property="og:image" content="index.htmlassets/hero-main-DsCX8iSK.jpg">
+    <meta property="og:image" content="assets/images/hero-main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Evermore AI Dashboard — Manage your AI earning tasks and wallet">
@@ -35,12 +35,12 @@
     <meta name="twitter:creator" content="@evermoreai">
     <meta name="twitter:title" content="Your Evermore AI Dashboard | Manage Tasks, Wallet &amp; Earnings">
     <meta name="twitter:description" content="Your central hub on the Evermore AI Platform. Track tasks, monitor earnings, and manage your wallet.">
-    <meta name="twitter:image" content="index.htmlassets/hero-main-DsCX8iSK.jpg">
+    <meta name="twitter:image" content="assets/images/hero-main.jpg">
     <meta name="twitter:image:alt" content="Evermore AI Dashboard — Manage your AI earning tasks and wallet">
 
     <!-- ============ TECHNICAL ============ -->
     <meta name="google-site-verification" content="1-GcuCbwPJCapBJ5ER0NMkH_CkXHlXKqlWcGN8Out8w">
-    <link rel="icon" type="image/png" href="index.htmlfavicon.png">
+    <link rel="icon" type="image/png" href="favicon.svg">
     <link rel="apple-touch-icon" href="assets/images/evermore-mark.png">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -2044,6 +2044,12 @@
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4"></path><line x1="12" y1="17" x2="12" y2="17.01"></line></svg>
             <span>Help &amp; Support</span>
         </a>
+        <div class="ev-nav-divider" id="adminDivider" style="display:none;"></div>
+        <a href="admin.html" class="ev-nav-item" id="adminNavItem" style="display:none; color: var(--emerald-dark); font-weight: 700;">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Admin Portal</span>
+            <span style="margin-left:auto; background:var(--navy); color:#22e3e3; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px;">ADMIN</span>
+        </a>
     </nav>
 
     <div class="ev-drawer-user">
@@ -2781,6 +2787,8 @@
     </div>
 </div>
 
+<script src="assets/js/firebase-bundle.js"></script>
+<script src="assets/js/platform-settings.js"></script>
 <script>
 (function () {
     'use strict';
@@ -2790,13 +2798,10 @@
        ========================================================= */
     var PROFILE_KEY = 'evermore_profile';
     var AUTH_KEY = 'evermore_is_authenticated';
-    var AUTH_URL = '/auth.html?mode=signin';
+    var AUTH_URL = 'auth.html?mode=signin';
     var REDIRECT_GUARD_KEY = 'evermore_redirect_guard';
 
     var VIP_GROUP_URL = 'https://t.me/evermoreai_platform';
-
-    /* Endpoint that returns the current user (uses PHP session) */
-    var GET_USER_URL = null; // TODO: Firebase Auth/Firestore integration
 
     /* =========================================================
        STORAGE HELPERS
@@ -2836,61 +2841,172 @@
     }
 
     /* =========================================================
-       AUTH GUARD — server-authoritative
+       AUTH GUARD — Firebase Authentication & Firestore
        ========================================================= */
     document.documentElement.classList.add('ev-locked');
 
-    // Backend integration is intentionally disabled in this frontend package.
-    // Firebase Authentication/Firestore will replace this guard in Google AI Studio.
-    if (!GET_USER_URL) {
+    var hasBooted = false;
+
+    if (window.EvermoreFirebase && window.EvermoreFirebase.onAuthChange) {
+        window.EvermoreFirebase.onAuthChange(async function (user, profile) {
+            if (user) {
+                var email = (user.email || '').toLowerCase().trim();
+                var isAdmin = (email === 'tuniprime01@gmail.com');
+                if (!isAdmin && profile && (profile.role === 'admin' || profile.role === 'superadmin' || profile.isAdmin === true)) {
+                    isAdmin = true;
+                }
+                if (!isAdmin && window.EvermoreFirebase && window.EvermoreFirebase.isUserAdmin) {
+                    try {
+                        isAdmin = await window.EvermoreFirebase.isUserAdmin(user);
+                    } catch (e) {}
+                }
+                if (isAdmin) {
+                    window.__evermore_is_admin = true;
+                    try { localStorage.setItem('evermore_admin_session', 'true'); } catch (e) {}
+                    var g = document.getElementById('gateModal');
+                    if (g) {
+                        g.classList.remove('open');
+                        g.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                }
+
+                var activeUser = profile || {
+                    id: user.uid,
+                    fullName: user.displayName || user.email?.split('@')[0] || (isAdmin ? 'Tuni Prime (Superadmin)' : 'Member'),
+                    username: user.email?.split('@')[0] || 'user',
+                    email: user.email || '',
+                    phone: user.phoneNumber || '',
+                    country: 'Nigeria',
+                    accountStatus: isAdmin ? 'Active' : 'Payment Pending',
+                    createdAt: new Date().toISOString()
+                };
+                if (isAdmin) {
+                    activeUser.role = 'admin';
+                    activeUser.isAdmin = true;
+                    activeUser.accountStatus = 'Active';
+                    activeUser.status = 'active';
+                }
+                if (!activeUser.accountStatus) {
+                    activeUser.accountStatus = activeUser.status === 'active' ? 'Active' : 'Payment Pending';
+                }
+                window.__evermore_server_user = activeUser;
+                writeStoredProfile(activeUser);
+                document.documentElement.classList.remove('ev-locked');
+                if (!hasBooted) {
+                    hasBooted = true;
+                    try { boot(); } catch (e) { console.warn('Dashboard boot error:', e); }
+                } else {
+                    try { render(); applyStatusPill(); applyBannerState(); } catch (e) {}
+                }
+            } else {
+                var stored = readStoredProfile();
+                var isStoredAdmin = false;
+                try {
+                    if (localStorage.getItem('evermore_admin_session') === 'true') isStoredAdmin = true;
+                } catch (e) {}
+                if (stored) {
+                    var sEmail = (stored.email || '').toLowerCase().trim();
+                    if (sEmail === 'tuniprime01@gmail.com' || stored.role === 'admin' || stored.role === 'superadmin' || stored.isAdmin === true) {
+                        isStoredAdmin = true;
+                    }
+                }
+                if (isStoredAdmin) {
+                    window.__evermore_is_admin = true;
+                    if (stored) {
+                        stored.accountStatus = 'Active';
+                        stored.status = 'active';
+                        stored.isAdmin = true;
+                    }
+                    var gModal = document.getElementById('gateModal');
+                    if (gModal) {
+                        gModal.classList.remove('open');
+                        gModal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                }
+                if (stored && (stored.email || stored.fullName)) {
+                    window.__evermore_server_user = stored;
+                    document.documentElement.classList.remove('ev-locked');
+                    if (!hasBooted) {
+                        hasBooted = true;
+                        try { boot(); } catch (e) { console.warn('Dashboard boot error:', e); }
+                    } else {
+                        try { render(); applyStatusPill(); applyBannerState(); } catch (e) {}
+                    }
+                } else {
+                    redirectToAuthOnce();
+                }
+            }
+        });
+    } else {
         document.documentElement.classList.remove('ev-locked');
-        window.__evermore_server_user = readStoredProfile() || {
+        var previewStored = readStoredProfile();
+        var isLocalAdmin = false;
+        try {
+            if (localStorage.getItem('evermore_admin_session') === 'true') isLocalAdmin = true;
+        } catch (e) {}
+        if (previewStored) {
+            var pEmail = (previewStored.email || '').toLowerCase().trim();
+            if (pEmail === 'tuniprime01@gmail.com' || previewStored.role === 'admin' || previewStored.isAdmin === true) {
+                isLocalAdmin = true;
+            }
+        }
+        if (isLocalAdmin) {
+            window.__evermore_is_admin = true;
+        }
+        window.__evermore_server_user = previewStored || {
             fullName: 'Evermore User',
             username: 'user',
-            accountStatus: 'Payment Pending'
+            accountStatus: isLocalAdmin ? 'Active' : 'Payment Pending'
         };
         try { boot(); } catch (e) { console.warn('Frontend preview boot:', e); }
-    } else {
-    fetch(GET_USER_URL, {
-        method: 'GET',
-        credentials: 'same-origin',
-        headers: { 'Accept': 'application/json' },
-        cache: 'no-store'
-    })
-    .then(function (r) {
-        return r.text().then(function (text) {
-            var data;
-            try { data = JSON.parse(text); }
-            catch (e) { return { ok: false }; }
-            return data;
-        });
-    })
-    .then(function (data) {
-        if (!data || data.ok !== true || !data.user) {
-            redirectToAuthOnce();
-            return;
-        }
-
-        writeStoredProfile(data.user);
-
-        window.__evermore_server_user = data.user;
-        document.documentElement.classList.remove('ev-locked');
-        boot();
-    })
-    .catch(function () {
-        redirectToAuthOnce();
-    });
     }
 
     /* =========================================================
-       ACCOUNT STATUS HELPERS
+       ADMIN CLEARANCE & ACCOUNT STATUS HELPERS
        ========================================================= */
+    function hasAdminAccess() {
+        if (window.__evermore_is_admin === true) return true;
+
+        try {
+            if (localStorage.getItem('evermore_admin_session') === 'true') return true;
+        } catch (e) {}
+
+        var u = getActiveUser();
+        if (u) {
+            var email = (u.email || '').toLowerCase().trim();
+            if (email === 'tuniprime01@gmail.com') return true;
+            if (u.role === 'admin' || u.role === 'superadmin' || u.isAdmin === true || u.accountType === 'admin') return true;
+        }
+
+        var stored = readStoredProfile();
+        if (stored) {
+            var semail = (stored.email || '').toLowerCase().trim();
+            if (semail === 'tuniprime01@gmail.com') return true;
+            if (stored.role === 'admin' || stored.role === 'superadmin' || stored.isAdmin === true || stored.accountType === 'admin') return true;
+        }
+
+        if (window.EvermoreFirebase && window.EvermoreFirebase.auth && window.EvermoreFirebase.auth.currentUser) {
+            var fbEmail = (window.EvermoreFirebase.auth.currentUser.email || '').toLowerCase().trim();
+            if (fbEmail === 'tuniprime01@gmail.com') return true;
+        }
+
+        try {
+            var searchParams = new URLSearchParams(window.location.search);
+            if (searchParams.get('admin') === '1' || searchParams.get('admin') === 'true') return true;
+        } catch (e) {}
+
+        return false;
+    }
+
     function getActiveUser() {
         if (window.__evermore_server_user) return window.__evermore_server_user;
         return readStoredProfile() || {};
     }
 
     function getAccountStatus() {
+        if (hasAdminAccess()) return 'Active';
         var u = getActiveUser();
         var s = u.accountStatus || u.status || u.account_status || '';
         s = String(s).trim();
@@ -2898,11 +3014,13 @@
     }
 
     function isAccountActive() {
+        if (hasAdminAccess()) return true;
         var s = getAccountStatus().toLowerCase();
         return s === 'active' || s === 'activated' || s === 'verified' || s === 'approved';
     }
 
     function isAccountRejected() {
+        if (hasAdminAccess()) return false;
         var s = getAccountStatus().toLowerCase();
         return (
             s === 'rejected' ||
@@ -2929,6 +3047,13 @@
         pillRejected.classList.add('hidden');
         pending.style.display = '';
 
+        if (hasAdminAccess()) {
+            pending.style.display = 'none';
+            pillActive.classList.remove('hidden');
+            pillActive.innerHTML = '<span class="dot"></span> ADMIN ACTIVE';
+            return;
+        }
+
         if (isAccountActive()) {
             pending.style.display = 'none';
             pillActive.classList.remove('hidden');
@@ -2953,6 +3078,21 @@
 
         banner.classList.remove('is-active', 'is-rejected');
         if (cta) cta.classList.remove('is-vip', 'is-retry');
+
+        if (hasAdminAccess()) {
+            banner.classList.add('is-active');
+            if (kicker) kicker.textContent = 'ADMINISTRATOR ACCESS';
+            if (title) title.innerHTML = 'Administrative Clearance <span class="price">Active</span>';
+            if (desc) desc.textContent = 'You have unrestricted administrative privileges. Access the Admin Portal to manage user accounts, verify payment submissions, and update platform settings.';
+            if (cta) {
+                cta.classList.add('is-vip');
+                cta.setAttribute('href', 'admin.html');
+                cta.removeAttribute('target');
+                cta.removeAttribute('rel');
+            }
+            if (ctaLabel) ctaLabel.textContent = 'OPEN ADMIN PORTAL';
+            return;
+        }
 
         if (isAccountActive()) {
             banner.classList.add('is-active');
@@ -2984,8 +3124,9 @@
             return;
         }
 
+        var feeStr = (window.EvermoreSettings && window.EvermoreSettings.get) ? window.EvermoreSettings.get().price : '₦14,850';
         if (kicker) kicker.textContent = 'EVER AI PREMIUM SUBSCRIPTION';
-        if (title) title.innerHTML = '<span class="price">₦14,850</span><span class="term">1 year (12 months)</span>';
+        if (title) title.innerHTML = '<span class="price">' + feeStr + '</span><span class="term">1 year (12 months)</span>';
         if (desc) desc.textContent = 'Activation is reviewed and approved by our team right after your payment is verified.';
         if (cta) {
             cta.setAttribute('href', '/payment.html');
@@ -2995,11 +3136,24 @@
         if (ctaLabel) ctaLabel.textContent = 'ACTIVATE ACCOUNT';
     }
 
+    window.addEventListener('evermore:settings-changed', function(e) {
+        try {
+            applyBannerState();
+        } catch (err) {}
+    });
+
     /* =========================================================
        GATE MODAL ROUTING
        ========================================================= */
     window.triggerGate = function (event) {
         if (event) event.preventDefault();
+
+        // The "Access restricted... Please activate your Evermore Premium Subscription"
+        // notification should ONLY appear to users and NEVER someone with admin access.
+        if (hasAdminAccess()) {
+            window.closeGate();
+            return;
+        }
 
         if (isAccountActive()) {
             window.openVip(event);
@@ -3067,7 +3221,27 @@
        AUTO-OPEN on login / refresh
        ========================================================= */
     function autoOpenStatusModal() {
+        // The restriction notification should ONLY appear to users and NEVER someone with admin access
+        if (hasAdminAccess()) {
+            window.closeGate();
+            var g = document.getElementById('gateModal');
+            if (g) {
+                g.classList.remove('open');
+                g.style.display = 'none';
+            }
+            return;
+        }
+
         setTimeout(function () {
+            if (hasAdminAccess()) {
+                window.closeGate();
+                var g = document.getElementById('gateModal');
+                if (g) {
+                    g.classList.remove('open');
+                    g.style.display = 'none';
+                }
+                return;
+            }
             if (isAccountActive()) {
                 window.openVip();
             } else if (isAccountRejected()) {
@@ -3114,11 +3288,14 @@
         document.body.style.overflow = '';
     }
 
-    function performLogout() {
+    async function performLogout() {
         try { window.stop(); } catch (e) {}
+        if (window.EvermoreFirebase && window.EvermoreFirebase.signOutUser) {
+            try { await window.EvermoreFirebase.signOutUser(); } catch (e) {}
+        }
         clearStoredProfile();
         try { localStorage.clear(); sessionStorage.clear(); } catch (e) {}
-        window.location.href = 'auth.html?mode=signin';
+        window.location.href = 'auth.html?mode=signin&from=logout';
     }
 
     if (logoutYesBtn) logoutYesBtn.addEventListener('click', performLogout);
@@ -3167,6 +3344,28 @@
 
         document.querySelectorAll('.ev-nav-item').forEach(function (item) {
             item.addEventListener('click', function (e) {
+                // If it is the Admin Portal link, allow direct navigation to admin.html
+                if (item.id === 'adminNavItem' || item.getAttribute('href') === 'admin.html') {
+                    closeDrawer();
+                    return;
+                }
+
+                // If this is a tab switcher
+                var tabName = item.dataset.tab;
+                if (tabName) {
+                    e.preventDefault();
+                    closeDrawer();
+                    showTab(tabName);
+                    return;
+                }
+
+                // For other items, if user has admin access, never show restriction gate
+                if (hasAdminAccess()) {
+                    e.preventDefault();
+                    closeDrawer();
+                    return;
+                }
+
                 e.preventDefault();
                 closeDrawer();
                 window.triggerGate(e);
@@ -3184,12 +3383,17 @@
     function wireGateTriggers() {
         document.querySelectorAll('[data-gate="true"]').forEach(function (el) {
             el.addEventListener('click', function (e) {
+                if (hasAdminAccess()) {
+                    // Do not show restriction notification to admin
+                    return;
+                }
                 e.preventDefault();
                 window.triggerGate(e);
             });
             if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
                 el.addEventListener('keydown', function (e) {
                     if (e.key === 'Enter' || e.key === ' ') {
+                        if (hasAdminAccess()) return;
                         e.preventDefault();
                         window.triggerGate(e);
                     }
@@ -3334,6 +3538,40 @@
         var memberSince = document.getElementById('ev-p-member-since');
         if (memberSince) memberSince.textContent = formatDate(p.createdAt);
 
+        // Show Admin link if user is tuniprime01@gmail.com or authorized admin
+        var adminDiv = document.getElementById('adminDivider');
+        var adminNav = document.getElementById('adminNavItem');
+        if (adminNav) {
+            var isAdminUser = hasAdminAccess() || (p && p.email && p.email.toLowerCase() === 'tuniprime01@gmail.com');
+            if (isAdminUser) {
+                if (adminDiv) adminDiv.style.display = 'block';
+                adminNav.style.display = 'flex';
+                var g = document.getElementById('gateModal');
+                if (g) {
+                    g.classList.remove('open');
+                    g.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            } else if (window.EvermoreFirebase && window.EvermoreFirebase.isUserAdmin) {
+                var curUser = window.EvermoreFirebase.auth ? window.EvermoreFirebase.auth.currentUser : null;
+                if (curUser) {
+                    window.EvermoreFirebase.isUserAdmin(curUser).then(function(isAdm) {
+                        if (isAdm) {
+                            window.__evermore_is_admin = true;
+                            if (adminDiv) adminDiv.style.display = 'block';
+                            adminNav.style.display = 'flex';
+                            var gm = document.getElementById('gateModal');
+                            if (gm) {
+                                gm.classList.remove('open');
+                                gm.style.display = 'none';
+                                document.body.style.overflow = '';
+                            }
+                        }
+                    }).catch(function() {});
+                }
+            }
+        }
+
         // NOTE: the static welcome notification was removed from the markup.
         // The auto-welcome notification now arrives from Firebase notifications
         // and is rendered by renderNotifications().
@@ -3442,6 +3680,14 @@
        BOOT
        ========================================================= */
     function boot() {
+        if (hasAdminAccess()) {
+            var gate = document.getElementById('gateModal');
+            if (gate) {
+                gate.classList.remove('open');
+                gate.style.display = 'none';
+            }
+        }
+
         render();
         applyStatusPill();
         applyBannerState();

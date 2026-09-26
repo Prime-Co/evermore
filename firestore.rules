@@ -1,0 +1,86 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        (request.auth.token.email == 'tuniprime01@gmail.com')
+      );
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['id', 'email', 'fullName', 'username', 'status']) &&
+        data.keys().hasOnly(['id', 'email', 'fullName', 'username', 'phone', 'country', 'referral', 'plan', 'status', 'createdAt', 'updatedAt']) &&
+        data.id is string && data.id == request.auth.uid && data.id.size() <= 128 &&
+        data.email is string && data.email.size() <= 254 &&
+        data.fullName is string && data.fullName.size() <= 100 &&
+        data.username is string && data.username.size() <= 50 &&
+        data.status in ['pending_activation', 'active', 'suspended'] &&
+        (!('phone' in data) || (data.phone is string && data.phone.size() <= 30)) &&
+        (!('country' in data) || (data.country is string && data.country.size() <= 60)) &&
+        (!('referral' in data) || (data.referral is string && data.referral.size() <= 50)) &&
+        (!('plan' in data) || (data.plan in ['EVERMORE PREMIUM', 'FREE'])) &&
+        (!('createdAt' in data) || (data.createdAt is string && data.createdAt.size() <= 50)) &&
+        (!('updatedAt' in data) || (data.updatedAt is string && data.updatedAt.size() <= 50));
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if (isOwner(userId) && isValidId(userId) && isValidUser(incoming()) && incoming().status == 'pending_activation') || isAdmin();
+      allow update: if (
+        isOwner(userId) && isValidId(userId) && isValidUser(incoming()) &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['fullName', 'phone', 'country', 'updatedAt']) &&
+        incoming().id == existing().id &&
+        incoming().email == existing().email &&
+        incoming().status == existing().status
+      ) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Settings Collection (platform activation fee and bank details: public read, admin write)
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /admins/platform_settings {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Admins Collection
+    match /admins/{adminId} {
+      allow read: if isAdmin();
+      allow write: if isAdmin();
+    }
+  }
+}

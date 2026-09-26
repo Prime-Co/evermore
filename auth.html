@@ -577,7 +577,18 @@
 
                             <!-- CREATE PANEL -->
                             <div id="panel-create" role="tabpanel" aria-labelledby="tab-create" hidden="">
-                                <form id="evermore-signup-form" class="mt-6 space-y-4" novalidate="" autocomplete="on">
+                                <div class="mt-6">
+                                    <button type="button" class="google-auth-btn flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-border/80 bg-background/80 font-medium text-sm text-foreground shadow-sm transition hover:bg-muted/60 cursor-pointer">
+                                        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.665-5.17 3.665-9.12z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.57H1.25C.45 8.15 0 9.99 0 12s.45 3.85 1.25 5.43l4.03-3.14z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.57l4.03 3.14c.95-2.83 3.6-4.96 6.72-4.96z"/></svg>
+                                        Sign up with Google
+                                    </button>
+                                    <div class="my-4 flex items-center gap-3">
+                                        <div class="h-px flex-1 bg-border/60"></div>
+                                        <span class="text-xs uppercase tracking-wider text-muted-foreground">Or with email</span>
+                                        <div class="h-px flex-1 bg-border/60"></div>
+                                    </div>
+                                </div>
+                                <form id="evermore-signup-form" class="space-y-4" novalidate="" autocomplete="on">
                                     <div class="space-y-1.5">
                                         <label class="text-sm font-medium" for="fullName">Full name</label>
                                         <input class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60" id="fullName" name="fullName" placeholder="John Doe" required="" value="">
@@ -615,7 +626,7 @@
                                         <label class="text-sm font-medium">Your subscription</label>
                                         <div class="rounded-xl border border-gold/60 bg-gold/10 glow-gold p-3.5">
                                             <p class="font-display text-xs font-bold tracking-wider text-gold">EVERMORE PREMIUM</p>
-                                            <p class="font-display mt-1 text-sm font-bold text-foreground">₦14,850</p>
+                                            <p class="font-display mt-1 text-sm font-bold text-foreground" id="ev-auth-price" data-setting="price">₦14,850</p>
                                             <p class="text-xs text-muted-foreground">1 year (12 months)</p>
                                         </div>
                                     </div>
@@ -625,10 +636,21 @@
 
                             <!-- SIGN IN PANEL -->
                             <div id="panel-signin" role="tabpanel" aria-labelledby="tab-signin">
-                                <form id="evermore-signin-form" class="mt-6 space-y-4" novalidate="" autocomplete="on">
+                                <div class="mt-6">
+                                    <button type="button" class="google-auth-btn flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-border/80 bg-background/80 font-medium text-sm text-foreground shadow-sm transition hover:bg-muted/60 cursor-pointer">
+                                        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.665-5.17 3.665-9.12z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.57H1.25C.45 8.15 0 9.99 0 12s.45 3.85 1.25 5.43l4.03-3.14z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.57l4.03 3.14c.95-2.83 3.6-4.96 6.72-4.96z"/></svg>
+                                        Sign in with Google
+                                    </button>
+                                    <div class="my-4 flex items-center gap-3">
+                                        <div class="h-px flex-1 bg-border/60"></div>
+                                        <span class="text-xs uppercase tracking-wider text-muted-foreground">Or with credentials</span>
+                                        <div class="h-px flex-1 bg-border/60"></div>
+                                    </div>
+                                </div>
+                                <form id="evermore-signin-form" class="space-y-4" novalidate="" autocomplete="on">
                                     <div class="space-y-1.5">
-                                        <label class="text-sm font-medium" for="signin-identifier">Email or Username</label>
-                                        <input type="text" id="signin-identifier" name="identifier" placeholder="Type your email or username" required="" autocomplete="username" autocapitalize="off" spellcheck="false" class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60">
+                                        <label class="text-sm font-medium" for="signin-identifier">Email address</label>
+                                        <input type="email" id="signin-identifier" name="identifier" placeholder="you@example.com" required="" autocomplete="username" autocapitalize="off" spellcheck="false" class="flex h-9 w-full rounded-md border border-input px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm bg-background/60">
                                     </div>
                                     <div class="space-y-1.5">
                                         <label class="text-sm font-medium" for="signin-password">Password</label>
@@ -639,7 +661,7 @@
                                     </div>
                                     <button type="submit" id="evermore-signin-submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 btn-cta w-full border-0 py-5 text-sm font-bold tracking-wide">SIGN IN</button>
                                     <p class="text-center text-xs text-muted-foreground">
-                                        Don't have an account? <a href="auth.html?mode=signin#" id="goto-create" class="font-semibold text-primary hover:underline">Create one</a>
+                                        Don't have an account? <a href="auth.html?mode=create" id="goto-create" class="font-semibold text-primary hover:underline">Create one</a>
                                     </p>
                                 </form>
                             </div>
@@ -665,6 +687,34 @@
                 <button type="button" class="ev-error-btn" id="evermore-error-close">
                     Got it
                 </button>
+            </div>
+        </div>
+
+        <!-- GOOGLE POPUP BLOCKED RECOVERY MODAL -->
+        <div class="ev-error-overlay" id="evermore-popup-overlay" role="alertdialog" aria-live="assertive" aria-labelledby="evermore-popup-title" style="display:none;">
+            <div class="ev-error-card" style="max-width: 480px; border-color: rgba(37,99,235,0.25); box-shadow: 0 32px 80px -24px rgba(37,99,235,0.35);">
+                <div class="ev-error-icon" style="background:#eff6ff;color:#2563eb;">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" style="stroke:#2563eb;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <h2 id="evermore-popup-title" style="color:#0f172a;margin-bottom:8px;">Sign-In Pop-up Blocked</h2>
+                <p id="evermore-popup-msg" style="color:#475569;margin-bottom:20px;font-size:14px;line-height:1.6;">
+                    Your browser or iframe preview blocked the Google Sign-In window. Choose an option below to proceed:
+                </p>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button type="button" class="btn-cta" id="ev-popup-retry-btn" style="width:100%;padding:13px;font-weight:700;border-radius:12px;background:#2563eb;color:#fff;border:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;">
+                        <span>Launch Google Sign-In</span>
+                    </button>
+                    <a href="auth.html?mode=signin&google=1" target="_blank" rel="noopener noreferrer" id="ev-popup-tab-link" style="width:100%;padding:12px;font-weight:600;border-radius:12px;background:#f1f5f9;color:#0f172a;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:14px;box-sizing:border-box;">
+                        Open Sign-In in New Window ↗
+                    </a>
+                    <button type="button" id="ev-popup-email-btn" style="width:100%;padding:12px;font-weight:600;border-radius:12px;background:transparent;border:1px solid #cbd5e1;color:#334155;cursor:pointer;font-size:14px;">
+                        Sign In with Email & Password
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -694,29 +744,21 @@
             </div>
         </div>
 
+        <!-- Firebase Bundle -->
+        <script src="assets/js/firebase-bundle.js"></script>
+        <script src="assets/js/platform-settings.js"></script>
+
         <!-- =========================================================
-             Auth logic — MySQL backend via PHP endpoints
+             Auth logic — Firebase Authentication & Firestore
              ========================================================= -->
         <script>
             (function () {
                 'use strict';
 
-                /* =========================================================
-                   Backend placeholders — Firebase integration will replace these
-                   ========================================================= */
-                var REGISTER_URL  = null;
-                var LOGIN_URL     = null;
-                var GET_USER_URL  = null;
-
                 var PROFILE_KEY = 'evermore_profile';
                 var AUTH_KEY    = 'evermore_is_authenticated';
                 var DASHBOARD_URL = 'dashboard.html';
-                var AUTH_URL      = 'auth.html';
-
-                /* =========================================================
-                   ⭐ SUCCESS MODAL DURATION
-                   ========================================================= */
-                var SUCCESS_REDIRECT_MS = 2000;
+                var SUCCESS_REDIRECT_MS = 1800;
 
                 var ALLOWED_COUNTRIES = [
                     'Nigeria',
@@ -729,9 +771,80 @@
                     'Others'
                 ];
 
-                /* =========================================================
-                   ⭐ LOGOUT ESCAPE GUARD
-                   ========================================================= */
+                /* ---------- HTML Escape ---------- */
+                function escapeHtml(str) {
+                    if (!str) return '';
+                    return String(str)
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#039;');
+                }
+
+                /* ---------- Error Overlay ---------- */
+                function showError(msg) {
+                    hideProcessing();
+                    var overlay = document.getElementById('evermore-error-overlay');
+                    var msgEl = document.getElementById('evermore-error-msg');
+                    if (msgEl) msgEl.textContent = msg || 'An unexpected error occurred. Please try again.';
+                    if (overlay) overlay.classList.add('show');
+                }
+                function hideError() {
+                    var overlay = document.getElementById('evermore-error-overlay');
+                    if (overlay) overlay.classList.remove('show');
+                }
+
+                /* ---------- Processing Overlay ---------- */
+                function showProcessing(title, msg) {
+                    hideError();
+                    var overlay = document.getElementById('evermore-processing-overlay');
+                    var titleEl = document.getElementById('evermore-processing-title');
+                    var msgEl = document.getElementById('evermore-processing-msg');
+                    if (titleEl && title) titleEl.innerHTML = escapeHtml(title) + '<span class="ev-processing-dots"><span>.</span><span>.</span><span>.</span></span>';
+                    if (msgEl && msg) msgEl.textContent = msg;
+                    if (overlay) overlay.classList.add('show');
+                }
+                function hideProcessing() {
+                    var overlay = document.getElementById('evermore-processing-overlay');
+                    if (overlay) overlay.classList.remove('show');
+                }
+
+                /* ---------- Success Overlay ---------- */
+                function showSuccess(title, msg, redirectUrl) {
+                    hideProcessing();
+                    hideError();
+                    var overlay = document.getElementById('evermore-success-overlay');
+                    var titleEl = document.getElementById('evermore-success-title');
+                    var msgEl = document.getElementById('evermore-success-msg');
+                    if (titleEl && title) titleEl.textContent = title;
+                    if (msgEl && msg) msgEl.textContent = msg;
+                    if (overlay) overlay.classList.add('show');
+
+                    var closeBtn = document.getElementById('evermore-success-close');
+                    if (closeBtn) {
+                        closeBtn.onclick = function () {
+                            if (redirectUrl) window.location.href = redirectUrl;
+                        };
+                    }
+
+                    if (redirectUrl) {
+                        setTimeout(function () {
+                            window.location.href = redirectUrl;
+                        }, SUCCESS_REDIRECT_MS);
+                    }
+                }
+
+                /* ---------- Session Storage ---------- */
+                function saveProfile(profile) {
+                    try {
+                        localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+                        localStorage.setItem(AUTH_KEY, 'true');
+                        sessionStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+                    } catch (e) {}
+                }
+
+                /* ---------- Check Existing Session ---------- */
                 var __skipSessionCheck = true;
                 try {
                     var __params = new URLSearchParams(window.location.search);
@@ -742,71 +855,336 @@
                         __params.get('fresh') === '1';
                 } catch (e) {}
 
-                if (__skipSessionCheck) {
-                    document.documentElement.classList.remove('ev-locked');
+                if (!__skipSessionCheck && window.EvermoreFirebase && window.EvermoreFirebase.onAuthChange) {
+                    window.EvermoreFirebase.onAuthChange(function (user, profile) {
+                        if (user) {
+                            if (profile) saveProfile(profile);
+                            window.location.replace(DASHBOARD_URL);
+                        } else {
+                            document.documentElement.classList.remove('ev-locked');
+                        }
+                    });
                 } else {
-                    (function checkExistingSession() {
-                        document.documentElement.classList.add('ev-locked');
-
-                        fetch(GET_USER_URL, {
-                            method: 'GET',
-                            credentials: 'same-origin',
-                            headers: { 'Accept': 'application/json' },
-                            cache: 'no-store'
-                        })
-                        .then(function (r) {
-                            return r.text().then(function (text) {
-                                var data;
-                                try { data = JSON.parse(text); }
-                                catch (e) { return { ok: false }; }
-                                return data;
-                            });
-                        })
-                        .then(function (data) {
-                            if (data && data.ok === true && data.user) {
-                                window.location.replace(DASHBOARD_URL);
-                                return;
-                            }
-                            document.documentElement.classList.remove('ev-locked');
-                        })
-                        .catch(function () {
-                            document.documentElement.classList.remove('ev-locked');
-                        });
-                    })();
+                    document.documentElement.classList.remove('ev-locked');
                 }
 
-                /* =========================================================
-                   Save profile to localStorage + sessionStorage
-                   ========================================================= */
-                function saveProfile(profile) {
+                /* ---------- Populate Countries ---------- */
+                function initCountries() {
+                    var selects = document.querySelectorAll('[data-evermore-country-select]');
+                    selects.forEach(function (select) {
+                        var current = select.value;
+                        select.innerHTML = '<option value="" disabled selected>Select your country…</option>';
+                        ALLOWED_COUNTRIES.forEach(function (country) {
+                            var opt = document.createElement('option');
+                            opt.value = country;
+                            opt.textContent = country;
+                            if (country === 'Nigeria') opt.selected = true;
+                            select.appendChild(opt);
+                        });
+                        if (current) select.value = current;
+                    });
+                }
+
+                /* ---------- Tabs (Create vs Sign in) ---------- */
+                function switchTab(mode) {
+                    var tabCreate = document.getElementById('tab-create');
+                    var tabSignin = document.getElementById('tab-signin');
+                    var panelCreate = document.getElementById('panel-create');
+                    var panelSignin = document.getElementById('panel-signin');
+
+                    if (mode === 'create') {
+                        if (tabCreate) {
+                            tabCreate.setAttribute('aria-selected', 'true');
+                            tabCreate.classList.add('btn-cta', 'hover:text-foreground');
+                            tabCreate.classList.remove('text-muted-foreground');
+                        }
+                        if (tabSignin) {
+                            tabSignin.setAttribute('aria-selected', 'false');
+                            tabSignin.classList.remove('btn-cta', 'hover:text-foreground');
+                            tabSignin.classList.add('text-muted-foreground');
+                        }
+                        if (panelCreate) panelCreate.removeAttribute('hidden');
+                        if (panelSignin) panelSignin.setAttribute('hidden', '');
+                    } else {
+                        if (tabSignin) {
+                            tabSignin.setAttribute('aria-selected', 'true');
+                            tabSignin.classList.add('btn-cta', 'hover:text-foreground');
+                            tabSignin.classList.remove('text-muted-foreground');
+                        }
+                        if (tabCreate) {
+                            tabCreate.setAttribute('aria-selected', 'false');
+                            tabCreate.classList.remove('btn-cta', 'hover:text-foreground');
+                            tabCreate.classList.add('text-muted-foreground');
+                        }
+                        if (panelSignin) panelSignin.removeAttribute('hidden');
+                        if (panelCreate) panelCreate.setAttribute('hidden', '');
+                    }
+                }
+
+                function initTabs() {
+                    var tabCreate = document.getElementById('tab-create');
+                    var tabSignin = document.getElementById('tab-signin');
+                    var gotoCreate = document.getElementById('goto-create');
+
+                    if (tabCreate) {
+                        tabCreate.addEventListener('click', function () {
+                            switchTab('create');
+                        });
+                    }
+                    if (tabSignin) {
+                        tabSignin.addEventListener('click', function () {
+                            switchTab('signin');
+                        });
+                    }
+                    if (gotoCreate) {
+                        gotoCreate.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            switchTab('create');
+                        });
+                    }
+
+                    // Check initial query parameter ?mode=create
                     try {
-                        localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
-                        localStorage.setItem(AUTH_KEY, 'true');
-                        sessionStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+                        var params = new URLSearchParams(window.location.search);
+                        var mode = params.get('mode');
+                        if (mode === 'create' || mode === 'signup' || mode === 'register') {
+                            switchTab('create');
+                        } else {
+                            switchTab('signin');
+                        }
                     } catch (e) {}
                 }
 
-                /* =========================================================
-                   POST JSON helper — will be connected to Firebase later
-                   ========================================================= */
-                function postJSON(url, payload) {
-                    return Promise.reject(new Error('The authentication backend is not connected yet. This frontend is prepared for Firebase integration.'));
+                /* ---------- Password visibility toggles ---------- */
+                function initPasswordToggles() {
+                    var toggles = document.querySelectorAll('.ev-pw-toggle');
+                    toggles.forEach(function (toggle) {
+                        toggle.addEventListener('click', function () {
+                            var targetId = toggle.getAttribute('data-pw-target');
+                            var input = document.getElementById(targetId);
+                            if (!input) return;
+                            if (input.type === 'password') {
+                                input.type = 'text';
+                                toggle.textContent = 'Hide';
+                                toggle.setAttribute('aria-pressed', 'true');
+                            } else {
+                                input.type = 'password';
+                                toggle.textContent = 'View';
+                                toggle.setAttribute('aria-pressed', 'false');
+                            }
+                        });
+                    });
+
+                    var errClose = document.getElementById('evermore-error-close');
+                    if (errClose) {
+                        errClose.addEventListener('click', hideError);
+                    }
                 }
 
-                /* ---------- Sign-in ---------- */
+                /* ---------- Google Authentication ---------- */
+                function showPopupBlocked() {
+                    hideProcessing();
+                    hideError();
+                    var popOverlay = document.getElementById('evermore-popup-overlay');
+                    if (popOverlay) {
+                        popOverlay.style.display = 'flex';
+                        popOverlay.classList.add('show');
+                    } else {
+                        showError('Google Sign-In window was blocked by your browser. Please allow popups or use Email & Password below.');
+                    }
+                }
+
+                function hidePopupBlocked() {
+                    var popOverlay = document.getElementById('evermore-popup-overlay');
+                    if (popOverlay) {
+                        popOverlay.classList.remove('show');
+                        popOverlay.style.display = 'none';
+                    }
+                }
+
+                async function executeGoogleAuth() {
+                    hideError();
+                    hidePopupBlocked();
+                    if (!window.EvermoreFirebase || !window.EvermoreFirebase.signInWithGoogle) {
+                        showError('Authentication service is initializing. Please try again in a moment.');
+                        return;
+                    }
+
+                    try {
+                        // Call immediately to maintain user activation context
+                        var authPromise = window.EvermoreFirebase.signInWithGoogle();
+                        showProcessing(
+                            'Connecting to Google',
+                            'Opening Google Sign-In window…'
+                        );
+                        var res = await authPromise;
+                        if (res && res.redirecting) return; // Browser is redirecting to Google
+
+                        saveProfile(res.profile);
+                        var firstName = (res.profile && res.profile.fullName ? res.profile.fullName.split(' ')[0] : 'there');
+                        showSuccess(
+                            'Welcome ' + firstName + '!',
+                            'Google authentication successful. Redirecting to your dashboard…',
+                            DASHBOARD_URL
+                        );
+                    } catch (err) {
+                        hideProcessing();
+                        if (err && (err.code === 'auth/popup-blocked' || (err.message && err.message.includes('popup-blocked')))) {
+                            showPopupBlocked();
+                            return;
+                        }
+                        if (err && err.code === 'auth/popup-closed-by-user') {
+                            showError('Sign-in window was closed. Please try again.');
+                            return;
+                        }
+                        if (err && err.code === 'auth/cancelled-popup-request') {
+                            showError('Sign-in request was replaced or cancelled.');
+                            return;
+                        }
+                        showError(err && err.message ? err.message : 'Google sign-in was cancelled or encountered an error.');
+                    }
+                }
+
+                function initGoogleAuth() {
+                    var googleBtns = document.querySelectorAll('.google-auth-btn');
+                    googleBtns.forEach(function (btn) {
+                        btn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            executeGoogleAuth();
+                        });
+                    });
+
+                    var retryBtn = document.getElementById('ev-popup-retry-btn');
+                    if (retryBtn) {
+                        retryBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            executeGoogleAuth();
+                        });
+                    }
+
+                    var emailBtn = document.getElementById('ev-popup-email-btn');
+                    if (emailBtn) {
+                        emailBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            hidePopupBlocked();
+                            switchTab('signin');
+                            var idInput = document.getElementById('signin-identifier');
+                            if (idInput) idInput.focus();
+                        });
+                    }
+
+                    // Check if redirect result is pending
+                    if (window.EvermoreFirebase && window.EvermoreFirebase.checkRedirectResult) {
+                        window.EvermoreFirebase.checkRedirectResult().then(function(res) {
+                            if (res && res.profile) {
+                                saveProfile(res.profile);
+                                var firstName = (res.profile && res.profile.fullName ? res.profile.fullName.split(' ')[0] : 'there');
+                                showSuccess(
+                                    'Welcome ' + firstName + '!',
+                                    'Google authentication successful. Redirecting to your dashboard…',
+                                    DASHBOARD_URL
+                                );
+                            }
+                        }).catch(function() {});
+                    }
+                }
+
+                /* ---------- Sign-up Form (Email & Password) ---------- */
+                function initSignupForm() {
+                    var form = document.getElementById('evermore-signup-form');
+                    if (!form) return;
+                    var submitBtn = document.getElementById('evermore-signup-submit');
+
+                    form.addEventListener('submit', async function (e) {
+                        e.preventDefault();
+
+                        var fullName = (form.fullName.value || '').trim();
+                        var username = (form.username.value || '').trim();
+                        var phone = (form.phone.value || '').trim();
+                        var country = (form.country.value || '').trim();
+                        var email = (form.email.value || '').trim().toLowerCase();
+                        var password = form.password.value || '';
+                        var referral = (form.referral ? form.referral.value : '').trim();
+
+                        if (!fullName) {
+                            showError('Please enter your full name.');
+                            return;
+                        }
+                        if (!username) {
+                            showError('Please choose a username.');
+                            return;
+                        }
+                        if (!email || !email.includes('@')) {
+                            showError('Please enter a valid email address.');
+                            return;
+                        }
+                        if (!password || password.length < 8) {
+                            showError('Password must be at least 8 characters long.');
+                            return;
+                        }
+
+                        submitBtn.disabled = true;
+                        var originalLabel = submitBtn.textContent;
+                        submitBtn.textContent = 'Creating account…';
+
+                        showProcessing(
+                            'Creating your account',
+                            'Setting up your secure profile and dashboard…'
+                        );
+
+                        try {
+                            var res = await window.EvermoreFirebase.registerWithEmailPassword(email, password, {
+                                fullName: fullName,
+                                username: username,
+                                phone: phone,
+                                country: country || 'Nigeria',
+                                referral: referral
+                            });
+
+                            saveProfile(res.profile);
+                            var firstName = fullName.split(' ')[0] || 'there';
+
+                            showSuccess(
+                                'Welcome to Evermore, ' + firstName + '!',
+                                'Your account has been created. Redirecting to your dashboard…',
+                                DASHBOARD_URL
+                            );
+                        } catch (err) {
+                            console.error('Registration error:', err);
+                            var msg = err.message || 'Could not create account. Please try again.';
+                            if (err.code === 'auth/email-already-in-use') {
+                                msg = 'This email is already registered. Please sign in instead.';
+                            } else if (err.code === 'auth/weak-password') {
+                                msg = 'Password is too weak. Please use at least 8 characters.';
+                            } else if (err.code === 'auth/operation-not-allowed') {
+                                msg = 'Email/Password registration is not yet enabled in Firebase Console. Please click "Sign up with Google" to continue.';
+                            }
+                            showError(msg);
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalLabel;
+                        }
+                    });
+                }
+
+                /* ---------- Sign-in Form (Email & Password) ---------- */
                 function initSigninForm() {
                     var form = document.getElementById('evermore-signin-form');
                     if (!form) return;
                     var submitBtn = document.getElementById('evermore-signin-submit');
 
-                    form.addEventListener('submit', function (e) {
+                    form.addEventListener('submit', async function (e) {
                         e.preventDefault();
 
-                        var identifier = (form.identifier.value || '').trim().replace(/^@/, '');
+                        var identifier = (form.identifier.value || '').trim();
                         var password = form.password.value || '';
 
                         if (!identifier || !password) {
-                            showError('Please enter your email or username, and your password.');
+                            showError('Please enter your email and password.');
+                            return;
+                        }
+
+                        if (!identifier.includes('@')) {
+                            showError('Please enter your registered email address (e.g. name@example.com).');
                             return;
                         }
 
@@ -816,29 +1194,32 @@
 
                         showProcessing(
                             'Signing you in',
-                            'We\u2019re verifying your credentials. This will only take a moment.'
+                            'Verifying your credentials and loading your account…'
                         );
 
-                        postJSON(LOGIN_URL, {
-                            action: 'login',
-                            identifier: identifier,
-                            password: password
-                        }).then(function (res) {
-                            saveProfile(res.user);
+                        try {
+                            var res = await window.EvermoreFirebase.signInWithEmailPassword(identifier.toLowerCase(), password);
+                            saveProfile(res.profile);
 
-                            var first = (res.user && res.user.fullName ? res.user.fullName.split(' ')[0] : 'there');
-                            var firstName = escapeHtml(first);
+                            var firstName = (res.profile && res.profile.fullName ? res.profile.fullName.split(' ')[0] : 'there');
 
                             showSuccess(
-                                'Welcome back ' + firstName,
+                                'Welcome back, ' + firstName + '!',
                                 'Redirecting you to your dashboard…',
                                 DASHBOARD_URL
                             );
-                        }).catch(function (err) {
-                            showError(err.message || 'Could not sign in. Try again.');
+                        } catch (err) {
+                            console.error('Sign in error:', err);
+                            var msg = err.message || 'Could not sign in. Please verify your credentials.';
+                            if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password') {
+                                msg = 'Invalid email or password. Please check your credentials or create a new account.';
+                            } else if (err.code === 'auth/operation-not-allowed') {
+                                msg = 'Email/Password sign-in requires enabling Email provider in Firebase Console. Please click "Sign in with Google" to log in.';
+                            }
+                            showError(msg);
                             submitBtn.disabled = false;
                             submitBtn.textContent = originalLabel;
-                        });
+                        }
                     });
                 }
 
@@ -847,11 +1228,16 @@
                     initCountries();
                     initTabs();
                     initPasswordToggles();
+                    initGoogleAuth();
                     initSignupForm();
                     initSigninForm();
                 }
-                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-                else boot();
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', boot);
+                } else {
+                    boot();
+                }
             })();
         </script>
     

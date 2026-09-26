@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build:js": "esbuild src/firebase-client.js --bundle --minify --format=iife --global-name=EvermoreFirebase --outfile=assets/js/firebase-bundle.js",
+    "build": "npm run build:js",
     "dev": "node server.js",
-    "start": "node server.js",
-    "build": "echo 'Build complete'"
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "firebase": "^12.19.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }
