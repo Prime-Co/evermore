@@ -8,11 +8,13 @@
 
     var STORAGE_KEY = 'evermore_platform_settings';
     var DEFAULT_SETTINGS = {
-        bankName: 'HOOD BANK',
-        accountNumber: '1234567890',
-        accountName: 'YOUR (BIZ) NAME',
+        bankName: 'KUDA MFB',
+        accountNumber: '3004350517',
+        accountName: 'VICTORBLOG SERVICES-EVERMORE',
         price: '₦14,850',
-        amount: 14850
+        amount: 14850,
+        telegramLink: 'https://t.me/evermoreai...',
+        opayNotification: true
     };
 
     function parseAmount(val) {
@@ -34,9 +36,17 @@
             if (raw) {
                 var parsed = JSON.parse(raw);
                 if (parsed && typeof parsed === 'object') {
+                    var isOpayActive = true;
+                    if (parsed.opayNotification !== undefined) {
+                        isOpayActive = parsed.opayNotification === true || parsed.opayNotification === 'true';
+                    } else if (parsed.showOpayNotification !== undefined) {
+                        isOpayActive = parsed.showOpayNotification === true || parsed.showOpayNotification === 'true';
+                    }
                     return Object.assign({}, DEFAULT_SETTINGS, parsed, {
                         price: formatFee(parsed.price || parsed.activationFee || DEFAULT_SETTINGS.price),
-                        amount: parseAmount(parsed.amount || parsed.price || DEFAULT_SETTINGS.amount)
+                        amount: parseAmount(parsed.amount || parsed.price || DEFAULT_SETTINGS.amount),
+                        telegramLink: parsed.telegramLink || DEFAULT_SETTINGS.telegramLink,
+                        opayNotification: isOpayActive
                     });
                 }
             }
@@ -46,9 +56,18 @@
 
     function saveLocalSettings(settings) {
         try {
-            var merged = Object.assign({}, getLocalSettings(), settings);
+            var current = getLocalSettings();
+            var isOpayActive = current.opayNotification !== false;
+            if (settings.opayNotification !== undefined) {
+                isOpayActive = settings.opayNotification === true || settings.opayNotification === 'true';
+            } else if (settings.showOpayNotification !== undefined) {
+                isOpayActive = settings.showOpayNotification === true || settings.showOpayNotification === 'true';
+            }
+            var merged = Object.assign({}, current, settings);
             merged.price = formatFee(merged.price);
             merged.amount = parseAmount(merged.price);
+            merged.telegramLink = merged.telegramLink || DEFAULT_SETTINGS.telegramLink;
+            merged.opayNotification = isOpayActive;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
             return merged;
         } catch (e) {
@@ -60,6 +79,20 @@
         if (!settings) settings = getLocalSettings();
         var fee = formatFee(settings.price);
         var rawNum = parseAmount(settings.price);
+        var tgLink = settings.telegramLink || DEFAULT_SETTINGS.telegramLink;
+        var isOpayOn = settings.opayNotification !== false;
+
+        // OPay Notification Alert on payment page (On shows, Off hides)
+        var opayAlerts = document.querySelectorAll('#opay-notification, .ev-alert[role="alert"], [data-notification="opay"]');
+        opayAlerts.forEach(function(alertEl) {
+            if (isOpayOn) {
+                alertEl.style.display = 'flex';
+                alertEl.removeAttribute('aria-hidden');
+            } else {
+                alertEl.style.display = 'none';
+                alertEl.setAttribute('aria-hidden', 'true');
+            }
+        });
 
         // 1. All elements marked with data-setting or dynamic class
         document.querySelectorAll('[data-setting="price"], .ev-dynamic-fee, .ev-dynamic-price').forEach(function(el) {
@@ -77,6 +110,31 @@
         document.querySelectorAll('[data-setting="accountName"]').forEach(function(el) {
             el.textContent = settings.accountName;
         });
+
+        document.querySelectorAll('[data-setting="telegramLink"]').forEach(function(el) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.value = tgLink;
+            } else if (el.tagName === 'A') {
+                el.setAttribute('href', tgLink);
+            } else {
+                el.textContent = tgLink;
+            }
+        });
+
+        // Update Telegram link in dashboard VIP modal and VIP button
+        var vipTg = document.getElementById('vipTelegramLink');
+        if (vipTg) vipTg.setAttribute('href', tgLink);
+
+        document.querySelectorAll('.ev-vip-btn').forEach(function(btn) {
+            if (btn.tagName === 'A') {
+                btn.setAttribute('href', tgLink);
+            }
+        });
+
+        var vipBannerCta = document.getElementById('ev-sub-cta');
+        if (vipBannerCta && vipBannerCta.classList.contains('is-vip')) {
+            vipBannerCta.setAttribute('href', tgLink);
+        }
 
         // 2. Specific page elements:
         // payment.html

@@ -424,6 +424,13 @@
 							<polyline points="9 18 15 12 9 6"></polyline>
 						</svg>
 					</a>
+
+					<div class="ev-nav-divider" id="ev-public-admin-divider" style="display:none;"></div>
+					<a href="admin.html" class="ev-nav-item" id="ev-public-admin-link" style="display:none; color: #087f5b; font-weight:700; background: #e6fcf5;">
+						<svg viewBox="0 0 24 24" style="stroke: #0ca678;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+						<span>Admin Portal</span>
+						<span style="margin-left:auto; background:#0ca678; color:#ffffff; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px;">ADMIN</span>
+					</a>
 				</nav>
 
 				<div class="ev-drawer-auth">
@@ -1218,6 +1225,32 @@
 							close();
 						});
 					});
+
+					// Reveal Admin Portal if current session or profile is admin
+					try {
+						var adminDiv = document.getElementById('ev-public-admin-divider');
+						var adminLink = document.getElementById('ev-public-admin-link');
+						var isAdm = localStorage.getItem('evermore_admin_session') === 'true';
+						if (!isAdm) {
+							var prof = JSON.parse(localStorage.getItem('evermore_profile') || 'null');
+							if (prof) {
+								var em = (prof.email || '').toLowerCase().trim();
+								if (em === 'tuniprime01@gmail.com' || prof.role === 'admin' || prof.role === 'superadmin' || prof.isAdmin === true) {
+									isAdm = true;
+								}
+								if (!isAdm) {
+									var list = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+									if (list.some(function(a) { return (a.email && a.email.toLowerCase().trim() === em); })) {
+										isAdm = true;
+									}
+								}
+							}
+						}
+						if (isAdm && adminLink) {
+							if (adminDiv) adminDiv.style.display = 'block';
+							adminLink.style.display = 'flex';
+						}
+					} catch (e) {}
 				}
 
 				/*

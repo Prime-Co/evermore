@@ -62,6 +62,26 @@
           "type": "string",
           "description": "ISO timestamp of last account update",
           "maxLength": 50
+        },
+        "paymentReceipt": {
+          "type": "string",
+          "description": "Base64 data URL or storage URL of uploaded payment receipt",
+          "maxLength": 2097152
+        },
+        "receiptFileName": {
+          "type": "string",
+          "description": "Original file name of uploaded receipt",
+          "maxLength": 255
+        },
+        "receiptUploadedAt": {
+          "type": "string",
+          "description": "ISO timestamp when receipt was submitted",
+          "maxLength": 50
+        },
+        "role": {
+          "type": "string",
+          "description": "Optional administrative role if appointed",
+          "maxLength": 30
         }
       },
       "required": ["id", "email", "fullName", "username", "status"]
@@ -87,20 +107,33 @@
           "description": "Assigned administrative role",
           "enum": ["superadmin", "admin"],
           "maxLength": 30
+        },
+        "appointedBy": {
+          "type": "string",
+          "description": "Superadmin email or UID who appointed this admin",
+          "maxLength": 254
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when appointed",
+          "maxLength": 50
         }
       },
       "required": ["uid", "email", "role"]
     },
     "PlatformSettings": {
       "title": "PlatformSettings",
-      "description": "Global platform configurations including activation fee and payment bank details",
+      "description": "Global platform configurations including activation fee, payment bank details, and Telegram link",
       "type": "object",
       "properties": {
         "bankName": { "type": "string", "maxLength": 100 },
         "accountNumber": { "type": "string", "maxLength": 50 },
         "accountName": { "type": "string", "maxLength": 100 },
         "price": { "type": "string", "maxLength": 50 },
+        "activationFee": { "type": "string", "maxLength": 50 },
+        "telegramLink": { "type": "string", "maxLength": 255 },
         "amount": { "type": "number" },
+        "opayNotification": { "type": "boolean" },
         "updatedAt": { "type": "string", "maxLength": 50 }
       }
     }

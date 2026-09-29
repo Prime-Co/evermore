@@ -8,7 +8,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  updatePassword
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -212,6 +214,50 @@ export async function signInWithEmailPassword(email, password) {
   return { user, profile };
 }
 
+// Send Password Reset / Setup Link to any email address
+export async function sendUserPasswordReset(email) {
+  const targetEmail = (email || auth.currentUser?.email || '').trim().toLowerCase();
+  if (!targetEmail) throw new Error('Please enter an email address.');
+  await sendPasswordResetEmail(auth, targetEmail);
+  return { success: true, email: targetEmail };
+}
+
+// Set or update password directly (requires currently active session)
+export async function updateUserPassword(newPassword) {
+  if (!auth.currentUser) throw new Error('No user is currently signed in. Please sign in first.');
+  if (!newPassword || newPassword.length < 6) throw new Error('Password must be at least 6 characters.');
+  await updatePassword(auth.currentUser, newPassword);
+  return { success: true };
+}
+
+// Set/Register password for an admin (creates email/password credentials or sends reset setup link)
+export async function setAdminPassword(email, newPassword) {
+  const cleanEmail = (email || '').trim().toLowerCase();
+  if (!cleanEmail) throw new Error('Email is required.');
+  if (!newPassword || newPassword.length < 6) throw new Error('Password must be at least 6 characters.');
+
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, cleanEmail, newPassword);
+    const user = cred.user;
+    await ensureUserProfile(user, {
+      fullName: cleanEmail === 'tuniprime01@gmail.com' ? 'Tuni Prime' : cleanEmail.split('@')[0],
+      role: 'superadmin'
+    });
+    return { success: true, mode: 'created', user };
+  } catch (err) {
+    if (err && err.code === 'auth/email-already-in-use') {
+      if (auth.currentUser && auth.currentUser.email && auth.currentUser.email.toLowerCase() === cleanEmail) {
+        await updatePassword(auth.currentUser, newPassword);
+        return { success: true, mode: 'updated', user: auth.currentUser };
+      } else {
+        await sendPasswordResetEmail(auth, cleanEmail);
+        return { success: true, mode: 'reset_email_sent', email: cleanEmail };
+      }
+    }
+    throw err;
+  }
+}
+
 // Sign out
 export async function signOutUser() {
   await signOut(auth);
@@ -241,16 +287,76 @@ export function onAuthChange(callback) {
 // Check if a user is an authorized admin
 export async function isUserAdmin(user) {
   if (!user) return false;
-  if (user.email && user.email.toLowerCase() === 'tuniprime01@gmail.com') {
+  const uEmail = (user.email || '').toLowerCase().trim();
+  if (uEmail === 'tuniprime01@gmail.com' || uEmail === 'mrvictor433@gmail.com') {
     return true;
   }
   try {
-    const adminDocRef = doc(db, 'admins', user.uid);
-    const snap = await getDoc(adminDocRef);
-    return snap.exists();
-  } catch (e) {
-    return false;
+    if (user.uid) {
+      const adminDocRef = doc(db, 'admins', user.uid);
+      const snap = await getDoc(adminDocRef);
+      if (snap.exists()) return true;
+    }
+    if (uEmail) {
+      const adminsCol = collection(db, 'admins');
+      const q = query(adminsCol, where('email', '==', uEmail));
+      const qSnap = await getDocs(q);
+      if (!qSnap.empty) return true;
+    }
+  } catch (e) {}
+
+  // Check server-side admins list
+  try {
+    const res = await fetch('/api/admins');
+    if (res.ok) {
+      const list = await res.json();
+      if (Array.isArray(list)) {
+        return list.some(a => (a.email && a.email.toLowerCase().trim() === uEmail) || (a.uid && a.uid === user.uid));
+      }
+    }
+  } catch (e) {}
+
+  return false;
+}
+
+// Check if a user is a superadmin (tuniprime01@gmail.com, mrvictor433@gmail.com or authorized superadmin)
+export async function isUserSuperAdmin(user) {
+  if (!user) return false;
+  const uEmail = (user.email || '').toLowerCase().trim();
+  if (uEmail === 'tuniprime01@gmail.com' || uEmail === 'mrvictor433@gmail.com') {
+    return true;
   }
+  try {
+    if (user.uid) {
+      const adminDocRef = doc(db, 'admins', user.uid);
+      const snap = await getDoc(adminDocRef);
+      if (snap.exists() && snap.data().role === 'superadmin') {
+        return true;
+      }
+    }
+    if (uEmail) {
+      const adminsCol = collection(db, 'admins');
+      const q = query(adminsCol, where('email', '==', uEmail));
+      const qSnap = await getDocs(q);
+      if (!qSnap.empty) {
+        let isSuper = false;
+        qSnap.forEach(d => { if (d.data().role === 'superadmin') isSuper = true; });
+        if (isSuper) return true;
+      }
+    }
+  } catch (e) {}
+
+  try {
+    const res = await fetch('/api/admins');
+    if (res.ok) {
+      const list = await res.json();
+      if (Array.isArray(list)) {
+        return list.some(a => ((a.email && a.email.toLowerCase().trim() === uEmail) || (a.uid && a.uid === user.uid)) && a.role === 'superadmin');
+      }
+    }
+  } catch (e) {}
+
+  return false;
 }
 
 // Fetch all registered users (Admin only)
@@ -314,16 +420,27 @@ export async function getAdminList() {
 }
 
 // Add an authorized admin record
-export async function addAdminRecord(adminId, email, role = 'admin') {
+export async function addAdminRecord(adminId, email, role = 'admin', extraData = {}) {
   const adminPath = `admins/${adminId}`;
+  const cleanEmail = (email || '').trim().toLowerCase();
   try {
     const docRef = doc(db, 'admins', adminId);
     const data = {
       uid: adminId,
-      email: email.trim().toLowerCase(),
-      role: role
+      email: cleanEmail,
+      role: role,
+      appointedBy: extraData.appointedBy || 'tuniprime01@gmail.com',
+      createdAt: extraData.createdAt || new Date().toISOString()
     };
     await setDoc(docRef, data);
+
+    // Also write under email document path if different, ensuring rules matching request.auth.token.email resolve directly
+    if (cleanEmail && adminId !== cleanEmail) {
+      try {
+        const emailRef = doc(db, 'admins', cleanEmail);
+        await setDoc(emailRef, data);
+      } catch (e) {}
+    }
     return data;
   } catch (error) {
     handleFirestoreError(error, OperationType.CREATE, adminPath);
@@ -331,11 +448,17 @@ export async function addAdminRecord(adminId, email, role = 'admin') {
 }
 
 // Remove an admin record
-export async function removeAdminRecord(adminId) {
+export async function removeAdminRecord(adminId, email) {
   const adminPath = `admins/${adminId}`;
   try {
     const docRef = doc(db, 'admins', adminId);
     await deleteDoc(docRef);
+    if (email && email !== adminId) {
+      try {
+        const emailRef = doc(db, 'admins', email.toLowerCase().trim());
+        await deleteDoc(emailRef);
+      } catch (e) {}
+    }
     return true;
   } catch (error) {
     handleFirestoreError(error, OperationType.DELETE, adminPath);
@@ -390,11 +513,16 @@ export function onPlatformSettingsChange(callback) {
 export async function savePlatformSettings(data) {
   const cleanPrice = formatFeeDisplay(data.price || data.activationFee || '14850');
   const amount = parseFeeAmount(cleanPrice);
+  const opayNotification = typeof data.opayNotification === 'boolean'
+    ? data.opayNotification
+    : (data.opayNotification !== undefined ? String(data.opayNotification).toLowerCase() === 'true' : true);
   const payload = {
     ...data,
     price: cleanPrice,
     activationFee: cleanPrice,
+    telegramLink: data.telegramLink || 'https://t.me/evermoreai...',
     amount: amount,
+    opayNotification: opayNotification,
     updatedAt: new Date().toISOString()
   };
 

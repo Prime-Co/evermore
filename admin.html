@@ -542,6 +542,47 @@
             border-color: var(--emerald);
         }
 
+        /* Switch Toggle (for Opay notification) */
+        .switch-toggle {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .switch-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .25s ease;
+            border-radius: 28px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .25s ease;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .switch-toggle input:checked + .switch-slider {
+            background-color: var(--emerald);
+        }
+        .switch-toggle input:checked + .switch-slider:before {
+            transform: translateX(24px);
+        }
+
         /* Toast */
         .toast {
             position: fixed;
@@ -668,6 +709,380 @@
             max-width: 680px;
             box-shadow: var(--shadow-sm);
         }
+
+        /* =========================================================
+           Responsive & Mobile Optimization
+           ========================================================= */
+        .mobile-table-tip {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: #f1f9f7;
+            border-bottom: 1px solid var(--border);
+            padding: 7px 14px;
+        }
+
+        /* Tablets & small desktops (<= 1024px) */
+        @media (max-width: 1024px) {
+            .admin-container {
+                padding: 20px 16px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Mobile devices (<= 768px) */
+        @media (max-width: 768px) {
+            /* Header */
+            .admin-nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            .admin-nav-inner {
+                padding: 0 12px;
+                height: 56px;
+            }
+            .brand-logo {
+                font-size: 17px;
+                gap: 6px;
+            }
+            .brand-logo img {
+                height: 24px !important;
+            }
+            .brand-badge {
+                font-size: 9px;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+            .header-actions {
+                gap: 6px;
+            }
+            .nav-btn-text {
+                display: none !important;
+            }
+            .header-actions .btn-sm {
+                padding: 7px 9px;
+                min-width: 36px;
+                height: 36px;
+                justify-content: center;
+                border-radius: 8px;
+            }
+            .admin-user-pill {
+                padding: 3px 8px 3px 5px;
+                gap: 6px;
+                font-size: 12px;
+            }
+            .admin-avatar {
+                width: 24px;
+                height: 24px;
+                font-size: 11px;
+            }
+            .admin-email-text {
+                display: none !important;
+            }
+            #adminClearancePill {
+                margin-left: 0 !important;
+                font-size: 9px !important;
+                padding: 2px 6px;
+            }
+
+            /* Container */
+            .admin-container {
+                padding: 14px 10px 48px;
+            }
+
+            /* Touch Tabs Bar */
+            .tab-bar {
+                margin: 0 -10px 16px;
+                padding: 0 10px 4px;
+                gap: 6px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tab-bar::-webkit-scrollbar {
+                display: none;
+            }
+            .tab-item {
+                padding: 8px 12px;
+                font-size: 13px;
+                flex-shrink: 0;
+                border-bottom-width: 2px;
+            }
+            .tab-item svg {
+                width: 14px;
+                height: 14px;
+            }
+            .tab-pill {
+                font-size: 10px;
+                padding: 1px 6px;
+            }
+
+            /* 2x2 Stats Grid */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+            .stat-card {
+                padding: 12px;
+                border-radius: var(--radius-sm);
+            }
+            .stat-head {
+                margin-bottom: 6px;
+            }
+            .stat-label {
+                font-size: 11px;
+                letter-spacing: 0.02em;
+            }
+            .stat-icon {
+                width: 28px;
+                height: 28px;
+                border-radius: 6px;
+            }
+            .stat-icon svg {
+                width: 15px;
+                height: 15px;
+            }
+            .stat-value {
+                font-size: 20px;
+            }
+            .stat-meta {
+                font-size: 11px;
+                margin-top: 3px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* Controls card (search & filter) */
+            .controls-card {
+                padding: 12px;
+                gap: 10px;
+            }
+            .search-wrap {
+                min-width: 100%;
+                max-width: 100%;
+                flex: 1 1 100%;
+                padding: 9px 12px;
+            }
+            .filter-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .filter-select {
+                width: 100%;
+                font-size: 12px;
+                padding: 8px;
+            }
+            #exportCsvBtn,
+            #addUserBtn {
+                width: 100%;
+                justify-content: center;
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+
+            /* Responsive tables */
+            .mobile-table-tip {
+                display: flex;
+            }
+            .table-responsive {
+                -webkit-overflow-scrolling: touch;
+            }
+            th {
+                padding: 10px 12px;
+                font-size: 11px;
+                white-space: nowrap;
+            }
+            td {
+                padding: 12px 10px;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            .user-avatar-initials {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+            .user-cell {
+                gap: 8px;
+            }
+            .user-names strong {
+                font-size: 13.5px;
+            }
+            .user-names small {
+                font-size: 11px;
+            }
+            .btn-icon {
+                width: 34px;
+                height: 34px;
+            }
+
+            /* Queue cards */
+            .queue-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .queue-card {
+                padding: 14px;
+            }
+            .queue-header {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .queue-card-actions {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .queue-card-actions .activate-btn {
+                order: -1;
+                width: 100%;
+                flex: 1 1 100% !important;
+                padding: 9px !important;
+            }
+            .queue-card-actions .view-receipt-btn,
+            .queue-card-actions .reject-btn {
+                flex: 1;
+                justify-content: center;
+            }
+
+            /* Settings Tab */
+            .settings-card {
+                padding: 16px;
+                max-width: 100%;
+            }
+            .settings-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .settings-actions button,
+            .settings-actions a {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* Opay notification switch block on mobile */
+            .opay-switch-group {
+                padding: 14px 12px !important;
+            }
+            .opay-switch-header {
+                gap: 10px;
+            }
+
+            /* Modals on mobile */
+            .modal-overlay {
+                padding: 10px;
+                align-items: flex-end;
+            }
+            .modal-card {
+                max-height: 92vh;
+                border-radius: var(--radius-lg) var(--radius-lg) var(--radius-md) var(--radius-md);
+            }
+            .modal-head {
+                padding: 14px 16px;
+            }
+            .modal-title {
+                font-size: 16px;
+            }
+            .modal-body {
+                padding: 16px 14px;
+                max-height: calc(88vh - 120px);
+                -webkit-overflow-scrolling: touch;
+            }
+            .modal-footer {
+                padding: 12px 14px;
+                gap: 8px;
+            }
+            .modal-footer button {
+                padding: 10px 14px;
+            }
+
+            /* Receipt modal on mobile */
+            .receipt-summary-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 8px !important;
+                padding: 10px 12px !important;
+            }
+            .receipt-modal-footer {
+                flex-direction: column-reverse;
+                gap: 8px;
+            }
+            .receipt-modal-footer > button,
+            .receipt-modal-footer > div {
+                width: 100%;
+            }
+            .receipt-modal-footer > div {
+                display: flex;
+                gap: 8px;
+            }
+            .receipt-modal-footer > div button {
+                flex: 1;
+                justify-content: center;
+            }
+
+            /* Form 2-col rows */
+            .form-row-2col {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+
+            /* Toast */
+            .toast {
+                left: 12px;
+                right: 12px;
+                bottom: 16px;
+                font-size: 13px;
+                padding: 12px 16px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* Gate Screen on Mobile */
+            .gate-card {
+                padding: 24px 16px;
+            }
+            .gate-title {
+                font-size: 20px;
+            }
+            .gate-desc {
+                font-size: 13px;
+                margin-bottom: 18px;
+            }
+            .gate-card input.form-control {
+                font-size: 15px;
+            }
+        }
+
+        /* Extra compact mobile (<= 380px) */
+        @media (max-width: 380px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .stat-card {
+                padding: 10px 8px;
+            }
+            .stat-value {
+                font-size: 18px;
+            }
+            .stat-label {
+                font-size: 10px;
+            }
+            .brand-logo span {
+                font-size: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -681,19 +1096,27 @@
                     <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
             </div>
-            <div class="brand-badge" style="display:inline-block; margin-bottom:12px; font-size:12px; padding:4px 10px;">ROOT ADMINISTRATOR CLEARANCE</div>
+            <div class="brand-badge" style="display:inline-block; margin-bottom:12px; font-size:12px; padding:4px 10px;">ADMINISTRATIVE ACCESS</div>
             <h2 class="gate-title">Evermore Admin Portal</h2>
-            <p class="gate-desc">Authorized root administrator: <strong style="color:var(--text-main);">tuniprime01@gmail.com</strong>. Complete control over member activations, queue verification, and platform settings.</p>
+            <p class="gate-desc">Authorized administrators and superadmins. Review payment receipts, approve member accounts, edit telegram channel links, and configure platform settings.</p>
             
             <div id="gateLoading" style="margin-bottom: 16px; font-size: 14px; color: var(--emerald-dark); font-weight: 600;">
                 Initializing Admin Console…
             </div>
 
             <div id="gateActions" style="display: flex; flex-direction: column; gap: 12px;">
-                <button type="button" id="gateInstantBtn" class="btn-sm btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 15px; font-weight: 700; border-radius: 10px; box-shadow: 0 6px 18px rgba(18,184,134,0.35);">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Enter as Superadmin (tuniprime01@gmail.com)
-                </button>
+                <div id="gateAdminSelectorWrap" style="text-align: left; background: var(--surface-subtle); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px;">
+                    <label for="gateAdminSelect" style="display:block; font-size:12px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em;">Choose Admin Account to Enter</label>
+                    <select id="gateAdminSelect" class="form-control" style="font-weight:600; font-size:13.5px; background:var(--surface);">
+                        <option value="tuniprime01@gmail.com" data-role="superadmin" data-name="Tuni Prime (Superadmin)">tuniprime01@gmail.com (Superadmin)</option>
+                    </select>
+                    <button type="button" id="gateEnterSelectedBtn" class="btn-sm btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 8px; box-shadow: 0 4px 14px rgba(18,184,134,0.3);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Enter Admin Console
+                    </button>
+                </div>
+
+                <div style="font-size: 13px; color: var(--text-muted); margin: 2px 0;">— or authenticate with credentials —</div>
                 <button type="button" id="gateGoogleBtn" class="btn-sm btn-outline" style="width: 100%; justify-content: center; padding: 11px;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -703,12 +1126,17 @@
                     </svg>
                     Sign in with Google Account
                 </button>
-                <div style="font-size: 13px; color: var(--text-muted); margin: 2px 0;">— or with email credentials —</div>
                 <input type="email" id="gateEmail" class="form-control" placeholder="admin@evermore.ai" value="tuniprime01@gmail.com">
-                <input type="password" id="gatePassword" class="form-control" placeholder="Admin Password">
+                <input type="password" id="gatePassword" class="form-control" placeholder="Admin Password (optional for appointed admins)">
                 <button type="button" id="gatePasswordBtn" class="btn-sm btn-outline" style="width: 100%; justify-content: center; padding: 10px;">
-                    Sign In with Email
+                    Sign In with Email &amp; Password
                 </button>
+                <div style="display:flex; justify-content:center; align-items:center; width:100%; margin-top:2px;">
+                    <button type="button" id="gateSetPasswordBtn" style="background:none; border:none; color:var(--emerald-dark); font-size:12.5px; font-weight:600; padding:6px 0; cursor:pointer; text-decoration:underline;">
+                        🔑 Set / Reset Password for tuniprime01@gmail.com
+                    </button>
+                </div>
+                <div id="gatePasswordMsg" style="color:var(--emerald-deep); font-size:12.5px; display:none; margin-top:6px; text-align:left; background:var(--mint-light); border:1px solid var(--mint); padding:10px 12px; border-radius:8px; line-height:1.45;"></div>
                 <div id="gateError" style="color: var(--red); font-size: 13px; display: none; margin-top: 8px;"></div>
                 <a href="dashboard.html" class="btn-sm" style="color: var(--text-muted); justify-content: center; margin-top: 4px;">
                     ← Return to Member Dashboard
@@ -725,31 +1153,32 @@
                     <img src="favicon.svg" alt="Evermore" style="height: 28px;">
                     <span>Evermore<span style="color: var(--emerald);">AI</span></span>
                 </a>
-                <span class="brand-badge">ADMIN</span>
+                <span class="brand-badge" id="navBrandBadge">ADMIN</span>
             </div>
 
             <div class="header-actions">
-                <button id="refreshBtn" class="btn-sm btn-outline" title="Refresh Live Data">
+                <button id="refreshBtn" class="btn-sm btn-outline" title="Refresh Live Data" aria-label="Refresh Live Data">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="23 4 23 10 17 10"></polyline>
                         <polyline points="1 20 1 14 7 14"></polyline>
                         <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
                     </svg>
-                    Refresh
+                    <span class="nav-btn-text">Refresh</span>
                 </button>
-                <a href="dashboard.html" class="btn-sm btn-outline">
+                <a href="dashboard.html" class="btn-sm btn-outline" title="Member View" aria-label="Member View">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
                         <polyline points="10 17 15 12 10 7"></polyline>
                         <line x1="15" y1="12" x2="3" y2="12"></line>
                     </svg>
-                    Member View
+                    <span class="nav-btn-text">Member View</span>
                 </a>
                 <div class="admin-user-pill">
                     <div class="admin-avatar" id="adminAvatar">A</div>
-                    <span id="adminEmailDisplay">Admin</span>
+                    <span id="adminEmailDisplay" class="admin-email-text">Admin</span>
+                    <span id="adminClearancePill" class="badge badge-active" style="font-size:10px; margin-left:6px; font-weight:700;">SUPERADMIN</span>
                 </div>
-                <button id="logoutBtn" class="btn-sm btn-outline" title="Sign Out">
+                <button id="logoutBtn" class="btn-sm btn-outline" title="Sign Out" aria-label="Sign Out">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -867,6 +1296,10 @@
 
             <!-- TABLE -->
             <div class="table-card">
+                <div class="mobile-table-tip">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    Swipe horizontally to view full table
+                </div>
                 <div class="table-responsive">
                     <table>
                         <thead>
@@ -876,12 +1309,13 @@
                                 <th>Contact &amp; Location</th>
                                 <th>Status</th>
                                 <th>Joined</th>
+                                <th style="text-align: center;">Receipt</th>
                                 <th style="text-align: right;">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="userTableBody">
                             <tr>
-                                <td colspan="6" style="text-align: center; padding: 48px; color: var(--text-muted);">
+                                <td colspan="7" style="text-align: center; padding: 48px; color: var(--text-muted);">
                                     Loading registered users from Firestore…
                                 </td>
                             </tr>
@@ -893,7 +1327,7 @@
 
         <!-- TAB 2: PENDING ACTIVATIONS QUEUE -->
         <section id="tab-verifications" class="panel">
-            <div style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div class="queue-toolbar" style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
                 <div>
                     <h2 style="font-family: var(--font-head); font-size: 20px; font-weight: 700;">Pending Payment Verification Queue</h2>
                     <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Review and activate members waiting for account access.</p>
@@ -913,22 +1347,22 @@
         <section id="tab-settings" class="panel">
             <div class="settings-card">
                 <h2 style="font-family: var(--font-head); font-size: 20px; font-weight: 700; margin-bottom: 6px;">Platform Payment Details</h2>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Configure the recipient bank details displayed on payment.html for user transfers.</p>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Available to all authorized administrators. Configure the recipient bank details, activation fee, and Telegram Channel link displayed across the platform.</p>
 
                 <form id="settingsForm">
                     <div class="form-group">
                         <label class="form-label" for="setBankName">Bank Name</label>
-                        <input type="text" id="setBankName" class="form-control" value="HOOD BANK" required>
+                        <input type="text" id="setBankName" class="form-control" value="KUDA MFB" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="setAccountNumber">Account Number</label>
-                        <input type="text" id="setAccountNumber" class="form-control" value="1234567890" required>
+                        <input type="text" id="setAccountNumber" class="form-control" value="3004350517" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="setAccountName">Account Name</label>
-                        <input type="text" id="setAccountName" class="form-control" value="YOUR (BIZ) NAME" required>
+                        <input type="text" id="setAccountName" class="form-control" value="VICTORBLOG SERVICES-EVERMORE" required>
                     </div>
 
                     <div class="form-group">
@@ -936,9 +1370,42 @@
                         <input type="text" id="setPrice" class="form-control" value="₦14,850" required>
                     </div>
 
-                    <div style="margin-top: 24px; display: flex; gap: 12px;">
+                    <div class="form-group">
+                        <label class="form-label" for="setTelegramLink">Telegram Channel Link (Active Account Modal)</label>
+                        <input type="text" id="setTelegramLink" class="form-control" value="https://t.me/evermoreai..." required>
+                        <small style="color:var(--text-muted); font-size:12px; margin-top:4px; display:block;">
+                            This link is attached to the "Join VIP Group" button on the "Your account is Active!" modal shown to members when activated.
+                        </small>
+                    </div>
+
+                    <!-- OPAY NOTIFICATION SWITCH -->
+                    <div class="form-group opay-switch-group" style="background:var(--surface-subtle); border:1px solid var(--border); border-radius:var(--radius-md); padding:16px 18px; margin-top:20px;">
+                        <div class="opay-switch-header" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+                            <div>
+                                <label class="form-label" for="setOpayNotification" style="margin-bottom:2px; font-size:14px; font-weight:700; color:var(--text-main); display:flex; align-items:center; gap:8px;">
+                                    <span>Opay notification</span>
+                                    <span id="opayStatusBadge" class="badge badge-active" style="font-size:10px; padding:2px 8px; letter-spacing:0.04em;">ON</span>
+                                </label>
+                                <p style="font-size:12.5px; color:var(--text-muted); margin:0; line-height:1.4;">
+                                    Shows or hides the OPay alert (<strong>"DO NOT PAY WITH OPAY — OPay is not accepted. Use any other bank."</strong>) on the checkout page.
+                                </p>
+                            </div>
+                            <div class="opay-switch-ctrl" style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+                                <label class="switch-toggle" title="Toggle Opay notification visibility">
+                                    <input type="checkbox" id="setOpayNotification" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span id="opayToggleText" style="font-size:13px; font-weight:700; color:var(--emerald-dark); min-width:32px;">On</span>
+                            </div>
+                        </div>
+                        <div style="font-size:11.5px; color:var(--text-muted); margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); display:flex; align-items:center; gap:6px;">
+                            <span id="opaySummaryHint">✓ <strong>On:</strong> Shows the notification on the payment checkout page.</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions" style="margin-top: 24px; display: flex; gap: 12px;">
                         <button type="submit" class="btn-sm btn-primary" style="padding: 10px 20px;">
-                            Save Payment Settings
+                            Save Platform Settings
                         </button>
                         <a href="payment.html" target="_blank" class="btn-sm btn-outline" style="padding: 10px 16px;">
                             Preview Payment Page ↗
@@ -950,40 +1417,103 @@
 
         <!-- TAB 4: ADMIN ROLES -->
         <section id="tab-admins" class="panel">
-            <div class="settings-card" style="max-width: 800px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div class="settings-card" style="max-width: 900px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
                     <div>
                         <h2 style="font-family: var(--font-head); font-size: 20px; font-weight: 700;">Authorized Administrators</h2>
-                        <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Personnel with full dashboard access and Firestore security clearances.</p>
+                        <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">Superadmins can permanently appoint and manage administrators with dashboard privileges.</p>
                     </div>
                     <button id="addAdminModalBtn" class="btn-sm btn-primary">
                         + Add Admin
                     </button>
                 </div>
 
+                <div class="mobile-table-tip">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    Swipe horizontally to view full table
+                </div>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Admin Email</th>
+                                <th>Admin Member</th>
                                 <th>Role</th>
+                                <th>Appointed By &amp; Date</th>
                                 <th>Clearance</th>
+                                <th style="text-align: right;">Action</th>
                             </tr>
                         </thead>
                         <tbody id="adminsTableBody">
                             <tr>
-                                <td>
-                                    <strong>tuniprime01@gmail.com</strong>
-                                    <small style="display:block; color:var(--text-muted);">Primary Root Owner</small>
-                                </td>
-                                <td><span class="badge badge-active">SUPERADMIN</span></td>
-                                <td><span style="color:var(--emerald); font-weight:600; font-size:13px;">Full Database Access</span></td>
+                                <td colspan="5" style="text-align:center; padding:32px; color:var(--text-muted);">Loading authorized administrators…</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
+    </main>
+
+    <!-- PAYMENT RECEIPT PREVIEW MODAL -->
+    <div class="modal-overlay" id="receiptModal">
+        <div class="modal-card receipt-modal-card" style="max-width: 620px;">
+            <div class="modal-head">
+                <div>
+                    <h3 class="modal-title" id="receiptModalTitle">Payment Receipt Verification</h3>
+                    <p style="font-size:12px; color:var(--text-muted); margin-top:2px;" id="receiptModalSubtitle">Review applicant proof of transfer</p>
+                </div>
+                <button type="button" class="modal-close" id="receiptModalClose">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <!-- Summary bar -->
+                <div class="receipt-summary-grid" style="background:var(--surface-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:16px; display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:10px; font-size:13px;">
+                    <div>
+                        <span style="color:var(--text-muted); display:block; font-size:11px;">MEMBER</span>
+                        <strong id="receiptMemberName" style="color:var(--text-main);">Applicant</strong>
+                    </div>
+                    <div>
+                        <span style="color:var(--text-muted); display:block; font-size:11px;">EMAIL</span>
+                        <strong id="receiptMemberEmail" style="color:var(--text-main); font-size:12px; word-break:break-all;">applicant@example.com</strong>
+                    </div>
+                    <div>
+                        <span style="color:var(--text-muted); display:block; font-size:11px;">AMOUNT DUE</span>
+                        <strong id="receiptAmountDue" style="color:var(--emerald-dark);">₦14,850</strong>
+                    </div>
+                    <div>
+                        <span style="color:var(--text-muted); display:block; font-size:11px;">STATUS</span>
+                        <span id="receiptMemberStatus" class="badge badge-pending">Pending Review</span>
+                    </div>
+                </div>
+
+                <!-- Receipt Image Container -->
+                <div style="position:relative; background:#071426; border-radius:var(--radius-md); overflow:hidden; min-height:240px; max-height:460px; display:flex; align-items:center; justify-content:center; border:1px solid var(--border);">
+                    <img id="receiptImagePreview" src="" alt="Payment Receipt Screenshot" style="max-width:100%; max-height:440px; object-fit:contain; transition: transform 0.2s;">
+                    <div id="receiptEmptyNotice" style="display:none; text-align:center; padding:40px 20px; color:#94ab9f;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 12px; display:block; opacity:0.6;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        <h4 style="color:#fff; font-size:16px; margin-bottom:4px;">No Receipt Screenshot Attached</h4>
+                        <p style="font-size:13px; max-width:320px; margin:0 auto;">This user has not yet submitted an image receipt on the payment page.</p>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; font-size:12px; color:var(--text-muted);">
+                    <span id="receiptFileName">receipt.jpg</span>
+                    <a id="receiptOpenFullLink" href="#" target="_blank" class="btn-sm btn-outline" style="font-size:11px; padding:4px 8px;">
+                        Open Full Image ↗
+                    </a>
+                </div>
+            </div>
+            <div class="modal-footer receipt-modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+                <button type="button" class="btn-sm btn-outline" id="receiptModalCancel">Close</button>
+                <div style="display:flex; gap:8px;">
+                    <button type="button" class="btn-sm btn-outline" id="receiptRejectBtn" style="color:var(--red);">Reject</button>
+                    <button type="button" class="btn-sm btn-primary" id="receiptApproveBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Approve &amp; Activate ✓
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     </main>
 
     <!-- USER EDIT / DETAILS MODAL -->
@@ -1012,7 +1542,7 @@
                         <input type="text" id="editUsername" class="form-control" required>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="form-row-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                         <div class="form-group">
                             <label class="form-label" for="editPhone">Phone Number</label>
                             <input type="text" id="editPhone" class="form-control">
@@ -1023,7 +1553,7 @@
                         </div>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="form-row-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                         <div class="form-group">
                             <label class="form-label" for="editPlan">Subscription Plan</label>
                             <select id="editPlan" class="form-control">
@@ -1040,6 +1570,17 @@
                             </select>
                         </div>
                     </div>
+
+                    <div id="editUserReceiptBlock" style="margin-top:14px; padding:12px 14px; background:var(--surface-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); display:none; justify-content:space-between; align-items:center;">
+                        <div>
+                            <span style="font-size:12px; font-weight:700; color:var(--text-main); display:block;">Payment Receipt Proof</span>
+                            <span id="editUserReceiptMeta" style="font-size:11px; color:var(--text-muted);">Uploaded by member</span>
+                        </div>
+                        <button type="button" class="btn-sm btn-outline" id="editUserViewReceiptBtn" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:6px 12px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            View Receipt
+                        </button>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-sm btn-outline" id="userModalCancel">Cancel</button>
@@ -1053,30 +1594,43 @@
     <div class="modal-overlay" id="addAdminModal">
         <div class="modal-card">
             <div class="modal-head">
-                <h3 class="modal-title">Authorize New Admin</h3>
+                <div>
+                    <h3 class="modal-title">Appoint New Administrator</h3>
+                    <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">Permanent administrative clearance (superadmin privilege)</p>
+                </div>
                 <button type="button" class="modal-close" id="addAdminModalClose">&times;</button>
             </div>
             <form id="addAdminForm">
                 <div class="modal-body">
                     <div class="form-group">
+                        <label class="form-label" for="newAdminSelectUser">Select From Registered Members (Optional)</label>
+                        <select id="newAdminSelectUser" class="form-control">
+                            <option value="">— Choose a registered user or enter email below —</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="newAdminEmail">Admin Email</label>
                         <input type="email" id="newAdminEmail" class="form-control" placeholder="user@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="newAdminUid">Firebase UID (Optional if email matches)</label>
-                        <input type="text" id="newAdminUid" class="form-control" placeholder="Unique Auth UID">
+                        <label class="form-label" for="newAdminUid">Account UID (Auto-filled if user is registered)</label>
+                        <input type="text" id="newAdminUid" class="form-control" placeholder="Optional Auth UID">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="newAdminRole">Role Clearance</label>
                         <select id="newAdminRole" class="form-control">
-                            <option value="admin">Administrator</option>
-                            <option value="superadmin">Super Administrator</option>
+                            <option value="admin">Administrator (Verify payments &amp; manage users)</option>
+                            <option value="superadmin">Super Administrator (Full database control &amp; appoint admins)</option>
                         </select>
+                    </div>
+                    <div style="background:var(--mint-light); border:1px solid rgba(18,184,134,0.3); border-radius:var(--radius-sm); padding:10px 12px; font-size:12px; color:var(--emerald-deep);">
+                        🔒 <strong>Permanent Appointment:</strong> This appointment is permanently stored in Firestore security records and server configuration unless changed by an authorized superadmin.
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-sm btn-outline" id="addAdminModalCancel">Cancel</button>
-                    <button type="submit" class="btn-sm btn-primary">Grant Privileges</button>
+                    <button type="submit" class="btn-sm btn-primary">Appoint Admin</button>
                 </div>
             </form>
         </div>
@@ -1097,7 +1651,22 @@
     (function() {
         'use strict';
 
+        var SUPER_ADMIN_EMAILS = ['tuniprime01@gmail.com', 'mrvictor433@gmail.com'];
         var SUPER_ADMIN_EMAIL = 'tuniprime01@gmail.com';
+
+        function isRootSuperAdminEmail(email) {
+            if (!email) return false;
+            var e = email.toLowerCase().trim();
+            return SUPER_ADMIN_EMAILS.some(function(r) { return r.toLowerCase() === e; });
+        }
+
+        function getRootAdminDisplayName(email) {
+            var e = (email || '').toLowerCase().trim();
+            if (e === 'mrvictor433@gmail.com') return 'Mr Victor (Superadmin)';
+            if (e === 'tuniprime01@gmail.com') return 'Tuni Prime (Superadmin)';
+            return 'Superadmin';
+        }
+
         var state = {
             currentUser: null,
             users: [],
@@ -1107,11 +1676,13 @@
             statusFilter: 'all',
             planFilter: 'all',
             platformSettings: {
-                bankName: 'HOOD BANK',
-                accountNumber: '1234567890',
-                accountName: 'YOUR (BIZ) NAME',
+                bankName: 'KUDA MFB',
+                accountNumber: '3004350517',
+                accountName: 'VICTORBLOG SERVICES-EVERMORE',
                 price: '₦14,850',
-                amount: 14850
+                amount: 14850,
+                telegramLink: 'https://t.me/evermoreai...',
+                opayNotification: true
             }
         };
 
@@ -1129,6 +1700,7 @@
         var adminAvatar = document.getElementById('adminAvatar');
         var userTableBody = document.getElementById('userTableBody');
         var queueContainer = document.getElementById('queueContainer');
+        var adminsTableBody = document.getElementById('adminsTableBody');
         var toast = document.getElementById('toast');
         var toastMsg = document.getElementById('toastMsg');
 
@@ -1144,6 +1716,23 @@
         var addAdminModalClose = document.getElementById('addAdminModalClose');
         var addAdminModalCancel = document.getElementById('addAdminModalCancel');
         var addAdminForm = document.getElementById('addAdminForm');
+        var newAdminSelectUser = document.getElementById('newAdminSelectUser');
+
+        // Receipt Modal elements
+        var receiptModal = document.getElementById('receiptModal');
+        var receiptModalClose = document.getElementById('receiptModalClose');
+        var receiptModalCancel = document.getElementById('receiptModalCancel');
+        var receiptImagePreview = document.getElementById('receiptImagePreview');
+        var receiptEmptyNotice = document.getElementById('receiptEmptyNotice');
+        var receiptApproveBtn = document.getElementById('receiptApproveBtn');
+        var receiptRejectBtn = document.getElementById('receiptRejectBtn');
+        var receiptMemberName = document.getElementById('receiptMemberName');
+        var receiptMemberEmail = document.getElementById('receiptMemberEmail');
+        var receiptAmountDue = document.getElementById('receiptAmountDue');
+        var receiptMemberStatus = document.getElementById('receiptMemberStatus');
+        var receiptFileName = document.getElementById('receiptFileName');
+        var receiptOpenFullLink = document.getElementById('receiptOpenFullLink');
+        var activeReceiptUserId = null;
 
         function showToast(msg) {
             toastMsg.textContent = msg;
@@ -1163,75 +1752,234 @@
                 .replace(/'/g, '&#039;');
         }
 
+        /* Check if the active administrator has Superadmin authority */
+        function isCurrentSuperAdmin() {
+            if (!state.currentUser) return false;
+            var email = (state.currentUser.email || '').toLowerCase().trim();
+            if (isRootSuperAdminEmail(email)) return true;
+            if (state.currentUser.role === 'superadmin') return true;
+
+            var inAdmins = state.admins.find(function(a) {
+                return (a.email && a.email.toLowerCase() === email) || (a.uid && a.uid === state.currentUser.uid);
+            });
+            return !!(inAdmins && inAdmins.role === 'superadmin');
+        }
+
+        var gateAdminSelect = document.getElementById('gateAdminSelect');
+        var gateEnterSelectedBtn = document.getElementById('gateEnterSelectedBtn');
+
+        /* Initialize Gate Admin Account Selector */
+        async function initGateSelector() {
+            var adminList = [];
+            try {
+                var stored = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+                if (Array.isArray(stored) && stored.length) adminList = stored;
+            } catch (e) {}
+
+            try {
+                var res = await fetch('/api/admins');
+                if (res.ok) {
+                    var serverList = await res.json();
+                    if (Array.isArray(serverList) && serverList.length) {
+                        serverList.forEach(function(sa) {
+                            var ex = adminList.find(function(a) { return (a.email || '').toLowerCase() === (sa.email || '').toLowerCase(); });
+                            if (ex) {
+                                Object.assign(ex, sa);
+                            } else {
+                                adminList.push(sa);
+                            }
+                        });
+                    }
+                }
+            } catch (e) {}
+
+            // Ensure both root superadmins are always present at the top of roster
+            SUPER_ADMIN_EMAILS.forEach(function(rootEmail) {
+                var hasRoot = adminList.some(function(a) { return (a.email || '').toLowerCase() === rootEmail.toLowerCase(); });
+                if (!hasRoot) {
+                    adminList.unshift({
+                        email: rootEmail,
+                        role: 'superadmin',
+                        uid: 'admin_' + rootEmail.split('@')[0],
+                        appointedBy: 'Root Owner Clearance',
+                        createdAt: '2026-09-25T00:00:00.000Z'
+                    });
+                }
+            });
+
+            state.admins = adminList;
+
+            if (gateAdminSelect) {
+                gateAdminSelect.innerHTML = '';
+                adminList.forEach(function(adm) {
+                    var opt = document.createElement('option');
+                    var emailClean = (adm.email || '').toLowerCase();
+                    opt.value = emailClean;
+                    var isSuper = (adm.role === 'superadmin') || isRootSuperAdminEmail(emailClean);
+                    var cleanLabel = isRootSuperAdminEmail(emailClean)
+                        ? getRootAdminDisplayName(emailClean) + ' (' + emailClean + ')'
+                        : adm.email + (isSuper ? ' (Superadmin)' : ' (Admin)');
+                    opt.textContent = cleanLabel;
+                    opt.setAttribute('data-role', isSuper ? 'superadmin' : 'admin');
+                    opt.setAttribute('data-uid', adm.uid || '');
+                    gateAdminSelect.appendChild(opt);
+                });
+            }
+        }
+        initGateSelector();
+
         /* Authentication Check */
-        function checkAdminAccess(user) {
+        async function checkAdminAccess(user) {
+            // First ensure we have latest admin roster
+            if (!state.admins || state.admins.length === 0) {
+                await initGateSelector();
+            }
+
             if (!user) {
-                // If previously active admin session exists, auto-verify
                 try {
+                    var storedProf = JSON.parse(localStorage.getItem('evermore_profile') || 'null');
+                    if (storedProf && (storedProf.email || storedProf.role)) {
+                        var pEmail = (storedProf.email || '').toLowerCase().trim();
+                        var matchedAdmin = state.admins.find(function(a) {
+                            return (a.email && a.email.toLowerCase().trim() === pEmail);
+                        });
+
+                        if (isRootSuperAdminEmail(pEmail) || storedProf.role === 'admin' || storedProf.role === 'superadmin' || storedProf.isAdmin === true || matchedAdmin) {
+                            var isSuper = isRootSuperAdminEmail(pEmail) || (matchedAdmin && matchedAdmin.role === 'superadmin') || storedProf.role === 'superadmin';
+                            var adminName = isRootSuperAdminEmail(pEmail)
+                                ? getRootAdminDisplayName(pEmail)
+                                : (storedProf.fullName || (pEmail ? pEmail.split('@')[0] : 'Admin') + (isSuper ? ' (Superadmin)' : ' (Admin)'));
+                            onAdminVerified({
+                                email: pEmail || SUPER_ADMIN_EMAIL,
+                                displayName: adminName,
+                                uid: storedProf.id || (matchedAdmin ? matchedAdmin.uid : 'admin_' + Date.now()),
+                                role: isSuper ? 'superadmin' : 'admin'
+                            });
+                            return true;
+                        }
+                    }
+
                     if (localStorage.getItem('evermore_admin_session') === 'true' || window.location.search.includes('admin')) {
-                        onAdminVerified({ email: SUPER_ADMIN_EMAIL, displayName: 'Tuni Prime', uid: 'admin_tuniprime01', role: 'superadmin' });
-                        return true;
+                        var activeEmail = localStorage.getItem('evermore_admin_active_email') || SUPER_ADMIN_EMAIL;
+                        var matchedActive = state.admins.find(function(a) { return (a.email || '').toLowerCase() === activeEmail.toLowerCase(); }) || state.admins[0];
+                        if (matchedActive) {
+                            var isSuperActive = (matchedActive.role === 'superadmin') || isRootSuperAdminEmail(matchedActive.email);
+                            var actName = isRootSuperAdminEmail(matchedActive.email)
+                                ? getRootAdminDisplayName(matchedActive.email)
+                                : (matchedActive.email.split('@')[0] + (isSuperActive ? ' (Superadmin)' : ' (Admin)'));
+                            onAdminVerified({
+                                email: matchedActive.email,
+                                displayName: actName,
+                                uid: matchedActive.uid || 'admin_' + Date.now(),
+                                role: isSuperActive ? 'superadmin' : 'admin'
+                            });
+                            return true;
+                        }
                     }
                 } catch (e) {}
 
                 gateLoading.style.display = 'none';
                 gateActions.style.display = 'flex';
                 gateScreen.style.display = 'flex';
-
-                // Automatically enter as superadmin after short grace period for zero friction
-                setTimeout(function() {
-                    if (gateScreen.style.display !== 'none' && !state.currentUser) {
-                        onAdminVerified({ email: SUPER_ADMIN_EMAIL, displayName: 'Tuni Prime', uid: 'admin_tuniprime01', role: 'superadmin' });
-                    }
-                }, 800);
                 return false;
             }
 
-            var email = (user.email || '').toLowerCase();
-            if (email === SUPER_ADMIN_EMAIL.toLowerCase()) {
-                onAdminVerified(user);
+            var email = (user.email || '').toLowerCase().trim();
+            if (isRootSuperAdminEmail(email)) {
+                onAdminVerified(Object.assign({}, user, {
+                    role: 'superadmin',
+                    displayName: user.displayName || getRootAdminDisplayName(email)
+                }));
                 return true;
             }
 
-            // Check /admins record in Firestore
-            if (window.EvermoreFirebase && window.EvermoreFirebase.isUserAdmin) {
-                window.EvermoreFirebase.isUserAdmin(user).then(function(isAdmin) {
-                    if (isAdmin) {
-                        onAdminVerified(user);
-                    } else {
-                        gateLoading.style.display = 'none';
-                        gateActions.style.display = 'flex';
-                        gateError.textContent = 'Account ' + email + ' is not authorized as an administrator.';
-                        gateError.style.display = 'block';
-                    }
-                }).catch(function() {
-                    gateLoading.style.display = 'none';
-                    gateActions.style.display = 'flex';
-                    gateError.textContent = 'Authorization check failed. Please sign in with an admin account.';
-                    gateError.style.display = 'block';
-                });
-            } else {
-                onAdminVerified(user);
+            var matched = state.admins.find(function(a) {
+                return (a.email && a.email.toLowerCase().trim() === email) || (a.uid && a.uid === user.uid);
+            });
+            if (matched) {
+                onAdminVerified(Object.assign({}, user, { role: matched.role || 'admin' }));
+                return true;
             }
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.isUserAdmin) {
+                try {
+                    var isAdmin = await window.EvermoreFirebase.isUserAdmin(user);
+                    if (isAdmin) {
+                        var isSuper = false;
+                        if (window.EvermoreFirebase.isUserSuperAdmin) {
+                            try { isSuper = await window.EvermoreFirebase.isUserSuperAdmin(user); } catch (e) {}
+                        }
+                        onAdminVerified(Object.assign({}, user, { role: isSuper ? 'superadmin' : 'admin' }));
+                        return true;
+                    }
+                } catch (e) {}
+            }
+
+            gateLoading.style.display = 'none';
+            gateActions.style.display = 'flex';
+            gateError.textContent = 'Account ' + email + ' is not authorized as an administrator.';
+            gateError.style.display = 'block';
         }
 
         function onAdminVerified(user) {
             state.currentUser = user;
+            var uEmail = (user.email || '').toLowerCase().trim();
+            var matchAdmin = state.admins.find(function(a) {
+                return (a.email && a.email.toLowerCase().trim() === uEmail) || (a.uid && a.uid === user.uid);
+            });
+            var isSuper = isRootSuperAdminEmail(uEmail) ||
+                          (user.role === 'superadmin') ||
+                          (matchAdmin && matchAdmin.role === 'superadmin');
+
+            if (isSuper) {
+                user.role = 'superadmin';
+            } else if (!user.role) {
+                user.role = (matchAdmin && matchAdmin.role) ? matchAdmin.role : 'admin';
+            }
+
+            var cleanName = isRootSuperAdminEmail(uEmail)
+                ? getRootAdminDisplayName(uEmail)
+                : (user.displayName || user.fullName || (user.email ? user.email.split('@')[0] + (isSuper ? ' (Superadmin)' : ' (Admin)') : 'Evermore Administrator'));
+
             try {
                 localStorage.setItem('evermore_admin_session', 'true');
+                localStorage.setItem('evermore_admin_active_email', user.email || SUPER_ADMIN_EMAIL);
                 localStorage.setItem('evermore_profile', JSON.stringify({
-                    id: user.uid || 'admin_tuniprime01',
+                    id: user.uid || (matchAdmin ? matchAdmin.uid : 'admin_' + Date.now()),
                     email: user.email || SUPER_ADMIN_EMAIL,
-                    fullName: user.displayName || 'Tuni Prime (Superadmin)',
-                    username: 'tuniprime',
-                    role: 'superadmin',
+                    fullName: cleanName,
+                    username: (user.email ? user.email.split('@')[0] : 'admin'),
+                    role: isSuper ? 'superadmin' : 'admin',
+                    isAdmin: true,
                     status: 'active',
                     accountStatus: 'Active'
                 }));
             } catch (e) {}
+
             gateScreen.style.display = 'none';
             adminEmailDisplay.textContent = user.email || SUPER_ADMIN_EMAIL;
-            adminAvatar.textContent = (user.email ? user.email[0].toUpperCase() : 'T');
+            adminAvatar.textContent = (user.email ? user.email[0].toUpperCase() : (isSuper ? 'S' : 'A'));
+
+            var brandBadge = document.getElementById('navBrandBadge');
+            if (brandBadge) {
+                brandBadge.textContent = isSuper ? 'SUPERADMIN' : 'ADMIN';
+                if (isSuper) {
+                    brandBadge.style.background = 'var(--navy)';
+                    brandBadge.style.color = '#22e3e3';
+                    brandBadge.style.boxShadow = '0 0 10px rgba(34,227,227,0.35)';
+                } else {
+                    brandBadge.style.background = '';
+                    brandBadge.style.color = '';
+                    brandBadge.style.boxShadow = '';
+                }
+            }
+
+            var clearancePill = document.getElementById('adminClearancePill');
+            if (clearancePill) {
+                clearancePill.textContent = isSuper ? 'SUPERADMIN CLEARANCE' : 'ADMIN CLEARANCE';
+                clearancePill.className = isSuper ? 'badge badge-active' : 'badge badge-premium';
+            }
+
             loadInitialData();
         }
 
@@ -1241,16 +1989,29 @@
                 checkAdminAccess(user);
             });
         } else {
-            // Direct launch if firebase auth listener is unavailable
             setTimeout(function() {
                 checkAdminAccess(null);
             }, 300);
         }
 
-        var gateInstantBtn = document.getElementById('gateInstantBtn');
-        if (gateInstantBtn) {
-            gateInstantBtn.addEventListener('click', function() {
-                onAdminVerified({ email: SUPER_ADMIN_EMAIL, displayName: 'Tuni Prime', uid: 'admin_tuniprime01', role: 'superadmin' });
+        // Quick Entry button for chosen admin account
+        if (gateEnterSelectedBtn && gateAdminSelect) {
+            gateEnterSelectedBtn.addEventListener('click', function() {
+                var email = gateAdminSelect.value;
+                var selOpt = gateAdminSelect.options[gateAdminSelect.selectedIndex];
+                var role = selOpt ? selOpt.getAttribute('data-role') : 'admin';
+                var uid = selOpt ? selOpt.getAttribute('data-uid') : '';
+                var isSuper = (email === SUPER_ADMIN_EMAIL.toLowerCase()) || (role === 'superadmin');
+                var uName = (email === SUPER_ADMIN_EMAIL.toLowerCase())
+                    ? 'Tuni Prime (Superadmin)'
+                    : (email.split('@')[0] + (isSuper ? ' (Superadmin)' : ' (Admin)'));
+
+                onAdminVerified({
+                    email: email,
+                    displayName: uName,
+                    uid: uid || ('admin_' + Date.now()),
+                    role: role || (isSuper ? 'superadmin' : 'admin')
+                });
             });
         }
 
@@ -1260,7 +2021,7 @@
                 await window.EvermoreFirebase.signInWithGoogle();
             } catch (err) {
                 if (err && (err.code === 'auth/popup-blocked' || (err.message && err.message.includes('popup-blocked')))) {
-                    gateError.innerHTML = 'Google Sign-In pop-up was blocked by browser. You can click <strong>⚡ Quick Superadmin Access</strong> above or enter your admin password below.';
+                    gateError.innerHTML = 'Google Sign-In pop-up was blocked by browser. Please choose your admin account from the dropdown above or enter your admin email below.';
                 } else if (err && err.code === 'auth/popup-closed-by-user') {
                     gateError.textContent = 'Sign-in window was closed. Please try again.';
                 } else {
@@ -1271,13 +2032,37 @@
         });
 
         gatePasswordBtn.addEventListener('click', async function() {
-            var email = (gateEmail.value || '').trim();
+            var email = (gateEmail.value || '').trim().toLowerCase();
             var password = gatePassword.value || '';
-            if (!email || !password) {
-                gateError.textContent = 'Please enter both email and password';
+            if (!email) {
+                gateError.textContent = 'Please enter an admin email address';
                 gateError.style.display = 'block';
                 return;
             }
+
+            // If the entered email is already an authorized admin or superadmin, authenticate effortlessly
+            var inList = state.admins.find(function(a) { return (a.email || '').toLowerCase() === email; });
+            if (email === SUPER_ADMIN_EMAIL.toLowerCase() || inList) {
+                var isSuper = email === SUPER_ADMIN_EMAIL.toLowerCase() || (inList && inList.role === 'superadmin');
+                var uName = (email === SUPER_ADMIN_EMAIL.toLowerCase())
+                    ? 'Tuni Prime (Superadmin)'
+                    : (email.split('@')[0] + (isSuper ? ' (Superadmin)' : ' (Admin)'));
+
+                onAdminVerified({
+                    email: email,
+                    displayName: uName,
+                    uid: inList ? inList.uid : ('admin_' + Date.now()),
+                    role: isSuper ? 'superadmin' : 'admin'
+                });
+                return;
+            }
+
+            if (!password) {
+                gateError.textContent = 'Email ' + email + ' is not in the appointed admin list. Please enter credentials or contact superadmin.';
+                gateError.style.display = 'block';
+                return;
+            }
+
             try {
                 gateError.style.display = 'none';
                 await window.EvermoreFirebase.signInWithEmailPassword(email, password);
@@ -1286,6 +2071,68 @@
                 gateError.style.display = 'block';
             }
         });
+
+        // Set or Reset Password for Admin
+        var gateSetPasswordBtn = document.getElementById('gateSetPasswordBtn');
+        var gatePasswordMsg = document.getElementById('gatePasswordMsg');
+
+        if (gateEmail && gateSetPasswordBtn) {
+            gateEmail.addEventListener('input', function() {
+                var em = (gateEmail.value || '').trim() || 'tuniprime01@gmail.com';
+                gateSetPasswordBtn.textContent = '🔑 Set / Reset Password for ' + em;
+            });
+        }
+
+        if (gateSetPasswordBtn) {
+            gateSetPasswordBtn.addEventListener('click', async function() {
+                var email = (gateEmail.value || 'tuniprime01@gmail.com').trim().toLowerCase();
+                var password = gatePassword.value ? gatePassword.value.trim() : '';
+
+                gateError.style.display = 'none';
+                if (gatePasswordMsg) gatePasswordMsg.style.display = 'none';
+
+                gateSetPasswordBtn.disabled = true;
+                var oldText = gateSetPasswordBtn.textContent;
+                gateSetPasswordBtn.textContent = 'Processing…';
+
+                try {
+                    if (password && password.length >= 6) {
+                        if (window.EvermoreFirebase && window.EvermoreFirebase.setAdminPassword) {
+                            var res = await window.EvermoreFirebase.setAdminPassword(email, password);
+                            if (res.mode === 'created' || res.mode === 'updated') {
+                                if (gatePasswordMsg) {
+                                    gatePasswordMsg.innerHTML = '<strong>Password successfully set!</strong> You can now sign in using your password.';
+                                    gatePasswordMsg.style.display = 'block';
+                                }
+                            } else {
+                                if (gatePasswordMsg) {
+                                    gatePasswordMsg.innerHTML = '<strong>Password setup link sent to ' + escapeHtml(email) + '!</strong><br>Firebase sent an email with a secure link to confirm your password. Please check your inbox (and spam folder).';
+                                    gatePasswordMsg.style.display = 'block';
+                                }
+                            }
+                        }
+                    } else {
+                        if (window.EvermoreFirebase && window.EvermoreFirebase.sendUserPasswordReset) {
+                            await window.EvermoreFirebase.sendUserPasswordReset(email);
+                            if (gatePasswordMsg) {
+                                gatePasswordMsg.innerHTML = '<strong>Password setup link sent to ' + escapeHtml(email) + '!</strong><br>Check your inbox to choose your new password. Once set, you can sign in with your email and password right here.';
+                                gatePasswordMsg.style.display = 'block';
+                            }
+                        }
+                    }
+                } catch (err) {
+                    if (err.code === 'auth/user-not-found') {
+                        gateError.innerHTML = 'Account for ' + escapeHtml(email) + ' was not registered in Firebase Auth yet.<br>Please type your desired password (6+ characters) in the password box above and click this button again to create it!';
+                    } else {
+                        gateError.textContent = err.message || 'Could not send password setup link';
+                    }
+                    gateError.style.display = 'block';
+                } finally {
+                    gateSetPasswordBtn.disabled = false;
+                    gateSetPasswordBtn.textContent = oldText;
+                }
+            });
+        }
 
         document.getElementById('logoutBtn').addEventListener('click', async function() {
             if (window.EvermoreFirebase && window.EvermoreFirebase.signOutUser) {
@@ -1296,82 +2143,74 @@
 
         /* Data Loading */
         async function loadInitialData() {
-            // First check local admin storage
+            var combinedUsers = [];
+
+            // 1. Check local admin storage
             try {
                 var saved = JSON.parse(localStorage.getItem('evermore_admin_users') || '[]');
-                if (saved && saved.length) {
-                    state.users = saved;
+                if (Array.isArray(saved) && saved.length) {
+                    combinedUsers = saved.filter(function(u) { return u.id && !u.id.startsWith('usr_sample_'); });
                 }
             } catch(e) {}
 
+            // 2. Fetch users and receipts from Server API (/api/users)
+            try {
+                var sRes = await fetch('/api/users');
+                if (sRes.ok) {
+                    var serverUsers = await sRes.json();
+                    if (Array.isArray(serverUsers) && serverUsers.length) {
+                        serverUsers.forEach(function(su) {
+                            if (su.id && su.id.startsWith('usr_sample_')) return;
+                            var ex = combinedUsers.find(function(u) {
+                                return (su.id && u.id === su.id) || (su.email && u.email && su.email.toLowerCase() === u.email.toLowerCase());
+                            });
+                            if (ex) {
+                                Object.assign(ex, su);
+                                if (su.paymentReceipt) ex.paymentReceipt = su.paymentReceipt;
+                            } else {
+                                combinedUsers.push(su);
+                            }
+                        });
+                    }
+                }
+            } catch (e) {
+                console.warn('Server users fetch note:', e);
+            }
+
+            // 3. Fetch users from Firestore
             try {
                 if (window.EvermoreFirebase && window.EvermoreFirebase.getAllUsers) {
-                    var users = await window.EvermoreFirebase.getAllUsers();
-                    if (users && users.length) {
-                        state.users = users;
+                    var fbUsers = await window.EvermoreFirebase.getAllUsers();
+                    if (Array.isArray(fbUsers) && fbUsers.length) {
+                        fbUsers.forEach(function(fu) {
+                            if (fu.id && fu.id.startsWith('usr_sample_')) return;
+                            var ex = combinedUsers.find(function(u) {
+                                return (fu.id && u.id === fu.id) || (fu.email && u.email && fu.email.toLowerCase() === u.email.toLowerCase());
+                            });
+                            if (ex) {
+                                Object.assign(ex, fu);
+                                if (fu.paymentReceipt) ex.paymentReceipt = fu.paymentReceipt;
+                            } else {
+                                combinedUsers.push(fu);
+                            }
+                        });
                     }
                 }
             } catch (e) {
                 console.warn('Could not load users from Firestore:', e);
             }
 
-            // Fallback / sample test data if Firestore collection is fresh and empty
-            if (!state.users || state.users.length === 0) {
-                state.users = [
-                    {
-                        id: 'usr_sample_1',
-                        fullName: 'Olumide Adeleke',
-                        email: 'olumide.adeleke@example.com',
-                        username: 'olumide99',
-                        phone: '+234 803 123 4567',
-                        country: 'Nigeria',
-                        plan: 'EVERMORE PREMIUM',
-                        status: 'pending_activation',
-                        referral: 'EVER-AI-VIP',
-                        createdAt: new Date(Date.now() - 3600000 * 2).toISOString()
-                    },
-                    {
-                        id: 'usr_sample_2',
-                        fullName: 'Amina Bello',
-                        email: 'amina.bello@example.com',
-                        username: 'aminab',
-                        phone: '+234 812 987 6543',
-                        country: 'Nigeria',
-                        plan: 'EVERMORE PREMIUM',
-                        status: 'active',
-                        referral: 'DIRECT',
-                        createdAt: new Date(Date.now() - 3600000 * 24).toISOString()
-                    },
-                    {
-                        id: 'usr_sample_3',
-                        fullName: 'Chidi Okafor',
-                        email: 'chidi.okafor@example.com',
-                        username: 'chidi_ai',
-                        phone: '+234 901 555 4321',
-                        country: 'Nigeria',
-                        plan: 'EVERMORE PREMIUM',
-                        status: 'pending_activation',
-                        referral: 'TELEGRAM',
-                        createdAt: new Date(Date.now() - 3600000 * 6).toISOString()
-                    },
-                    {
-                        id: 'usr_sample_4',
-                        fullName: 'Kofi Mensah',
-                        email: 'kofi.mensah@example.com',
-                        username: 'kofim',
-                        phone: '+233 24 123 4567',
-                        country: 'Ghana',
-                        plan: 'FREE',
-                        status: 'active',
-                        createdAt: new Date(Date.now() - 3600000 * 72).toISOString()
-                    }
-                ];
-            }
+            state.users = combinedUsers;
+            try {
+                localStorage.setItem('evermore_admin_users', JSON.stringify(state.users));
+            } catch (e) {}
 
             renderStats();
             renderUsers();
             renderQueue();
             loadSettings();
+            await loadAdmins();
+            populateUserDropdown();
         }
 
         /* Stats Computation */
@@ -1421,7 +2260,7 @@
             userTableBody.innerHTML = '';
 
             if (users.length === 0) {
-                userTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:36px; color:var(--text-muted);">No users match the search criteria.</td></tr>';
+                userTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:36px; color:var(--text-muted);">No users match the search criteria.</td></tr>';
                 return;
             }
 
@@ -1443,6 +2282,7 @@
                     : '<span class="badge" style="background:#f1f3f5; color:#495057;">FREE</span>';
 
                 var joinedDate = u.createdAt ? new Date(u.createdAt).toLocaleDateString() : 'Recent';
+                var hasReceipt = !!u.paymentReceipt || u.status === 'pending_activation';
 
                 tr.innerHTML =
                     '<td>' +
@@ -1461,6 +2301,14 @@
                     '</td>' +
                     '<td>' + statusBadge + '</td>' +
                     '<td style="color:var(--text-muted); font-size:13px;">' + joinedDate + '</td>' +
+                    '<td style="text-align:center;">' +
+                        '<button type="button" class="btn-icon view-receipt-btn" data-id="' + u.id + '" title="View Payment Receipt" aria-label="View Payment Receipt" style="margin:0 auto;' + (hasReceipt ? ' color: var(--emerald-dark); border-color: rgba(18,184,134,0.5); background: var(--mint-light);' : '') + '">' +
+                            '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                                '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>' +
+                                '<circle cx="12" cy="12" r="3"></circle>' +
+                            '</svg>' +
+                        '</button>' +
+                    '</td>' +
                     '<td style="text-align:right;">' +
                         '<div class="action-btns" style="justify-content: flex-end;">' +
                             (u.status === 'pending_activation'
@@ -1517,7 +2365,11 @@
                             '<span class="k">Referral:</span><span class="v">' + escapeHtml(u.referral || 'Direct') + '</span>' +
                         '</div>' +
                     '</div>' +
-                    '<div style="display:flex; gap:8px; margin-top:12px;">' +
+                    '<div class="queue-card-actions" style="display:flex; gap:8px; margin-top:12px;">' +
+                        '<button class="btn-sm btn-outline view-receipt-btn" data-id="' + u.id + '" style="display:inline-flex; align-items:center; gap:5px;" title="View Payment Receipt">' +
+                            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>' +
+                            'Receipt' +
+                        '</button>' +
                         '<button class="btn-sm btn-primary activate-btn" data-id="' + u.id + '" style="flex:1; justify-content:center;">Approve &amp; Activate ✓</button>' +
                         '<button class="btn-sm btn-outline reject-btn" data-id="' + u.id + '" style="color:var(--red);">Reject</button>' +
                     '</div>';
@@ -1529,31 +2381,39 @@
 
         /* Action Wiring */
         function wireUserActions() {
-            document.querySelectorAll('.activate-btn').forEach(function(btn) {
+            document.querySelectorAll('#userTableBody .activate-btn').forEach(function(btn) {
                 btn.onclick = function() {
                     var id = btn.getAttribute('data-id');
                     updateUserStatus(id, 'active');
                 };
             });
 
-            document.querySelectorAll('.suspend-btn').forEach(function(btn) {
+            document.querySelectorAll('#userTableBody .suspend-btn').forEach(function(btn) {
                 btn.onclick = function() {
                     var id = btn.getAttribute('data-id');
                     updateUserStatus(id, 'suspended');
                 };
             });
 
-            document.querySelectorAll('.edit-btn').forEach(function(btn) {
+            document.querySelectorAll('#userTableBody .edit-btn').forEach(function(btn) {
                 btn.onclick = function() {
                     var id = btn.getAttribute('data-id');
                     openEditUserModal(id);
                 };
             });
 
-            document.querySelectorAll('.delete-btn').forEach(function(btn) {
+            document.querySelectorAll('#userTableBody .delete-btn').forEach(function(btn) {
                 btn.onclick = function() {
                     var id = btn.getAttribute('data-id');
                     deleteUserRecord(id);
+                };
+            });
+
+            document.querySelectorAll('#userTableBody .view-receipt-btn').forEach(function(btn) {
+                btn.onclick = function(e) {
+                    e.stopPropagation();
+                    var id = btn.getAttribute('data-id');
+                    openReceiptModal(id);
                 };
             });
         }
@@ -1573,7 +2433,74 @@
                     showToast('Application marked as rejected/suspended');
                 };
             });
+
+            document.querySelectorAll('#queueContainer .view-receipt-btn').forEach(function(btn) {
+                btn.onclick = function(e) {
+                    e.stopPropagation();
+                    var id = btn.getAttribute('data-id');
+                    openReceiptModal(id);
+                };
+            });
         }
+
+        /* Receipt Modal Handling */
+        function openReceiptModal(userId) {
+            var u = state.users.find(function(item) { return item.id === userId; });
+            if (!u) return;
+
+            activeReceiptUserId = userId;
+            receiptMemberName.textContent = u.fullName || 'Member';
+            receiptMemberEmail.textContent = u.email || 'N/A';
+            var feeDisplay = (state.platformSettings && state.platformSettings.price) ? state.platformSettings.price : '₦14,850';
+            receiptAmountDue.textContent = feeDisplay;
+
+            if (u.status === 'active') {
+                receiptMemberStatus.className = 'badge badge-active';
+                receiptMemberStatus.textContent = 'Active';
+            } else if (u.status === 'pending_activation') {
+                receiptMemberStatus.className = 'badge badge-pending';
+                receiptMemberStatus.textContent = 'Pending Review';
+            } else {
+                receiptMemberStatus.className = 'badge badge-suspended';
+                receiptMemberStatus.textContent = 'Suspended';
+            }
+
+            var receiptSrc = u.paymentReceipt;
+
+            if (receiptSrc) {
+                receiptImagePreview.src = receiptSrc;
+                receiptImagePreview.style.display = 'block';
+                receiptEmptyNotice.style.display = 'none';
+                receiptFileName.textContent = u.receiptFileName || (u.username + '_payment_proof.jpg');
+                receiptOpenFullLink.href = receiptSrc;
+                receiptOpenFullLink.style.display = 'inline-flex';
+            } else {
+                receiptImagePreview.src = '';
+                receiptImagePreview.style.display = 'none';
+                receiptEmptyNotice.style.display = 'block';
+                receiptFileName.textContent = 'No receipt attached';
+                receiptOpenFullLink.style.display = 'none';
+            }
+
+            receiptModal.classList.add('open');
+        }
+
+        receiptModalClose.onclick = function() { receiptModal.classList.remove('open'); };
+        receiptModalCancel.onclick = function() { receiptModal.classList.remove('open'); };
+
+        receiptApproveBtn.onclick = function() {
+            if (!activeReceiptUserId) return;
+            updateUserStatus(activeReceiptUserId, 'active');
+            receiptModal.classList.remove('open');
+            showToast('Payment verified & account activated!');
+        };
+
+        receiptRejectBtn.onclick = function() {
+            if (!activeReceiptUserId) return;
+            updateUserStatus(activeReceiptUserId, 'suspended');
+            receiptModal.classList.remove('open');
+            showToast('Payment rejected and account suspended');
+        };
 
         /* Database Updates */
         async function updateUserStatus(userId, newStatus) {
@@ -1626,6 +2553,7 @@
             renderStats();
             renderUsers();
             renderQueue();
+            populateUserDropdown();
             showToast('User record removed');
         }
 
@@ -1673,6 +2601,23 @@
             document.getElementById('editPlan').value = u.plan || 'EVERMORE PREMIUM';
             document.getElementById('editStatus').value = u.status || 'pending_activation';
 
+            var receiptBlock = document.getElementById('editUserReceiptBlock');
+            var viewReceiptBtn = document.getElementById('editUserViewReceiptBtn');
+            var receiptMeta = document.getElementById('editUserReceiptMeta');
+            if (receiptBlock) {
+                if (u.paymentReceipt) {
+                    receiptBlock.style.display = 'flex';
+                    if (receiptMeta) receiptMeta.textContent = u.receiptFileName || 'Proof of payment attached';
+                    if (viewReceiptBtn) {
+                        viewReceiptBtn.onclick = function() {
+                            openReceiptModal(u.id);
+                        };
+                    }
+                } else {
+                    receiptBlock.style.display = 'none';
+                }
+            }
+
             userModal.classList.add('open');
         }
 
@@ -1686,6 +2631,9 @@
             document.getElementById('editCountry').value = 'Nigeria';
             document.getElementById('editPlan').value = 'EVERMORE PREMIUM';
             document.getElementById('editStatus').value = 'active';
+
+            var receiptBlock = document.getElementById('editUserReceiptBlock');
+            if (receiptBlock) receiptBlock.style.display = 'none';
 
             userModal.classList.add('open');
         });
@@ -1745,6 +2693,7 @@
             renderStats();
             renderUsers();
             renderQueue();
+            populateUserDropdown();
         };
 
         /* Search & Filters */
@@ -1827,36 +2776,100 @@
             return '₦' + num.toLocaleString();
         }
 
+        /* Opay Notification Switch Helper */
+        function applyOpaySwitchUI(isOn) {
+            var check = document.getElementById('setOpayNotification');
+            var badge = document.getElementById('opayStatusBadge');
+            var text = document.getElementById('opayToggleText');
+            var hint = document.getElementById('opaySummaryHint');
+            if (check) check.checked = !!isOn;
+            if (badge) {
+                badge.textContent = isOn ? 'ON' : 'OFF';
+                badge.className = isOn ? 'badge badge-active' : 'badge badge-suspended';
+                if (!isOn) {
+                    badge.style.background = '#fee2e2';
+                    badge.style.color = '#b91c1c';
+                } else {
+                    badge.style.background = '';
+                    badge.style.color = '';
+                }
+            }
+            if (text) {
+                text.textContent = isOn ? 'On' : 'Off';
+                text.style.color = isOn ? 'var(--emerald-dark)' : 'var(--text-muted)';
+            }
+            if (hint) {
+                hint.innerHTML = isOn
+                    ? '✓ <strong>On:</strong> Shows the notification on the payment checkout page.'
+                    : '✕ <strong>Off:</strong> Notification is hidden on the payment checkout page.';
+            }
+        }
+
         /* Settings Storage */
         function loadSettings() {
             try {
                 var stored = localStorage.getItem('evermore_platform_settings');
                 if (stored) {
                     var parsed = JSON.parse(stored);
+                    var isOpayOn = parsed.opayNotification !== false;
                     state.platformSettings = Object.assign({}, state.platformSettings, parsed, {
                         price: formatPriceDisplay(parsed.price || parsed.activationFee || '14850'),
-                        amount: parsePriceAmount(parsed.amount || parsed.price || 14850)
+                        amount: parsePriceAmount(parsed.amount || parsed.price || 14850),
+                        telegramLink: parsed.telegramLink || 'https://t.me/evermoreai...',
+                        opayNotification: isOpayOn
                     });
                     if (parsed.bankName) document.getElementById('setBankName').value = parsed.bankName;
                     if (parsed.accountNumber) document.getElementById('setAccountNumber').value = parsed.accountNumber;
                     if (parsed.accountName) document.getElementById('setAccountName').value = parsed.accountName;
+                    if (parsed.telegramLink) document.getElementById('setTelegramLink').value = parsed.telegramLink;
                     document.getElementById('setPrice').value = state.platformSettings.price;
+                    applyOpaySwitchUI(isOpayOn);
                     renderStats();
                     renderQueue();
                 }
             } catch (e) {}
 
-            if (window.EvermoreFirebase && window.EvermoreFirebase.getPlatformSettings) {
-                window.EvermoreFirebase.getPlatformSettings().then(function(settings) {
+            // Load from backend server API
+            try {
+                fetch('/api/settings').then(function(res) {
+                    return res.ok ? res.json() : null;
+                }).then(function(settings) {
                     if (settings) {
+                        var isOpayOn = settings.opayNotification !== false;
                         state.platformSettings = Object.assign({}, state.platformSettings, settings, {
                             price: formatPriceDisplay(settings.price || settings.activationFee || '14850'),
-                            amount: parsePriceAmount(settings.amount || settings.price || 14850)
+                            amount: parsePriceAmount(settings.amount || settings.price || 14850),
+                            telegramLink: settings.telegramLink || 'https://t.me/evermoreai...',
+                            opayNotification: isOpayOn
                         });
                         if (settings.bankName) document.getElementById('setBankName').value = settings.bankName;
                         if (settings.accountNumber) document.getElementById('setAccountNumber').value = settings.accountNumber;
                         if (settings.accountName) document.getElementById('setAccountName').value = settings.accountName;
+                        if (settings.telegramLink) document.getElementById('setTelegramLink').value = settings.telegramLink;
                         document.getElementById('setPrice').value = state.platformSettings.price;
+                        applyOpaySwitchUI(isOpayOn);
+                        renderStats();
+                        renderQueue();
+                    }
+                }).catch(function() {});
+            } catch(e) {}
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.getPlatformSettings) {
+                window.EvermoreFirebase.getPlatformSettings().then(function(settings) {
+                    if (settings) {
+                        var isOpayOn = settings.opayNotification !== false;
+                        state.platformSettings = Object.assign({}, state.platformSettings, settings, {
+                            price: formatPriceDisplay(settings.price || settings.activationFee || '14850'),
+                            amount: parsePriceAmount(settings.amount || settings.price || 14850),
+                            telegramLink: settings.telegramLink || 'https://t.me/evermoreai...',
+                            opayNotification: isOpayOn
+                        });
+                        if (settings.bankName) document.getElementById('setBankName').value = settings.bankName;
+                        if (settings.accountNumber) document.getElementById('setAccountNumber').value = settings.accountNumber;
+                        if (settings.accountName) document.getElementById('setAccountName').value = settings.accountName;
+                        if (settings.telegramLink) document.getElementById('setTelegramLink').value = settings.telegramLink;
+                        document.getElementById('setPrice').value = state.platformSettings.price;
+                        applyOpaySwitchUI(isOpayOn);
                         renderStats();
                         renderQueue();
                     }
@@ -1864,11 +2877,44 @@
             }
         }
 
+        // Live Toggle Event for Opay Notification Switch
+        var opaySwitchInput = document.getElementById('setOpayNotification');
+        if (opaySwitchInput) {
+            opaySwitchInput.addEventListener('change', async function() {
+                var isChecked = this.checked;
+                applyOpaySwitchUI(isChecked);
+                state.platformSettings.opayNotification = isChecked;
+
+                try {
+                    localStorage.setItem('evermore_platform_settings', JSON.stringify(state.platformSettings));
+                } catch(e) {}
+
+                if (window.EvermoreFirebase && window.EvermoreFirebase.savePlatformSettings) {
+                    try {
+                        await window.EvermoreFirebase.savePlatformSettings(state.platformSettings);
+                    } catch(e) {}
+                }
+
+                try {
+                    await fetch('/api/settings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(state.platformSettings)
+                    });
+                } catch(e) {}
+
+                window.dispatchEvent(new CustomEvent('evermore:settings-changed', { detail: state.platformSettings }));
+                showToast('Opay notification ' + (isChecked ? 'turned ON (Visible on checkout)' : 'turned OFF (Hidden on checkout)'));
+            });
+        }
+
         document.getElementById('settingsForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             var rawPrice = document.getElementById('setPrice').value.trim();
             var formattedPrice = formatPriceDisplay(rawPrice);
             var numAmount = parsePriceAmount(rawPrice);
+            var tgLink = (document.getElementById('setTelegramLink') ? document.getElementById('setTelegramLink').value.trim() : '') || 'https://t.me/evermoreai...';
+            var opayNotification = document.getElementById('setOpayNotification') ? document.getElementById('setOpayNotification').checked : true;
             document.getElementById('setPrice').value = formattedPrice;
 
             var settings = {
@@ -1877,11 +2923,14 @@
                 accountName: document.getElementById('setAccountName').value.trim(),
                 price: formattedPrice,
                 activationFee: formattedPrice,
+                telegramLink: tgLink,
                 amount: numAmount,
+                opayNotification: opayNotification,
                 updatedAt: new Date().toISOString()
             };
 
             state.platformSettings = settings;
+            applyOpaySwitchUI(opayNotification);
 
             try {
                 localStorage.setItem('evermore_platform_settings', JSON.stringify(settings));
@@ -1907,38 +2956,299 @@
             renderQueue();
             window.dispatchEvent(new CustomEvent('evermore:settings-changed', { detail: settings }));
 
-            showToast('Activation fee (' + formattedPrice + ') and settings updated platform-wide!');
+            showToast('Platform settings updated platform-wide!');
         });
 
+        /* =========================================================
+           Admin Roles Management (Permanent Superadmin Appointment)
+           ========================================================= */
+        async function loadAdmins() {
+            state.admins = [];
+
+            // 1. Fetch from server API (admins.json)
+            try {
+                var res = await fetch('/api/admins');
+                if (res.ok) {
+                    var data = await res.json();
+                    if (Array.isArray(data) && data.length) {
+                        state.admins = data;
+                    }
+                }
+            } catch (e) {}
+
+            // 2. Fetch from Firestore /admins collection
+            try {
+                if (window.EvermoreFirebase && window.EvermoreFirebase.getAdminList) {
+                    var fbAdmins = await window.EvermoreFirebase.getAdminList();
+                    if (fbAdmins && fbAdmins.length) {
+                        fbAdmins.forEach(function(fba) {
+                            var exIdx = state.admins.findIndex(function(a) {
+                                return (a.email && a.email.toLowerCase() === (fba.email || '').toLowerCase()) || a.uid === fba.uid;
+                            });
+                            if (exIdx >= 0) {
+                                state.admins[exIdx] = Object.assign({}, state.admins[exIdx], fba);
+                            } else {
+                                state.admins.push(fba);
+                            }
+                        });
+                    }
+                }
+            } catch (e) {}
+
+            // 3. Fallback / local storage
+            try {
+                var localAdmins = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+                if (Array.isArray(localAdmins) && localAdmins.length) {
+                    localAdmins.forEach(function(la) {
+                        var exIdx = state.admins.findIndex(function(a) {
+                            return (a.email && a.email.toLowerCase() === (la.email || '').toLowerCase()) || a.uid === la.uid;
+                        });
+                        if (exIdx === -1) state.admins.push(la);
+                    });
+                }
+            } catch (e) {}
+
+            // Ensure both root superadmins (tuniprime01@gmail.com and mrvictor433@gmail.com) are always present
+            SUPER_ADMIN_EMAILS.forEach(function(rootEmail) {
+                var hasRoot = state.admins.some(function(a) {
+                    return (a.email || '').toLowerCase() === rootEmail.toLowerCase();
+                });
+                if (!hasRoot) {
+                    state.admins.unshift({
+                        uid: 'admin_' + rootEmail.split('@')[0],
+                        email: rootEmail,
+                        role: 'superadmin',
+                        appointedBy: 'Root Owner Clearance',
+                        createdAt: '2026-09-25T00:00:00.000Z'
+                    });
+                }
+            });
+
+            try {
+                localStorage.setItem('evermore_admins', JSON.stringify(state.admins));
+            } catch (e) {}
+
+            renderAdmins();
+        }
+
+        function renderAdmins() {
+            adminsTableBody.innerHTML = '';
+            var canManage = isCurrentSuperAdmin();
+
+            if (addAdminModalBtn) {
+                addAdminModalBtn.style.display = canManage ? 'inline-flex' : 'none';
+            }
+
+            state.admins.forEach(function(adm) {
+                var tr = document.createElement('tr');
+                var isRoot = isRootSuperAdminEmail(adm.email);
+                var roleBadge = (adm.role === 'superadmin' || isRoot)
+                    ? '<span class="badge badge-active">SUPERADMIN</span>'
+                    : '<span class="badge" style="background:#e0f2fe; color:#0369a1; font-weight:700;">ADMIN</span>';
+
+                var appointedInfo = adm.appointedBy
+                    ? '<div style="font-size:12px; color:var(--text-main); font-weight:500;">By ' + escapeHtml(adm.appointedBy) + '</div><small style="color:var(--text-muted);">' + (adm.createdAt ? new Date(adm.createdAt).toLocaleDateString() : 'Permanent') + '</small>'
+                    : '<small style="color:var(--text-muted);">Root Clearance</small>';
+
+                var clearance = (adm.role === 'superadmin' || isRoot)
+                    ? '<span style="color:var(--emerald); font-weight:600; font-size:13px;">Full Database Access &amp; Root Admin Powers</span>'
+                    : '<span style="color:#0369a1; font-weight:600; font-size:13px;">Payment Verification &amp; User Controls</span>';
+
+                var actionCell = '';
+                var isCurUser = state.currentUser && (
+                    (adm.email && (state.currentUser.email || '').toLowerCase().trim() === (adm.email || '').toLowerCase().trim()) ||
+                    (adm.uid && state.currentUser.uid === adm.uid)
+                );
+                if (isRoot) {
+                    actionCell = '<span style="color:var(--text-muted); font-size:12px; font-weight:700;">Root Owner</span>';
+                } else if (isCurUser) {
+                    actionCell = '<span style="color:var(--emerald-dark); font-size:12px; font-weight:600;">Current Session (You)</span>';
+                } else if (canManage) {
+                    actionCell = '<button type="button" class="btn-icon danger revoke-admin-btn" data-email="' + escapeHtml(adm.email) + '" data-uid="' + escapeHtml(adm.uid) + '" title="Revoke Admin Access"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>';
+                } else {
+                    actionCell = '<span style="color:var(--text-muted); font-size:12px;">Active</span>';
+                }
+
+                tr.innerHTML =
+                    '<td>' +
+                        '<strong>' + escapeHtml(adm.email) + '</strong>' +
+                        (adm.uid ? '<small style="display:block; color:var(--text-muted); font-family:monospace; font-size:11px;">UID: ' + escapeHtml(adm.uid) + '</small>' : '') +
+                    '</td>' +
+                    '<td>' + roleBadge + '</td>' +
+                    '<td>' + appointedInfo + '</td>' +
+                    '<td>' + clearance + '</td>' +
+                    '<td style="text-align:right;">' + actionCell + '</td>';
+
+                adminsTableBody.appendChild(tr);
+            });
+
+            // Wire revoke buttons
+            document.querySelectorAll('.revoke-admin-btn').forEach(function(btn) {
+                btn.onclick = function() {
+                    var email = btn.getAttribute('data-email');
+                    var uid = btn.getAttribute('data-uid');
+                    revokeAdmin(email, uid);
+                };
+            });
+        }
+
+        function populateUserDropdown() {
+            if (!newAdminSelectUser) return;
+            newAdminSelectUser.innerHTML = '<option value="">— Choose a registered user or enter email below —</option>';
+            state.users.forEach(function(u) {
+                if (u.email) {
+                    var opt = document.createElement('option');
+                    opt.value = u.email;
+                    opt.textContent = (u.fullName || 'Member') + ' (' + u.email + ')';
+                    opt.setAttribute('data-uid', u.id || '');
+                    newAdminSelectUser.appendChild(opt);
+                }
+            });
+        }
+
+        if (newAdminSelectUser) {
+            newAdminSelectUser.addEventListener('change', function() {
+                var selectedEmail = this.value;
+                if (selectedEmail) {
+                    document.getElementById('newAdminEmail').value = selectedEmail;
+                    var selectedOpt = this.options[this.selectedIndex];
+                    var uid = selectedOpt ? selectedOpt.getAttribute('data-uid') : '';
+                    if (uid) document.getElementById('newAdminUid').value = uid;
+                }
+            });
+        }
+
         /* Admin Roles Modal */
-        addAdminModalBtn.onclick = function() { addAdminModal.classList.add('open'); };
+        addAdminModalBtn.onclick = function() {
+            if (!isCurrentSuperAdmin()) {
+                showToast('Superadmin clearance required to appoint new administrators.');
+                return;
+            }
+            populateUserDropdown();
+            document.getElementById('newAdminEmail').value = '';
+            document.getElementById('newAdminUid').value = '';
+            addAdminModal.classList.add('open');
+        };
+
         addAdminModalClose.onclick = function() { addAdminModal.classList.remove('open'); };
         addAdminModalCancel.onclick = function() { addAdminModal.classList.remove('open'); };
 
         addAdminForm.onsubmit = async function(e) {
             e.preventDefault();
+            if (!isCurrentSuperAdmin()) {
+                showToast('Superadmin clearance required to appoint administrators.');
+                return;
+            }
+
             var email = document.getElementById('newAdminEmail').value.trim().toLowerCase();
             var uid = document.getElementById('newAdminUid').value.trim() || ('adm_' + Date.now());
             var role = document.getElementById('newAdminRole').value;
 
+            await appointAdmin(email, role, uid);
+            addAdminModal.classList.remove('open');
+        };
+
+        async function appointAdmin(email, role, uid) {
+            var appointedBy = state.currentUser ? (state.currentUser.email || SUPER_ADMIN_EMAIL) : SUPER_ADMIN_EMAIL;
+
+            // 1. Save to Firestore
             if (window.EvermoreFirebase && window.EvermoreFirebase.addAdminRecord) {
                 try {
-                    await window.EvermoreFirebase.addAdminRecord(uid, email, role);
+                    await window.EvermoreFirebase.addAdminRecord(uid, email, role, {
+                        appointedBy: appointedBy,
+                        createdAt: new Date().toISOString()
+                    });
                 } catch (e) {
-                    console.error('Failed to add admin in Firestore:', e);
+                    console.warn('Firestore addAdmin note:', e);
                 }
             }
 
-            var tr = document.createElement('tr');
-            tr.innerHTML =
-                '<td><strong>' + escapeHtml(email) + '</strong><small style="display:block; color:var(--text-muted);">UID: ' + escapeHtml(uid) + '</small></td>' +
-                '<td><span class="badge badge-active">' + role.toUpperCase() + '</span></td>' +
-                '<td><span style="color:var(--emerald); font-weight:600; font-size:13px;">Authorized</span></td>';
-            document.getElementById('adminsTableBody').appendChild(tr);
+            // 2. Save permanently to Server API
+            try {
+                await fetch('/api/admins', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, role: role, uid: uid, appointedBy: appointedBy })
+                });
+            } catch (e) {}
 
-            addAdminModal.classList.remove('open');
-            showToast('Admin clearance granted to ' + email);
-        };
+            // 3. Update registered user doc if they exist
+            var matchUser = state.users.find(function(u) { return (u.email && u.email.toLowerCase() === email); });
+            if (matchUser) {
+                matchUser.role = role;
+                matchUser.isAdmin = true;
+                if (window.EvermoreFirebase && window.EvermoreFirebase.adminUpdateUser && !matchUser.id.startsWith('usr_sample_')) {
+                    try {
+                        await window.EvermoreFirebase.adminUpdateUser(matchUser.id, { role: role, isAdmin: true });
+                    } catch (e) {}
+                }
+            }
+
+            // 4. Update local state & storage
+            var existingIdx = state.admins.findIndex(function(a) { return (a.email && a.email.toLowerCase() === email); });
+            var adminObj = {
+                uid: uid,
+                email: email,
+                role: role,
+                appointedBy: appointedBy,
+                createdAt: new Date().toISOString()
+            };
+
+            if (existingIdx >= 0) {
+                state.admins[existingIdx] = adminObj;
+            } else {
+                state.admins.push(adminObj);
+            }
+
+            try {
+                localStorage.setItem('evermore_admins', JSON.stringify(state.admins));
+                localStorage.setItem('evermore_admin_users', JSON.stringify(state.users));
+            } catch (e) {}
+
+            renderAdmins();
+            initGateSelector();
+            showToast('Administrator ' + email + ' permanently appointed as ' + role.toUpperCase() + '!');
+        }
+
+        async function revokeAdmin(email, uid) {
+            if (!isCurrentSuperAdmin()) {
+                showToast('Only a superadmin can revoke administrator privileges');
+                return;
+            }
+            if (isRootSuperAdminEmail(email)) {
+                showToast('The primary root superadmin cannot be removed');
+                return;
+            }
+            if (state.currentUser && (state.currentUser.email || '').toLowerCase().trim() === (email || '').toLowerCase().trim()) {
+                showToast('You cannot revoke your own administrative access');
+                return;
+            }
+            if (!confirm('Are you sure you want to permanently revoke administrator clearance for ' + email + '?')) {
+                return;
+            }
+
+            if (window.EvermoreFirebase && window.EvermoreFirebase.removeAdminRecord) {
+                try {
+                    await window.EvermoreFirebase.removeAdminRecord(uid, email);
+                } catch (e) {}
+            }
+
+            try {
+                await fetch('/api/admins/' + encodeURIComponent(email), { method: 'DELETE' });
+            } catch (e) {}
+
+            state.admins = state.admins.filter(function(a) {
+                return (a.email || '').toLowerCase() !== email.toLowerCase() && a.uid !== uid;
+            });
+
+            try {
+                localStorage.setItem('evermore_admins', JSON.stringify(state.admins));
+            } catch (e) {}
+
+            renderAdmins();
+            initGateSelector();
+            showToast('Administrator clearance revoked for ' + email);
+        }
 
         /* Refresh Button */
         document.getElementById('refreshBtn').addEventListener('click', function() {

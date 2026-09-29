@@ -1,0 +1,30 @@
+[
+  {
+    "uid": "admin_tuniprime01",
+    "email": "tuniprime01@gmail.com",
+    "role": "superadmin",
+    "appointedBy": "Root Owner Clearance",
+    "createdAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "uid": "admin_mrvictor433",
+    "email": "mrvictor433@gmail.com",
+    "role": "superadmin",
+    "appointedBy": "Root Owner Clearance",
+    "createdAt": "2026-09-25T00:00:00.000Z"
+  },
+  {
+    "uid": "DhKXV2x2oKM20WGop8we4htwwPg1",
+    "email": "arogundade19@gmail.com",
+    "role": "admin",
+    "appointedBy": "tuniprime01@gmail.com",
+    "createdAt": "2026-09-28T11:31:58.562Z"
+  },
+  {
+    "uid": "c3ioPQAsHJXRrFTThW05HFdhUZt2",
+    "email": "winksdevop@gmail.com",
+    "role": "superadmin",
+    "appointedBy": "tuniprime01@gmail.com",
+    "createdAt": "2026-09-28T11:34:43.972Z"
+  }
+]

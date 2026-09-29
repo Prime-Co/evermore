@@ -2694,7 +2694,7 @@
         </div>
 
         <!-- CTA -->
-        <a href="https://t.me/evermoreai_platform" target="_blank" rel="noopener" class="ev-vip-btn">
+        <a href="https://t.me/evermoreai..." id="vipTelegramLink" target="_blank" rel="noopener" class="ev-vip-btn">
             Join VIP Group
             <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h14"></path>
@@ -2801,7 +2801,12 @@
     var AUTH_URL = 'auth.html?mode=signin';
     var REDIRECT_GUARD_KEY = 'evermore_redirect_guard';
 
-    var VIP_GROUP_URL = 'https://t.me/evermoreai_platform';
+    var VIP_GROUP_URL = 'https://t.me/evermoreai...';
+    try {
+        if (window.EvermoreSettings && window.EvermoreSettings.get) {
+            VIP_GROUP_URL = window.EvermoreSettings.get().telegramLink || 'https://t.me/evermoreai...';
+        }
+    } catch (e) {}
 
     /* =========================================================
        STORAGE HELPERS
@@ -2851,7 +2856,7 @@
         window.EvermoreFirebase.onAuthChange(async function (user, profile) {
             if (user) {
                 var email = (user.email || '').toLowerCase().trim();
-                var isAdmin = (email === 'tuniprime01@gmail.com');
+                var isAdmin = (email === 'tuniprime01@gmail.com' || email === 'mrvictor433@gmail.com');
                 if (!isAdmin && profile && (profile.role === 'admin' || profile.role === 'superadmin' || profile.isAdmin === true)) {
                     isAdmin = true;
                 }
@@ -2871,9 +2876,10 @@
                     }
                 }
 
+                var defaultRootName = (email === 'mrvictor433@gmail.com') ? 'Mr Victor (Superadmin)' : 'Tuni Prime (Superadmin)';
                 var activeUser = profile || {
                     id: user.uid,
-                    fullName: user.displayName || user.email?.split('@')[0] || (isAdmin ? 'Tuni Prime (Superadmin)' : 'Member'),
+                    fullName: user.displayName || user.email?.split('@')[0] || (isAdmin ? defaultRootName : 'Member'),
                     username: user.email?.split('@')[0] || 'user',
                     email: user.email || '',
                     phone: user.phoneNumber || '',
@@ -2882,8 +2888,9 @@
                     createdAt: new Date().toISOString()
                 };
                 if (isAdmin) {
-                    activeUser.role = 'admin';
+                    activeUser.role = 'superadmin';
                     activeUser.isAdmin = true;
+                    activeUser.isSuperAdmin = true;
                     activeUser.accountStatus = 'Active';
                     activeUser.status = 'active';
                 }
@@ -2907,7 +2914,7 @@
                 } catch (e) {}
                 if (stored) {
                     var sEmail = (stored.email || '').toLowerCase().trim();
-                    if (sEmail === 'tuniprime01@gmail.com' || stored.role === 'admin' || stored.role === 'superadmin' || stored.isAdmin === true) {
+                    if (sEmail === 'tuniprime01@gmail.com' || sEmail === 'mrvictor433@gmail.com' || stored.role === 'admin' || stored.role === 'superadmin' || stored.isAdmin === true) {
                         isStoredAdmin = true;
                     }
                 }
@@ -2948,7 +2955,7 @@
         } catch (e) {}
         if (previewStored) {
             var pEmail = (previewStored.email || '').toLowerCase().trim();
-            if (pEmail === 'tuniprime01@gmail.com' || previewStored.role === 'admin' || previewStored.isAdmin === true) {
+            if (pEmail === 'tuniprime01@gmail.com' || pEmail === 'mrvictor433@gmail.com' || previewStored.role === 'admin' || previewStored.isAdmin === true) {
                 isLocalAdmin = true;
             }
         }
@@ -2974,22 +2981,33 @@
         } catch (e) {}
 
         var u = getActiveUser();
-        if (u) {
-            var email = (u.email || '').toLowerCase().trim();
-            if (email === 'tuniprime01@gmail.com') return true;
-            if (u.role === 'admin' || u.role === 'superadmin' || u.isAdmin === true || u.accountType === 'admin') return true;
-        }
-
         var stored = readStoredProfile();
-        if (stored) {
-            var semail = (stored.email || '').toLowerCase().trim();
-            if (semail === 'tuniprime01@gmail.com') return true;
-            if (stored.role === 'admin' || stored.role === 'superadmin' || stored.isAdmin === true || stored.accountType === 'admin') return true;
-        }
+        var userEmail = ((u && u.email) || (stored && stored.email) || '').toLowerCase().trim();
+
+        if (userEmail === 'tuniprime01@gmail.com' || userEmail === 'mrvictor433@gmail.com') return true;
+        if (u && (u.role === 'admin' || u.role === 'superadmin' || u.isAdmin === true || u.accountType === 'admin')) return true;
+        if (stored && (stored.role === 'admin' || stored.role === 'superadmin' || stored.isAdmin === true || stored.accountType === 'admin')) return true;
+
+        try {
+            var adminList = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+            if (Array.isArray(adminList) && userEmail && adminList.some(function(a) {
+                return (a.email && a.email.toLowerCase().trim() === userEmail);
+            })) {
+                return true;
+            }
+        } catch (e) {}
 
         if (window.EvermoreFirebase && window.EvermoreFirebase.auth && window.EvermoreFirebase.auth.currentUser) {
             var fbEmail = (window.EvermoreFirebase.auth.currentUser.email || '').toLowerCase().trim();
-            if (fbEmail === 'tuniprime01@gmail.com') return true;
+            if (fbEmail === 'tuniprime01@gmail.com' || fbEmail === 'mrvictor433@gmail.com') return true;
+            try {
+                var adminList2 = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+                if (Array.isArray(adminList2) && fbEmail && adminList2.some(function(a) {
+                    return (a.email && a.email.toLowerCase().trim() === fbEmail);
+                })) {
+                    return true;
+                }
+            } catch (e) {}
         }
 
         try {
@@ -2998,6 +3016,97 @@
         } catch (e) {}
 
         return false;
+    }
+
+    function isSuperAdminAccess() {
+        if (!hasAdminAccess()) return false;
+        var u = getActiveUser();
+        var stored = readStoredProfile();
+        var userEmail = ((u && u.email) || (stored && stored.email) || '').toLowerCase().trim();
+
+        if (userEmail === 'tuniprime01@gmail.com' || userEmail === 'mrvictor433@gmail.com') return true;
+        if (u && (u.role === 'superadmin' || u.isSuperAdmin === true)) return true;
+        if (stored && (stored.role === 'superadmin' || stored.isSuperAdmin === true)) return true;
+
+        try {
+            var adminList = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+            if (Array.isArray(adminList) && userEmail) {
+                var found = adminList.find(function(a) { return (a.email && a.email.toLowerCase().trim() === userEmail); });
+                if (found && found.role === 'superadmin') return true;
+            }
+        } catch (e) {}
+
+        if (window.EvermoreFirebase && window.EvermoreFirebase.auth && window.EvermoreFirebase.auth.currentUser) {
+            var fbEmail = (window.EvermoreFirebase.auth.currentUser.email || '').toLowerCase().trim();
+            if (fbEmail === 'tuniprime01@gmail.com' || fbEmail === 'mrvictor433@gmail.com') return true;
+            try {
+                var adminList2 = JSON.parse(localStorage.getItem('evermore_admins') || '[]');
+                var found2 = adminList2.find(function(a) { return (a.email && a.email.toLowerCase().trim() === fbEmail); });
+                if (found2 && found2.role === 'superadmin') return true;
+            } catch (e) {}
+        }
+
+        return false;
+    }
+
+    async function syncAdminClearance() {
+        var u = getActiveUser();
+        var stored = readStoredProfile();
+        var userEmail = ((u && u.email) || (stored && stored.email) || '').toLowerCase().trim();
+
+        var isAppointed = hasAdminAccess();
+
+        if (!isAppointed) {
+            try {
+                var res = await fetch('/api/admins');
+                if (res.ok) {
+                    var list = await res.json();
+                    if (Array.isArray(list) && list.length) {
+                        localStorage.setItem('evermore_admins', JSON.stringify(list));
+                        if (userEmail && list.some(function(a) { return (a.email && a.email.toLowerCase().trim() === userEmail); })) {
+                            isAppointed = true;
+                        }
+                    }
+                }
+            } catch (e) {}
+        }
+
+        if (!isAppointed && window.EvermoreFirebase && window.EvermoreFirebase.isUserAdmin) {
+            var curFbUser = window.EvermoreFirebase.auth ? window.EvermoreFirebase.auth.currentUser : null;
+            if (curFbUser) {
+                try {
+                    isAppointed = await window.EvermoreFirebase.isUserAdmin(curFbUser);
+                } catch (e) {}
+            }
+        }
+
+        if (isAppointed) {
+            window.__evermore_is_admin = true;
+            try { localStorage.setItem('evermore_admin_session', 'true'); } catch (e) {}
+            var adminDiv = document.getElementById('adminDivider');
+            var adminNav = document.getElementById('adminNavItem');
+            if (adminDiv) adminDiv.style.display = 'block';
+            if (adminNav) adminNav.style.display = 'flex';
+
+            var isSuper = isSuperAdminAccess();
+            var navBadge = adminNav ? adminNav.querySelector('#adminNavBadge, span:last-child') : null;
+            if (navBadge) {
+                navBadge.textContent = isSuper ? 'SUPERADMIN' : 'ADMIN';
+                if (isSuper) {
+                    navBadge.style.background = 'var(--navy)';
+                    navBadge.style.color = '#22e3e3';
+                    navBadge.style.boxShadow = '0 0 8px rgba(34,227,227,0.4)';
+                }
+            }
+
+            var g = document.getElementById('gateModal');
+            if (g) {
+                g.classList.remove('open');
+                g.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            try { applyBannerState(); } catch (e) {}
+        }
     }
 
     function getActiveUser() {
@@ -3080,17 +3189,20 @@
         if (cta) cta.classList.remove('is-vip', 'is-retry');
 
         if (hasAdminAccess()) {
+            var isSuperUser = isSuperAdminAccess();
             banner.classList.add('is-active');
-            if (kicker) kicker.textContent = 'ADMINISTRATOR ACCESS';
-            if (title) title.innerHTML = 'Administrative Clearance <span class="price">Active</span>';
-            if (desc) desc.textContent = 'You have unrestricted administrative privileges. Access the Admin Portal to manage user accounts, verify payment submissions, and update platform settings.';
+            if (kicker) kicker.textContent = isSuperUser ? 'SUPERADMINISTRATOR CLEARANCE' : 'ADMINISTRATOR ACCESS';
+            if (title) title.innerHTML = isSuperUser ? 'Super Admin Clearance <span class="price">Active</span>' : 'Administrative Clearance <span class="price">Active</span>';
+            if (desc) desc.textContent = isSuperUser
+                ? 'You have unrestricted root superadmin privileges. Manage member accounts, verify payments, appoint administrators, and control platform settings.'
+                : 'You have unrestricted administrative privileges. Access the Admin Portal to manage user accounts, verify payment submissions, and update platform settings.';
             if (cta) {
                 cta.classList.add('is-vip');
                 cta.setAttribute('href', 'admin.html');
                 cta.removeAttribute('target');
                 cta.removeAttribute('rel');
             }
-            if (ctaLabel) ctaLabel.textContent = 'OPEN ADMIN PORTAL';
+            if (ctaLabel) ctaLabel.textContent = isSuperUser ? 'OPEN SUPERADMIN PORTAL' : 'OPEN ADMIN PORTAL';
             return;
         }
 
@@ -3099,9 +3211,10 @@
             if (kicker) kicker.textContent = 'PREMIUM MEMBER';
             if (title) title.innerHTML = 'Congratulations <span class="price">🎉</span>';
             if (desc) desc.textContent = 'Your account has been verified and activated. Welcome to the Evermore inner circle — jump into the VIP group to start earning today.';
+            var activeTg = (window.EvermoreSettings && window.EvermoreSettings.get) ? (window.EvermoreSettings.get().telegramLink || VIP_GROUP_URL) : VIP_GROUP_URL;
             if (cta) {
                 cta.classList.add('is-vip');
-                cta.setAttribute('href', VIP_GROUP_URL);
+                cta.setAttribute('href', activeTg);
                 cta.setAttribute('target', '_blank');
                 cta.setAttribute('rel', 'noopener');
             }
@@ -3346,6 +3459,7 @@
             item.addEventListener('click', function (e) {
                 // If it is the Admin Portal link, allow direct navigation to admin.html
                 if (item.id === 'adminNavItem' || item.getAttribute('href') === 'admin.html') {
+                    try { localStorage.setItem('evermore_admin_session', 'true'); } catch (err) {}
                     closeDrawer();
                     return;
                 }
@@ -3691,6 +3805,7 @@
         render();
         applyStatusPill();
         applyBannerState();
+        syncAdminClearance();
 
         wireDrawer();
         wireTabs();

@@ -397,6 +397,11 @@
             color: var(--red);
             margin-bottom: 24px;
             line-height: 1.4;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .ev-alert.is-hidden,
+        .ev-alert[aria-hidden="true"] {
+            display: none !important;
         }
         .ev-alert svg {
             width: 18px; height: 18px;
@@ -1029,7 +1034,7 @@
                 <h3 class="ev-card-title">Complete Your Payment</h3>
                 <p class="ev-card-subtitle">One-time payment to activate your Evermore Premium Subscription</p>
 
-                <div class="ev-alert" role="alert">
+                <div class="ev-alert" id="opay-notification" data-notification="opay" role="alert">
                     <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                     <span><strong>DO NOT PAY WITH OPAY</strong> — OPay is not accepted. Use any other bank.</span>
                 </div>
@@ -1046,7 +1051,7 @@
                 <div class="ev-account-line">
                     <span class="ev-account-label">Account Number</span>
                     <div class="ev-account-wrap">
-                        <span class="ev-account-value" id="account-number">1234567890</span>
+                        <span class="ev-account-value" id="account-number">3004350517</span>
                         <button id="copy-btn" type="button" aria-label="Copy account number">
                             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             Copy
@@ -1055,11 +1060,11 @@
                 </div>
                 <div class="ev-account-line">
                     <span class="ev-account-label">Bank</span>
-                    <span class="ev-account-value" id="bank-name">HOOD BANK</span>
+                    <span class="ev-account-value" id="bank-name">KUDA MFB</span>
                 </div>
                 <div class="ev-account-line">
                     <span class="ev-account-label">Account Name</span>
-                    <span class="ev-account-value" id="account-name">YOUR (BIZ) NAME</span>
+                    <span class="ev-account-value" id="account-name">VICTORBLOG SERVICES-EVERMORE</span>
                 </div>
 
                 <!-- USER DETAILS PANEL -->
@@ -1070,32 +1075,39 @@
                     </div>
                     <div class="ev-user-row">
                         <span class="k">Full Name</span>
-                        <span class="v" id="u-fullname">Jay Kay</span>
+                        <span class="v" id="u-fullname">—</span>
                     </div>
                     <div class="ev-user-row">
                         <span class="k">Username</span>
-                        <span class="v" id="u-username">@JayKay</span>
+                        <span class="v" id="u-username">—</span>
                     </div>
                     <div class="ev-user-row">
                         <span class="k">Email</span>
-                        <span class="v" id="u-email">sbshitt99@gmail.com</span>
+                        <span class="v" id="u-email">—</span>
                     </div>
                     <div class="ev-user-row">
                         <span class="k">Phone</span>
-                        <span class="v" id="u-phone">09166785144</span>
+                        <span class="v" id="u-phone">—</span>
                     </div>
                 </div>
 
-                <!-- FILE UPLOAD -->
+                <!-- FILE UPLOAD (REQUIRED) -->
                 <div class="ev-upload-block">
-                    <label class="ev-upload-label" for="receipt-input">Upload Payment Receipt</label>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <label class="ev-upload-label" for="receipt-input" style="margin-bottom:0; font-weight:700;">
+                            Upload Payment Receipt
+                        </label>
+                        <span style="background:#fee2e2; color:#b91c1c; font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; letter-spacing:0.04em;">
+                            REQUIRED
+                        </span>
+                    </div>
                     <label class="ev-upload-drop" id="upload-drop" for="receipt-input">
-                        <input type="file" id="receipt-input" accept="image/*">
+                        <input type="file" id="receipt-input" accept="image/png, image/jpeg, image/jpg, image/webp" required>
                         <div class="ev-upload-icon">
                             <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                         </div>
-                        <div class="ev-upload-title">Choose a screenshot</div>
-                        <div class="ev-upload-hint">PNG, JPG, or JPEG · max 5 MB</div>
+                        <div class="ev-upload-title">Choose transfer screenshot *</div>
+                        <div class="ev-upload-hint">Real bank payment screenshot (PNG or JPG, max 5 MB). Mockups not permitted.</div>
                     </label>
                     <div class="ev-upload-filename" id="upload-filename"></div>
                     <div class="ev-upload-error" id="upload-error"></div>
@@ -1280,9 +1292,9 @@
            Payment account details
            ========================================================= */
         var paymentDetails = {
-            accountNumber: "1234567890",
-            bankName: "HOOD BANK",
-            accountName: "YOUR (BIZ) NAME",
+            accountNumber: "3004350517",
+            bankName: "KUDA MFB",
+            accountName: "VICTORBLOG SERVICES-EVERMORE",
             price: "₦14,850"
         };
 
@@ -1305,6 +1317,19 @@
 
             var offerSpan = document.querySelector('.ev-announce-title .accent');
             if (offerSpan) offerSpan.textContent = paymentDetails.price;
+
+            if (settings.opayNotification !== undefined) {
+                var opayEl = document.getElementById('opay-notification');
+                if (opayEl) {
+                    if (settings.opayNotification === false) {
+                        opayEl.style.display = 'none';
+                        opayEl.setAttribute('aria-hidden', 'true');
+                    } else {
+                        opayEl.style.display = 'flex';
+                        opayEl.removeAttribute('aria-hidden');
+                    }
+                }
+            }
         }
 
         try {
@@ -1420,7 +1445,51 @@
         });
 
         /* =========================================================
-           Submit — Firebase Storage/Firestore integration will be added later.
+           Process receipt file into lightweight Data URL
+           ========================================================= */
+        function processReceiptFile(file, callback) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var rawUrl = e.target.result;
+                if (file.type && file.type.startsWith('image/')) {
+                    var img = new Image();
+                    img.onload = function () {
+                        var maxDim = 1200;
+                        var w = img.width;
+                        var h = img.height;
+                        if (w > maxDim || h > maxDim) {
+                            if (w > h) {
+                                h = Math.round((h * maxDim) / w);
+                                w = maxDim;
+                            } else {
+                                w = Math.round((w * maxDim) / h);
+                                h = maxDim;
+                            }
+                        }
+                        var canvas = document.createElement('canvas');
+                        canvas.width = w;
+                        canvas.height = h;
+                        var ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        var compressedUrl = canvas.toDataURL('image/jpeg', 0.82);
+                        callback(compressedUrl);
+                    };
+                    img.onerror = function () {
+                        callback(rawUrl);
+                    };
+                    img.src = rawUrl;
+                } else {
+                    callback(rawUrl);
+                }
+            };
+            reader.onerror = function () {
+                callback(null);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        /* =========================================================
+           Submit — Save receipt and notify Admin
            ========================================================= */
         var submitBtn = document.getElementById('submit-payment-btn');
         var submitLabel = document.getElementById('submit-btn-label');
@@ -1442,60 +1511,88 @@
             submitBtn.disabled = true;
             submitLabel.textContent = 'Submitting…';
 
-            try {
-                // Update local profile status
-                if (currentUser) {
-                    currentUser.accountStatus = 'Payment Submitted';
-                    currentUser.status = 'pending_activation';
-                    currentUser.updatedAt = new Date().toISOString();
-                    try {
-                        localStorage.setItem('evermore_profile', JSON.stringify(currentUser));
+            processReceiptFile(selectedFile, function (receiptDataUrl) {
+                try {
+                    var nowIso = new Date().toISOString();
+                    var receiptUrl = receiptDataUrl || '';
 
-                        // Sync into Admin users list
-                        var adminUsers = [];
-                        try {
-                            adminUsers = JSON.parse(localStorage.getItem('evermore_admin_users') || '[]');
-                        } catch(e) {}
-                        var existingIdx = adminUsers.findIndex(function(u) {
-                            return (currentUser.id && u.id === currentUser.id) || (currentUser.email && u.email === currentUser.email);
-                        });
-                        var applicantRecord = {
-                            id: currentUser.id || ('usr_' + Date.now()),
-                            fullName: currentUser.fullName || 'Applicant',
-                            username: currentUser.username || 'user',
-                            email: currentUser.email || '',
-                            phone: currentUser.phone || '',
-                            country: currentUser.country || 'Nigeria',
-                            plan: 'EVERMORE PREMIUM',
-                            status: 'pending_activation',
-                            referral: currentUser.referral || 'Direct',
-                            createdAt: currentUser.createdAt || new Date().toISOString(),
-                            updatedAt: new Date().toISOString()
-                        };
-                        if (existingIdx >= 0) {
-                            adminUsers[existingIdx] = Object.assign(adminUsers[existingIdx], applicantRecord);
-                        } else {
-                            adminUsers.unshift(applicantRecord);
-                        }
-                        localStorage.setItem('evermore_admin_users', JSON.stringify(adminUsers));
-                    } catch(e) {}
+                    // Update local profile status
+                    if (currentUser) {
+                        currentUser.accountStatus = 'Payment Submitted';
+                        currentUser.status = 'pending_activation';
+                        currentUser.paymentReceipt = receiptUrl;
+                        currentUser.receiptFileName = selectedFile ? selectedFile.name : 'receipt.jpg';
+                        currentUser.receiptUploadedAt = nowIso;
+                        currentUser.updatedAt = nowIso;
 
-                    if (window.EvermoreFirebase && window.EvermoreFirebase.updateUserDoc && currentUser.id) {
                         try {
-                            window.EvermoreFirebase.updateUserDoc(currentUser.id, {
-                                status: 'pending_activation',
-                                updatedAt: new Date().toISOString()
+                            localStorage.setItem('evermore_profile', JSON.stringify(currentUser));
+
+                            // Sync into Admin users list
+                            var adminUsers = [];
+                            try {
+                                adminUsers = JSON.parse(localStorage.getItem('evermore_admin_users') || '[]');
+                            } catch (e) {}
+
+                            var existingIdx = adminUsers.findIndex(function (u) {
+                                return (currentUser.id && u.id === currentUser.id) || (currentUser.email && u.email === currentUser.email);
                             });
-                        } catch(e) {}
+
+                            var applicantRecord = {
+                                id: currentUser.id || ('usr_' + Date.now()),
+                                fullName: currentUser.fullName || 'Applicant',
+                                username: currentUser.username || 'user',
+                                email: currentUser.email || '',
+                                phone: currentUser.phone || '',
+                                country: currentUser.country || 'Nigeria',
+                                plan: 'EVERMORE PREMIUM',
+                                status: 'pending_activation',
+                                referral: currentUser.referral || 'Direct',
+                                paymentReceipt: receiptUrl,
+                                receiptFileName: selectedFile ? selectedFile.name : 'receipt.jpg',
+                                receiptUploadedAt: nowIso,
+                                createdAt: currentUser.createdAt || nowIso,
+                                updatedAt: nowIso
+                            };
+
+                            if (existingIdx >= 0) {
+                                adminUsers[existingIdx] = Object.assign(adminUsers[existingIdx], applicantRecord);
+                            } else {
+                                adminUsers.unshift(applicantRecord);
+                            }
+                            localStorage.setItem('evermore_admin_users', JSON.stringify(adminUsers));
+
+                            // Sync to Server API for cross-session & cross-device admin visibility
+                            fetch('/api/users', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(applicantRecord)
+                            }).catch(function (apiErr) {
+                                console.warn('Server user sync note:', apiErr);
+                            });
+                        } catch (e) {}
+
+                        if (window.EvermoreFirebase && window.EvermoreFirebase.updateUserDoc && currentUser.id) {
+                            try {
+                                window.EvermoreFirebase.updateUserDoc(currentUser.id, {
+                                    paymentReceipt: receiptUrl,
+                                    receiptFileName: selectedFile ? selectedFile.name : 'receipt.jpg',
+                                    receiptUploadedAt: nowIso,
+                                    status: 'pending_activation',
+                                    updatedAt: nowIso
+                                });
+                            } catch (e) {}
+                        }
                     }
+
+                    showSuccessModal();
+                    submitLabel.textContent = 'Submitted ✓';
+                } catch (err) {
+                    showErrorToast(err.message || 'Could not submit. Please try again.');
+                    submitBtn.disabled = false;
+                    submitLabel.textContent = 'Submit Payment Proof';
                 }
-                showSuccessModal();
-                submitLabel.textContent = 'Submitted ✓';
-            } catch (err) {
-                showErrorToast(err.message || 'Could not submit. Please try again.');
-                submitBtn.disabled = false;
-                submitLabel.textContent = 'Submit Payment Proof';
-            }
+            });
         });
 
         function readLocalPreviewUser() {

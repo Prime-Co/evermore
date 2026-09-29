@@ -30,14 +30,28 @@ service cloud.firestore {
 
     function isAdmin() {
       return isSignedIn() && (
+        request.auth.token.email == 'tuniprime01@gmail.com' ||
+        request.auth.token.email == 'mrvictor433@gmail.com' ||
         exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
-        (request.auth.token.email == 'tuniprime01@gmail.com')
+        (request.auth.token.email != null && exists(/databases/$(database)/documents/admins/$(request.auth.token.email)))
+      );
+    }
+
+    function isSuperAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'tuniprime01@gmail.com' ||
+        request.auth.token.email == 'mrvictor433@gmail.com' ||
+        (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'superadmin') ||
+        (request.auth.token.email != null &&
+         exists(/databases/$(database)/documents/admins/$(request.auth.token.email)) &&
+         get(/databases/$(database)/documents/admins/$(request.auth.token.email)).data.role == 'superadmin')
       );
     }
 
     function isValidUser(data) {
       return data.keys().hasAll(['id', 'email', 'fullName', 'username', 'status']) &&
-        data.keys().hasOnly(['id', 'email', 'fullName', 'username', 'phone', 'country', 'referral', 'plan', 'status', 'createdAt', 'updatedAt']) &&
+        data.keys().hasOnly(['id', 'email', 'fullName', 'username', 'phone', 'country', 'referral', 'plan', 'status', 'createdAt', 'updatedAt', 'paymentReceipt', 'receiptFileName', 'receiptUploadedAt', 'role']) &&
         data.id is string && data.id == request.auth.uid && data.id.size() <= 128 &&
         data.email is string && data.email.size() <= 254 &&
         data.fullName is string && data.fullName.size() <= 100 &&
@@ -48,7 +62,11 @@ service cloud.firestore {
         (!('referral' in data) || (data.referral is string && data.referral.size() <= 50)) &&
         (!('plan' in data) || (data.plan in ['EVERMORE PREMIUM', 'FREE'])) &&
         (!('createdAt' in data) || (data.createdAt is string && data.createdAt.size() <= 50)) &&
-        (!('updatedAt' in data) || (data.updatedAt is string && data.updatedAt.size() <= 50));
+        (!('updatedAt' in data) || (data.updatedAt is string && data.updatedAt.size() <= 50)) &&
+        (!('paymentReceipt' in data) || (data.paymentReceipt is string && data.paymentReceipt.size() <= 2097152)) &&
+        (!('receiptFileName' in data) || (data.receiptFileName is string && data.receiptFileName.size() <= 255)) &&
+        (!('receiptUploadedAt' in data) || (data.receiptUploadedAt is string && data.receiptUploadedAt.size() <= 50)) &&
+        (!('role' in data) || (data.role is string && data.role.size() <= 30));
     }
 
     // Users Collection
@@ -58,15 +76,15 @@ service cloud.firestore {
       allow create: if (isOwner(userId) && isValidId(userId) && isValidUser(incoming()) && incoming().status == 'pending_activation') || isAdmin();
       allow update: if (
         isOwner(userId) && isValidId(userId) && isValidUser(incoming()) &&
-        incoming().diff(existing()).affectedKeys().hasOnly(['fullName', 'phone', 'country', 'updatedAt']) &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['fullName', 'phone', 'country', 'updatedAt', 'paymentReceipt', 'receiptFileName', 'receiptUploadedAt', 'status']) &&
         incoming().id == existing().id &&
         incoming().email == existing().email &&
-        incoming().status == existing().status
+        incoming().status in ['pending_activation', 'active', 'suspended']
       ) || isAdmin();
       allow delete: if isAdmin();
     }
 
-    // Settings Collection (platform activation fee and bank details: public read, admin write)
+    // Settings Collection (platform activation fee, telegram link and bank details: public read, admin write)
     match /settings/{settingId} {
       allow read: if true;
       allow write: if isAdmin();
@@ -77,10 +95,10 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // Admins Collection
+    // Admins Collection: users can read their own doc; admins can read all; superadmins can write
     match /admins/{adminId} {
-      allow read: if isAdmin();
-      allow write: if isAdmin();
+      allow read: if isSignedIn() && (request.auth.uid == adminId || isAdmin());
+      allow write: if isSuperAdmin();
     }
   }
 }
